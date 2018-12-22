@@ -1,5 +1,5 @@
 This is the default theme for the [Pybossa
-server](https://github.com/PyBossa/pybossa).
+server](https://github.com/PyBossa/pybossa), adapted to Trafikverket.
 
 ![Shuttleworth Foundation Funded](http://pybossa.com/assets/img/shuttleworth-funded.png)
 
