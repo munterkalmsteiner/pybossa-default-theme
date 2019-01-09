@@ -1,0 +1,167 @@
+// coclass.js library
+//
+// Copyright (C) 2018 Michael Unterkalmsteiner
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+var coclass = (function($) {
+    var _findInCoClass = function (obj, target, stack) {
+        let found = false;
+        for (var key in obj) {
+            if (!obj.hasOwnProperty(key)) {
+                continue;
+            }
+
+            if (obj[key] !== 'undefined' &&
+                obj[key].hasOwnProperty('term') &&
+                obj[key]['term'] !== 'undefined' &&
+                obj[key]['term'].toLowerCase() === target.toLowerCase()) {
+
+                $('#definition').html(obj[key].desc);
+                let level = new Object();
+                level.code = key;
+                level.term = obj[key]['term'];
+                stack.push(level);
+
+                let cummulativecode = new String();
+                let levels = new String();
+                for (let i = 0; i < stack.length; i++) {
+                    let code = stack[i].code;
+                    if (code.length == 1) {
+                        cummulativecode += code;
+                        levels += cummulativecode + ':' + stack[i].term;
+                        if (i < stack.length - 1) {
+                            levels += ' >> ';
+                        }
+                    } else {
+                        levels += code + ' >> ';
+                    }
+
+                }
+
+                $('#levels').html(levels);
+
+                let target = obj[key]['term'];
+                $('#target').html(target);
+                $('#target').data('synonyms', obj[key]['syns']);
+
+                found = true;
+                break;
+            } else if (typeof obj[key] === 'object') {
+                let level = new Object();
+                level.code = key;
+                if (obj[key].hasOwnProperty('term')) {
+                    level.term = obj[key]['term'];
+                }
+                stack.push(level);
+                found = _findInCoClass(obj[key], target, stack);
+                stack.pop();
+             	  if (found) {
+               	   break;
+                }
+            }
+        }
+
+        return found;
+    };
+
+    var _updateTargetInfo = function(target) {
+        let found = false;
+        $.ajax({
+            url: '/static/data/coclass.json',
+            dataType: 'json',
+            async: false,
+            success: function(json) {
+                found = _findInCoClass(json, target, new Array());
+         	  }
+        });
+
+        return found;
+    };
+
+    var _getUserData = function() {
+        return $.ajax({
+            type: "GET",
+            url: "/account/profile",
+            contentType: "application/json",
+            dataType: "json"
+        });
+    };
+
+    var _getUserResult = function(userid, results) {
+        let result = results.find(r => r.user_id == userid);
+
+        let processedAssessment = {};
+        if (result !== undefined) {
+            let assessments = result.info.split(',');
+
+            for (let i = 1; i < assessments.length; i++) {
+                let assessment = assessments[i];
+                let item = assessment.split(':');
+                processedAssessment[item[0]] = (item[1] == 'true');
+            }
+        }
+
+        return processedAssessment;
+    };
+
+    var _getUserAlignment = function(userid, results) {
+        let alignment = {};
+        let user = _getUserResult(userid, results);
+        //let others = results.filter(r => r.user_id != userid);
+        for (let i = 0; i < results.length; i++) {
+            let assessments = results[i].info.split(',');
+            for (let j = 1; j < assessments.length; j++) {
+                let assessment = assessments[j].split(':');
+                let candidate = assessment[0];
+                let isSynonym = (assessment[1] == 'true');
+                alignment[candidate] = alignment[candidate] || {'a': 0, 'd': 0};
+                if (user[candidate] == isSynonym) {
+                    alignment[candidate]['a'] += 1;
+                } else {
+                    alignment[candidate]['d'] += 1;
+                }
+            }
+        }
+
+        return alignment;
+    };
+
+    var _evaluateResultSynonym = function(term, synonymAssessment) {
+        let actualSynonyms = $('#target').data('synonyms');
+        let isActualSynonym = actualSynonyms.includes(term);
+        let isJudgedAsSynonym = synonymAssessment[term];
+
+        let result = '<i class="fas fa-';
+
+        if (isActualSynonym && isJudgedAsSynonym) {
+            return result + 'check"></i>';
+        } else if (isActualSynonym && !isJudgedAsSynonym) {
+            return result + 'times"></i>';
+        } else if (!isActualSynonym && isJudgedAsSynonym) {
+            return result + 'star"></i>';
+        }
+
+        return result + 'minus"></i>';
+    };
+
+    return {
+        updateTargetInfo: _updateTargetInfo,
+        getUserData: _getUserData,
+        getUserResult: _getUserResult,
+        getUserAlignment: _getUserAlignment,
+        evaluateResultSynonym: _evaluateResultSynonym
+    };
+
+})(jQuery);
