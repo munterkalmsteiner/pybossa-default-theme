@@ -44,7 +44,13 @@ var coclass = (function($) {
                     let code = stack[i].code;
                     if (code.length == 1) {
                         cummulativecode += code;
-                        levels += cummulativecode + ':' + stack[i].term;
+                        levels += cummulativecode + ':';
+                        if (i == stack.length - 1) {
+                            levels += '<strong id="target">' + stack[i].term + '</strong>';
+                        } else {
+                            levels += stack[i].term;
+                        }
+
                         if (i < stack.length - 1) {
                             levels += ' >> ';
                         }
@@ -193,7 +199,7 @@ var coclass = (function($) {
     var _getCandidateCheckbox = function(term, cbid, seeded) {
         return '<div class="form-check candidate"><input class="form-check-input' +
             (seeded ? ' seeded' : '') + '" type="checkbox" value="' +
-            term + '" id="' + cbid + '"><label class="form-check-label" for="' +
+            term + '" id="' + cbid + '"><label class="form-check-label" style="margin-left:5px;" for="' +
             cbid + '">' + term + '</label></div>';
     };
 
