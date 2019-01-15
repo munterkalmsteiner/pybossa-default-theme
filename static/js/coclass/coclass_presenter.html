@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="col-md-6 col-md-offset-2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/project">or, Check other projects</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-danger" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+
+<div class="row skeleton">
+    <div class="col-md-12">
+        <h2>Select the correct synonym(s)</h2>
+      	<p style="margin-bottom: 0px;" id="levels"></p>
+        <h3 style="margin-top: 0px;">Target term: <strong id="target"></strong></h3>
+      	<p>
+            Definition: <span id="definition"></span>
+      	</p>
+        
+      	<div id="submit">
+        	  <h3>Candidates:</h3>
+  	    	  <div id="candidates"></div>
+        	  <button class="btn btn-success btn-submit" style="margin-right:10px;">Submit</button>
+        	  <button class="btn btn-warning btn-skip">Skip</button>
+        	  <p style="margin-top:10px;">Only press skip if you are not sure. If none of the candidates is a synonym, do not check any term and submit.</p>
+      	</div>
+      	<div id="next">
+          	<h3>Results:</h3>
+          	<table class="table table-sm">
+            	  <thead>
+              		  <tr>
+                  		  <th scope="col">Candidate</th>
+                      	<th scope="col">Synonym<sup>&#10102;</sup></th>
+                      	<th scope="col">Alignment<sup>&#10103;</sup></th>
+                  	</tr>
+              	</thead>
+              	<tbody id="results"></tbody>
+          	</table>
+          	<button class="btn btn-success btn-next">Next</button>
+          	<h4>&#10102; Synonym</h4>
+          	<p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
+                <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
+          	    <br>New synonym:&nbsp;<i class="fas fa-star"></i>
+          		  <br>No synonym:&nbsp;<i class="fas fa-minus"></i></p>
+          	<h4>&#10103; Alignment</h4>
+          	<p>This column indicates how well you agree with your colleagues.
+                The numbers show how often you <span class="badge">agree</span> or
+                <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
+            </p>
+        </div>
+        <p style="margin-top:40px;">You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
+        <p>You have completed: <span id="done" class="label label-info"></span> tasks from
+            <!-- Progress bar for the user -->
+            <span id="total" class="label label-info"></span></p>
+   	    <div class="progress progress-striped">
+    	      <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;" role="progressbar"></div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/coclass/coclass.js"></script>
+<script type="text/javascript">
+ (function() {
+     function loadUserProgress() {
+         pybossa.userProgress('coclass').done(function(data) {
+             var pct = Math.round((data.done*100)/data.total);
+             $("#progress").css("width", pct.toString() +"%");
+             $("#progress").attr("title", pct.toString() + "% completed!");
+             $("#progress").tooltip({'placement': 'left'}); 
+             $("#total").text(data.total);
+             $("#done").text(data.done);
+         });
+     }
+     
+     function showResults(candidates, taskid, userid) {
+         $.getJSON('/project/coclass/' + taskid + '/results.json', function(data) {
+             let results = $('#results');
+             let synonymAssessment = coclass.getUserResult(userid, data);
+             let synonymAlignment = coclass.getUserAlignment(userid, data);
+             candidates.forEach(function(candidate) {
+                 let agreement = synonymAlignment[candidate]['a'];
+                 let disagreement = synonymAlignment[candidate]['d'];
+                 let tr = '<tr class="result"><td>' + candidate + '</td><td>' +
+                          coclass.evaluateResultSynonym(candidate, synonymAssessment) +
+                          '</td><td></span><span class="badge">' + agreement +
+                          '</span><span class="badge">' + disagreement +
+                          '</span></td></tr>';
+                 results.append(tr);
+             });
+         });
+     }
+     
+     pybossa.taskLoaded(function(task, deferred) {
+         deferred.resolve(task);
+     });
+
+     pybossa.presentTask(function(task, deferred) {
+         if (!$.isEmptyObject(task)) {
+             $('#submit').show();
+             $('#next').hide();
+             loadUserProgress();
+             if (!coclass.updateTargetInfo(task.info.target)) {
+                 pybossa.saveTask(task.id, 'Error: ' + task.info.target +
+         	                                 ' not found in coclass data').done(function() {
+                                               $('.candidate').remove();
+                                               deferred.resolve();
+                                           });
+             }
+             
+             $('#task-id').html(task.id);
+             let candidates = coclass.extractCandidatesFromTaskInfo(task.info);
+             let cbids = coclass.populateCandidates(candidates);
+             $('.btn').off('click').on('click', function(evt) {
+                 if ($(this).parent('#submit').length == 1) {
+                     if ($(this).hasClass('btn-submit')) {
+                         pybossa.saveTask(task.id, coclass.getSubmitAnswer(cbids)).done(function() {
+                             coclass.getUserData()
+                                    .then(data => data.user.id,
+             		                          error => console.log('Error', error))
+                                    .then(userid => showResults(candidates, task.id, userid));
+                             $('#submit').hide();
+                             $('#next').show();
+                         });
+                     } else { //user pressed skip
+                         pybossa.saveTask(task.id, coclass.getSkipAnswer(cbids)).done(function() {
+                             $('.candidate').remove();
+                             deferred.resolve();
+                         });
+                     }
+                 } else if ($(this).parent('#next').length == 1) {
+                     $('.candidate').remove();
+                     $('.result').remove();
+                     deferred.resolve();
+                 }
+             });
+         } else {
+             $(".skeleton").hide();
+             $("#loading").hide();
+             $("#finish").fadeIn(500);
+         }
+     });
+
+     pybossa.run('coclass');
+ })();
+</script>
