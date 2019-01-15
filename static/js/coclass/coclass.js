@@ -16,6 +16,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 var coclass = (function($) {
+    let _actualSynonyms = [];
+    let _streakNoSynonymsFound = 0;
+    let _synonymFound = false;
+
     var _findInCoClass = function (obj, target, stack) {
         let found = false;
         for (var key in obj) {
@@ -54,8 +58,7 @@ var coclass = (function($) {
 
                 let target = obj[key]['term'];
                 $('#target').html(target);
-                $('#target').data('synonyms', obj[key]['syns']);
-
+                _actualSynonyms = obj[key]['syns'];
                 found = true;
                 break;
             } else if (typeof obj[key] === 'object') {
@@ -74,6 +77,17 @@ var coclass = (function($) {
         }
 
         return found;
+    };
+
+    var _extractCandidatesFromTaskInfo = function(info) {
+        let candidates = new Array();
+        for (let key in info) {
+            if (info.hasOwnProperty(key) && key !== 'target' && info[key] !== '') {
+                candidates.push(info[key]);
+            }
+        }
+
+        return candidates;
     };
 
     var _updateTargetInfo = function(target) {
@@ -139,8 +153,7 @@ var coclass = (function($) {
     };
 
     var _evaluateResultSynonym = function(term, synonymAssessment) {
-        let actualSynonyms = $('#target').data('synonyms');
-        let isActualSynonym = actualSynonyms.includes(term);
+        let isActualSynonym = _actualSynonyms.includes(term);
         let isJudgedAsSynonym = synonymAssessment[term];
 
         let result = '<i class="fas fa-';
@@ -156,12 +169,113 @@ var coclass = (function($) {
         return result + 'minus"></i>';
     };
 
+    var _populateCandidates = function(candidates) {
+        _synonymFound = false;
+        let cds = $('#candidates');
+        let cbids = new Array();
+        let seed;
+
+        if (_needSynonymSeed() && !_candidatesIncludeActualSynonym(candidates)) {
+            seed = _getRandomSynonym();
+            if (seed !== undefined) {
+                candidates.splice(Math.floor(Math.random() * candidates.length), 0, seed);
+            }
+        }
+
+        candidates.forEach(function(candidate, index) {
+            cbids.push("check" + index);
+            cds.append(_getCandidateCheckbox(candidate, cbids[index], candidate === seed));
+        });
+
+        return cbids;
+    };
+
+    var _getCandidateCheckbox = function(term, cbid, seeded) {
+        return '<div class="form-check candidate"><input class="form-check-input' +
+            (seeded ? ' seeded' : '') + '" type="checkbox" value="' +
+            term + '" id="' + cbid + '"><label class="form-check-label" for="' +
+            cbid + '">' + term + '</label></div>';
+    };
+
+    var _getRandomSynonym = function() {
+        let length = _actualSynonyms.length;
+        if (_actualSynonyms !== 'undefined' && length > 0) {
+            return _actualSynonyms[Math.floor(Math.random() * length)];
+        }
+
+        return undefined;
+    };
+
+    var _candidatesIncludeActualSynonym = function(candidates) {
+        if (_actualSynonyms !== 'undefined' && _actualSynonyms.length > 0) {
+            for (let i = 0; i < candidates.length; i++) {
+                if (_actualSynonyms.includes(candidates[i])) {
+                        return true;
+                }
+            }
+        }
+
+        return false;
+    };
+
+    var _getSubmitAnswer = function(cbids) {
+        let answer = _getTargetTerm();
+        cbids.forEach(function(id) {
+            let sel = $('#' + id);
+            _updateSynonymFound(sel);
+            answer += ',' + sel.attr('value') + ':' + sel.is(':checked') + (sel.hasClass('seeded') ? ':s' : '');
+        });
+
+        if(!_synonymFound) {
+            _streakNoSynonymsFound++;
+        }
+
+        return answer;
+    };
+
+    var _updateSynonymFound = function(selection) {
+        if (!_synonymFound && selection.is(':checked')) {
+            _synonymFound = true;
+            _streakNoSynonymsFound = 0;
+        }
+    };
+
+    var _getSkipAnswer = function(cbids) {
+        _streakNoSynonymsFound++;
+        let seed;
+        cbids.forEach(function(id) {
+            let sel = $('#' + id);
+            if (sel.hasClass('seeded')) {
+                seed = sel.attr('value');
+            }
+        });
+
+        let answer = _getTargetTerm();
+        if (seed !== undefined) {
+            answer += answer + ',' + seed + ':false:s';
+        }
+
+        return answer;
+    };
+
+    var _needSynonymSeed = function() {
+        return _streakNoSynonymsFound >= 1;
+    };
+
+    var _getTargetTerm = function() {
+        return $('#target').text();
+    };
+
     return {
+        extractCandidatesFromTaskInfo: _extractCandidatesFromTaskInfo,
         updateTargetInfo: _updateTargetInfo,
         getUserData: _getUserData,
         getUserResult: _getUserResult,
         getUserAlignment: _getUserAlignment,
-        evaluateResultSynonym: _evaluateResultSynonym
+        evaluateResultSynonym: _evaluateResultSynonym,
+        populateCandidates: _populateCandidates,
+        getSubmitAnswer: _getSubmitAnswer,
+        getSkipAnswer: _getSkipAnswer
     };
 
 })(jQuery);
