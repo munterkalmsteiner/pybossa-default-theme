@@ -3,24 +3,36 @@
 {% import "account/_helpers.html" as account_helper %}
 {% block content %}
 <section class="home featured">
-    <div class="jumbotron">
-        <div class="container text-center firstfold">
-            {% if featured | count > 0 %}
-            {% set featured_project = featured | random %}
-            <h1>{{ featured_project.name }}</h1>
-            <p>{{ featured_project.description }}</p>
-            <a class="btn btn-primary" href="{{ url_for('project.details', short_name=featured_project.short_name)}}">{{_('Contribute')}}</a>
+ <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to the CoClass synonym discovery project</h1>
+            <p>The usefulness of CoClass depends on the ability to find objects within the classification system. One way to improve the "findability" of objects is to associate them with synonyms that might be in common use. For example, the object <i>fuktighetssensor</i> can also be referred to as <i>fuktighetsmätare</i> or <i>givare humiditet</i>. If someone is searching for <i>humiditet</i>, he would also find <i>fuktighetssensor</i> and <i>fuktighetsmätare</i>, due to the associations between objects and synonyms.</p>
+            <p>The purpose of this project is to discover new synonyms for CoClass objects.</p>
+
+            <p>Thank you in advance for your help!</p>
+            {% if current_user.is_authenticated() %}
+            <a class="btn btn-primary" href="/project/coclass/newtask">{{_('Contribute')}}</a>
             {% else %}
-            <h1>{{_('Welcome to ')}} {{brand}}</h1>
-            <p>{{_("The ultimate crowdsourcing framework to analyze or enrich data that can't be processed by machines alone.")}}</p>
+            <p>Please <a href="{{ url_for('account.signin') }}">sign in</a> or <a href="{{ url_for('account.register') }}">create an account</a> to contribute.<p>
             {% endif %}
         </div>
-    </div>
+ </div>
+
+ <div class="container">
+ <h2>Project background</h2>
+ <p>Synonym discovery is a two step process:</p>
+<ol>
+    <li>Identification of synonym candididates (completed). We use data mining and machine learning techniques to discover terms that are potential synonyms of CoClass objects. We describe the approach in a paper (<a href="{{url_for('static',filename='data/paper_ecir2019.pdf')}}">download</a>), published at the European Conference on Information Retrieval.</li>
+    <li>Selection of true synonyms from candidates (ongoing). For each CoClass object we have a number of synonyms candidates. We need <strong>your expertise</strong> to identify actual synonyms as this is a task that computer algorithms cannot (yet) perform at a high precision.</li>
+</ol>
+
+<p>The outcome of this project may benefit you in several ways:</p>
+<ul>
+    <li>The quality of the CoClass content is increased by new and more accurate synonyms. This will allow you, your colleagues and partner companies to use CoClass more effectively.</li>
+    <li>By helping in discovering synonyms, you will learn also the structure of CoClass. This might be helpful, if you need to work with CoClass in the future.</li>
+    <li>You will also discover how well you agree with your colleagues on whether a terms is a synonym of a CoClass object or not. If there are objects were there is no agreement on synonyms, it might be a good idea to discuss that with your colleagues as it might help to solve misunderstandings.</li>
+</ul>
+<p>If you have any questions, please contact <a href="mailto:mun@bth.se">Michael Unterkalmsteiner</a> or <a href="mailto:peter.a.axelsson@trafikverket.se">Peter Axelsson</a>.</p>
+ </div>
 </section>
-{% if historical_contributions %}
-{{ helper.render_grid_projects(historical_contributions, 'Historical Contributions', upload_method, current_user, section_class='home projects', title_size='2') }}
-{% endif %}
-{% if featured %}
-{{ helper.render_grid_projects(featured, 'Featured Projects', upload_method, current_user, section_class='home projects', readmore_text='Contribute', title_size='2') }}
-{% endif %}
 {% endblock %}
