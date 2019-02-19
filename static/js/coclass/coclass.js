@@ -65,11 +65,9 @@ var coclass = (function($) {
                 let target = obj[key]['term'];
                 $('#target').html(target);
                 let syns = obj[key]['syns'];
-                if (syns === undefined || syns.length == 0 || (syns.length == 1 && syns[0].length == 0)) {
-                    _actualSynonyms = undefined;
-                } else {
+                if (syns !== undefined && syns.length != 0 && syns[0].length != 0) {
                     _actualSynonyms = syns;
-                }
+                } 
                 found = true;
                 break;
             } else if (typeof obj[key] === 'object') {
