@@ -27,9 +27,9 @@ var coclass = (function($) {
                 continue;
             }
 
-            if (obj[key] !== 'undefined' &&
+            if (obj[key] !== undefined &&
                 obj[key].hasOwnProperty('term') &&
-                obj[key]['term'] !== 'undefined' &&
+                obj[key]['term'] !== undefined &&
                 obj[key]['term'].toLowerCase() === target.toLowerCase()) {
 
                 $('#definition').html(obj[key].desc);
@@ -64,7 +64,12 @@ var coclass = (function($) {
 
                 let target = obj[key]['term'];
                 $('#target').html(target);
-                _actualSynonyms = obj[key]['syns'];
+                let syns = obj[key]['syns'];
+                if (syns === undefined || syns.length == 0 || (syns.length == 1 && syns[0].length == 0)) {
+                    _actualSynonyms = undefined;
+                } else {
+                    _actualSynonyms = syns;
+                }
                 found = true;
                 break;
             } else if (typeof obj[key] === 'object') {
@@ -185,6 +190,7 @@ var coclass = (function($) {
             seed = _getRandomSynonym();
             if (seed !== undefined) {
                 candidates.splice(Math.floor(Math.random() * candidates.length), 0, seed);
+                _streakNoSynonymsFound = 0;
             }
         }
 
@@ -205,7 +211,7 @@ var coclass = (function($) {
 
     var _getRandomSynonym = function() {
         let length = _actualSynonyms.length;
-        if (_actualSynonyms !== 'undefined' && length > 0) {
+        if (_actualSynonyms !== undefined && length > 0) {
             return _actualSynonyms[Math.floor(Math.random() * length)];
         }
 
@@ -213,7 +219,7 @@ var coclass = (function($) {
     };
 
     var _candidatesIncludeActualSynonym = function(candidates) {
-        if (_actualSynonyms !== 'undefined' && _actualSynonyms.length > 0) {
+        if (_actualSynonyms !== undefined && _actualSynonyms.length > 0) {
             for (let i = 0; i < candidates.length; i++) {
                 if (_actualSynonyms.includes(candidates[i])) {
                         return true;
@@ -265,7 +271,7 @@ var coclass = (function($) {
     };
 
     var _needSynonymSeed = function() {
-        return _streakNoSynonymsFound >= 1;
+        return _streakNoSynonymsFound >= 10;
     };
 
     var _getTargetTerm = function() {
