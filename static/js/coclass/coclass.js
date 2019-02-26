@@ -19,6 +19,7 @@ var coclass = (function($) {
     let _actualSynonyms = [];
     let _streakNoSynonymsFound = 0;
     let _synonymFound = false;
+    let _target = undefined;
 
     var _findInCoClass = function (obj, target, stack) {
         let found = false;
@@ -62,8 +63,12 @@ var coclass = (function($) {
 
                 $('#levels').html(levels);
 
-                let target = obj[key]['term'];
-                $('#target').html(target);
+                if(_target !== target) {
+                    $('#target').effect("pulsate", {times: 1}).animate({color: '#d12e2c'}, 2000);
+                    _target = target;
+                }
+
+
                 let syns = obj[key]['syns'];
                 if (syns !== undefined && syns.length != 0 && syns[0].length != 0) {
                     _actualSynonyms = syns.map(syn => syn.toLowerCase());
@@ -231,7 +236,7 @@ var coclass = (function($) {
     };
 
     var _getSubmitAnswer = function(cbids) {
-        let answer = _getTargetTerm();
+        let answer = _target;
         cbids.forEach(function(id) {
             let sel = $('#' + id);
             _updateSynonymFound(sel);
@@ -262,7 +267,7 @@ var coclass = (function($) {
             }
         });
 
-        let answer = _getTargetTerm();
+        let answer = _target;
         if (seed !== undefined) {
             answer += answer + ',' + seed + ':false:s';
         }
