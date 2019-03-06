@@ -1,0 +1,1441 @@
+;TrV;Benämning;Definition;Synonym
+Funktionella system;;Utrymmesskapande system;funktionellt system som skapar utrymme;
+Funktionella system;A;Mark- och grundsystem;utrymmesskapande system på eller i mark;
+Funktionella system;AB;Terrass;marksystem som utgör underlag för byggnadsverk;bank
+Funktionella system;ABB;Bank;terrass på fylld mark;
+Funktionella system;AC;Grundläggning;mark- och grundsystem som avslutar ett byggnadsverk neråt;grund
+Funktionella system;AD;Överbyggnad för trafik;marksystem för trafik;
+Funktionella system;ADB;Överbyggnad för primär trafik;överbyggnad för ordinarie trafik;körbana, körfält, gångbana, cykelbana, gång- och cykelbana, rullbana, spårunderbyggnad
+Funktionella system;ADC;Överbyggnad för sekundär trafik;överbyggnad för trafik för påfart, vändning, tillfälligt stopp och andra trafikrelaterade fordonsrörelser;vägren, taxibana, hållplats, vändplats
+Funktionella system;AE;Överbyggnad för sidoområde;marksystem för trafikseparation och säkerhet;
+Funktionella system;AEB;Refug;överbyggnad för sidoområde för skydd av fotgängare;
+Funktionella system;AEC;Rondell;överbyggnad för sidoområde för separation av trafik i cirkulationsplats;
+Funktionella system;AED;Stödremsa;överbyggnad för sidoområde som stöder överbyggnad för trafik;
+Funktionella system;AEE;Sidoremsa;överbyggnad för sidoområde som åtskiljer överbyggnader för trafik;
+Funktionella system;AEF;Mittremsa;överbyggnad för sidoområde som åtskiljer överbyggnader med motriktad trafik;
+Funktionella system;AEG;Innerslänt;överbyggnad för sidoområde mellan stödremsa och dikesbotten;
+Funktionella system;AEH;Ytterslänt;överbyggnad för sidoområde för slänt utanför dikesbotten;
+Funktionella system;AEJ;Säkerhetsområde vid banände;överbyggnad för sidoområde för säkerhet vid ände av rullbana;
+Funktionella system;AEK;Utrullningsområde;överbyggnad för sidoområde för inbromsning av flygplan under avbruten start;
+Funktionella system;AF;Överbyggnad för plan;marksystem för annan primär verksamhet än trafik;
+Funktionella system;AG;Vegetationsöverbyggnad;marksystem för vegetation;
+Funktionella system;AH;Vattenanläggning;marksystem för hantering av vatten;
+Funktionella system;AHB;Damm;vattenanläggning för lagring;Fördröjningsanläggning
+Funktionella system;AHC;Vattenväg;vattenanläggning för öppen ledning;
+Funktionella system;AHD;Infiltrationsanläggning;vattenanläggning för ledning in i mark;
+Funktionella system;B;Väggsystem;utrymmesskapande system som formar och avskiljer utrymmen vertikalt;bergrumsvägg, dammvägg, stödmur, tunnelvägg
+Funktionella system;BB;Yttervägg;vägg över mark mot utsidan av byggnadsverk;sänktunnelvägg
+Funktionella system;BC;Innervägg;vägg mellan utrymmen i byggnadsverk;
+Funktionella system;BD;Vägg mot mark;vägg mot mark;
+Funktionella system;BDB;Källarvägg;vägg mot mark för invändigt utrymme;kulvertvägg
+Funktionella system;BDC;Markvägg;vägg mot mark för utvändigt utrymme;frontmur, skärning, spont, stödmur
+Funktionella system;BDD;Tunnelvägg;vägg mot mark för utrymme under mark;bergrumsvägg
+Funktionella system;BE;Terrängmur;vägg fristående på mark;mur
+Funktionella system;BF;Vattenvägg;vägg mot vatten;
+Funktionella system;BFB;Kaj- och pirvägg;vattenvägg mellan land och vatten;kaj, kajvägg
+Funktionella system;BFC;Dammvägg;vattenvägg i vattendrag;dammvägg
+Funktionella system;C;Bjälklagssystem;utrymmesskapande system som formar och avskiljer utrymmen horisontellt;altan, balkongbjälklag, bro, brobana, brygga,  loftgångsbjälklag, lastkaj
+Funktionella system;CB;Bottenbjälklag;bjälklagssystem under det lägsta våningsplanet i en byggnad;sänktunnelbotten
+Funktionella system;CC;Mellanbjälklag;bjälklagssystem mellan våningsplan i en byggnad;våningsbjälklag
+Funktionella system;CD;Vindsbjälklag;bjälklagssystem över det högsta våningsplanet i en byggnad;
+Funktionella system;CE;Utskjutande bjälklag;bjälklagssystem som skjuter ut från byggnad;Balkongbjälklag, dockningsstation, lastkaj, loftgångsbjälklag, svalgångsbjälklag
+Funktionella system;CEB;Balkongbjälklag;utskjutande bjälklagssystem för stationär aktivitet;
+Funktionella system;CEC;Loftgångsbjälklag;utskjutande bjälklagssystem för åtkomst till entré;Svalgångsbjälklag
+Funktionella system;CED;Lastkaj;utskjutande bjälklagssystem för angöring av fordon;
+Funktionella system;CF;Broöverbyggnad;bjälklagssystem över ett hinder;
+Funktionella system;CFB;Fast bro;broöverbyggnad med fast brobana;
+Funktionella system;CFC;Öppningsbar bro;broöverbyggnad med rörlig brobana;
+Funktionella system;CG;Altan;bjälklagssystem över mark, vanligen utskjutande från en byggnad;
+Funktionella system;CH;Brygga;bjälklagssystem stående över vatten;
+Funktionella system;D;Taksystem;utrymmesskapande system som avslutar ett byggnadsverk uppåt;
+Funktionella system;DB;Yttertak;yttertak ej avsett för verksamhet;sänktunneltak
+Funktionella system;DC;Ytterbjälklag;yttertak avsett för verksamhet;gårdsbjälklag
+Funktionella system;;Installationssystem;funktionellt system som tillhandahåller tjänster;
+Funktionella system;E;Gas- och luftsystem;installationssystem som tillför tekniska gaser eller teknisk luft;
+Funktionella system;EB;Gassystem;gassystem;
+Funktionella system;EBB;Energigassystem;gassystem för utvinning av energi;biogas, naturgas, gasol, vätgas
+Funktionella system;EBC;Processgassystem;gassystem för användning i industriell process;
+Funktionella system;EBD;Medicinsk gassystem;gassystem för medicinskt ändamål;
+Funktionella system;EBE;Specialgassystem;gassystem för speciellt ändamål;koldioxid, kväve
+Funktionella system;EC;Luftsystem;luftsystem;
+Funktionella system;ECB;Tryckluftssystem;luftsystem för trycksatt luft;
+Funktionella system;ECC;Renluftssystem;luftsystem för renad luft;
+Funktionella system;ED;Ångsystem;gas- och luftsystem för vatten i gasform;
+Funktionella system;EE;Vakuumsystem;luftsystem för undertryck;
+Funktionella system;F;Vatten- och vätskesystem;installationssystem som tillför dricksvatten, tekniskt vatten eller annan vätska;
+Funktionella system;FB;Råvattensystem;vattensystem för obehandlat vatten från ytvattentäkt eller grundvattentäkt;
+Funktionella system;FBB;System för insamling av regnvatten;råvattenystem för insamling av regnvatten;
+Funktionella system;FC;Renvattensystem;vattensystem för vatten tjänligt för användning;tappvatten
+Funktionella system;FCB;Tappkallvattensystem;renvattensystem för ej uppvärmt vatten;
+Funktionella system;FCC;Tappvarmvattensystem;renvattensystem för uppvärmt vatten;
+Funktionella system;FCD;Processvattensystem;renvattensystem för process;
+Funktionella system;FCDA;Avhärdat vattensystem;renvattensystem för vatten med sänkt mineralhalt;
+Funktionella system;FCE;Destillerat vattensystem;renvattensystem för återkondenserad vattenånga;
+Funktionella system;FCF;Avjoniserat vattensystem;renvattensystem för vatten som passerat jonbytarkolonn;
+Funktionella system;FD;Drivmedelssystem;vätskesystem för bränsle;
+Funktionella system;FDB;Bensinsystem;drivmedelssystem för bensin;
+Funktionella system;FDC;Oljesystem;drivmedelssystem för olja;dieselolja
+Funktionella system;FDD;Fotogensystem;drivmedelssystem för fotogen;
+Funktionella system;FE;Processvätskesystem;vätskesystem för vätska för användning i teknisk process;
+Funktionella system;FEB;Syrasystem;processvätskesystem för syra;
+Funktionella system;FEC;Alkoholsystem;processvätskesystem för alkohol;
+Funktionella system;G;Avlopps- och avfallssystem;installationssystem som avlägsnar vätska eller avfall;
+Funktionella system;GB;Förorenat vattensystem;avloppssystem för vatten som innehåller oönskade ämnen eller föremål;
+Funktionella system;GBB;Spillvattensystem;förorenat vattensystem från byggnadsverk, potentiellt hälsovådligt;
+Funktionella system;GBC;Processpillvattensystem;förorenat vattensystem från process, potentiellt hälsovådligt;
+Funktionella system;GBD;Gråvattensystem;förorenat vattensystem från byggnadsverk eller process, icke hälsovådligt;
+Funktionella system;GBE;Trafikavloppssystem;förorenat vattensystem från trafikeringsyta;Tunnelavloppssystem
+Funktionella system;GC;Överskottsvattensystem;avloppssystem för överflödigt vatten;
+Funktionella system;GCB;Dagvattensystem;överskottsvattensystem på markyta;
+Funktionella system;GCC;Dränvattensystem;överskottsvattensystem i mark;
+Funktionella system;GCD;Kombinerat dag- och dränvattensystem;överskottsvattensystem på och i mark;
+Funktionella system;GCE;Takavvattningssystem;överskottsvattensystem på takyta;
+Funktionella system;GD;Tätnings- och  vattenavledningssystem;avloppssystem för hindrande och avledande av vatten i mark;tunneltätning
+Funktionella system;GE;Kombinerat avloppssystem;avloppssystem för förorenat vatten och överskottsvatten;
+Funktionella system;GEB;Kombinerat spill-, dag- och dränvattensystem;kombinerat avloppsvattensystem för spill-, dag- och dränvatten;
+Funktionella system;GEC;Kombinerat spill- och dränvattensystem;kombinerat avloppsvattensystem för spill- och dränvatten;
+Funktionella system;GF;Avfallshanteringssystem;avfallssystem för restprodukt eller annat som bedömts sakna värde och som därför har kasserats;sophanteringssystem
+Funktionella system;GFB;Matavfallshanteringssystem;avfallshanteringssystem från matproduktion eller matlagning;
+Funktionella system;GFC;Slamhanteringssystem;avfallshanteringssystem för slam;
+Funktionella system;GG;Centraldammsugningssystem;avfallssystem för småpartiklar genom sugning;
+Funktionella system;GH;Tvätthanteringssystem;avfallssystem för smutsiga textilier;
+Funktionella system;H;Kyl- och värmesystem;installationssystem som tillför kylning och värmning;
+Funktionella system;HB;Utrymmesvärmesystem;värmesystem för utrymme;
+Funktionella system;HC;Utrymmeskylsystem;kylsystem för utrymme;
+Funktionella system;HD;Utrustningsvärmesystem;värmesystem för utrustning;
+Funktionella system;HDB;Tåg- och lokvärmeanläggning;utrustningsvärmesystem för tåg och lok;
+Funktionella system;HDC;Växelvärmesystem;utrustningsvärmesystem för spårväxel;
+Funktionella system;HE;Utrustningskylsystem;kylsystem för utrustning;
+Funktionella system;HF;Processvärmesystem;värmesystem för processer;
+Funktionella system;HG;Processkylsystem;kylystem för processer;
+Funktionella system;HH;Fjärrvärmesystem;värmesystem för fjärrdistribution;
+Funktionella system;HJ;Fjärrkylsystem;kylsystem för fjärrdistribution;
+Funktionella system;J;Luftbehandlingssystem;installationssystem som växlar och/eller anpassar kvaliteten på luft;Ventilationssystem
+Funktionella system;JB;Allmänventilationssystem;luftbehandlingssystem för att omhänderta luftföroreningar från människor, byggmaterial, inventarier o.d.;
+Funktionella system;JC;Specialventilationssystem;luftbehandlingssystem för visst utrymme;
+Funktionella system;JCB;Teknikutrymmesventilation;specialventilationssystem i teknikutrymme;Driftutrymmesventilation
+Funktionella system;JCC;Tunnelventilationssystem;specialventilationssystem i tunnel;
+Funktionella system;JCD;Behandlingsrumsventilation;specialventilationssystem i behandlingsrum;Renrumsventilation
+Funktionella system;JCE;Skyddsrumsventilationssystem;specialventilationssystem i utrymme enligt lag om skyddsrum;
+Funktionella system;JD;Processventilationssystem;luftbehandlingssystem som omhändertar luftföroreningar och värme från processer så nära källan som möjligt;
+Funktionella system;JE;Nödventilationssystem;luftbehandlingssystem som aktiveras vid oönskade nivåer av luftföroreningar;Brandventilation, nödluftssystem
+Funktionella system;K;Elkraftssystem;installationssystem som tillför elektrisk energi;
+Funktionella system;KB;Allmän elkraftssystem;elkraftsystem för drift och aktivitet i byggnad;
+Funktionella system;KBB;Primärt elkraftssystem för allmänt bruk;allmänt elkraftsystem för reguljär drift;Värmekraft, Vindkraft, Vattenkraft, Kärnkraft, Solel
+Funktionella system;KBC;Reserv- och nödkraftssystem för allmänt bruk;allmänt elkraftsystem för tillfällig ersättning av primärt system;Dieselgenerator
+Funktionella system;KBD;Avbrottsfri elkraftssystem för allmänt bruk;allmänt elkraftsystem för kontinuerlig drift under störd extern tillförsel;UPS
+Funktionella system;KC;Elkraftssystem för anläggning;elkraftsystem för drift och aktivitet i anläggning;
+Funktionella system;KCB;Primär elkraftssystem för anläggning;elkraftsystem i anläggning för reguljär drift;
+Funktionella system;KCC;Reserv- och nödkraftssystem för anläggning;elkraftsystem i anläggning för tillfällig ersättning av ordinarie system;
+Funktionella system;KCD;Avbrottsfri elkraftssystem för anläggning;elkraftsystem i anläggning för kontinuerlig drift under störd extern tillförsel;
+Funktionella system;KD;Elkraftssystem för processdrift;elkraftsystem för drift av industriell process;
+Funktionella system;KDB;Primär elkraftssystem för processdrift;elkraftsystem för processdrift för reguljär drift;
+Funktionella system;KDC;Reserv- och nödkraftssystem för processdrift;elkraftsystem för processdrift för tillfällig ersättning av ordinarie system;
+Funktionella system;KDD;Avbrottsfri elkraftssystem för processdrift;elkraftsystem för processdrift för kontinuerlig drift under störd extern tillförsel;
+Funktionella system;KE;Elkraftssystem för fordonsdrift;elkraftsystem för drift av fordon;Kontaktledningssystem
+Funktionella system;KEB;Primär elkraftssystem för fordonsdrift;elkraftsystem för fordonsdrift för reguljär drift;
+Funktionella system;KEC;Reserv- och nödkraftssystem för fordonsdrift;elkraftsystem för fordonsdrift för tillfällig ersättning av ordinarie system;
+Funktionella system;L;Automationssystem;installationssystem som övervakar, styr och reglerar tekniska system;Alarmsystem, kontrollsystem, styr- och övervakningssystem,  övervakningssystem, SCADA, SÖ-system
+Funktionella system;LB;Fastighetsautomationssystem;automationssystem för byggnad;
+Funktionella system;LBB;Överordnat flerfunktionellt automationssystem för byggnad;automationssystem för byggnad för ett eller flera flerfunktionella automationssystem;
+Funktionella system;LBC;Flerfunktionellt automationssystem för byggnad;automationssystem för byggnad för flera processer;
+Funktionella system;LC;Automationssystem för anläggning;automationssystem för anläggning;
+Funktionella system;LD;Trafik- och driftsledningssystem;automationssystem för trafikanläggning;
+Funktionella system;LDB;Överordnat trafik- och driftledningssystem;trafik- och driftledningssystem för styrning av ett eller flera lokala trafik- och driftledningssystem;NTS, NTL, MCS (Motorway Control System)
+Funktionella system;LDC;Lokalt trafik- och driftledningssystem;trafik- och driftledningssystem för trafikanordningar;
+Funktionella system;LDD;Överordnat styr- och övervakningssystem  för trafikanläggning;trafik- och driftledningssystem för styrning av ett eller flera lokala styr- och övervakningssystem för trafikanläggning;
+Funktionella system;LDE;Lokalt styr- och övervakningssystem för trafikanläggning;trafik- och driftledningssystem för övervakning av trafikanläggning;GELD, TUS, UMS, PCMS, ASÖ
+Funktionella system;LDF;Teknikslagsövergripande trafik- och driftledningssystem;trafik- och driftledningssystem för;
+Funktionella system;LE;Övervakningssystem för väder och miljö;automationssystem för övervakning av väder och miljö;
+Funktionella system;LEB;Väderövervakningssystem;väderövervakningssystem;AWOS, VViS, väderinformation, vädervarningssystem, vägväderinformationssystem
+Funktionella system;LEC;Vindvarningssystem;väderövervakningssystem för vind;
+Funktionella system;LED;Isvarningssystem;väderövervakningssystem för is;
+Funktionella system;LEE;Miljömätningssystem;miljöövervakningssystem;
+Funktionella system;LF;Övervakningssystem för datanätverk;automationssystem för övervakning av datanätverk;
+Funktionella system;LFB;Övervakningssystem för hårdvara;övervakningssystem för datanätverk för hårdvara;
+Funktionella system;LFC;Övervakningssystem för datatrafik;övervakningssystem för datanätverk för hårdvara;
+Funktionella system;LG;Övervakningssystem för mediatransportnät;automationssystem för övervakning av mediatransportnät;
+Funktionella system;LH;Övervakningssystem för säkerhets- och skyddssystem;automationssystem för övervakning av säkerhets- och skyddssystem;
+Funktionella system;LHA;Anläggningsövergripande övervakningssystem för  säkerhets- och skyddssystem;övervakande system för samordning av ett eller flera överordnade övervakningssystem för säkerhets- och skyddssystem;
+Funktionella system;LHB;Överordnat övervakningssystem för säkerhets- och skyddssystem;övervakande system för samordning av ett eller flera lokala övervakningssystem för säkerhets- och skyddssystem;
+Funktionella system;LHC;Lokalt övervakningssystem för säkerhets- och skyddssystem;övervakande system för säkerhets- och skyddssystem för visst område;
+Funktionella system;LJ;Betalsystem;automationssystem för övervakning av ekonomisk transaktion;
+Funktionella system;M;Informations- och kommunikationssystem;installationssystem som omberörjer kommunikation mellan personer eller tekniska system;bokningssystem, IT-system, kommunikationssystem, telesystem, varningssystem
+Funktionella system;MB;Datanätverk;kommunikationssystem för datatrafik;
+Funktionella system;MC;Personkommunikationssystem;informations- och kommunikationssystem mellan människor;
+Funktionella system;MCB;Telefonisystem;personkommunikationssystem för dubbelriktad kommunikation;hjälptelefonsystem, konferenssystem, nödtelefonsystem, porttelefonsystem, snabbtelefon, telefonsystem, telesystem
+Funktionella system;MCC;Meddelandesystem;personkommunikationssystem för enkelriktad kommunikation;Ljudsystem, PA-system
+Funktionella system;MD;Signalerande system;informations- och kommunikationssystem för avgivande av signal;
+Funktionella system;MDB;Personsökningssystem;signalsystem för sökning av person;
+Funktionella system;MDC;Nödsignalssystem;signalsystem för akut behov av assistans;Bråklarm, trygghetslarm, överfallslarm
+Funktionella system;MDD;Kallelsesignaleringssystem;signalsystem för icke akut behov av assistans;RWC-larm
+Funktionella system;MDE;Bokningssystem;signalsystem för bokning av resurs;
+Funktionella system;MDF;Entrésignalsystem;signalsystem för entrésignal;Rumssignal
+Funktionella system;MDG;Resultatmarkeringssystem;signalsystem för resultatmarkering;
+Funktionella system;MDH;Kösignalsystem;signalsystem för kö;upptagetmarkering
+Funktionella system;MDJ;Tidsignalsystem;signalsystem för tid;Tidgivning
+Funktionella system;N;Transportsystem;installationssystem som transporterar gods eller personer;Hissar, rulltrappor, transportband
+Funktionella system;NB;Persontransportsystem;transportsystem för personer;
+Funktionella system;NC;Godstransportsystem;transportsystem för gods;
+Funktionella system;P;Säkerhets- och skyddssystem;installationssystem som skyddar mot fara och skada;sprinkler, brandventilation, tillträdeshinder, nödbelysning, brandventilation
+Funktionella system;PB;Brandsäkerhetssystem;säkerhets- och skyddssystem mot brand;
+Funktionella system;PBB;Brandövervakningssystem;brandsäkerhetssystem som detekterar och varnar för brand;
+Funktionella system;PBC;Brandsläckningssystem;brandsäkerhetssystem som släcker brand;
+Funktionella system;PC;Skalskyddssystem;säkerhets- och skyddssystem mot oönskad passage;
+Funktionella system;PD;Personsäkerhetssystem;säkerhets- och skyddssystem mot personskada;
+Funktionella system;PE;Elsäkerhetssystem;säkerhets- och skyddssystem mot elskador;
+Funktionella system;Q;Belysningssystem;installationssystem för ljushantering;Elbelysning, dagsljussystem, solavskärmning, mörkläggning
+Funktionella system;QB;Allmänbelysningssystem;belysningssystem för allmän aktivitet;Industri- och hamnbelysning, trafikbelysning, sport- och friluftsanläggningsbelysning
+Funktionella system;QBB;Allmänbelysningssystem inomhus;allmänbelysningssystem inomhus;
+Funktionella system;QBC;Allmänbelysningssystem utomhus;allmänbelysningssystem utomhus;
+Funktionella system;QBD;Allmänbelysningssystem för trafik;allmänbelysningssystem för fordonstrafikanläggning;gångbanebelysning, cykelvägsbelysning, spårbelysning, tunnelbelysning, vägbelysning
+Funktionella system;QBE;Allmänbelysningssystem för Industri och hamn;allmänbelysningssystem för industri- och hamnområde;
+Funktionella system;QBF;Allmänbelysningssystem för sport- och friluftsanläggning;allmänbelysningssystem för sport- och friluftsområde;
+Funktionella system;QC;Platsbelysningssystem;belysningssystem för speciell aktivitet;arbetsplatsbelysning
+Funktionella system;QD;Nödbelysningssystem;belysningssystem som tänds automatiskt vid fallerande allmänbelysning;utrymningsbelysning
+Funktionella system;QE;Reservbelysningssystem;belysningssystem som tillfällig ersättning för ordinarie system;
+Funktionella system;QF;Dekorationsbelysningssystem;belysningssystem för estetiska syften;
+Funktionella system;;Utrustande system;funktionellt system som utrustar utrymmen;
+Funktionella system;R;Spårsystem;utrustande system som leder och styr spårbundna fordon;Banöverbyggnad
+Funktionella system;RB;Huvudspårsystem;spårsystem för tågfärd;
+Funktionella system;RC;Sidospårsystem;spårsystem för växling eller växlingsrörelse;
+Funktionella system;RD;Spårbytesanordning;spårsystem för byte av spår;
+Funktionella system;S;Anordningar;utrustande system som förser ett byggnadsverk och dess utrymmen med inredning, tillbehör och utrustning;
+Funktionella system;SB;Bruksanordningar;anordningar för brukaraktivitet;
+Funktionella system;SC;Skydds- och tillträdesanordningar;anordningar för skydd eller tillträde;
+Funktionella system;SD;Produktionsanordningar;anordningar för produktion;maskiner
+Funktionella system;SE;Underhållsanordningar;anordningar för underhåll;
+Funktionella system;SEB;Avisningssystem;anordningar som förbygger uppbyggandet av is på fordon;
+Funktionella system;SF;Kanalisationssystem;anordningar för kanalisation;
+Funktionella system;SG;Klimatavskärmande anordningar;anordningar för klimatskydd;
+Funktionella system;SGB;Ljusavskärmande anordningar;klimatavskärmande system mot ljusinstrålning;
+Funktionella system;SGC;Vindskyddsanordningar;klimatavskärmande system mot luftrörelse;
+Funktionella system;SGD;Bullerskyddande anordningar;klimatavskärmande system mot oönskat ljud;bullerplank, bullervall
+Funktionella system;SGE;Regnskyddsanordningar;klimatavskärmande system mot nederbörd;
+Funktionella system;SGF;Snöskyddsanordningar;klimatavskärmande system mot drivande snö;
+Funktionella system;T;Trafikanordningar;utrustande system som förser en trafikanläggning med anordningar för styrning och reglering av trafik;trafikutrustning, bommar, trafiksignaler, trafikskyltar
+Funktionella system;TB;Trafiksignalsystem;trafikanordningar för signalering till trafikant;banljus, trafikljus, spårtrafiksignal, vägtrafiksignal, sjötrafiksignal, flygtrafiksignal
+Funktionella system;TBB;Fordonstrafiksignalsystem;trafiksignalsystem för allmän väg- och järnvägstrafik;vägskyddsanläggning
+Funktionella system;TBC;Selektivt styrd trafiksignalering;trafiksignalsystem för specifika trafikslag;
+Funktionella system;TBD;Påfartsregleringssystem;trafiksignalsystem för påfartstrafik;rampstyrning
+Funktionella system;TBE;Gång- och cykeltrafiksignalssystem;trafiksignalsystem för gång- och cykeltrafik;
+Funktionella system;TBF;Kövarningssystem;trafiksignalsystem som varnar för köbildning;
+Funktionella system;TBG;Reversibla körfält;trafiksignalsystem för ändring av riktning av körfält;
+Funktionella system;TBH;Trafikvarningssystem;trafiksignalsystem som informerar om trafikförutsättningar;
+Funktionella system;TBJ;System med vägmarkeringar;trafiksignalsystem med vägmarkering;
+Funktionella system;TBK;Banljussystem;trafiksignalsystem för flygplans start,  landning och markrörelser;
+Funktionella system;TC;Trafikavstängningssystem;trafikanordningar för avstängning av trafik ;
+Funktionella system;TCB;Fysiska avstängningsanordningar;trafikavstängningssystem genom fysiskt hinder;bommar
+Funktionella system;TCC;Signalsystem för avstängning;trafikavstängningssystem genom signalering;hinderdetektering
+Funktionella system;TD;Hastighetsövervakningssystem;trafikanordningar för övervakning av fordonshastighet;
+Funktionella system;TDB;Automatiskt hastighetskontrollsystem;hastighetövervakningssystem  för fordon;ATK, automatiskt trafikkontrollsystem, fartkamerasystem, hastighetsövervakning
+Funktionella system;TDC;System för hastighetsövervakning och hastighetsreducering;hastighetsövervakningssystem för fordon, kapabelt att sänka hastigheten;Automatic Train Control (ATC), Automatic Train Protection (ATP), European Train Control System (ETCS)
+Funktionella system;TDD;Hastighetspåminnelsesystem;hastighetsövervakningssystem för påminnelse om gällande hastighetsgräns;
+Funktionella system;TE;Fordonskontrollsystem;trafikanordningar för kontroll av fordon ;
+Funktionella system;TEB;Fordonsidentifieringssystem;fordonskontrollsystem för identifiering;
+Funktionella system;TEC;Fordonsdetekteringssystem;fordonskontrollsystem för närvaro;spökförardetektering, trafikmätningssystem, trafikräkning
+Funktionella system;TED;Fordonsskadedetekteringssystem;fordonskontrollsystem för skada;
+Funktionella system;TEE;Fordonsbromskontrollsystem;fordonskontrollsystem för bromsar;
+Funktionella system;TEF;Fordonsviktkontrollsystem;fordonskontrollsystem för vikt;
+Funktionella system;;Virtuellt system;funktionellt system utan fysisk realisering;
+Funktionella system;Z;Koordinatsystem;virtuellt system som förser ett byggnadsverk och dess omgivning med ett geodetiskt referenssystem;
+Funktionella system;ZB;2D-system;2-dimensionellt koordinatsystem;
+Funktionella system;ZC;3D-system;3-dimensionellt koordinatsystem;
+Konstruktiva system;A;Byggkonstruktion;konstruktivt system som formar grund, väggar, bjälklag och tak;Byggkonstruktioner
+Konstruktiva system;AA;Trottoarkonstruktion;byggkonstruktion som formar yta för transport;
+Konstruktiva system;AB;Grundkonstruktion;byggkonstruktion som formar avgränsning mot terrass;
+Konstruktiva system;ABB;Plattgrundläggning;grundkonstruktion med stomme i form av ett styvt liggande plan;Platta på mark
+Konstruktiva system;ABC;Grundmursgrundläggning;grundkonstruktion med stomme i form av ett stående plan;
+Konstruktiva system;ABD;Plintgrundläggning;grundkonstruktion med stomme i form av  vertikalt långsträckta objekt;
+Konstruktiva system;ABE;Rustbäddsgrundläggning;grundkonstruktion med stomme i form av ett flexibelt liggande plan;
+Konstruktiva system;AC;Bjälklagskonstruktion;byggkonstruktion som formar horisontell avskiljning;Brobanekonstruktion
+Konstruktiva system;ACB;Bjälklagskonstruktion med solid stomme;bjälklagskonstruktion med kärna i form av ett skikt;Massivplatta, håldäck, plattbjälklag, plattbro, plattbärlag, plattrambro, trågbalkbro
+Konstruktiva system;ACC;Bjälklagskonstruktion med stomme av balkar;bjälklagskonstruktion med kärna i form av horisontellt långsträckta objekt;Balkbjälklag, balkrambro, balkbro
+Konstruktiva system;ACD;Bjälklagskonstruktion med stomme av fackverk;bjälklagskonstruktion med kärna i form av förenade och samverkande stänger;Bågbro, fackverksbro, hängbro, snedkabelbro
+Konstruktiva system;ACE;Bjälklagskonstruktion med stomme av sandwichkonstruktion;bjälklagskonstruktion med kärna i form av flera skikt;
+Konstruktiva system;ACF;Bjälklagskonstruktion med murad stomme;bjälklagskonstruktion med kärna i form av block;Valvbro
+Konstruktiva system;AD;Väggkonstruktion;byggkonstruktion som formar vertikal avskiljning;
+Konstruktiva system;ADB;Väggkonstruktion med solid stomme;väggkonstruktion med kärna i form av ett skikt;Dammväggskonstruktion, kajväggskonstruktion, pirkonstruktion, spontkonstruktion, stödmurskonstruktion
+Konstruktiva system;ADC;Väggkonstruktion med pelarstomme;väggkonstruktion med kärna i form av långsträckta objekt;
+Konstruktiva system;ADD;Väggkonstruktion med fackverksstomme;väggkonstruktion med kärna i form av förenade och samverkande stänger;Regelvägg
+Konstruktiva system;ADE;Väggkonstruktion med sandwichstomme;väggkonstruktion med kärna i form av flera skikt;
+Konstruktiva system;ADF;Väggkonstruktion med murad stomme;väggkonstruktion med kärna i form av¨sammanfogade block;
+Konstruktiva system;ADG;Rörlig väggkonstruktion;flyttbar väggkonstruktion;Flyttbar väggkonstruktion
+Konstruktiva system;ADH;Tunnelväggskonstruktion;väggkonstruktion av bearbetat berg;Bergrumsväggskonstruktion
+Konstruktiva system;AE;Yttertakskonstruktion;byggkonstruktion som avslutar en byggnad uppåt;
+Konstruktiva system;AEB;Yttertakskonstruktion med solid stomme;yttertakskonstruktion med kärna i form av ett skikt;
+Konstruktiva system;AEC;Yttertakskonstruktion med stomme av balkar;yttertakskonstruktion med kärna i form av långsträckta objekt;
+Konstruktiva system;AED;Yttertakskonstruktion med stomme av fackverk;yttertakskonstruktion med kärna i form av förenade och samverkande stänger;
+Konstruktiva system;AEE;Yttertakskonstruktion med stomme av sandwichkonstruktion;yttertakskonstruktion med kärna i form av flera skikt;
+Konstruktiva system;AEF;Yttertakskonstruktion med murad stomme;yttertakskonstruktion med kärna i form av block;
+Konstruktiva system;AEG;Rörlig takkonstruktion;flyttbar yttertakskonstruktion;Flyttbar väggkonstruktion
+Konstruktiva system;AEH;Tunneltakskonstruktion;yttertakskonstruktion av bearbetat berg;
+Konstruktiva system;AF;Trappkonstruktion;byggkonstruktion som stegvis förbinder två eller fler nivåer;
+Konstruktiva system;AG;Rampkonstruktion;byggkonstruktion som steglöst förbinder två eller fler nivåer;
+Konstruktiva system;AH;Utskjutande byggnadskonstruktion;byggkonstruktion som skapar ett anslutande utrymme utomhus, inbyggt i väggsystem eller i yttertaksystem;
+Konstruktiva system;AHB;Utskjutande byggnadskonstruktion med solid stomme;utskjutande byggnadskonstruktion med kärna i form av ett skikt;Balkongplatta, loftgångsplatta
+Konstruktiva system;AHC;Utskjutande byggnadskonstruktion med stomme av balkar;utskjutande byggnadskonstruktion med kärna i form av långsträckta objekt;
+Konstruktiva system;AHD;Utskjutande byggnadskonstruktion med stomme av fackverk;utskjutande byggnadskonstruktion med kärna i form av förenade och samverkande stänger;
+Konstruktiva system;AHE;Rörlig utskjutande byggnadskonstruktion;utskjutande byggnadskonstruktion med justerbar yttre anslutning;angöringsbrygga, brygga, dockningsstation
+Konstruktiva system;AJ;Burspråkskonstruktion;byggkonstruktion som skapar ett utökat utrymme inomhus, inbyggt i väggsystem;
+Konstruktiva system;AK;Takkupekonstruktion;byggkonstruktion som skapar ett utökat utrymme inomhus, inbyggt i yttertaksystem;Vindskupa
+Konstruktiva system;AL;Taktornskonstruktion;byggkonstruktion som skapar ett utökat utrymme inomhus, byggt ovanpå yttertaksystem eller byggnadsverk;
+Konstruktiva system;AM;Ljusbrunnskonstruktion;byggkonstruktion som skapar ett utökat utrymme för ljustransmission;
+Konstruktiva system;B;Bärverk;konstruktivt system  som har bärande eller stabiliserande funktion;
+Konstruktiva system;BA;Terrasskonstruktion;bärande konstruktion av bearbetad mark;
+Konstruktiva system;BB;Grundstomme;bärverk som förbinder ett byggnadsverk med terrassen;
+Konstruktiva system;BBB;Grundplatta;grundstomme i form av ett styvt liggande plan;Platta på mark
+Konstruktiva system;BBC;Grundmur;grundstomme i form av ett stående plan;
+Konstruktiva system;BBD;Plintgrund;grundstomme i form av  vertikalt långsträckta objekt;
+Konstruktiva system;BBE;Rustbädd;grundstomme i form av ett flexibelt liggande plan;
+Konstruktiva system;BC;Bjälklagsstomme;bärverk i en horisontell avskiljare;Brobanestomme, bryggstomme
+Konstruktiva system;BCB;Bjälklagsskiva;bjälklagsstomme i form av ett liggande plan;massivplatta, håldäck, plattbjälklag, plattbro, plattbärlag, plattrambro, trågbalkbro
+Konstruktiva system;BCC;Bjälklagsstomme av balkar;bjälklagsstomme i form av långsträckta objekt;Balkbjälklag, balkrambro, balkbro
+Konstruktiva system;BCD;Bjälklagsstomme av fackverk;bjälklagsstomme i form av förenade och samverkande stänger;Bågbro, fackverksbro, hängbro, snedkabelbro
+Konstruktiva system;BCE;Bjälklagsstomme av sandwichkonstruktion;bjälklagsstomme i form av flera skikt;
+Konstruktiva system;BCF;Murad bjälklagsstomme;bjälklagsstomme i form av block;Valvbro
+Konstruktiva system;BD;Väggstomme;bärverk i en vertikal avskiljare;
+Konstruktiva system;BDB;Väggskiva;väggstomme i form av ett stående plan;Stödmursstomme, dammväggsstomme, kajväggsstomme, pirväggsstomme, rörbrostomme, spont
+Konstruktiva system;BDC;Pelarväggstomme;väggstomme i form av långsträckta objekt;
+Konstruktiva system;BDD;Fackverksväggstomme;väggstomme i form av förenade och samverkande stänger;Regelväggstomme
+Konstruktiva system;BDE;Sandwichväggstomme;väggstomme i form av flera skikt;
+Konstruktiva system;BDF;Murad väggstomme;väggstomme i form av block;
+Konstruktiva system;BE;Yttertakstomme;bärverk i en yttertakskonstruktion;Ytterbjälklagsstomme
+Konstruktiva system;BEB;Solid yttertaksstomme;yttertakstomme i form av ett solitt skikt;Solid ytterbjälklagsstomme
+Konstruktiva system;BEC;Yttertaksstomme av balkar;yttertakstomme i form av långsträckta objekt;Ytterbjälklagsstomme av balkar
+Konstruktiva system;BED;Yttertaksstomme av fackverk;yttertakstomme i form av förenade och samverkande stänger;Ytterbjälklagsstomme av fackverk, membrantak, segeldukstak, takstolsstomme
+Konstruktiva system;BEE;Yttertaksstomme av sandwichkonstruktion;yttertakstomme i form av flera skikt;Ytterbjälklagsstomme av sandwichkonstruktion
+Konstruktiva system;BEF;Murad yttertakstomme;yttertakstomme i form av block;valvtak
+Konstruktiva system;BF;Undergolvstomme;bärverk i en undergolvskonstruktion;Installationsgolv
+Konstruktiva system;BG;Undertakstomme;bärverk i en undertakskonstruktion;
+Konstruktiva system;BH;Kanalisation;bärverk som stödjer eller bär upp försörjnings- eller distributionssystem;Kabelstegar, kabelbrunnar, kabelrännor, kabelskydd, kontaktledningsstolpar, kraftverksstolpar, portaler, rörbryggor, rörkulvertar, skyddsrör, stolpar
+Konstruktiva system;BHB;Öppen kanalisation;kanalisation inomhus, synlig;
+Konstruktiva system;BHC;Dold kanalisation;kanalisation inomhus, dold;
+Konstruktiva system;BHD;Kanalisation i luft utomhus;kanalisation utomhus i luft;
+Konstruktiva system;BHE;Kanalisation i mark;kanalisation utomhus i mark;
+Konstruktiva system;BJ;Pelar-balkstomme;bärverk av förenade och samverkande stänger för väggar och bjälklag;
+Konstruktiva system;BL;Brounderbyggnad;bärverk under broöverbyggnad;Bryggunderbyggnad
+Konstruktiva system;BLB;Ändstöd;brounderbyggnad i broände;landfäste
+Konstruktiva system;BLC;Mellanstöd;brounderbyggnad mellan broändar;skivstöd, pelarstöd, enpelarstöd, flerpelarstöd
+Konstruktiva system;BM;Bärande huvudsystem i tunnel;bärverk i utgrävning för tunnel och bergrum;
+Konstruktiva system;BMB;Bergförstärkning;bärande huvudsystem i berg genom punktvis förstärkning;
+Konstruktiva system;BMC;Betonglining;bärande huvudsystem i berg genom fast inklädnad;
+Konstruktiva system;BN;Trågkonstruktion;bärverk i tätande konstruktion vid tunnelmynning;
+Konstruktiva system;BP;Tunnelportalskonstruktion;bärverk runt öppning i tunnel;
+Konstruktiva system;C;Markkonstruktion;konstruktivt system som formar mark;
+Konstruktiva system;CA;Terrasskonstruktion;markkonstruktion som ger stöd till andra konstruktioner;Undergrund, underbyggnad
+Konstruktiva system;CAB;Förstärkt terrass;terrasskonstruktion genom förstärkning av jord- eller bergmassa;
+Konstruktiva system;CAC;Pålad terrass;terrasskonstruktion genom pålning;
+Konstruktiva system;CB;Överbyggnad för väg och plan;markkonstruktion för hårdgjort utrymme utomhus;Hårdgjord yta
+Konstruktiva system;CBB;Flexibel hårdgjord överbyggnad;"överbyggnad för trafikeringsområde utan hydrauliskt bundet
+lager";
+Konstruktiva system;CBC;Styv hårdgjord överbyggnad;"överbyggnad för trafikeringsområde med minst ett hydrauliskt bundet
+lager";
+Konstruktiva system;CC;Banunderbyggnad;markkonstruktion som utgör underlag för banöverbyggnad;
+Konstruktiva system;CCB;Banunderbyggnad på banvall;banunderbyggnad på egen fyllning;
+Konstruktiva system;CCC;Banunderbyggnad i gata;banunderbyggnad i vägöverbyggnad;
+Konstruktiva system;CCD;Banunderbyggnad i tunnel;banunderbyggnad i bergtunnel;
+Konstruktiva system;CCE;Banunderbyggnad på bro;banunderbyggnad i på brobjälklag;
+Konstruktiva system;CD;Överbyggnad för vegetationsyta;markkonstruktion för plantering;Växtbädd
+Konstruktiva system;CDB;Mjuk växtbädd;överbyggnad för vegetationsyta, ej trafikerbar ;
+Konstruktiva system;CDC;Hård växtbädd;överbyggnad för vegetationsyta, trafikerbar ;Skelettjord
+Konstruktiva system;CDD;Växtbädd för infiltration;överbyggnad för vegetationsyta för omhändertagande av dagvatten;
+Konstruktiva system;CDE;Trädgrop;överbyggnad för vegetationsyta med ramkonstruktion under mark;
+Konstruktiva system;CDF;Planteringslåda;överbyggnad för vegetationsyta med ramkonstruktion över mark;
+Konstruktiva system;CE;Vattenbyggnadskonstruktion;markkonstruktion för hantering av vatten;
+Konstruktiva system;CEB;Flexibel konstruktion för öppen vattenhantering;flexibel vattenbyggnadskonstruktion som leder eller lagrar öppet vatten;Amfibiedamm, plaskdamm, prydnadsdamm, vattenmagasin
+Konstruktiva system;CEC;Styv konstruktion för öppen vattenhantering;styv vattenbyggnadskonstruktion som leder eller lagrar öppet vatten;Bassäng, fontän, pool
+Konstruktiva system;CED;Konstruktion för infiltration;vattenbyggnadskonstruktion som leder vatten in i mark;Markbädd
+Konstruktiva system;CEE;Konstruktion för tätning och vattenavledning;vattenbyggnadskonstruktion för tätning mot och avledning av vatten i mark;Hydrauliskt tätande konstruktion tunneltätningskonstruktion, tätspont
+Konstruktiva system;CEF;Konstruktion för vattentunnel;vattenbyggnadskonstruktion för ledning av vatten under mark;Tilloppstunnel
+Konstruktiva system;CF;Ledningsförläggning;markkonstruktion för mediatekniskt system;Ledningsgrav
+Konstruktiva system;CFB;Schaktad ledningsförläggning;ledningsförläggning i schaktat utrymme;
+Konstruktiva system;CFC;Schaktfri ledningsförläggning;ledningsförläggning utan schaktning;
+Konstruktiva system;D;Banöverbyggnad;konstruktivt system som leder spårbundna fordon;Spårkonstruktion
+Konstruktiva system;DA;Spårkonstruktion;banöverbyggnad med två räler;
+Konstruktiva system;DAB;Ballasterad spårkonstruktion;spårsystem på icke bundet underlag;
+Konstruktiva system;DAC;Ballastfri spårkonstruktion;spårsystem på bundet underlag;
+Konstruktiva system;DB;Spårväxelkonstruktion;banöverbyggnad för dirigering;
+Konstruktiva system;DBB;Ballasterad spårväxelkonstruktion;spårväxelsystem på icke bundet underlag;
+Konstruktiva system;DBC;Ballastfri spårväxelkonstruktion;spårväxelsystem på bundet underlag;
+Konstruktiva system;DC;Spårkorsningskonstruktion;banöverbyggnad för fast intersektion;
+Konstruktiva system;DCB;Ballasterad spårkorsningskonstruktion;spårkorsning på icke bundet underlag;
+Konstruktiva system;DCC;Ballastfri spårkorsningskonstruktion;spårkorsning på bundet underlag;
+Konstruktiva system;DD;Dilatationsanordning;banöverbyggnad för flexibel anslutning mellan mark och bro;
+Konstruktiva system;DDB;Ballasterad dilatationsanordning;dilatationsanordning på icke bundet underlag;
+Konstruktiva system;DDC;Ballastfri dilatationsanordning;dilatationsanordning på bundet underlag;
+Konstruktiva system;DE;Monorail;banöverbyggnad med en skena;
+Konstruktiva system;H;Försörjande system;konstruktivt system som försörjer konsumtion;
+Konstruktiva system;HA;Gas- och luftförsörjningssystem;försörjande system för gas eller teknisk luft;
+Konstruktiva system;HB;Vätskeförsörjningssystem;försörjande system för vätska;
+Konstruktiva system;HC;Kylförsörjningssystem;försörjande system för kyla;Kylaggregat, Kylmaskin, Fjärrkylanläggning
+Konstruktiva system;HD;Värmeförsörjningssystem;försörjande system för värme;Värmevattenförsörjning, Fjärrvärmeverk, Solfångare
+Konstruktiva system;HE;Kombinerad kyl- och värmeförsörjningssystem;försörjande system för kombinerad kyla och värme;Värmepump, Direktexpansion, DX-system
+Konstruktiva system;HEB;Direktexpansionssystem;kombinerad kyl- och värmeförsörjningssystem med direkt verkande evaporator;
+Konstruktiva system;HEC;Vätskesystem i kyl- och värmepumpsystem;kombinerad kyl- och värmeförsörjningssystem med indirekt verkande evaporator;
+Konstruktiva system;HF;Ventilationsförsörjningssystem;försörjande system för mekaniskt luftflöde;
+Konstruktiva system;HG;Elkraftförsörjningssystem;försörjande system för elkraft;
+Konstruktiva system;HGB;Högspänningsförsörjningsystem;elkraftförsörjningssystem för ≥ 1 kV AC eller ≥ 1,5 kV DC;
+Konstruktiva system;HGC;Mellanspänningsförsörjningssystem;elkraftförsörjningssystem för 1 kV - 50 kV;
+Konstruktiva system;HGD;Lågspänningsförsörjningssystem;elkraftförsörjningssystem för < 1 kV AC eller < 1,5 kV DC;
+Konstruktiva system;HGE;Klenspänningsförsörjningssystem;elkraftförsörjningssystem för ≤ 50 V eller ≤ 120 V DC;
+Konstruktiva system;HH;Belysningsförsörjningssystem;försörjande system för belysning;
+Konstruktiva system;HHB;Elektriskt belysningsförsörjningssystem;belysningsförsörjningssystem med elektriska ljuskällor;
+Konstruktiva system;HHC;Dagsljusförsörjningssystem;belysningsförsörjningssystem med dagsljuskällor;
+Konstruktiva system;HHD;Gasljusförsörjningssystem;belysningsförsörjningssystem med gasljuskällor;
+Konstruktiva system;HHE;Vätskeljusförsörjningssystem;belysningsförsörjningssystem med vätskeljuskällor;fotogenljus
+Konstruktiva system;HJ;Signalförsörjningssystem;försörjande system för signaler;Detektorer
+Konstruktiva system;HJB;Upptagetmarkeringssystem;signalförsörjningssystem för upptagetmarkering;
+Konstruktiva system;J;Transporterande system;konstruktivt system som för något från en plats till en annan;
+Konstruktiva system;JA;Gasdistributionssystem;transporterande system för gas;
+Konstruktiva system;;;;
+Konstruktiva system;JB;Vattendistributionssystem;transporterande system för vatten;
+Konstruktiva system;JBB;Icke cirkulerande vattendistributionssystem;vattendistributionssystem med icke cirkulerande flöde;
+Konstruktiva system;JBC;Cirkulerande vattendistributionssystem;vattendistributionssystem med cirkulerande flöde;
+Konstruktiva system;JBD;Tomrörssystem;vattendistributionssystem för tillfälligt bruk;brandsläckningsledning
+Konstruktiva system;JC;Kemikaliedistributionssystem;transporterande system för brandfarliga vätskor och andra kemikalier;
+Konstruktiva system;JD;Avloppssystem;transporterande system för avloppsvatten;
+Konstruktiva system;JDB;Avloppssystem med självfall;avloppssystem med ej trycksatt flöde;
+Konstruktiva system;JDC;Trycksatt avloppssystem;avloppssystem med trycksatt flöde;
+Konstruktiva system;JE;Avfallstransportsystem;transporterande system för avfall;
+Konstruktiva system;;;;
+Konstruktiva system;JEB;Sugsystem för avfall;avfallshanteringssystem genom undertrycksatta ledningar;sopsug
+Konstruktiva system;JEC;Störtsystem för avfall;avfallshanteringssystem genom gravitation;sopnedkast
+Konstruktiva system;JED;Mekaniskt transportsystem för avfall;avfallshanteringssystem genom mekanisk transport;
+Konstruktiva system;JF;Kyldistributionssystem;transporterande system för kyla;
+Konstruktiva system;JFB;Primärt kyldistributionssystem;kyldistributionssystem före värmeväxling;
+Konstruktiva system;JFC;Sekundärt kyldistributionssystem;kyldistributionssystem efter värmeväxling;
+Konstruktiva system;JG;Värmedistributionssystem;transporterande system för värme;Shuntgrupp
+Konstruktiva system;JGB;Primärt distributionssystem för värmevatten;vattenburet värmedistributionssystem från produktion till förbindelsepunkt för abonnent;Fjärrvärmenät, värme primär
+Konstruktiva system;JGC;Sekundärt distributionssystem för värmevatten;vattenburet värmedistributionssystem från förbindelsepunkt för abonnent till konsumtion;Värmevattenslingor, vattenradiatorsystem
+Konstruktiva system;JGD;Elvärmesystem för utrymme inomhus;elektriskt värmedistributionssystem för slutet utrymme;Elvärmeslingor
+Konstruktiva system;JGE;Elvärmesystem för utrustning;elektriskt värmedistributionssystem för utrustning;Elvärmesystem i spåranläggning, strömskenevärmeanläggning, växelvärmeanläggning
+Konstruktiva system;JGF;Elvärmesystem för mark;elektriskt värmedistributionssystem i marköverbyggnad;
+Konstruktiva system;JGG;Distributionssystem för luftvärme;luftburet värmedistributionssystem;
+Konstruktiva system;JGH;Distributionssystem för ångvärme;ångburet värmedistributionssystem;
+Konstruktiva system;JGJ;Distributionssystem för hetoljevärme;oljeburet värmedistributionssystem;
+Konstruktiva system;JGK;Värmeåtervinningssystem;värmedistributionssystem för återvinning;
+Konstruktiva system;JH;Kombinerat kyl- och värmedistributionssystem;transporterande system för kyla och värme;
+Konstruktiva system;JJ;Luftdistributionssystem;transporterande system för luft;
+Konstruktiva system;JJB;Tilluftssystem;ventilationssystem som tillför behandlad uteluft eller cirkulationsluft;
+Konstruktiva system;JJC;Frånluftssystem;ventilationssystem som leder bort och använd luft;
+Konstruktiva system;JJD;Återluftssystem;ventilationssystem som återför frånluft till en grupp av rum;
+Konstruktiva system;JJE;Impulsfläktssystem;ventilationssystem utan kanaler;
+Konstruktiva system;JJF;Uteluftssystem;ventilationssystem som leder uteluft till behandling;
+Konstruktiva system;JJG;Avluftssystem;ventilationssystem som leder frånluft efter behandling till det fria;
+Konstruktiva system;JJH;Efterbehandlingssystem;ventilationssystem som behandlar tilluft;
+Konstruktiva system;JJJ;Ersättningsluftssystem;ventilationssystem som ersätter förorenad luft med uteluft;
+Konstruktiva system;JK;Elkraftdistributionssystem;transporterande system för elektrisk energi;
+Konstruktiva system;JKB;Elkraftdistributionssystem för högspänning;elkraftdistributionssystem för ≥ 1 kV AC eller ≥ 1,5 kV DC;
+Konstruktiva system;JKC;Elkraftdistributionssystem för mellanspänning;elkraftdistributionssystem för 1 kV - 50 kV;
+Konstruktiva system;JKD;Elkraftdistributionssystem för lågspänning;elkraftdistributionssystem för < 1 kV AC eller < 1,5 kV DC;
+Konstruktiva system;JKE;Elkraftdistributionssystem för klenspänning;elkraftdistributionssystem för ≤ 50 V eller ≤ 120 V DC;
+Konstruktiva system;JL;Signaldistributionssystem;transporterande system för signaler;
+Konstruktiva system;JLB;Trådat elektromagnetiskt signaldistributionssystem;trådburet elektromagnetiskt signaldistributionssystem;Datornätverk, telefonsystem, hjälptelefonsystem, nödtelefonsystem, personsökningssystem, upptagetmarkering, bokningssystem, kösignalsystem, hörslinga, snabbtelefon
+Konstruktiva system;JLC;Trådat optiskt signaldistributionssystem;trådburet optiskt signaldistributionssystem;Fibernät
+Konstruktiva system;JLD;Trådlöst signaldistributionssystem;radiovågsburet signaldistributionssystem;Mobiltelefonsystem, personsökningssystem
+Konstruktiva system;JLE;Induktivt signaldistributionssystem;signaldistributionssystem med induktiv överföring;Hörslinga
+Konstruktiva system;JM;Person- och godstransportsystem;transporterande system för personer och/eller gods;Transport
+Konstruktiva system;JMB;Hissystem;person- och godstransportsystem för vertikal rörelse i behållare;Möbelhiss, Personhiss, Rullstolshiss, Smalhiss, Småvaruhiss, Sänghiss, Tillsynshiss, Trapphiss, Varuhiss, Varupersonhiss
+Konstruktiva system;JMC;Rulltrappssystem;persontransportsystem för diagonal rörelse med trappsteg;
+Konstruktiva system;JMD;Rullrampsystem;person- och godstransportsystem för personer i horisontell eller diagonal rörelse;Rullbandssystem
+Konstruktiva system;JME;Rullbanesystem;person- och godstransportsystem för gods i horisontell eller diagonal rörelse;Bagageanläggning
+Konstruktiva system;JMF;Linbanesystem;person- och godstransportsystem för linburen horisontell eller diagonal rörelse i behållare;
+Konstruktiva system;JMG;Lyftsystem;person- och godstransportsystem för vertikal och horisontellr örelse;Telfer, Travers
+Konstruktiva system;JMH;Rörpostsystem;person- och godstransportsystem för rörelse i behållare i rör;
+Konstruktiva system;JMJ;AGV-system;person- och godstransportsystem med automatiskt styrda fordon;Automated Guided Vehicles
+Konstruktiva system;JP;Ljusdistributionssystem;transporterande system för ljus;Fiberoptik, dagsljusdistribution
+Konstruktiva system;K;Behandlande system;konstruktivt system som behandlar något;
+Konstruktiva system;KA;Klimatavskärmande system;behandlande system som begränsar eller utestänger klimatpåverkan;Solavskärmning, snöskydd, vindskydd, regnskydd, bullerskydd
+Konstruktiva system;KAB;Passivt klimatskyddande system;;
+Konstruktiva system;KAC;Aktivt klimatskyddande system;;
+Konstruktiva system;KB;Öppningskontrollerande system;behandlande system för automatisk kontroll av öppningar;Brandgasventilation, rökgasventilation, rökluckor, självdragsventilation
+Konstruktiva system;KBB;Rökgasevakueringsssystem;öppningskontrollerande system för ventilation av gaser orsakade av förbränning eller pyrolys;Brandgasventilationssystem, rökgasventilation
+Konstruktiva system;KBC;Självdragssystem;öppningskontrollerande system för icke mekanisk ventilation;
+Konstruktiva system;KC;Renande system;behandlande system för rening av vätske- eller luftflöde;
+Konstruktiva system;KCB;Mekaniskt reningssystem;renande system genom mekaniska processer;
+Konstruktiva system;KCC;Kemiskt reningssystem;renande system genom kemiska och biologiska processer;Biologiskt reningssystem
+Konstruktiva system;KD;Separerande system;behandlande system för separation av ämnen;
+Konstruktiva system;KDB;Mekaniskt separerande system;separerande system genom mekaniska processer;
+Konstruktiva system;KDC;Kemiskt separerande system;separerande system genom kemiska och biologiska processer;
+Konstruktiva system;KE;Blandande system;behandlande system för tillsats av ämnen;
+Konstruktiva system;KF;Pumpsystem;behandlande system för tryckökning i ett vätskeflöde;
+Konstruktiva system;KG;Tryck- och expansionssystem;behandlande system för stabilisering av tryck och volym i vätska eller i luftflöde;
+Konstruktiva system;KH;Transformeringssystem;behandlande system som transformerar elektrisk energi;
+Konstruktiva system;KHB;Spänningstransformeringssystem;transformeringssystem som förändrar nivåer av spänning och ström;
+Konstruktiva system;KHC;Faskompenseringssystem;transformeringssystem som minskar fasskillnaden mellan spänning och ström;
+Konstruktiva system;KHD;Frekvensomriktningssystem;transformeringssystem som förändrar frekvensen hos en växelspänning;
+Konstruktiva system;KHE;Likriktningssystem;transformeringssystem som omvandlar växelström till likström;
+Konstruktiva system;KHF;Växelriktningssystem;transformeringssystem som omvandlar likström till växelström;
+Konstruktiva system;KJ;Antennsystem;behandlande system för dubbelriktad transformering mellan radiovågor och elektriska signaler;
+Konstruktiva system;KJB;Sändarantennsystem;antennsystem för transformering av elektriska signaler till radiovågor;
+Konstruktiva system;KJC;Mottagarantennsystem;antennsystem för transformering av radiovågor till elektriska signaler;
+Konstruktiva system;KL;Tillträdeskontrollsystem;behandlande system som fysiskt separerar personflöden;
+Konstruktiva system;KM;Drivsystem;behandlande system som tillhandhåller mekanisk rörelse eller kraft;
+Konstruktiva system;KMB;Direktdriftssystem;drivsystem med direktansluten motor;
+Konstruktiva system;KMC;Lindriftssystem;drivsystem med linansluten motor;
+Konstruktiva system;KMD;Hydrauldriftssystem;drivsystem med hydraulansluten motor;
+Konstruktiva system;KME;Skruvdriftssystem;drivsystem med skruvansluten motor;
+Konstruktiva system;KMF;Kedjedriftssystem;drivsystem med kedjeansluten motor;
+Konstruktiva system;KMG;Kuggstångsdriftssystem;drivsystem med kuggstångsansluten motor;
+Konstruktiva system;KMH;Remdriftssystem;drivsystem med remansluten motor;
+Konstruktiva system;KN;Bromssystem;behandlande system genom hastighetsreducering och stoppande;
+Konstruktiva system;KNB;Mekaniskt bromssystem;bromssystem genom friktion;
+Konstruktiva system;KNC;Elektriskt bromssystem;bromssystem genom elektriskt motstånd?;
+Konstruktiva system;KND;Motströmsbromssystem;bromssystem genom ändring av rotationsriktning hos elmotor;
+Konstruktiva system;KNE;Likströmsbromssystem;bromssystem genom matning med likström;
+Konstruktiva system;L;Övervakande, styrande och reglerande system;konstruktivt system för manuell eller automatiserad avkänning och/eller påverkan på processer och händelser;
+Konstruktiva system;LA;Gaslarmsystem;övervakande system som larmar i händelse av gasutsläpp;
+Konstruktiva system;LB;Brandlarmsystem;övervakande system som larmar i händelse av brand;
+Konstruktiva system;LC;Integrerat automationssystem;övervakande, styrande och reglerande system för en eller flera processer i en central enhet;
+Konstruktiva system;LD;Entré- och passerkontroll;övervakande, styrande och reglerande system för auktoriserat tillträde;Skalskydd
+Konstruktiva system;LE;Larmsystem;övervakande system som larmar i händelse av farligt eller oönskat tillstånd;
+Konstruktiva system;LEB;Felsignaleringssystem;larmsystem för bristande funktion;Driftlarm
+Konstruktiva system;LEC;Vätskelarm;larmsystem för vätskenivå;
+Konstruktiva system;LED;Passagelarm;larmsystem för obehörig in- eller utpassage;Inbrottslarm, utbrytningslarm, områdeslarm, stängsellarm
+Konstruktiva system;LEE;Utrymningslarm;larmsystem för akut behov att utrymma;brandlarm
+Konstruktiva system;LEF;Varularm;larmsystem för tillgrepp av varor;
+Konstruktiva system;LEG;Larm för spårtrafik;larmsystem för spårtrafik;
+Konstruktiva system;LF;Fjärrövervakningssystem;övervakande system som tillhandahåller fjärravläst data;
+Konstruktiva system;LFB;Kameraövervakningssystem;fjärrövervakningssystem med bildregistrering;
+Konstruktiva system;LFC;Radarövervakningssystem;fjärrövervakningssystem med med radarutrustning;
+Konstruktiva system;LFD;Ljudövervakningssystem;fjärrövervakningssystem med ljudregistrering;
+Konstruktiva system;LFE;Detekterande övervakningssystem;fjärrövervakningssystem med händelsedetektor;
+Konstruktiva system;LFF;Viktövervakningssystem;fjärrövervakningssystem med viktsensor;
+Konstruktiva system;LFZ;Kombinerat övervakningssystem;detekterande övervakningssystem med multipla metoder;
+Konstruktiva system;LG;Betalsystem;övervakande, styrande och reglerande system för finansiell transaktion;
+Konstruktiva system;LGB;Automatiskt betalsystem;betalsystem med automatisk registrering;Trängselskattsystem
+Konstruktiva system;LGC;Manuellt betalsystem;betalsystem med manuell registrering;Biljettsystem, pollettsystem
+Konstruktiva system;LGD;Betal- och passagesystem;betalsystem integrerat med tillträdesfunktion;Biljettspärr
+Konstruktiva system;LH;Trafikavstängningar;övervakande, styrande och reglerande system för avstängning av trafik ;vägskydd, plankorsningsanordning
+Konstruktiva system;LHB;Manuella avstängningsanordningar;trafikavstängningssystem med manuella anordningar;
+Konstruktiva system;LHC;Fjärrstyrda avstängningsanordningar;trafikavstängningssystem med fjärrstyrda anordningar;
+Konstruktiva system;LHD;Autonoma avstängningsanordningar;trafikavstängningssystem med autonoma anordningar;
+Konstruktiva system;LJ;Miljö- och väderövervakningssystem;övervakande system för miljö och väder ;
+Konstruktiva system;LJB;MET-system;miljö- och väderövervakningssystem för flygtrafiktjänst;
+Konstruktiva system;M;Informerande system;konstruktivt system för presentation av information;
+Konstruktiva system;MA;Varningssystem;informerande system som producerar fast bestämd signal eller röstmeddelande som varning för farliga eller oönskade förhållanden;
+Konstruktiva system;MAB;Varningssystem med ljud- eller ljussignal;varningssystem med ljus och/eller ljussignal;
+Konstruktiva system;MAC;Varningssystem med inspelad signal;varningssystem med inspelat ljudmeddelande;
+Konstruktiva system;MB;Ljud- och bildsystem;informerande system som producerar för ljud och/eller bild;
+Konstruktiva system;MBB;Integrerat ljud- och bildsystem;integrerat ljud- och bildsystem;Konferenssystem
+Konstruktiva system;MBC;Ljudsystem;ljudsystem;Meddelandesystem, PA-system
+Konstruktiva system;MBD;Bildvisningssystem;bildsystem;Informationssystem
+Konstruktiva system;MC;Trafikkontrollsystem;informerande system som styr trafik;
+Konstruktiva system;MCB;System med fasta ljussignaler;trafikkontrollsystem med fasta ljussignaler;
+Konstruktiva system;MCC;System med variabla ljussignaler;trafikkontrollsystem med variabla ljussignaler;VMS-skyltsystem, FIVÖ-system
+Konstruktiva system;MCD;System med ljudsignaler;trafikkontrollsystem med ljudsignaler;
+Konstruktiva system;MCE;ATS-system;trafikkontrollsystem för flygledning;
+Konstruktiva system;MCF;CNS-system;trafikkontrollsystem för kommunikation, navigation och radarövervakning för flygtrafik;
+Konstruktiva system;MCG;DAT-system;trafikkontrollsystem för datautbyte mellan markutrustning och flygplan;
+Konstruktiva system;MCH;ATIS-system;trafikkontrollsystem för automatisk information om flygplatsförhållanden;
+Konstruktiva system;MD;Tidsignalsystem;informerande system för tid;
+Konstruktiva system;MDA;Tidsignalsystem med urtavlor;tidsignalsystem med urtavla;
+Konstruktiva system;ME;Skyltsystem;informerande system i skriftlig eller symbolisk form;
+Konstruktiva system;MEB;Fast skyltsystem;skyltsystem med fasta skyltar;
+Konstruktiva system;MEC;Dynamiskt skyltsystem;skyltsystem med variabla skyltar;
+Konstruktiva system;P;Skyddande system;konstruktivt system som aktivt skyddar mot fara eller oönskat tillstånd;
+Konstruktiva system;PA;Brandskyddssystem;skyddande system som öppnar eller stänger dörrar och fönster vid brand;
+Konstruktiva system;PB;Brandsläckningssystem;skyddande system mot brand genom släckning;
+Konstruktiva system;PBB;Brandvattensystem;brandsläckningssystem med släckvatten;Brandpostsystem, släckvattensystem
+Konstruktiva system;PBC;Gassläcksystem;brandsläckningssystem med inert gas;Brandsläckning med inert gas
+Konstruktiva system;PBD;Skumsläckningssystem;brandsläckningssystem med skum;
+Konstruktiva system;PBE;Dimsläcksystem;brandsläckningssystem med vattendimma;
+Konstruktiva system;PBF;Pulversläcksystem;brandsläckningssystem med pulver;
+Konstruktiva system;PC;Jordningssystem;skyddande system mot farliga elströmmar genom jordning av elektriska system;
+Konstruktiva system;PCB;Potentialutjämningssystem;jordningssystem för utjämning av potential mellan elektriskt ledande delar;
+Konstruktiva system;PD;Överspänningsskyddssystem;skyddande system mot elektrisk överspänning;
+Konstruktiva system;PDB;Åskskyddssystem;jordningssystem för blixtnedslag;
+Konstruktiva system;PE;Katodiskt korrosionsskyddssystem;skyddande system för metall mot korrosion;
+Konstruktiva system;PF;Personskyddssystem;skyddande system mot personskada;
+Konstruktiva system;PFB;Nödduschsystem;personskyddande system för nöddusch;akutdusch
+Konstruktiva system;PFC;Ögontvättsystem;personskyddande system för ögontvätt;
+Konstruktiva system;Q;Lagringssystem;konstruktivt system som lagrar information, energi eller materia;
+Konstruktiva system;QA;Datalagringssystem;lagringssystem för data;
+Konstruktiva system;QB;Gas- och luftlagringssystem;lagringssystem för gas och luft;
+Konstruktiva system;QC;Vätskelagringssystem;lagringssystem för vätska;
+Konstruktiva system;QD;Energilagringssystem;lagringssystem för energi;
+Konstruktiva system;R;Kompletterande system;konstruktivt system som utrustar utrymmen eller byggdelar i ett byggnadsverk;Kompletteringar
+Konstruktiva system;RA;Plantering;kompletterande system i form av växter;
+Konstruktiva system;RB;Möblering och inredning;kompletterande system i form av anordningar och föremål placerade i ett utrymme för att möjliggöra en verksamhet men som inte används aktivt  för materialbearbetning, energiomvandling eller transport;Anläggningskomplettering
+Konstruktiva system;RC;Utrustning;kompletterande system i form av anordningar och föremål som behövs för en viss tillämpning eller verksamhet och som används aktivt;
+Komponenter;B;Avkännande objekt;objekt för att plocka upp information och avge en representation;
+Komponenter;BA;Elektrisk potentialavkännande objekt;avkännande objekt för elektrisk potential;
+Komponenter;BAA;Spänningsdetektor;elektrisk potentialavkännande objekt, med Booleskt utvärde;
+Komponenter;BAB;Spänningssensor;elektrisk potentialavkännande objekt, med skalärt utvärde;
+Komponenter;BB;Motståndsavkännande objekt;avkännande objekt för motstånd;
+Komponenter;BBA;Elektriskt motståndsdetektor;motståndsavkännande objekt för elektrisk ström, med Boolskt utvärde;
+Komponenter;BBB;Elektriskt motståndssensor;motståndsavkännande objekt för elektrisk ström, med skalärt utvärde;Ohm-mätare, Wheatstones brygga
+Komponenter;BBC;Termiskt motståndsdetektor;motståndsavkännande objekt för termiskt flöde, med Boolskt utvärde;
+Komponenter;BBD;Termiskt motståndssensor;motståndsavkännande objekt för termiskt flöde, med skalärt utvärde;
+Komponenter;BC;Elektrisk strömavkännande objekt;avkännande objekt för elektrisk ström;
+Komponenter;BCA;Strömdetektor;elektrisk strömavkännande objekt, med Booleskt utvärde;rälskontakt, spårledning, överlastskydd, överströmsrelä
+Komponenter;BCB;Strömsensor;elektrisk strömavkännande objekt, med skalärt utvärde;
+Komponenter;BD;Densitetavkännande objekt;avkännande objekt för densitet;
+Komponenter;BDA;Densitetsdetektor;densitetavkännande objekt, med Booleskt utvärde;
+Komponenter;BDB;Densitetssensor;densitetavkännande objekt, med skalärt utvärde;givare densitet
+Komponenter;BE;Fältavkännande objekt;avkännande objekt för fält;
+Komponenter;BEA;Elfältsdetektor;fältavkännande objekt för elektriskt fält, med Booleskt utvärde;
+Komponenter;BEB;Elfältssensor;fältavkännande objekt för elektriskt fält, med skalärt utvärde;
+Komponenter;BEC;Magnetfältsdetektor;fältavkännande objekt för magnetiskt fält, med Booleskt utvärde;induktiv givare, fordonsdetektor, axelräknare, detektorslinga,  larmbåge, metalldetektor, tungrelä
+Komponenter;BED;Magnetfältssensor;fältavkännande objekt för magnetiskt fält, med skalärt utvärde;induktiv sensor
+Komponenter;BF;Flödesavkännande objekt;avkännande objekt för flöde;
+Komponenter;BFA;Flödesdetektor;flödesavkännande objekt, med Booleskt utvärde;
+Komponenter;BFB;Flödessensor;flödesavkännande objekt, med skalärt utvärde;flödesmätdon
+Komponenter;BG;Fysisk dimensionsavkännande objekt;avkännande objekt för rumslig dimension och/eller position;
+Komponenter;BGA;Positionsdetektor;fysisk dimensionsavkännande objekt för position, med Booleskt utvärde;fotocell, givare närvaro, gränslägesbrytare, indikeringsdon för färdriktning, ir-detektor, magnetkontakt
+Komponenter;BGB;Positionssensor;fysisk dimensionsavkännande objekt för position, med skalärt utvärde;givare läge
+Komponenter;BGC;Längddetektor;fysisk dimensionsavkännande objekt för längd, med Booleskt utvärde;
+Komponenter;BGD;Längdsensor;fysisk dimensionsavkännande objekt för längd, med skalärt utvärde;
+Komponenter;BGE;Vinkeldetektor;fysisk dimensionsavkännande objekt för vinkel, med Booleskt utvärde;
+Komponenter;BGF;Vinkelsensor;fysisk dimensionsavkännande objekt för vinkel eller riktning, med skalärt utvärde;vindindikator, vindriktningsvisare, vindstrut
+Komponenter;BGG;Skanner;fysisk dimensionsavkännande objekt för fysiska objekt;2d-skanner, 3d-skanner, laserskanner, scanner
+Komponenter;BH;Energiavkännande objekt;avkännande objekt för energi;
+Komponenter;BHA;Flödesenergimätare;energiavkännande objekt av flöde med känd energidensitet;vindmätare
+Komponenter;BHB;Värmeenergimätare;energiavkännande objekt av flöde med känd värmekapacitet;
+Komponenter;BHC;Elmätare;energiavkännande objekt av elektriskt flöde;
+Komponenter;BJ;Effektavkännande objekt;avkännande objekt för effekt;
+Komponenter;BJA;Effektdetektor;effektavkännande objekt, med Boolskt utvärde;
+Komponenter;BJB;Effektsensor;effektavkännande objekt, med skalärt utvärde;kraftmätare
+Komponenter;BK;Tidsavkännande objekt;avkännande objekt för tid;
+Komponenter;BKA;Tidsströmställare;tidsavkännande objekt, med Booleskt utvärde;timer, tidsbrytare
+Komponenter;BKB;Tidssensor;tidsavkännande objekt, med skalärt utvärde;klocka, tidmätare, tidtagarur
+Komponenter;BL;Nivåavkännande objekt;avkännande objekt för nivå;
+Komponenter;BLA;Nivådetektor;nivåavkännande objekt, med Booleskt utvärde;
+Komponenter;BLB;Nivåsensor;nivåavkännande objekt, med skalärt utvärde;givare nivå, grundvattenrör, nivågivare, nivåavkännare, höjdmätare
+Komponenter;BM;Fuktighetsavkännande objekt;avkännande objekt för fuktighet;
+Komponenter;BMA;Fuktighetsdetektor;fuktighetsavkännande objekt, med Booleskt utvärde;snödetektor
+Komponenter;BMB;Fuktighetssensor;fuktighetsavkännande objekt, med skalärt utvärde;fuktighetsmätare, givare humiditet
+Komponenter;BP;Tryckavkännande objekt;avkännande objekt för tryck;
+Komponenter;BPA;Tryckdetektor;tryckavkännande objekt för uppmätt eller absolut tryck, med Booleskt utvärde;
+Komponenter;BPB;Trycksensor;tryckavkännande objekt för uppmätt eller absolut tryck, med skalärt utvärde;givare tryck, manometer, tryckmätare, barometer
+Komponenter;BPC;Tryckskillnadsdetektor;tryckavkännande objekt för differentialtryckavkänning, med Booleskt utvärde;
+Komponenter;BPD;Tryckskillnadssensor;tryckavkännande objekt för differentialtryckavkänning, med skalärt utvärde;
+Komponenter;BQ;Koncentrationsavkännande objekt;avkännande objekt för substanskoncentration;
+Komponenter;BQA;Gasdetektor;koncentrationsavkännande objekt för gas, med Booleskt utvärde;gasvarnare
+Komponenter;BQB;Gassensor;koncentrationsavkännande objekt för gas, med skalärt utvärde;givare co
+Komponenter;BQC;Vätskedetektor;koncentrationsavkännande objekt för vätska, med Booleskt utvärde;dimdetektor, siktdetektor
+Komponenter;BQD;Vätskesensor;koncentrationsavkännande objekt för vätska, med skalärt utvärde;dimmätare, siktgivare, siktmätare, siktsensor
+Komponenter;BQE;Solidmateriadetektor;koncentrationsavkännande objekt för solid materia, med Booleskt utvärde;givare brand, linjerökdetektor, rökdetektor, turbiditetsdetektor
+Komponenter;BQF;Solidmateriasensor;koncentrationsavkännande objekt för solid materia, med skalärt utvärde;stofthalt, turbiditetsgivare, turbiditetsmätare
+Komponenter;BR;Strålningsavkännande objekt;avkännande objekt för strålning;
+Komponenter;BRA;Ljusdetektor;strålningsavkännande objekt för synliga elektromagnetiska vågor, med Booleskt utvärde;fotocell, ljusbågsdetektor
+Komponenter;BRB;Ljussensor;strålningsavkännande objekt för synliga elektromagnetiska vågor, med skalärt utvärde;givare luminans, ljusmätare, luxmätare
+Komponenter;BRC;Elektromagnetisk vågdetektor;strålningsavkännande objekt för icke synlig elektromagnetism, med Booleskt utvärde;
+Komponenter;BRD;Elektromagnetisk vågsensor;strålningsavkännande objekt för icke synlig elektromagnetism, med skalärt utvärde;
+Komponenter;BRE;Nukleär patrikeldetektor;strålningsavkännande objekt för nukleära partiklar, med Booleskt utvärde;strålningsdetektor
+Komponenter;BRF;Nukleär partikelsensor;strålningsavkännande objekt för nukleära partiklar, med skalärt utvärde;geigermätare, strålningsmätare, strålningssensor
+Komponenter;BS;Tempoavkännande objekt;avkännande objekt för tempo;
+Komponenter;BSA;Frekvensdetektor;tempoavkännande objekt för icke roterande cykler, med Booleskt utvärde;
+Komponenter;BSB;Frekvenssensor;tempoavkännande objekt för icke roterande cykler, med skalärt utvärde;frekvensgivare, frekvensmätare
+Komponenter;BSC;Hastighetsdetektor;tempoavkännande objekt för distans, med Booleskt utvärde;rörelsedetektor
+Komponenter;BSD;Hastighetssensor;tempoavkännande objekt för distans, med skalärt utvärde;givare hastighet, hastighetsmätare
+Komponenter;BSE;Rotationsdetektor;tempoavkännande objekt för rotation, med Booleskt utvärde;
+Komponenter;BSF;Rotationssensor;tempoavkännande objekt för rotation, med skalärt utvärde;varvräknare
+Komponenter;BSG;Vibrationsdetektor;tempoavkännande objekt för hastighet, med Booleskt utvärde;accelerationströskeldetektor, givare vibration
+Komponenter;BSH;Vibrationssensor;tempoavkännande objekt för hastighet, med skalärt utvärde;accelerationssensor, bromsprovare, seismisk mätare
+Komponenter;BT;Temperaturavkännande objekt;avkännande objekt för temperatur;
+Komponenter;BTA;Temperaturdetektor;temperaturavkännande objekt med Booleskt utvärde;givare brand, värmedetektor
+Komponenter;BTB;Temperatursensor;temperaturavkännande objekt med skalärt utvärde;rälstemperaturgivare, temperaturgivare, termometer, utomhustemperaturgivare
+Komponenter;BU;Multifunktionellt avkännande objekt;avkännande objekt för multipla kvantiteter;multikvantitetavkännande objekt
+Komponenter;BUA;Flerfunktionsdetektor;multikvantitetsavkännande objekt med Booleskt utvärde(n);Buchholzrelä, flersensordetektor, multidetektor
+Komponenter;BUB;Flerfunktionssensor;multikvantitetsavkännande objekt med skalärt utvärde(n);distansskydd, multimeter
+Komponenter;BW;Kraftavkännande objekt;avkännande objekt för vikt, kraft eller vridmoment;
+Komponenter;BWA;Viktdetektor;kraftavkännande objekt för vikt, med Booleskt utvärde;
+Komponenter;BWB;Viktsensor;kraftavkännande objekt för vikt, med skalärt utvärde;fordonsvåg, våg
+Komponenter;BWC;Kraftdetektor;kraftavkännande objekt för kraft, med Booleskt utvärde;
+Komponenter;BWD;Kraftsensor;kraftavkännande objekt för kraft, med skalärt utvärde;
+Komponenter;BWE;Vridmomentsdetektor;kraftavkännande objekt för vridmoment, med Booleskt utvärde;
+Komponenter;BWF;Vridmomentssensor;kraftavkännande objekt för vridmoment, med skalärt utvärde;
+Komponenter;BX;Audiovisuellt avkännande objekt;avkännande objekt för ljud och/eller visuellt utseende;
+Komponenter;BXA;Ljuddetektor;audiovisuellt avkännande objekt för ljud, med Booleskt utvärde;glaskrossdetektor, glaskrossningsdetektor, kavitationsdetektor, ljudlarm, stallningsdetektor
+Komponenter;BXB;Ljudsensor;audiovisuellt avkännande objekt för ljud, med skalärt utvärde;ljudnivåmätare, mikrofon
+Komponenter;BXC;Bildigenkännare;audiovisuellt avkännande objekt för visuellt utseende, med Booleskt utvärde;ansiktsigenkännare, fingeravtrycksläsare, irisläsare
+Komponenter;BXD;Kamera;audiovisuellt avkännande objekt för visuellt utseende, med skalärt utvärde;bildsensor, scanner, skanner, stillbildskamera, trafikkamera, videokamera, webbkamera, övervakningskamera
+Komponenter;BXE;Videokamera;audiovisuellt avkännande objekt för ljud och visuellt utseende, med skalärt utvärde;
+Komponenter;BY;Informationsavkännande objekt;avkännande objekt för lagrad information;
+Komponenter;BYA;Chipkortläsare;informationsavkännande objekt genom elektriskt kontakt;kortläsare
+Komponenter;BYB;Elektromagnetläsare;informationsavkännande objekt genom elektromagnetiskt fält;biljettläsare, kortläsare, magnetbandläsare, magnetkortläsare, nfc-läsare, rfid-läsare
+Komponenter;BYC;Ljusläsare;informationsavkännande objekt genom ljus;qr-kodläsare, streckkodsläsare
+Komponenter;BYD;Betalautomat;informationsavkännande objekt för ekonomisk transaktion;biljettautomat, parkeringsautomat, parkeringsmätare, p-automat, p-mätare
+Komponenter;BZ;Händelsesavkännande objekt;avkännande objekt för händelser eller summor;
+Komponenter;BZA;Kvantitetsdetektor;händelseavkännande objekt för detektering av händelse, med Booleskt utvärde;tröskelmätare
+Komponenter;BZB;Kvantitetssensor;händelseavkännande objekt för detektering av antal händelser, med skalärt utvärde;räknare, varvtalsmätare, varvräknare
+Komponenter;BZC;Materialdetektor;händelseavkännande objekt för detektering av närvaron av materia, med Booleskt utvärde;
+Komponenter;BZD;Persondetektor;händelseavkännande objekt för detektering av närvaron av personer, med Booleskt utvärde;närvarodetektor, närvarogivare, passagedetektor, passagerardetektor, rörelsedetektor
+Komponenter;C;Lagrande  objekt;objekt för lagring för senare åtkomst;
+Komponenter;CA;Kapacitivt lagrande objekt;lagrande objekt för elektrisk energi i ett elektrostatiskt fält;
+Komponenter;CAA;Kondensator;kapacititvt lagrande objekt för elektisk laddning;
+Komponenter;CB;Induktivt lagrande objekt;lagrande objekt för elektrisk energi i ett elektromagnetiskt fält;
+Komponenter;CBA;Spole;induktivt lagrande objekt för induktiv laddning;
+Komponenter;CC;Elektrokemiskt lagrande objekt;lagrande objekt för elektrisk energi i en elektrokemisk substans;
+Komponenter;CCA;Uppladdningsbart batteri;elektrokemiskt lagrande objekt genom reversibel reaktion;
+Komponenter;CF;Informationslagrande objekt;lagrande objekt för information;
+Komponenter;CFA;Informationslagringsmedium;informationslagrande objekt på ett medium;cd, cd-rom, diskett, flashdrive, flashminne, hårddisk, lagringsenhet, magnetband, minnespinne, ssd-disk, ssd-minne, usb-minne
+Komponenter;CL;Öppet stationärt fysiskt lagrande objekt;lagrande objekt för materia eller personer i en öppen omslutning;
+Komponenter;CLA;Kar;öppet stationärt fysiskt lagrande objekt för vätskor;badkar, bassäng, bassängbana, diskho, disklåda, handfat, magasin, mattvättho, pool, spolback, tvättbalja, tvättbänk, tvättlåda, tvättränna, tvättställ, utslagsback, öppen behållare, öppen tank
+Komponenter;CLB;Hylla;öppet stationärt fysiskt lagrande objekt för solida objekt ;bokhylla, hatthylla, hyllställning, kapphylla, konsolhylla, skohylla
+Komponenter;CM;Slutet stationärt fysiskt lagrande objekt;lagrande objekt för materia i en stationär omslutning;
+Komponenter;CMA;Tank;slutet stationärt fysiskt lagrande objekt för vätska eller gas;ackumulatortank, avspänningskärl, avsvalningskärl, hydrofor, magasin, nox-tank, latrin, spillvattentank, tryckhållningskärl
+Komponenter;CMB;Skåp;slutet stationärt fysiskt lagrande objekt för solid materia;byrå, hurts, låda
+Komponenter;CN;Flyttbart fysiskt lagrande objekt;lagrande objekt för gods eller personer i en flyttbar omslutning;
+Komponenter;CNA;Flyttbar behållare;slutet flyttbart fysiskt lagrande objekt för solid material eller personer;askkopp, container, hisskorg, hurts, papperskorg, planteringskärl, planteringslåda, skåp, skräpkorg, soptunna, storsäck
+Komponenter;CNB;Gasflaska;slutet flyttbart fysiskt lagrande objekt för gas;gastub
+Komponenter;CNC;Tunna;slutet flyttbart fysiskt lagrande objekt för vätska;flaska
+Komponenter;CP;Termisk energilagrande objekt;lagrande objekt för termisk energi;
+Komponenter;CPA;Varmvattentank;termisk energilagrande objekt för vätska;ackumulatortank
+Komponenter;CPB;Gastank;termisk energilagrande objekt för gas;
+Komponenter;CPC;Värmeackumulor av fast materia;termisk energilagrande objekt för solid materia;
+Komponenter;CPD;Behållare för fasskiftmaterial;termisk energilagrande objekt för fasändrande material;
+Komponenter;CQ;Mekanisk energilagrande objekt;lagrande objekt för mekanisk energi;
+Komponenter;CQA;Svänghjul;mekanisk energilagrande objekt i form av rörelseenergi;
+Komponenter;CQB;Elastisk energilagrare;mekanisk energilagrande objekt i form av elastisk energi;dörrstängare, fjäder, gummiband
+Komponenter;CQC;Motvikt;mekanisk energilagrande objekt i form av lägesenergi;
+Komponenter;E;Avgivande objekt;objekt för avgivande;
+Komponenter;EA;Ljuskälla;avgivande objekt för ljus;belysningsenhet, lampenhet
+Komponenter;EAA;Elektrisk lampa;ljuskälla genom elektricitet;båglampa, glödlampa, halogenlampa, högtrycksnatriumlampa, kvicksilverlampa, lysrör, led-lampa, lysdiodlampa, natriumlampa, neonlampa, xenonlampa
+Komponenter;EAB;Gaslampa;ljuskälla genom gasförbränning;
+Komponenter;EAC;Vätskelampa;ljuskälla genom vätskeförbränning;fotogenlampa
+Komponenter;EB;Elektriskt värmeavgivande objekt;avgivande objekt för elektriskt genererad värme;
+Komponenter;EBA;Elektrisk vätskevärmare;elvärmeavgivande objekt genom vätska;doppvärmare, elpanna, elpatron, mantelvärmare, poolvärme, värmepanna, elpanna, flispanna, fritös, gaspanna, kokeri, kokgryta, oljepanna, oljevärmare, pelletspanna, vattenbad, varmvattenpanna, vattenkokare, vattenvärmare, vedpanna, tappvattenvärmeväxlare, vattenberedare med slinga, vätskekopplad återvinning
+Komponenter;EBB;Elvärmeplatta;elvärmeavgivande objekt genom en öppen yta;bastuaggregat, elradiator, konvektor, spishäll, spisplatta, stekbord, stekhäll, varmhållare, golvvärmematta, takvärmematta, värmelist
+Komponenter;EBC;Elektrisk värmekabel;elvärmeavgivande objekt genom en kabel;betonghärdning, frostskydd av rör, handdukstork, hängrännevärme, markvärme, spårspärrsvärme, spårväxelvärmare, stuprörsvärme, värmelement i växeldriv, växelvärmarelement
+Komponenter;EBD;Elektrisk varmluftsfläkt;elvärmeavgivande objekt genom luftblåsning;aerotemper, luftvärmare, torkaggregat
+Komponenter;EBE;Elektrisk bågvärmare;elvärmeavgivande objekt genom elektrisk båge;
+Komponenter;EBF;Induktionsvärmare;elvärmeavgivande objekt genom strömflöde i det upphettade objektet;induktionsplatta, induktionshäll, induktionsspis, induktionsugn
+Komponenter;EBG;Infraröd elvärmare;elvärmeavgivande objekt genom infraröd strålning;bastuaggregat, brödrost, elgrill, elspis med glaskeramikhäll, salamander, strålningsvärmare, värmelampa
+Komponenter;EBH;Elektrisk ugn;elvärmeavgivande objekt genom omslutande upphettade ytor;hetluftsugn, jässkåp, kombiugn, stekugn, värmehurts, värmemonter, värmeskåp
+Komponenter;EBZ;Elektrisk spis;elvärmeavgivande objekt genom multipla metoder;elspis, spis
+Komponenter;EC;Elektriskt kylande objekt;avgivande objekt för elektriskt genererad kyla;
+Komponenter;ECA;Elektriskt kylande yta;elektriskt kylande objekt genom en kylande yta;
+Komponenter;ECB;Elektrisk kalluftblåsare;elektriskt kylande objekt genom luftströmning;
+Komponenter;ECC;Kompressionskylare;elektriskt kylande objekt genom fasförändring;
+Komponenter;EE;Trådlöst kraftavgivande objekt;avgivande objekt för trådlös kraft;
+Komponenter;EEA;Induktiv kraftavgivare;trådlös kraftavgivande objekt genom induktiv koppling;induktionsplatta, induktionshäll, induktionsspis
+Komponenter;EEB;Mikrovågsugn;trådlös kraftavgivande objekt genom mikrovågor;
+Komponenter;EEC;Röntgenapparat;trådlös kraftavgivande objekt genom röntgenstrålning;
+Komponenter;EED;Gammastrålningsavgivare;trådlös kraftavgivande objekt genom gammastrålning;
+Komponenter;EEE;Kapacitiv kopplare;trådlös kraftavgivande objekt genom kapacitiv koppling;
+Komponenter;EG;Termisk energiöverförande objekt;avgivande objekt för värme och kyla genom överföring av termisk energi;
+Komponenter;EGA;Värmepump/kylmaskin;termisk energiöverförande objekt genom fasförändring;kompressionskylare, frysbox, frysskåp, frysbänk, infrysningsskåp, kyl- och frysskåp, kylcontainer, kyldisk, kylmonter, nedkylningsskåp, snabbinfrysningsskåp, snabbnedkylningsskåp, upptiningsskåp
+Komponenter;EGB;Peltierelement;termisk energiöverförande objekt genom Peltierelement;kylplatta
+Komponenter;EGC;Värmeväxlare;termisk energiöverförande objekt mellan flöden genom ett mellanliggande material;avloppsvärmeväxlare, batterivärmeväxlare, fjärrvärmeväxlare, korsströmsvärmeväxlare, luft/vattenvärmeväxlare, plattvärmeväxlare, roterande värmeväxlare
+Komponenter;EM;Förbränningsvärmande objekt;avgivande objekt för värme genom förbränning;
+Komponenter;EMA;Värmepanna;förbränningsvärmeaavgivande objekt för vätska;elpanna, oljepanna, pelletspanna, vedpanna
+Komponenter;EMB;Brännugn;förbränningsvärmeaavgivande objekt för ett internt utrymme;gasspis
+Komponenter;EMC;Brännare;förbränningsvärmeaavgivande objekt för uppvärmning av fast materia;gasolgrill, kolgrill, salamander
+Komponenter;EP;Termiskt värmande objekt;avgivande objekt för värme genom termisk energi;
+Komponenter;EPA;Värmerör;termiskt värmande objekt genom het vätska;
+Komponenter;EPB;Värmefilt;termiskt värmande objekt genom en genomtränglig upphettad yta;
+Komponenter;EPC;Värmeelement;termiskt värmande objekt genom en icke genomtränglig upphettad yta;element, panelradiator, vattenburen radiator, vattenradiator
+Komponenter;EPD;Varmluftsaggregat;termiskt värmande objekt genom blåsning av luft;fläktluftvärmare
+Komponenter;EQ;Termiskt kylande objekt;avgivande objekt för kyla genom termisk energi;
+Komponenter;EQA;Kylmedelskylare;termiskt kylande objekt som kyler vätska;
+Komponenter;EQB;Kylfilt;termiskt kylande objekt genom en genomtränglig kall yta;
+Komponenter;EQC;Kylelement;termiskt kylande objekt genom en icke genomtränglig kall yta;förångare, kyltorn
+Komponenter;EQD;Kylrör;termiskt kylande objekt genom kyld vätska i rör;kylbaffel, kylbatteri, kylslinga
+Komponenter;EQE;Luftkylare;termiskt kylande objekt genom blåsning av luft;fläktkonvektor, fläktluftkylare, kylfläkt, kyltorkare
+Komponenter;ET;Kärnkraftsvärmande objekt;avgivande objekt för värme genom nukleär fission;
+Komponenter;ETA;Kokvattenreaktor;kärnkraftsvärmande objekt som avger vätskeflöde;
+Komponenter;ETB;Tryckvattenreaktor;kärnkraftsvärmande objekt som avger ångflöde;
+Komponenter;ETC;Gaskyld reaktor;kärnkraftsvärmande objekt som avger gasflöde;
+Komponenter;EU;Partikelavgivande objekt;avgivande objekt för subatomära partiklar;
+Komponenter;EUA;Plasmagenerator;partikelavgivande objekt för joniserade partiklar;
+Komponenter;EUB;Partikelgenerator;partikelavgivande objekt för icke joniserade partiklar;
+Komponenter;EV;Ljudavgivande objekt;avgivande objekt för akustiska vågor;
+Komponenter;EVA;Sonar;ljudavgivande objekt för ultraljud;
+Komponenter;EVB;Bullerutsläckande högtalare;ljudavgivande objekt för hörbara frekvenser för bullerdämpning;
+Komponenter;F;Skyddande objekt;objekt för skydd mot effekterna av farliga eller oönskade förhållanden;
+Komponenter;FA;Överspänningsskyddande objekt;skyddande objekt mot överspänning;
+Komponenter;FAA;Gnistgap;överspänningsskyddande objekt genom ett gnistgap;
+Komponenter;FAB;Varistor;överspänningsskyddande objekt genom en varistor;
+Komponenter;FAC;Zenerdiod;överspänningsskyddande objekt genom en zenerdiod;zenerbarriär
+Komponenter;FAD;Strömpulsskydd;överspänningsskyddande objekt genom absorption av strömpuls;
+Komponenter;FB;Jordfelsskyddande objekt;skyddande objekt mot jordfelsströmmar;
+Komponenter;FBA;Jordfelsbrytare;jordfelsskyddande objekt som övervakar ett elnät och stänger av i händelse av jordfelsströmmar;
+Komponenter;FBB;Nollpunktsmotstånd;jordfelsskyddande objekt som begränsar styrkan hos jordfelsströmmar;
+Komponenter;FC;Överströmsskyddande objekt;skyddande objekt mot överström;
+Komponenter;FCA;Säkring;överströmsskyddande objekt som genom säkring öppnar kretsen som den ingår igenom att bryta strömmen när denna överskrider ett bestämt värde under tillräckligt lång tid;diazedsäkring, finsäkring, gängsäkringscentral, smältsäkring, säkring
+Komponenter;FCB;Automatsäkring;"överströmsskyddande objekt som genom säkring öppnar kretsen som den ingår igenom att bryta strömmen när denna överskrider ett bestämt värde under tillräckligt lång tid och som sedan går att återställa
+
+NOT Denna klass är avsedd för sådana kretsbrytare som är i enlighet med IEC 60898";dvärgbrytare
+Komponenter;FCC;Bimetallbrytare;överströmsskyddande objekt som öppnar den krets det ingår igenom att bryta strömmen när denna överskrider ett givet värde under tillräckligt lång tid;motorskydd, termiskt överströmsskydd
+Komponenter;FE;Fältskyddande objekt;skyddande objekt mot elektriska och/eller magnetiska fält;
+Komponenter;FEA;Skydd mot elektriskt fält;fältskyddande objekt mot elektriskt fält;
+Komponenter;FEB;Skydd mot magnetiskt fält;fältskyddande objekt mot magnetiskt fält;
+Komponenter;FEC;Skydd mot elektromagnetiskt fält;fältskyddande objekt mot elektromagnetsikt fält;faradays bur
+Komponenter;FL;Tryckskyddande objekt;skyddande objekt mot tryck;
+Komponenter;FLA;Säkerhetsventil;tryckskyddande objekt som frisläpper ånga eller vätska när trycket överskrider ett gränsvärde;luftningsventil, tryckreduceringsventil, övertrycksventil
+Komponenter;FLB;Säkerhetsspjäll;tryckskyddande objekt som öppnar eller stänger ett luftflöde när trycket överskrider eller underskrider ett gränsvärde;detonationsskydd, övertrycksspjäll
+Komponenter;FLC;Vakuumbrytare;tryckskyddande objekt som förhindrar vacuum;
+Komponenter;FLD;Brottskiva;tryckskyddande objekt som oåterkalleligt bryts upp i händelse av överskriden tryckskillnad;frostskyddpropp
+Komponenter;FLE;Expansionskärl;tryckskyddande objekt genom volymexpansion;expansionstank
+Komponenter;FLF;Sprängbleck;tryckskyddande objekt genom lokal försvagning av omslutning;
+Komponenter;FM;Brandskyddande objekt;skyddande objekt mot brand;
+Komponenter;FMA;Brandspjäll;brandskyddande objekt som stänger ett luftflöde vid detektering av brand;brandgasspjäll, rökgasspjäll, brand- och rökgasspjäll
+Komponenter;FMB;Rökgasventil;brandskyddande objekt som öppnar eller stänger ett luftflöde vid detektering av rök och/eller brand;brandgasventilator, rökgasspjäll, röklucka, rökventilation
+Komponenter;FMC;Kombinerat brandspjäll/rökgasventil;brandskyddande objekt som stänger ett luftflöde vid detektering av rök och/eller brand;
+Komponenter;FMD;Branddörr;brandskyddande objekt som stänger en passage för att förhindra spridning av rök och/eller brand;
+Komponenter;FME;Brandgardin;brandskyddande objekt som delar in ett område i brandzoner;brandjalusi
+Komponenter;FMF;Brandtätning;brandskyddande objekt som tillsluter ett hål för att förhindra spridning av brand;brandkudde, brandmanschett, brandtejp, brandtätningsmassa, fogmassa
+Komponenter;FMG;Brandsläckare;brandskyddande objekt för manuell hantering;handbrandsläckare
+Komponenter;FMH;Brandisolering;brandskyddande objekt genom beklädnad;brandskyddsbeklädnad, brandskyddsskiva, sprutbetong för brandskydd
+Komponenter;FMJ;Brandskyddsfärg;brandskyddande objekt genom beläggning;
+Komponenter;FMK;Brandskyddsimpregnering;brandskyddande objekt genom impregnering;vattenglasimpregnering
+Komponenter;FN;Mekanisk kraftskyddande objekt;skyddande objekt mot mekanisk kraft;
+Komponenter;FNA;Vridmomentskydd;mekanisk kraftskyddande objekt som ger en frånkoppling när ett vridmoment överskrider ett bestämt värde;slirkoppling, brytpinne
+Komponenter;FNB;Stötskydd;mekanisk kraftskyddande objekt genom absorption av kollosionskraft;avvisare, fångstanordning, kabelskydd, kringfyllning, kontaktledningskälke, krockskydd, navföljare, räckesavslutning, sockelavvisare, skyddsfyllning, skyddshuv, skyddsrör, sparkplåt, stoppbock, trädskydd
+Komponenter;FQ;Förebyggande skyddande objekt;skyddande objekt genom barriär eller hinder;
+Komponenter;FQA;Skyddsnät;förebyggande skyddande objekt mot passerande objekt;bergsäkringsnät, fågelnät, fönstergaller, intagsgaller, intagsgrind, isgrind, personskydd, sil, skyddsgaller, utloppsgaller, ventilationsgaller
+Komponenter;FQB;Glidskydd;förebyggande skyddande objekt mot glidande eller drivande materia;glidskydd, snöglidskydd, snökrok, snörasskydd, snöräcke, snöskydd, underglidningsskydd för mc
+Komponenter;FQC;Handledare;förebyggande skyddande objekt mot fall;ledstång, säkerhetslina
+Komponenter;FQD;Räcke;förebyggande skyddande objekt mot fall eller kollision;avvisare, avvisarräcke, balkongräcke, balustrad, barriärelement, broräcke, fallskyddslina, fallskyddsräcke, fönsterdörräcke, krockskydd, mitträcke, nockräcke, parkeringsräcke, planteringsräcke, planteringsskydd, sidoräcke, skyddsräcke, skyddsräl, stamskydd, vägräcke
+Komponenter;FQE;Skyddsduk;förebyggande skyddande objekt mot genomträngning;ogräsduk
+Komponenter;FQF;Bländskydd;förebyggande skyddande objekt mot bländning;
+Komponenter;FQG;Stänkskydd;förebyggande skyddande objekt mot stänk;duschkabin, duschvägg
+Komponenter;FQH;Brytskydd;förebyggande skyddande objekt mot manuell brytning;
+Komponenter;FQJ;Låsskydd;förebyggande skyddande objekt mot manuell upplåsning;vredkåpa, vredskydd
+Komponenter;FQL;Hängkabelsäkring;förebyggande skyddande objekt mot fall av upphängt objekt;säkerhetslina
+Komponenter;FR;Slitageskyddande objekt;skyddande objekt mot materialerosion;
+Komponenter;FRA;Smörjmedel;slitageskyddande objekt genom smörjning mellan objekt;smörjolja rälssmörjningsapparat, smörjapparat
+Komponenter;FRB;Slitageskydd;slitageskyddande objekt som tillhandhåller ett solitt materialskiljande lager mellan objekt;erosionsskydd, glacis, skyddsbeläggning, skyddsfolie, släntbeklädnad, strandskoning
+Komponenter;FS;Omgivningsskyddande objekt;skyddande objekt relaterat till lokal omgivning;
+Komponenter;FSA;Puts;omgivningsskyddande objekt genom stelnat bruk som täcker ett annat objekt;väggputs, takputs, slamning
+Komponenter;FSB;Färg;omgivningsskyddande objekt genom en hårdnad vätskefilm på ytan av ett annat objekt;skyddsfärg
+Komponenter;FSC;Impregnering;omgivningsskyddande objekt genom en applicerad eller injekterad vätska som gör objektet motståndskraftigt mot yttre påverkan;botteninjektering, efterinjektering, förinjektering, försegling, injekterad tätzon, injekteringsmedel, injekteringstätning, klotterskydd, ridåinjektering
+Komponenter;FSD;Väderskydd;omgivningsskyddande objekt genom skydd mot klimateffekter;
+Komponenter;FSE;Jordbävningsskydd;omgivningsskyddande objekt genom vibrationsdämpning;
+Komponenter;FSF;Korrosionsskydd;omgivningsskyddande objekt genom oxidation av metall;katodiskt skydd, rostskydd, offeranod
+Komponenter;FSG;Tätskikt;omgivningsskyddande objekt genom ett icke genomträngligt lager på ytan av ett annat objekt;diffussionsspärr, explosionstätning, fuktspärr, gas- och vätsketätande lager, gastätning, luftspärr, lufttätning, primer, skyddslager, sprutbart membran, strålningstätning, tjärpapp, tunnelduk, tätningslager, underlagspapp, vattenavledande membran, ytpapp, strömningsavskiljande lager, tätande lager, ångspärr
+Komponenter;FSH;Kapillärbrytande lager;omgivningsskyddande objekt genom ett kapillärbrytande lager;kapillärskydd
+Komponenter;FSJ;Tapet;omgivningsskyddande objekt genom en folie på ytan av ett annat objekt;våtrumstapet
+Komponenter;FSZ;Ytskikt;omgivningsskyddande objekt som genom ett ytligt lager täcker ett annat objekt;färg, målning, skyddsfärg, slamning, takputs, tapet, väggputs, våtrumstapet
+Komponenter;G;Genererande objekt;objekt för tillhandahållande av ett kontrollerbart flöde;
+Komponenter;GA;Mekaniskt elektricitetsgenererande objekt;genererande objekt för elektrisk energi driven av mekanisk energi;
+Komponenter;GAA;Växelströmsgenerator;mekaniskt elektricitetsgenererande objekt för växelström;reservelverk, reservkraftaggregat
+Komponenter;GAB;Likströmsgenerator;mekaniskt elektricitetsgenererande objekt för likström;
+Komponenter;GB;Kemiskt elektricitetsgenererande objekt;genererande objekt för elektrisk energi driven av kemisk reaktion;
+Komponenter;GBA;Engångsbatteri;kemiskt elektricitetsgenererande objekt från en icke förnybar källa;
+Komponenter;GBB;Bränslecell;kemiskt elektricitetsgenererande objekt som kontinuerligt matas med bränsle och oxidant;
+Komponenter;GC;Solel-energigenererande objekt;genererande objekt för elektrisk energi driven av solenergi;
+Komponenter;GCA;Kristallin solpanel;solel-energigenererande objekt som utnyttjar halvledande material på kiselplattor;
+Komponenter;GCB;Tunnfilmsolpanel;solel-energigenererande objekt som utnyttjar tunnfilmsmaterial;solcell
+Komponenter;GF;Signalgenererande objekt;genererande objekt för informationsbärande signaler;
+Komponenter;GFA;Elektromagnetisk signalsändare;signalgenererande objekt genom elektromagnetiska vågor;radiosändare, radiovågssändare, tevesändare
+Komponenter;GFB;Mekanisk signalsändare;signalgenererande objekt genom vajrar;
+Komponenter;GL;Gods- och personflödesgenererande objekt;genererande objekt för kontinuerlig förflyttning av gods och personer;
+Komponenter;GLA;Transportband;gods- och personflödesgenererande objekt på ett band;bagageband, bandtransportör, brickband, elevator, hängtransportör, kassaband, rullande trottoar, rullband, rullgångbana, rullramp, vertikaltransportör
+Komponenter;GLB;Kedjetransportör;godsflödesgenererande objekt på en kedja;
+Komponenter;GLC;Rulltransportör;godsflödesgenererande objekt på rullar;rullbana, rullbord
+Komponenter;GLD;Skruvtransportör;godsflödesgenererande objekt med en skruv;lyftskruv, transportskruv
+Komponenter;GLE;Rulltrappa;personflödesgenererande objekt med en serie av steg;
+Komponenter;GLF;Paternosterverk;godsflödesgenererande objekt med en serie av behållare;
+Komponenter;GLG;Vibrationsband;godsflödesgenererande objekt på en vibrerande yta;
+Komponenter;GM;Gods- och personförflyttande objekt;genererande objekt för icke kontinuerlig förflyttning av gods och personer;
+Komponenter;GMA;Vagn;godsförflyttande objekt horisontellt;bassängvagn, bordsvagn, dispenservagn, kärra, lyftvagn, mattransportvagn
+Komponenter;GMB;Telfer;godsförflyttande objekt vertikalt;
+Komponenter;GMC;Lyftanordning;gods- och personförflyttande objekt som lyfter och flyttar objekt vertikalt och/eller horisontellt;lyftbord, lyftkran, lyftplattform, patientlyft, plattformslift, saxlift, trapphiss, trapplift, travers, vertikallyft
+Komponenter;GMD;Staplare;godsförflyttande objekt som placerar objekt tillsammans;
+Komponenter;GME;Vändskiva;godsförflyttande objekt som vänder ett förmedlat flöde;
+Komponenter;GMF;Vibrationsmatare;godsförflyttande objekt i ett linjärt flöde genom vibrering;
+Komponenter;GP;Vätskeflödesgenererande objekt;genererande objekt för vätskeflöde;pump, vätskepump
+Komponenter;GPA;Deplacementspump;vätskeflödesgenererande objekt genom att tvinga instängd vätska till utloppssidan;handpump, doseringspump, provtagningspump
+Komponenter;GPB;Dynamisk pump;vätskeflödesgenererande objekt genom ökning av flödeshastigheten genom mekanisk rörelse;cirkulationspump, rotodynamisk pump, tryckstegringspump
+Komponenter;GPC;Strålpump;vätskeflödesgenererande objekt genom att överföra rörelseenergin från ett inflöde till ett utflöde;ejektor, vädur, vätskeejektor
+Komponenter;GPD;Smörjapparat;vätskeflödesgenererande objekt genom att konvertera lägesenergi till rörelseenergi genom gravitation;rälssmörjningsapparat
+Komponenter;GQ;Gasflödesgenererande objekt;genererande objekt för gasflöde;
+Komponenter;GQA;Kompressor;gasflödesgenererande objekt genom  att tvinga instängd gas till utloppssidan;blåsmaskin
+Komponenter;GQB;Fläkt;gasflödesgenererande objekt genom ökning av flödeshastigheten genom mekanisk rörelse;axialfläkt, brandfläkt, centraldammsugare, cirkulationsfläkt, dammsugare, frånluftsfläkt, garagefläkt, impulsfläkt, jetfläkt, kammarfläkt, kanalfläkt, kylfläkt, köksfläkt, luftridåapparat, propellerfläkt, radialfläkt, spisfläkt, takfläkt, tilluftsfläkt, tunnelfläkt, tvärströmsfläkt
+Komponenter;GQC;Gasejektor;gasflödesgenererande objekt genom att överföra rörelseenergin från ett inflöde till ett utflöde;strålpump, ångejektor, ångstrålkompressor, ångstrålventilator
+Komponenter;GR;Solvärmefångande objekt;genererande objekt för termisk energi från solenergi;
+Komponenter;GRA;Plan solfångare;solvärmefångande objekt till ett flöde;
+Komponenter;GRB;Vacuumrörsolfångare;solvärmefångande objekt som genererar ett flöde;
+Komponenter;H;Materialbehandlande objekt;objekt för behandling av material;
+Komponenter;HJ;Primärformande objekt;materialbehandlande objekt genom formning av original;
+Komponenter;HJA;Gjutverktyg;primärformande objekt från flytande tillstånd;
+Komponenter;HJB;Pulverpress;primärformande objekt från pulver;
+Komponenter;HJC;Spånpress;primärformande objekt från spån eller fibrer;
+Komponenter;HK;Ytbehandlande objekt;materialbehandlande objekt genom ytskydd;
+Komponenter;HKA;Ytrengörare;ytbehandlande objekt genom preparation;autoklav, desinficeringsmaskin, diskmaskin, högtryckstvätt, sköljmaskin, tvättmaskin, ultraljudsrengörare, ångtvätt
+Komponenter;HKB;Ytmodifierare;ytbehandlande objekt genom modifiering;blästringsmaskin, polermaskin, slipmaskin
+Komponenter;HKC;Yttäckningsmaskin;ytbehandlande objekt genom täckning;anodiseringsmaskin, sprutmålningsaggregat
+Komponenter;HL;Ihopsättande objekt;materialbehandlande objekt genom ihopfogning eller ihopsättning;
+Komponenter;HLA;Monteringsrobot;ihopsättande objekt genom fysisk ihopsättning;industrirobot, monteringsmaskin
+Komponenter;HLB;Mekanisk ihopfogningsmaskin;ihopsättande objekt genom mekanisk ihopfogning;crimpningsmaskin, falsmaskin, friktionssvets, sickmaskin, sickningsmaskin, trycksvetsmaskin, vikmaskin
+Komponenter;HLC;Smältsvets ;ihopsättande objekt genom termisk ihopfogning;argonsvets, bågsvets, gassvets, gasvolframsvets, lasersvets, lödningsmaskin, mag-svets, metallbågsvets, mig-svets, mig/mag-svets, mma-svets, plasmasvets, punktsvets, skyddsgassvets, svetsrobot, tig-svets, ultrasvets
+Komponenter;HLD;Limningsmaskin;ihopsättande objekt genom kemisk ihopfogning;
+Komponenter;HM;Kraftbaserat separerande objekt;materialbehandlande objekt genom separation av blandande substanser genom kraft;
+Komponenter;HMA;Avskiljare;kraftbaserat separerande objekt av partiklar genom gravitation;fettavskiljare, gipsavskiljare, oljeavskiljare, sandfång, sedimentationstank, slamavskiljare
+Komponenter;HMB;Centrifug;kraftbaserat separerande objekt av substanser genom centrifugalkraft i en roterande kammare;
+Komponenter;HMC;Cyklon;kraftbaserat separerande objekt av substanser genom rotation i en stationär kammare;hydrocyklon
+Komponenter;HP;Termiskt separerande objekt;materialbehandlande objekt genom termisk separation av blandade substanser;
+Komponenter;HPA;Avfuktare;termiskt separerande objekt som avlägsnar fukt;luftavfuktare, torktumlare, torkskåp
+Komponenter;HPB;Destillator;termiskt separerande objekt som genererar gas från en vätska;
+Komponenter;HQ;Mekaniskt separerande objekt;materialbehandlande objekt genom mekanisk separation av blandade substanser;
+Komponenter;HQA;Filter;mekaniskt separerande objekt för partiklar baserat på deras storlek och/eller form;avdragsanordning, filter, mekaniskt filter, raka, rensgaller, sandfilter, skrapgaller, vattenfilter, ventilationsfilter
+Komponenter;HQB;Skimmer;mekaniskt separerande objekt för olja genom skimmning;oljeskimmer
+Komponenter;HR;Elektriskt eller magnetiskt separerande objekt;materialbehandlande objekt genom elektromagnetisk separation av blandande substanser;
+Komponenter;HRA;Elektrostatfilter;elektriskt eller magnetiskt separerande objekt genom ett elektriskt fält;
+Komponenter;HNB;Magnetisk separator;elektriskt eller magnetiskt separerande objekt genom ett magnetiskt fält;
+Komponenter;HS;Kemiskt separerande objekt;materialbehandlande objekt genom kemiska separation av blandade substanser;
+Komponenter;HSA;Jonbytare;kemiskt separerande objekt genom utbyte av joner;
+Komponenter;HSB;Absorbent;kemiskt separerande objekt genom absorption;
+Komponenter;HSC;Adsorbent;kemiskt separerande objekt som binder gas;
+Komponenter;HU;Mekaniskt sönderdelande objekt;materialbehandlande objekt som åstadkommer mindre former av solida material;
+Komponenter;HUA;Hackmaskin;mekaniskt sönderdelande objekt för mjukt, medelhårt, fibröst och segt material;avfallskvarn, livsmedelskvarn, köttkvarn, snabbhack
+Komponenter;HUB;Kvarn;mekaniskt sönderdelande objekt för bearbetning till specifika storlekar och former;livsmedelssåg, skärmaskin, såg, köttsåg
+Komponenter;HUC;Kross;mekaniskt sönderdelande objekt för mineral;bergkross
+Komponenter;HV;Aggregerande objekt;materialbehandlande objekt som åstadkommer större former av substanser;
+Komponenter;HVA;Pelletterare;aggregerande objekt som komprimerar eller formar material till pelletform;
+Komponenter;HVB;Kolloidator;aggregerande objekt som möjliggör (en process där) kolloidbildning från en vätska;förtjockare
+Komponenter;HW;Blandande objekt;materialbehandlande objekt som åstadkommer nya material genom att blanda olika substanser;
+Komponenter;HWA;Mixer;blandande objekt som åstadkommer en ny egenskap hos en substans från olika substanser;blandningsmaskin, glassmaskin, omrörare, vispmaskin, kaffebryggare, espressomaskin, kaffemaskin
+Komponenter;HWB;Befuktare;blandande objekt som åstadkommer fuktad gas;luftfuktare
+Komponenter;HX;Reagerande objekt;materialbehandlande objekt som åstadkommer nya material genom kemisk eller biologisk reaktion;
+Komponenter;HXA;Kemisk reaktor;reagerande objekt som åstadkommer och kontrollerar en kemisk reaktion;avsaltningsfilter, avhärdningsfilter, gasifierare
+Komponenter;HXB;Biologisk reaktor;reagerande objekt som åstadkommer och kontrollerar en biologisk reaktion;fermenterare, jäsmaskin
+Komponenter;K;Informationsbehandlande objekt;objekt för behandling av insignaler i syfte att avge lämpligt output;
+Komponenter;KE;Elektrisk signalbehandlande objekt;informationsbehandlande objekt för behandling av elektriska signaler;
+Komponenter;KEA;Dator;elektrisk signalbehandlande objekt med mänsklig intervention;datorplatta, kodare, laptop, läsplatta, pc, protokollkonverterare, server, översättare
+Komponenter;KEB;Styr- och regleringsenhet;elektrisk signalbehandlande objekt utan mänsklig intervention för kontroll av utrustning;cpu, processor, rtu, brandförsvarstablå, centralapparat, duc, förarpanel, kontrollapparat, larmlagringstablå, manöverpanel, operatörspanel, plc,  reglercentral, signalsäkerhetsställverk, styrapparat, styrenhet, sängbox, telefonväxel, utestation, videoväxel, synkroniseringsrelä
+Komponenter;KEC;Kommunikationsenhet;elektrisk signalbehandlande objekt utan mänsklig intervention för input/output till utrustning;adressenhet, I/O-modul, nätverkskort, USB-kort, Firewire-kort
+Komponenter;KED;Router;elektrisk signalbehandlande objekt utan mänsklig intervention för vidarebefordran av signaler mellan datanätverk;gateway
+Komponenter;KEE;Dataskrivare;elektrisk signalbehandlande objekt utan mänsklig intervention för sparande av input på ett lagringsmedium;bandspelare, cd-skrivare, dcd-skrivare
+Komponenter;KF;Elektrisk signalfördelande objekt;signalbehandlande objekt för vidarebefordran av elektriska signaler;
+Komponenter;KFA;Relä;elektrisk signalfördelande objekt som vidarebefordrar elektriska signaler utan fördröjning;effektrelä, frekvensrelä, hjälprelä, impedansrelä, signalrelä, strömrelä, spänningsrelä
+Komponenter;KFB;Tidsrelä;elektrisk signalfördelande objekt som vidarebefordrar elektriska signaler med fördröjning;
+Komponenter;KFC;Repeater;elektrisk signalfördelande objekt som upprepar av insignalen som en förbättrad utsignal;anropsapparat, bildtelefon, förstärkare, hisstelefon, larmtelefon, porttelefon, radioapparat, radiomottagare, radiosändare, telefon, telefonapparat, transceiver
+Komponenter;KFD;Nätverksbrygga;elektrisk signalfördelande objekt som överbryggar flera nätverkssegment;
+Komponenter;KFE;Switch;elektrisk signalfördelande objekt som vidarebefordrar signaler till specifik utrustning i ett datanät;
+Komponenter;KG;Optisk signalbehandlande objekt;signalbehandlande objekt för optiska signaler;
+Komponenter;KGA;Optisk omkopplare;optisk signalbehandlande objekt som aktivt vidarebefordrar input till specifika apparater i ett optiskt nätverk;optisk switch
+Komponenter;KGB;Optisk router;optisk signalbehandlande objekt som vidarebefordrar datapaket mellan datornätverk;
+Komponenter;KGC;Optisk repeater;optisk signalbehandlande objekt som repeterar insignalen som en förbättrad utsignal;optisk förstärkare
+Komponenter;KH;Fluidsignalbehandlande objekt;signalbehandlande objekt för flödessignaler;
+Komponenter;KHA;Regulator;flödessignalbehandlande objekt för återkopplande kontroll;
+Komponenter;KHB;Pilotventil;flödessignalbehandlande objekt som vidareförmedlar signaler;
+Komponenter;KJ;Mekanisk signalbehandlande objekt;signalbehandlande objekt för mekaniska signaler;
+Komponenter;KJA;Mekanisk regulator;mekanisk signalbehandlande objekt som justerar ett gas- eller vätskeflöde;
+Komponenter;KJB;Låscylinder;mekanisk signalbehandlande objekt som låser/låser upp en låsmekanism;
+Komponenter;KJC;Kodlås;mekanisk signalbehandlande objekt som åstadkommer ett binärt tillstånd hos en mekanism;handtagskodlås
+Komponenter;KZ;Multipel signalfördelande objekt;signalbehandlande objekt av multipla typer av signaler;
+Komponenter;KZA;Multiswitch;multipel signalbehandlande objekt som vidarebefordrar input till specifika apparater;
+Komponenter;M;Drivande objekt;objekt för tillhandhållande av mekanisk rörelse eller kraft;motor
+Komponenter;MA;Elektromagnetiskt rotationsdrivande objekt;drivande objekt genom rotationskraft driven av elektromagnetisk kraft;
+Komponenter;MAA;Elmotor;elektromagnetiskt rotationsdrivande objekt som åstadkommer en kontinuerlig rotation;driv, ställdon
+Komponenter;MAB;Stegmotor;elektromagnetiskt rotationsdrivande objekt som åstadkommer diskreta rotationssteg;
+Komponenter;MB;Elektromagnetiskt linjärt drivande objekt;drivande objekt genom linjär kraft, driven av elektromagnetisk kraft;
+Komponenter;MBA;Linjär motor;elektromagnetiskt linjärt drivande objekt som åstadkommer kontinuerlig rörelse;
+Komponenter;MBB;Solenoid;elektromagnetiskt linjärt drivande objekt som åstadkommer diskreta linjära steg;aktuator, elektromagnet, växeldriv
+Komponenter;MC;Magnetiskt drivande objekt;drivande objekt genom magnetisk kraft;
+Komponenter;MCA;Permanentmagnet;magnetiskt drivande objekt genom permanentmagnet;
+Komponenter;MD;Piezoelektriskt drivande objekt;drivande objekt genom piezoelektrisk effekt;
+Komponenter;MDA;Piezoelektrisk motor;piezoelektriskt drivande objekt genom piezoelektrisk kristall;piezoelektrisk aktuator
+Komponenter;ML;Mekaniskt kraftdrivande objekt;drivande objekt genom mekanisk energi;
+Komponenter;MLA;Gravitationsdrivare;mekaniskt kraftdrivande objekt genom frisläppande av gravitationsenergi;
+Komponenter;MLB;Elastisk drivare;mekaniskt kraftdrivande objekt genom frisläppande av elastisk energi;omläggningsanordning
+Komponenter;MLC;Vindturbin;mekaniskt kraftdrivande objekt genom kinetisk energi i blåst;
+Komponenter;MLD;Vattenturbin;mekaniskt kraftdrivande objekt genom kinetisk energi i strömmande vatten;
+Komponenter;MLE;Gasturbin;mekaniskt kraftdrivande objekt genom kinetisk energi och reaktiv kraft i strömmande och/eller expanderande gas;
+Komponenter;MM;Flödesdrivande objekt;drivande objekt genom fluidförflyttning eller fluidtryck;
+Komponenter;MMA;Hydraulcylinder;flödesdrivande objekt som åstadkommer rörelse motsvarande en vätskevolym;lyftcylinder
+Komponenter;MMB;Pneumatisk cylinder;flödesdrivande objekt som åstadkommer rörelse till ändpositioner beroende på gastryck;
+Komponenter;MMC;Hydraulmotor;flödesdrivande objekt som åstadkommer rotation genom en strömmande vätska;
+Komponenter;MMD;Pneumatisk motor;flödesdrivande objekt som åstadkommer rotation genom trycksatt gas;
+Komponenter;MS;Förbränningsmotor;drivande objekt genom bränsleförbränning;
+Komponenter;MSA;Ottomotor;förbränningsmotor med kolvar som kraftsätts av gnistantänd förbränning;tändstiftsmotor
+Komponenter;MSB;Dieselmotor;förbränningsmotor med kolvar som kraftsätts av kompressionsantänd förbränning;
+Komponenter;MSC;Wankelmotor;förbränningsmotor med excentriskt roterade kolv i en cirkulär omslutning kraftsatt  av gnistantänd förbränning;
+Komponenter;MT;Värmemotor;drivande objekt genom extern värmekälla;
+Komponenter;MTA;Ångmaskin;värmemotor genom expanderande ånga som verkar på en kolv;ångturbin
+Komponenter;MTB;Stirlingmotor;värmemotor genom två kolvar i en cylinder med en upphettad och en kyld del;
+Komponenter;N;Täckande objekt;objekt för delvis eller hel omslutning av ett annat objekt;
+Komponenter;NA;Öppningsfyllande objekt;täckande objekt som fyller en öppning;
+Komponenter;NAA;Glasruta;öppningsfyllande objekt som tillåter ljusgenomsläpp;fönsterruta
+Komponenter;NAB;Panel;öppningsfyllande objekt som förhindrar ljusgenomsläpp;dörrspegel, inbrädning, plankpanel, råspont, yttertakspanel, underlagstak
+Komponenter;NAC;Galler;öppningsfyllande objekt som tillåter fluidgenomsläpp;brunnsgaller, fönstergaller, luftbrunn, ränngaller, överluftdon
+Komponenter;NAD;Fogmaterial;öppningsfyllande objekt som förhindrar fluidgenomsläpp;cellgummi av neoprenkvalitet, dilatationsfog, fog, fogband, fogmassa, o-ring, packning, svällist
+Komponenter;NB;Tillslutande objekt;täckande objekt som tillsluter en öppning;
+Komponenter;NBA;Dörrblad;tillslutande objekt för dörröppning;
+Komponenter;NBB;Portblad;tillslutande objekt för portöppning;garageport, hangarport
+Komponenter;NBC;Skåplucka;tillslutande objekt för skåpöppning;
+Komponenter;NBD;Grindblad;tillslutande objekt för öppning i stängsel eller staket;
+Komponenter;NBE;Lock;tillslutande objekt för lucköppning;huv, brunnslock, betäckning
+Komponenter;NC;Beklädnadsobjekt;täckande objekt genom att avsluta konstruktioner;
+Komponenter;NCA;Markbeläggning;beklädnadsobjekt för hårdgjord yta;beläggning, gatubeläggning, markgaller, slitlager, vägbeläggning, vägplatta
+Komponenter;NCB;Väggbeklädnad;beklädnadsobjekt för vägg;betonglining, fasadbeklädnad, tunnelbeklädnad, panel, pelarinklädnad, väggpanel, väggskiva
+Komponenter;NCC;Golvbeläggning;beklädnadsobjekt för golv;golvmaterial, golvskiva, slätspont, undergolv
+Komponenter;NCD;Innertaksbeklädnad;beklädnadsobjekt för innertak;undertak
+Komponenter;NCE;Yttertaksbeklädnad;beklädnadsobjekt för yttertak;takbeklädnad, takmaterial, taktäckning
+Komponenter;NCF;Växtmatta;beklädnadsobjekt för vegetationsyta;grästorv, grässådd, sedummatta, sprutsådd, vegetationsmatta
+Komponenter;NCG;Smygbräda;beklädnadsobjekt i en öppning;dörrsmyg, fönsterbräda, fönsterbänk, fönstersmyg
+Komponenter;ND;Avslutande objekt;täckande objekt som avslutar andra objekt;
+Komponenter;NDA;Kantstöd;avslutande objekt för hårdgjord yta eller vegetationsyta;fotbräda, kantlist
+Komponenter;NDB;Krön;avslutande objekt för ett krön;avtäckning, kapitäl, krönbalk, krönlist, skorstenstäckning, topplåt, överliggare
+Komponenter;NDC;Golvsarg;avslutande objekt för en golvkant;
+Komponenter;NDD;Taksarg;avslutande objekt för en innertakskant;
+Komponenter;NDE;Vindskiva;avslutande objekt för en yttertakskant;vattbräda
+Komponenter;NE;Fogtäckning;täckande objekt för fogar eller övergångar;
+Komponenter;NEA;Taklist;fogtäckande objekt mellan en vägg och ett innertak;
+Komponenter;NEB;Golvsockel;fogtäckande objekt mellan en vägg och ett golv;golvlist
+Komponenter;NEC;Hörnlist;fogtäckande objekt mellan två väggar;
+Komponenter;NED;Takbleck;fogtäckande objekt på ett tak;gavelbeslag, nockpanna, nockplåt, ståndskiva, takfotsbeslag, underbleck, vinkelränna, överbleck
+Komponenter;NEE;Foder;fogtäckande objekt runt en öppning;dörrfoder, dörrtryckesbricka, fönsterfoder, nyckelhålsbricka, täckbricka
+Komponenter;P;Presenterande objekt;objekt för tillhandahållande av förnimbar information;
+Komponenter;PF;Visuell tillståndsindikator;presenterande objekt i synlig form av tillstånd eller läge;
+Komponenter;PFA;Signallampa;visuell tillståndsindikator genom ljus;avstängningssignal, blinkljus, blixtljus, bomlykta, brolampa, felindikeringstablå, gul varningssignal, körfältsignal (mcs), ljussignal, närvaroenhet, optiskt larmdon, roterande ljus, sjötrafiksignal, trafiksignal
+Komponenter;PFB;Semafor;visuell tillståndsindikator genom mekaniska positioner;kontrollanordning
+Komponenter;PG;Mätvärdesvisande objekt;presenterande objekt i synlig form av mätvärde;
+Komponenter;PGA;Spänningsvisare;mätvärdesvisande objekt för elektrisk spänning;
+Komponenter;PGB;Motståndsvisare;mätvärdesvisande objekt för motstånd eller ledningsförmåga;
+Komponenter;PGC;Strömstyrkevisare;mätvärdesvisande objekt för elektrisk ström;
+Komponenter;PGD;Densitetsvisare;mätvärdesvisande objekt för densitet;
+Komponenter;PGE;Fältvisare;mätvärdesvisande objekt för fält;
+Komponenter;PGF;Flödesvisare;mätvärdesvisande objekt för flöden;
+Komponenter;PGG;Dimensionsvisare;mätvärdesvisande objekt för rumslig dimension och/eller lägen;vinkelvisare, positionsvisare
+Komponenter;PGH;Energivisare;mätvärdesvisande objekt för energi;
+Komponenter;PGJ;Effektvisare;mätvärdesvisande objekt för elektrisk kraft;wattmätare
+Komponenter;PGK;Tidvisare;mätvärdesvisande objekt för tid;klocka, ur
+Komponenter;PGL;Nivåindikator;mätvärdesvisande objekt för nivå;
+Komponenter;PGM;Fuktighetsvisare;mätvärdesvisande objekt för fuktighet;hygrometer
+Komponenter;PGP;Tryckvisare;mätvärdesvisande objekt för tryck;
+Komponenter;PGQ;Koncentrationsvisare;mätvärdesvisande objekt för substanskoncentration;siktvisare
+Komponenter;PGR;Strålningsvisare;mätvärdesvisande objekt för strålning;
+Komponenter;PGS;Tempovisare;mätvärdesvisande objekt för tempo;varvräknare
+Komponenter;PGT;Temperaturvisare;mätvärdesvisande objekt för temperatur;
+Komponenter;PGV;Effektfaktorvisare;mätvärdesvisande objekt för sklllnaden mellan aktiv och reaktiv kraft;cos-phi-visare
+Komponenter;PGW;Kraftvisare;mätvärdesvisande objekt för vikt, kraft eller vridmoment;
+Komponenter;PGX;Ljudvisare;mätvärdesvisande objekt för ljud;
+Komponenter;PGZ;Händelsevisare;mätvärdesvisande objekt för antal händelser;
+Komponenter;PH;Grafiskt presenterande objekt;presenterande objekt i synlig form av bild, symboler eller text;
+Komponenter;PHA;Bildskärm;grafisk display dynamiskt på sin yta;display, dynamisk skylt, expeditionsenhet, korridordisplay, monitor, omställbar skylt, variabel skylt, krittavla, svart tavla, whiteboard
+Komponenter;PHB;Projektor;grafisk display dynamiskt på vald yta;
+Komponenter;PHC;Printer;grafisk display på tryckt media;kopiator, kopieringsmaskin, skrivare
+Komponenter;PHD;Skylt;grafisk display statiskt på ytan av ett objekt;distansskylt, etikett, märkskylt, namnskylt, orienteringsskylt, orienteringstavla, referensbeteckning, skylttavla, trafikmärke, vägmärke, vägvisning
+Komponenter;PHE;Markering;grafisk display statiskt på ytan av ett annat objekt;längsgående vägmarkering, markering för idrott och lek, markmålning, kattöga, tvärgående vägmarkering, vägbanereflektor, vägmarkering, ytmarkering, övergångsställe
+Komponenter;PHF;Markeringsstolpe;grafisk display genom sin fysiska karaktär;avvägningsdubb, boj, distanspåle, kabelmarkeringspåle, kantstolpe, kardinalprick, lateralprick, markeringsstolpe, pollare, prick, referenspunkt, ruskprick, sjömärke
+Komponenter;PJ;Ljudsignalerande objekt;presenterande objekt i hörbar form;
+Komponenter;PJA;Högtalare;ljudsignalerande objekt genom membranrörelse;
+Komponenter;PJB;Akustiskt larmdon;ljudsignalerande objekt genom luftström;hesa fredrik, mistlur, siren, sirén, starktonssirén, tyfon
+Komponenter;PJC;Ringklocka;ljudsignalerande objekt genom mekanisk excitation;summer
+Komponenter;PK;Taktilt signalerande objekt;presenterande objekt i taktil form;
+Komponenter;PKA;Vibrator;taktilt signalerande objekt av diskreta tillstånd genom vibration;
+Komponenter;PKB;Taktil markering;taktilt signalerande objekt av statisk information;bullerremsa, bullerräffla, ledstråk, teckensrpåksskylt
+Komponenter;PKC;Frihöjdvarning;taktilt signalerande objekt för överliggande hinder;
+Komponenter;PL;Utsmyckande objekt;presenterande objekt för utsmyckande eller konstnärliga syften;
+Komponenter;PLA;Gesims;utsmyckande objekt som separation mellan två områden;kornisch
+Komponenter;PLB;Skulptur;utsmyckande objekt som rumslig representation av något;konstverk
+Komponenter;PLC;Fris;utsmyckande objekt som utskjutande figurer och/eller dekorativa element på en vägg;engagerad kolonn, halvkolonn, pilaster, stuckatur
+Komponenter;PLD;Bild;utsmyckande objekt som representerar, illustrerar eller reproducerar något på en yta;konstverk, tavla, muralmålning
+Komponenter;PLE;Prydnadsmatta;utsmyckande objekt genom en textil som täcker del av ett annat objekt;väggtextil, överkast
+Komponenter;PZ;Multipelt presenterande objekt;presenterande objekt i multipla former;
+Komponenter;PZA;Audiovisuellt alarm;multipelt presenterande objekt för diskreta tillstånd;
+Komponenter;PZB;TV-apparat;multipelt presenterande objekt för multipel information;bildskärm med högtalare, tv-mottagare
+Komponenter;PZC;Interaktiv terminal;multipel presenterande objekt med interaktiv funktion;Prator
+Komponenter;Q;Styrande objekt;objekt för öppning/stängning och styrning av tillträde eller flöde;
+Komponenter;QA;Elbrytande objekt;styrandeobjekt för elektrisk ström i en elektrisk krets;
+Komponenter;QAA;Strömkretsbrytare;elbrytande objekt mekaniskt under normala eller onormala förhållanden;isolerkopplad effektbrytare (mccb), luftbrytare, låskolvskontakt, magnetisk luftbrytare, mikrobrytare, mjukstartare, motorskyddsbrytare, nödstopp, oljeminimumbrytare, polkopplare, spanjolettkontakt, startkopplare, startkopplare för tvillingpump, stjärntriangelkoppling, stoppdon, strömbrytare, strömställare, svavel-hexafluoridbrytare (sf6), tryckknapp (fjädrande), tryckluftbrytare, vakuumbrytare, återställningsapparat
+Komponenter;QAB;Kontaktor;elbrytande objekt mekaniskt under normala förhållanden enbart;aktor (knx), högspänningskontaktor, lågspänningskontaktor, relä
+Komponenter;QAC;Elektronisk strömbrytare;elbrytande objekt elektroniskt ;eltermostat, omkopplare för styrkrets, termostat
+Komponenter;QB;Elseparerande objekt;styrande objekt genom att separera elektriska kretsar;
+Komponenter;QBA;Frånskiljare;elseparerande objekt genom mekanisk isolering av nedströms krets endast från uppströms krets;arbetsbrytare, säkerhetsbrytare
+Komponenter;QBB;Säkringslastfrånskiljare;elseparerande objekt genom mekanisk isolering av nedströms krets endast från uppströms krets och med inbyggd säkring;
+Komponenter;QBC;Isolerskarv;elseparerande objekt med mekanisk ihopfogning;
+Komponenter;QC;Jordande objekt;styrande objekt genom att jorda elektriska kretsar;
+Komponenter;QCA;Jordkoppling;jordande objekt som kopplar elektrisk krets till jord;jordningskopplare
+Komponenter;QM;Styrande objekt av slutet fluidflöde;styrande objekt av fluidflöde av/på i sluten omslutning;
+Komponenter;QMA;Vätskeventil;styrande objekt av slutet fluidflöde för vätska;armatur, avstängningsventil, avtappningsanordning, bidéblandare, blandare, duscharmatur, duschblandare, drickfontän, handfatsblandare, köksblandare, magnetventil, propp, sargblandare, tappkran, tappventil, termostatblandare, tvättställsblandare, tömningsventil, utkastare, vattenblandare, vattenfallsblandare, vattenkran, vattenuttag
+Komponenter;QMB;Gasventil;styrande objekt av slutet fluidflöde för gas;avluftare, luftventil, propp, ventil
+Komponenter;QN;Reglerande objekt av slutet fluidflöde;styrande objekt för variation av fluidflöde i sluten omslutning;
+Komponenter;QNA;Reglerventil för vätska;reglerande objekt av slutet fluidflöde för vätska;shunt, shuntventil, styrventil, ställdon
+Komponenter;QNB;Reglerventil för gas;reglerande objekt av slutet fluidflöde för gas;gasregulator, irisspjäll, jalusispjäll, konstantflödesdon, spjäll, trottelventil
+Komponenter;QP;Styrande objekt av öppet vätskeflöde;styrande objekt för vätskeflöde i öppen omslutning;
+Komponenter;QPA;Dammlucka;kontrollerande objekt av öppet vätskeflöde;slussport
+Komponenter;QQ;Objekt för tillträde till utrymme;styrande objekt för tillträde till utrymme;
+Komponenter;QQA;Fönster;objekt för tillträde till utrymme för enbart ljus;dreh-kippfönster, fast fönster, franskt fönster, glidhängt fönster, kipp-drehfönster, lanternin, pivotfönster, skjutfönster, slagfönster, takljuskupol, tvåvägsfönster, vippfönster, vridfönster
+Komponenter;QQB;Glasparti;objekt för tillträde till utrymme för ljus och personer;fönsterparti
+Komponenter;QQC;Dörr;objekt för tillträde till utrymme för personer;fönsterdörr, innerdörr, jalusidörr, karuselldörr, roterande dörr, skjutdörr, slagdörr, vikdörr, ytterdörr
+Komponenter;QQD;Lucka;mindre objekt för tillträde till utrymme för inspektion eller för överföring av objekt;inspektionslucka, hundlucka, kattlucka, nedkastlucka, renslucka, soplucka, taklucka, tvättlucka, uppstigningslucka, vädringslucka
+Komponenter;QQE;Port;större objekt för tillträde till utrymme för överföring av objekt;garageport, rullgaller, rulljalusi, rullport, skjutport, slagport, takskjutport, vikport, vipport
+Komponenter;QQF;Grind;objekt för tillträde till utrymme med partiell funktion;bom, gångfålla, gånggrind, spärrgrind
+Komponenter;QQG;Spårspärr;objekt för tillträde till utrymme genom blockering av tillträde till spår;spårspärrklots
+Komponenter;QR;Styrande objekt av godsflöde;styrande objekt för flöde av gods;
+Komponenter;QRA;Roterande kammare;reglerande objekt av godsflöde med roterande kammare;doseringsmaskin, roterande godstömning, rörpostväxel, rörväxel
+Komponenter;QRB;Irisventil;reglerande objekt av godsflöde med irisöppning;doseringsmaskin
+Komponenter;QRC;Klaffventil;reglerande objekt av godsflöde med ledad lucka eller skiva;doseringsmaskin
+Komponenter;QS;Styrande objekt för mekanisk rörelse;styrande objekt för mekanisk rörelse;
+Komponenter;QSA;Lås;kontrollerande objekt för mekanisk rörelse genom blockering;elektriskt lås, ellås, eltryckeslås, elslutbleck, grindlås, magnetlås, motorlås, låsregel, regel, rälsvandringshinder, rälsvandringslås, spanjolett, hänglås, klykväxellås, lås- och kontrollanordning, låsanordning, låshus
+Komponenter;QSB;Spårväxel;kontrollerande objekt för mekanisk rörelse genom växling mellan olika spår;
+Komponenter;QZ;Multipelt styrande objekt;styrande objekt i elektriska kretsar med olika metoder;
+Komponenter;QZA;Jordbrytare;multipelt styrande objekt för jordning eller separering;
+Komponenter;R;Begränsande objekt;objekt för begränsning eller stabilisering;
+Komponenter;RA;Elbegränsande objekt;begränsande objekt genom begränsning av elektriskt energiflöde;
+Komponenter;RAA;Diod;elbegränsande objekt genom blockering av ström i en riktning;
+Komponenter;RAB;Induktionsspole;elbegränsande objekt genom induktion i en krets;
+Komponenter;RAC;Motstånd;elbegränsande objekt genom motstånd i en krets;
+Komponenter;RB;Elstabiliserande objekt;begränsande objekt genom stabilisering av elektriskt energiflöde;
+Komponenter;RBA;UPS;elstabiliserande objekt som garanterar kontinuerlig elkraftförsörjning;
+Komponenter;RBB;Elkraftfilter;elstabiliserande objekt som undertrycker ett bestämt frekvensområde;
+Komponenter;RBC;Elkraftequalizer;elstabiliserande objekt som undertrycker eller förstärker multipla frekvensområden;
+Komponenter;RBD;Faskompensator;elstabiliserande objekt som tillhandhåller reaktiv kraft;
+Komponenter;RF;Signalstabiliserande objekt;begränsande objekt genom stabilisering av elektriskt energiflöde;
+Komponenter;RFA;Equalizer;signalstabiliserande objekt som undertrycker eller förstärker multipla frekvensområden;
+Komponenter;RFB;Signalfilter;signalstabiliserande objekt som undertrycker ett bestämt frekvensområde;
+Komponenter;RL;Rörelsebegränsande objekt;begränsande objekt genom begränsning av rörelse;
+Komponenter;RLA;Låskedja;rörelsebegränsande objekt genom begränsning av rörelser hos ett objekt;dörrkedja, säkerhetskedja
+Komponenter;RLB;Stötdämpare;rörelsebegränsande objekt genom avjämning och minskning av rörelser hos ett objekt;vibrationsdämpare
+Komponenter;RLC;Broms;rörelsebegränsande objekt genom hastighetsreducering och stoppande av ett annat objekt;rangerbroms
+Komponenter;RLD;Farthinder;rörelsebegränsande objekt genom att förhindra hög hastighet hos ett annat objekt;cykelfålla, gångfålla, refugelement, spårviddshinder, vägbula
+Komponenter;RM;Returflödesbegränsande objekt;begränsande objekt genom begränsning av returflöde av materia;
+Komponenter;RMA;Backventil;returflödesbegränsande objekt för vätska;återströmningsskydd
+Komponenter;RMB;Backspjäll;returflödesbegränsande objekt för gas;
+Komponenter;RMC;Backspärr;returflödesbegränsande objekt för solid materia;
+Komponenter;RME;Vattenlås;returflödesbegränsande objekt för lukt;luktfälla, odörfälla
+Komponenter;RN;Flödesbegränsande objekt;begränsande objekt genom begränsning av styrt flöde av materia;
+Komponenter;RNA;Flödesbegränsare;justerbart flödesbegränsande objekt för vätska;venturidysa
+Komponenter;RNB;Luftdon;justerbart flödesbegränsande objekt för gas;frånluftsdon, frånluftsventil, luftventil, tilluftsdon, tilluftsventil
+Komponenter;RNC;Flödesbegränsare för solid materia;justerbart flödesbegränsande objekt för solid materia;
+Komponenter;RND;Strypfläns;fast flödesbegränsande objekt för vätska;duschmunstycke, dysa, munstycke, perlator, sprinklerhuvud, sprinklermunstycke, vattenspridare
+Komponenter;RQ;Lokalklimatstabiliserande objekt;begränsande objekt för den lokala omgivningen;
+Komponenter;RQA;Isolering;lokalklimatstabiliserande objekt som begränsar termisk eller ljudtransmission;frostisoleringslager, frostskyddsisolering, ljuddämpning, ljudisolering, termisk isolering, tjälskydd, ljudisolering, luftljudisolering, stegljudsisolering
+Komponenter;RQB;Stabiliserande lager;lokalklimatstabiliserande objekt som stabiliserar flöde av vätska, fukt, vind eller material;geoduk, geotextil, materialskiljande duk, materialskiljande lager, vindskyddspapp
+Komponenter;RQC;Bullerskydd;lokalklimatstabiliserande objekt som stabiliserar ljudutbredning;bullerplank, bullerskärm, ex-ljuddämpare, explosionsljuddämpare, ljudabsorbent, ljuddämpare
+Komponenter;RQD;Klimatskärm;lokalklimatstabiliserande objekt som begränsar vind, nederbörd eller strålning;markis, solskyddsfilm, solskärm, vindskydd
+Komponenter;RQE;Gardin;lokalklimatstabiliserande objekt som begränsar ljusflöde genom textil;draperi, förhänge, rullgardin
+Komponenter;RQF;Persienn;lokalklimatstabiliserande objekt som begränsar ljusflöde genom smala justerbara jalusier;fasadpersienn, invändig persienn
+Komponenter;RQG;Fönsterlucka;lokalklimatstabiliserande objekt som begränsar ljusflöde genom utvändig avskärmning;
+Komponenter;RQH;Ogrässkydd;lokalklimatstabiliserande objekt som förhindrar genomväxt av ogräs;
+Komponenter;RQJ;Skärmvägg;lokalklimatstabiliserande objekt som förhindrar genomsikt och som dämpar ljudöverföring;balkongskärm, duschvägg, insynsskydd, monter, sidoskärm
+Komponenter;RU;Tillträdesbegränsande objekt;begränsande objekt för tillträde;
+Komponenter;RUA;Barriär;tillträdesbegränsande objekt genom en horisontell långsträckt barriär med vertikal utsträckning;mur, parkeringsplanka, plank, p-planka, staket, stopplanka, stängsel, viltstängsel
+Komponenter;RUB;Bom;tillträdesbegränsande objekt genom en horisontell bom;vägspärr
+Komponenter;RUC;Vändkors;tillträdesbegränsande objekt genom en roterande barriär;karuselldörr
+Komponenter;RUD;Pollare;tillträdesbegränsande objekt genom en barriär med begränsad horisontell och vertikal utsträckning;hinderpåle
+Komponenter;RUE;Väghinder;tillträdesbegränsande objekt genom utformning av rörelseväg;färist, råttspärr
+Komponenter;RUF;Fågelnät;tillträdesbegränsande objekt genom ett nät;
+Komponenter;S;Manuellt interagerande objekt;objekt för detektering av en manuell handling och tillhandahållande av lämplig respons;
+Komponenter;SF;Ögonmanöverdon;manuellt interagerande objekt genom ögonfokusering;
+Komponenter;SFA;Ögonavläsare;ögonmanöverdon för positionering;
+Komponenter;SG;Handmanöverdon;manuellt interagerande objekt för handaktion;
+Komponenter;SGA;Vridställdon;handmanöverdon genom vridning;fönstervred, låsvred, vred
+Komponenter;SGB;Greppställdon;handmanöverdon genom handgrepp;
+Komponenter;SGC;Handflateställdon;handmanöverdon genom tryckning;nödstoppsknapp
+Komponenter;SGD;Handtag;handmanöverdon genom hävstångsoperation;växelställ
+Komponenter;SGE;Dragställdon;handmanöverdon genom dragning;dragsnöre
+Komponenter;SGF;Nyckelställdon;handmanöverdon genom vridning av en matchande låscylinder eller låsmekanism;nyckeldon
+Komponenter;SH;Fotmanöverdon;manuellt interagerande objekt för fotrörelse;
+Komponenter;SHA;Pedal;fotmanöverdon genom fottryck;trampkontakt
+Komponenter;SJ;Fingermanöverdon;manuellt interagerande objekt genom fingerrörelse;
+Komponenter;SJA;Vippställdon;fingermanöverdon genom hävstångsoperation;vippdon
+Komponenter;SJB;Tryckställdon;fingermanöverdon genom tryckning;branddörrstängningsknapp, bråklarmsknapp, larmknapp, larmtryckknapp, tangentbord, tryckdon, tryckknapp, överfallslarmsknapp
+Komponenter;SJC;Touchdon;fingermanöverdon genom vidröring;pekdon, pekskärm
+Komponenter;SJD;Fingerskiva;fingermanöverdon genom vridning av skiva;
+Komponenter;SK;Rörelsedon;manuellt interagerande objekt genom dess rörelse eller position;
+Komponenter;SKA;Joystick;rörelsedon genom begränsade positionerings- och valoperationer;pekplatta, rullmus
+Komponenter;SKB;Datormus;rörelsedon genom obegränsade positionerings- och valoperationer;ljuspenna, mus
+Komponenter;T;Transformerande objekt;objekt för transformering;
+Komponenter;TA;Eltransformerande objekt;transformerande objekt för elektrisk energi utan att ändra mellan likspänning och växelspänning;
+Komponenter;TAA;Transformator;eltransformerande objekt från AC till AC utan ändring av frekvensen;autotransformator, drivdon, isolertransformator, krafttransformator, mättransformator, oljeisolerad distributionstransformator, skyddstransformator, spänningstransformator, strömtransformator, störskyddstransformator, sugtransformator, torrisolerad distributionstransformator, torrisolerad transformator, vridtransformator, vätskeisolerad transformator
+Komponenter;TAB;Likströmsomvandlare;eltransformerande objekt från DC till DC;
+Komponenter;TAC;Frekvensomvandlare;eltransformerande objekt från AC till AC med ändring av frekvensen;
+Komponenter;TAD;Fasomvandlare;eltransformerande objekt från AC till AC med förändring av vinkeln mellan spänning och strömstyrka;frekvensomriktare
+Komponenter;TB;Elkonverterande objekt;transformerande objekt för elektrisk energi mellan likspänning och växelspänning;
+Komponenter;TBA;Likriktare;elkonverterande objekt från AC till DC;laddare
+Komponenter;TBB;Växelriktare;elkonverterande objekt från DC till AC;
+Komponenter;TBC;Dubbelriktad konverterare;elkonverterande objekt från AC till DC eller från DC till AC;konverter
+Komponenter;TC;Universalkraftaggregat;transformerande objekt för elektrisk energi från likspänning och växelspänning till likspänning eller växelspänning;
+Komponenter;TCA;Universalkraftaggregat för växelspänning;universalkraftaggregat för växelspänning;kraftaggregat
+Komponenter;TCB;Universalkraftaggregat objekt för likspänning;universalkraftaggregat objekt för likspänning;kraftaggregat, laddare
+Komponenter;TF;Signalkonverterande objekt;transformerande objekt för signal;
+Komponenter;TFA;Förstärkare;signalkonverterande objekt som bibehåller signalformen;repeater
+Komponenter;TFB;Antenn;signalkonverterande objekt mellan trådad och trådlös form;balis, fast antenn, hörslinga, kodad spårledning, parabolantenn
+Komponenter;TFC;Signalformerare;signalkonverterande objekt mellan trådade former;decoder, dekoder, dsp, mixer
+Komponenter;TFD;Optisk sändare/mottagare;signalkonverterande objekt mellan elektrisk och optisk form;
+Komponenter;TFE;Telefon;signalkonverterande objekt mellan ljudvågor och elektrisk signal;mobiltelefon
+Komponenter;TL;Mekanisk energitransformerande objekt;transformerande objekt för mekanisk energi;
+Komponenter;TLA;Växel;mekanisk energitransformerande objekt för hastighet;kraftväxel, växel
+Komponenter;TLB;Vridmomentsreglerare;mekanisk energitransformerande objekt för vridmoment;
+Komponenter;TLC;Hävstång;mekanisk energitransformerande objekt för kraft;
+Komponenter;TM;Massreducerande objekt;transformerande objekt för form genom massreduktion;
+Komponenter;TMA;Borrmaskin;massreducerande objekt genom en mekanisk process;hålslagningsmaskin, slipmaskin, såg, vinkelslip
+Komponenter;TMB;Värmeskärare;massreducerande objekt genom en termisk process;gasskärare, gasskärmaskin, plasmaskärare
+Komponenter;TMC;Etsningsmaskin;massreducerande objekt genom en kemisk process;
+Komponenter;TP;Materialomformande objekt;transformerande objekt för form genom omformning;
+Komponenter;TPA;Smidesmaskin;materialomformande objekt genom smide;
+Komponenter;TPB;Extruderingsmaskin;materialomformande objekt genom extrudering;strängpress
+Komponenter;TPC;Sträckmaskin;materialomformande objekt genom sträckning;trådsträckmaskin
+Komponenter;TPD;Vals;materialomformande objekt genom valsning;lettringsmaskin, lättringsmaskin, mangel
+Komponenter;TPE;Bockningsmaskin;materialomformande objekt genom böjning;
+Komponenter;TPF;Elektromagnetisk formningsmaskin;materialomformande objekt genom högenergiapplicering;explosionsformningsmaskin
+Komponenter;TR;Växt;transformerande objekt för strålning genom fotosyntes;
+Komponenter;TRA;Träd;växt som har en vedartad huvudstam och som vanligen når en höjd av minst 5 m;barrträd, fruktträd, lövträd
+Komponenter;TRB;Buske;växt där den vedartade stammen vid markytan delas i flera jämnstarka stammar;barrbuske, buske, bärbuske, häckplanta, lövbuske, planta, prydnadsbuske, ros
+Komponenter;TRC;Klätterväxt;växt med långa, ofta veka skott, vilka med hjälp av klätterorgan tar sig upp i ljuset;klängväxt, lian, slingerväxt
+Komponenter;TRD;Ört;växt som inte alls eller endast obetydligt är förvedad;annuell, gräsplanta, knölväxt, lökväxt, perenn, pluggplanta
+Komponenter;U;Hållande objekt;objekt för positioning av andra objekt;
+Komponenter;UA;Fixerande objekt;hållande objekt genom fixering vid en bestämd position;
+Komponenter;UAA;Belysningsarmatur;fixerande objekt för ljuskällor;armatur, armaturränna, lampa
+Komponenter;UAB;Genomföring;fixerande objekt för kablar;kabelgenomföring, rörgenomföring, takgenomföring
+Komponenter;UAC;Isolator;fixerande objekt för ledare;spännisolator, stagisolator
+Komponenter;UAD;Vangstycke;fixerande objekt för trappsteg;
+Komponenter;UAE;Beklädnadsfäste;fixerande objekt för täckande objekt;bärläkt, dubb, glespanel, nockbräda, putsnät, ströläkt, stödläkt, stödbalk
+Komponenter;UAF;Växtstöd;fixerande objekt för växt;pergola, spaljé, trädstöd
+Komponenter;UAG;Spårhållare;fixerande objekt för avstånd mellan räler;
+Komponenter;UAH;Klämma;fixerande objekt för verktyg eller arbetsstycke;
+Komponenter;UAJ;Cykelställ;fixerande objekt för fordon;
+Komponenter;UB;Uppbärande objekt;hållande objekt genom uppbärning eller stöd;
+Komponenter;UBA;Stödhylla;uppbärandeobjekt mellan diskreta positioner;armaturränna, blindbotten, golvkanal, installationskanal, kabelkanal, kabelränna, kabelstege, kanalskena, landgång, länkplatta, trådränna, trådstege
+Komponenter;UBB;Hängare;uppbärandeobjekt i en diskret punkt genom hängning;armaturkrona, brokabel, bärkabel, bärtråd, hängkedja, hängverk, kabelkedja, kedja, klädkrok, krokbräda, kätting, rännkrok, spännkedja, stolparm, tavellist, undertakspendel, undertaksprofil, undertaksväggskena, upphängningsvajer, utliggare, väggskena
+Komponenter;UBC;Trappsteg;uppbärandeobjekt i en diskret punkt genom steg;blocksteg, stegpinne
+Komponenter;UBD;Stolpe;uppbärandeobjekt i en diskret punkt genom lyftning;baluster, belysningsstolpe, flaggstång, konsol, kontaktledningsstolpe, kraftledningsstolpe, mast, skyltbrygga, stativ, stålbåge, ståndare, trappspindel, trappstock
+Komponenter;UBE;Uppbärande möbel;uppbärande objekt för viss nivå genom lyftning;arbetsbänk, bord, brits, bänk, bänkbord, bänkskiva, disk, divan, fåtölj, pall, parkbord, parkbänk, plattform, rastmöbel, receptionsdisk, serveringsdisk, soffa, stol, strykbord, strykbräda, ståbord, säng
+Komponenter;UBF;Portal;uppbärandeobjekt  genom två stolpar med förbindande horisontell överliggare;
+Komponenter;UC;Omslutande objekt;hållande objekt genom omslutning ;
+Komponenter;UCA;Apparatskåp;omslutande object för apparater;anslutningsdosa, apparatdosa, apparatlåda, dosa, dragbrunn, elskåp, fjärrvärmecentral, installationsskåp, kabelmätarskåp, kabelbrunn, kabelskåp, kapslad central, kopplingsbox, kopplingsbrunn, kopplingsdosa, monteringsram, mätarskåp, rack, stativ, tändplats, växelvärmeskåp
+Komponenter;UCB;Växtjord;omslutande object för växtrötter;blomjord
+Komponenter;UCC;Ventilationshuv;delvis omslutande object för punktventilation;draghuv, dragskåp, kökskåpa, renluftsbänk, spiskåpa, säkerhetsbänk, ventilerad förvaringsenhet
+Komponenter;UE;Byggkonstruktivt objekt i mark;hållande objekt för grundläggning;
+Komponenter;UEA;Bärande skikt Markplatta;markkonstruktivt objekt i form av ett liggande plan som överför för transversallaster till mark;bottenplatta, bärlager, fördelningsplatta, grundplatta, ledningsbädd, platta på mark, skelettjord, spårballast, överballast
+Komponenter;UEB;Markfundament;byggnadskonstruktivt fundament stående långsträckt form som överför laster till marken;fundament, grundfundament, pelarholk, plint, påle
+Komponenter;UEC;Sliper;markkonstruktivt objekt i långsträckt form som överför transversallaster till mark;
+Komponenter;UED;Bindlager;markkonstruktivt objekt i form av ett liggande plan som tar upp skjuvkrafter;sättbruk, sättsand
+Komponenter;UF;Vertikalt byggkonstruktivt objekt;hållande objekt som formar strukturellt stöd i vertikal riktning;
+Komponenter;UFB;Pelare;vertikalt lastöverförande objekt i långsträckt form som överför axiella trycklaster vertikalt till andra strukturella objekt;baluster, fackverkspelare, kolonn, pylon, regel, stödben
+Komponenter;UFC;Bärande stödmur;vertikalt lastöverförande objekt i form av ett stående plan som överför vertikala och transversala laster;frontmur, grusskifte, källarväggstomme, lagerpall, landfäste
+Komponenter;UFD;Väggkärna;vertikalt lastöverförande objekt i form av ett stående plan som överför enbart vertikala laster;grundmur, mellanstöd, murverk, skiva, skivpelare, väggmur, väggregelverk, väggstomskiva, väggstomme
+Komponenter;UFE;Stödmur;vertikalt lastöverförande objekt i form av ett stående plan som överför transversala laster;stödvägg, kajmur, plåt på stålbågar, sekantpåle, slitsmur, spont, stenfylld nätkorg, trädgropsfundament, vingmur
+Komponenter;UG;Horisontellt byggkonstruktivt objekt;hållande objekt som formar strukturellt stöd i horisontell riktning;
+Komponenter;UGA;Balk;horisontellt byggkonstruktivt objekt i långsträckt form som överför primärt transversallaster till andra strukturella objekt;brosliper, bumerangbalk, bärlina, fackverksbalk, grundbalk, hammarband, krökt balk, linjesliper, omvänd sadelbalk, pulpetbalk, rak balk, sadelbalk, sliper, syll, takstol, traversbalk, vierendeelbalk, votad balk
+Komponenter;UGB;Bärande platta;horisontellt byggkonstruktivt objekt i form av ett liggande plan som överför transversallaster till andra strukturella objekt;balkongplatta, bjälklagsplatta, brobaneplatta, fördelningsplatta, grundplatta, grundsula, håldäckselement, loftgångsplatta, massivelelement, plattbärlag, påldäck, pålfundament, pålplatta, pålplint, tt-kassett
+Komponenter;UGC;Stödplatta;horisontellt byggkonstruktivt objekt i form av en platta som fördelar last från ett överliggande till ett underliggande strukturellt objekt;bergsko, jordsko, lagerklack, maskinfundament, pålsko, stödklots, stödknap
+Komponenter;UGD;Konsol;horisontellt byggkonstruktivt objekt i form av en utkragning som överför transversallaster från ett överliggande objekt;brobanekonsol
+Komponenter;UH;Byggkonstruktivt stag;byggkonstruktivt hållande objekt i riktningsoberoende orientering;
+Komponenter;UHA;Dragstag;Byggkonstruktivt stag som överför axiella draglaster;bärkabel, snedsträva, spännstag, spännstål, stag, stång
+Komponenter;UHB;Tryckstag;Byggkonstruktivt stag som överför trycklaster;hammarband vid spontvägg, horisontellt tryckstag, kontrefort, strävpelare, stämp
+Komponenter;UJ;Byggkonstruktiv båge;byggkonstruktivt hållande objekt i böjd form;
+Komponenter;UJA;Bärande båge;riktningsoberoende byggkonstruktivt objekt som överför transversallaster till axiella laster;båge, inslagsvalv, klostervalv, kryssribbvalv, kryssvalv, rörskärm, stickvalv, stjärnvalv, tunnvalv, valvplåt
+Komponenter;UJB;Brorör;riktningsoberoende lastöverförande objekt i form av ett rör med > 2 meter i diameter som överför last;trumma
+Komponenter;UM;Förstärkande objekt;hållande objekt genom förstärkning ;
+Komponenter;UMA;Armeringsstång;förstärkande objekt i form av en inbäddad stång;armeringsjärn, jordskruv, jordspik
+Komponenter;UMB;Armeringsnät;förstärkande objekt i form av inbäddat nät eller duk;armeringsduk, geotextil, jordarmeringsnät, kanalnät, nät
+Komponenter;UMC;Förstärkningslager;förstärkande objekt i form av ett masslager;rustbädd, underballast
+Komponenter;UMD;Injekterad massa;förstärkande objekt i form av inbäddat material;jetinjektering, kc-pelare, kompakteringsinjektering, mdm-pelare, masstabilisering, penetrationsinjektering, pliggpålning, stenpelare, ytstabilisering
+Komponenter;UME;Slutbleck;förstärkande objekt i form av ett slutbleck;
+Komponenter;UMF;Utspetsning;förstärkande objekt i form av utspetsning;
+Komponenter;UMG;Vertikaldränering;förstärkande objekt i form av ett vertikalt dränerande skikt;
+Komponenter;UMH;Sprutbetong;förstärkande objekt i form av sprutbetong;
+Komponenter;UMJ;Betonglining;förstärkande objekt i form av betonglining;
+Komponenter;UMK;Avstyvning;förstärkande objekt i form av avstyvning;livavstyvning
+Komponenter;UML;Förband;förstärkande objekt i form av tvärförband;tvärbalk, tvärförband
+Komponenter;UMM;Förstärkningskabel;förstärkande objekt i form av kablar;kabel, staglina
+Komponenter;UMN;Följare;förstärkande objekt i form av en horisontell sammanbindare;mellanliggare
+Komponenter;UMP;Tryckbank;förstärkande objekt som med sin mothållande tyngd ger ökad stabilitet i jord;stödfyllning
+Komponenter;UN;Inramande objekt;hållande objekt genom inramning ;
+Komponenter;UNA;Karm;inramande objekt med en fast ram;dörrkarm, fönsterkarm, sarg, öppningskarm
+Komponenter;UNB;Tröskel;inramande objekt i den lägsta delen av en dörröppning;
+Komponenter;UNC;Ram;inramande objekt med en rörlig ram;båge, fönsterbåge, fönsterram
+Komponenter;UND;Spröjs;inramande objekt som delar ett annat objekt;
+Komponenter;UP;Sammankopplande objekt;hållande objekt genom att koppla ihop objekt;
+Komponenter;UPA;Lager;sammankopplande objekt genom lager;axellager, brolager, rörligt lager
+Komponenter;UPB;Gångjärn;sammankopplande objekt genom rörlig mekanisk fog;ledad pålskarv, länk, länkplatta
+Komponenter;UPC;Kemisk fog;sammankopplande objekt genom kemisk fog;byggsilikon, fogmassa, glassilikon, silikon, våtrumssilikon
+Komponenter;UPD;Skarv;sammankopplande objekt genom fast mekanisk fog;högspänningsskarv, lågspänningsskarv, rälsskarv
+Komponenter;UQ;Fästande objekt;hållande objekt genom fastsättning;
+Komponenter;UQA;Permanent mekanisk fastsättning;fästande objekt genom rigid permanent mekanisk infästning;dymling, falsning, nit, plugg, popnit, spik, spikplåt
+Komponenter;UQB;Reversibel mekanisk fastsättning;fästande objekt genom rigid reversibel mekanisk infästning;ankarjärn, ankarplatta, ankarslut, balksko, befästning, bergbult, bergförankring, blindnit, bult, bärankare, bärkabelförankring, clip, fixering, fästdon, förankring, förankringsbult, förankringsplatta, förankringspunkt, grundskruv, hylsankare, infästningsbult, ingjutningsgods, knutplåt, kramla, kulankare, montageplåt, montageskena, mutter, omvikningskupa, pelarsko, plattankare, pålskarv, räckesförankring, rälsskarv, rörhylsa, sammanbindning, skruv, skruvförband, sprutbetongkors, stegband, surrning, svep, termoplastskruv, vajerlyft, väggankare, väggsko
+Komponenter;UQC;Elastisk fastsättning;fästande objekt genom elastisk mekanisk anordning;avspänningsanordning, dilatationsfog
+Komponenter;UQD;Permanent kemisk fastsättning;fästande objekt genom permanent kemisk infästning;bruksfog, cementfog, fogskum, gjutfog, kemankare, kemiskt trä, limfog, murbruk, svetsfog, svetsplatta, svetsplåt
+Komponenter;UT;Nivåjusterande objekt;hållande objekt genom nivåjustering;
+Komponenter;UTA;Fyllningsmassa;nivåjusterande objekt som ger en yta bestämd profil genom fyllning;avjämningslager, bankfyllning, flytspackel, fukthållande jord, filterlager, fyllning, förbelastning, justeringlager, kon, kringfyllning, lastreducerande fyllning, lättfyllning, resterande fyllning, slänt, spackel, tätkärna, återfyllning, övergångslager
+Komponenter;UTB;Schaktmassa;nivåjusterande objekt som ger en yta bestämd profil genom schaktning;bergschakt, bergskärning, jordschakt, tunnel- och bergrumsgeometri, urgrävning
+Komponenter;UU;Befintlig mark;hållande objekt genom befintlig mark;
+Komponenter;UUA;Berg;befintlig mark som utgörs av berg;
+Komponenter;UUB;Friktionsjord;befintlig mark som utgörs av friktionsjord;grus, morän, sand
+Komponenter;UUC;Kohesionsjord;befintlig mark som utgörs av kohesionsjord;lera, kvicklera, silt
+Komponenter;UUD;Organisk jord;befintlig mark som utgörs av organisk jord;dy, gyttja, torv
+Komponenter;UUE;Fyllningsmaterial;befintlig mark som utgörs av fyllningsmaterial;
+Komponenter;W;Ledande objekt;objekt för ledning från en plats till en annan;
+Komponenter;WB;Högspänningsledande objekt;ledande objekt för högspänning;
+Komponenter;WBA;Högspänningsamlingsskena;högspänningsledande objekt med en strömskena;ledningsbrygga
+Komponenter;WBB;Högspänningskabel;högspänningsledande objekt med en isolerad ledning;elkabel, elledning, hängkabel, kraftkabel
+Komponenter;WBC;Högspänningsfriledning;högspänningsledande objekt med en oisolerad ledning;hjälpkraftledning, kontaktledning, kontakttråd
+Komponenter;WBD;Strömskena;högspänningsledande objekt med en isolerad styv ledare;
+Komponenter;WBE  ;Högspänningsbussning;högspänningsledande objekt genom en omslutning eller vägg;
+Komponenter;WD;Lågspänningsledande objekt;ledande objekt för lågspänning;
+Komponenter;WDA;Lågspänningssamlingsskena;lågspänningsledande objekt med en strömskena;kontaktskena, ledningsbrygga
+Komponenter;WDB;Lågspänningskabel;lågspänningsledande objekt med en isolerad ledning;elkabel, elledning, hängspiralkabel, kraftkabel, sladd
+Komponenter;WDC;Lågspänningsfriledning;lågspänningsledande objekt med en oisolerad ledning;
+Komponenter;WDD;Lågspänningsbussning;lågspänningsledande objekt genom en omslutning eller vägg;
+Komponenter;WE;Referenspotentialledande objekt;ledande objekt för referenspotential;
+Komponenter;WEA;Jordreferenspotentialsamlingsskena;referenspotentialledande objekt till jord med en skena;
+Komponenter;WEB;Jordreferenspotentialkabel;referenspotentialledande objekt till jord med en ledning;
+Komponenter;WEC;Referenspotentialsamlingsskena;referenspotentialledande objekt med en skena;
+Komponenter;WED;Referenspotentialkabel;referenspotentialledande objekt med en ledning;
+Komponenter;WG;Elsignalledande objekt;ledande objekt för elektriska signaler;
+Komponenter;WGA;Styrsignalkabel;elsignalledande objekt för kontroll och mätning;brandkabel, kontrollkabel
+Komponenter;WGB;Datasignalkabel;elsignalledande objekt för dataöverföring;datakabel, signalkabel
+Komponenter;WGC;Datasignalbussning;elsignalledande objekt  genom en omslutning eller vägg;
+Komponenter;WH;Ljusledande objekt;ledande objekt för ljus;
+Komponenter;WHA;Optisk signalkabel;ljusledande objekt för signalöverföring;
+Komponenter;WHB;Optisk ljuskabel;ljusledande objekt för ljusöverföring;optisk fiber
+Komponenter;WHC;Lins;ljusledande objekt för bestämd ljusbrytning;
+Komponenter;WHD;Spegel;ljusledande objekt för bestämd ljusreflektion;ljusreflektor, reflektor
+Komponenter;WJ;Ljudledande objekt;ledande objekt för ljud;
+Komponenter;WJA;Ljudreflektor;ljudledande objekt genom reflektion;ljudbaffel
+Komponenter;WL;Solidmaterialedande objekt;ledande objekt för solid materia i öppen omslutning;
+Komponenter;WLA;Rullbord;solidmaterialedande objekt genom rullning;
+Komponenter;WLB;Kana;solidmaterialedande objekt genom lutning;rutschbana
+Komponenter;WM;Öppet ledande objekt;ledande objekt för fluid i öppen omslutning;
+Komponenter;WMA;Dräneringslager;öppet ledande objekt i ett lager;dränmatta, dränskiva, infiltrationslager
+Komponenter;WMB;Ränna;öppet ledande objekt för vätska i ränna;dike, dräneringskanal, fotränna, gesimsränna, halvrör, hängränna, kanal, mätränna, ränndal, ränndalsplatta, skibord
+Komponenter;WMC;Bleck;öppet ledande objekt för vätska med öppen yta;beslag, fönsterbleck, plåt, plåtbeslag
+Komponenter;WMD;Droppnäsa;öppet fluidledande objekt för vätska genom överhäng;
+Komponenter;WME;Fotplåt;öppet ledande objekt för vätska till ränna genom profil;
+Komponenter;WMF;Dränrör;öppet ledande objekt i ett perforerat rör;infiltrationsrör, luftningsrör
+Komponenter;WMG;Infiltrationsbrunn;öppet ledande objekt i en öppen brunn;dränbrunn, luftbrunn, perkolationsbrunn, radonbrunn
+Komponenter;WP;Slutet ledande objekt;ledande objekt för materia i sluten omslutning;
+Komponenter;WPA;Rör;slutet ledande objekt i cirkulär styv form;avloppsrör, distributionsledning,  huvudledning, installationsrör,  servisledning, sidotrumma, spillvattenrör, spirorör, spiralrör, stuprör, tilloppstub, torrtrumma, trumma, tub, va-ledning, vattenledning, vattenrör, vp-rör, vägtrumma
+Komponenter;WPB;Kanal;slutet ledande objekt i icke-cirkulär styv form;avgaskanal, avgasrör, kanal, skorsten
+Komponenter;WPC;Slang;slutet ledande objekt i flexibel form;elrör, gasutlopp, installationsrör, luftslang, vattenslang, vp-rör, vätskeslang
+Komponenter;WQ;Mekanisk energiledande objekt;ledande objekt för mekanisk energi;
+Komponenter;WQA;Drivaxel;mekanisk energiledande objekt genom en axel;stång
+Komponenter;WQB;Rem;mekanisk energiledande objekt genom en rem;kilrem, kuggrem, lina, rep, stålbälte, stållina
+Komponenter;WQC;Kedja;mekanisk energiledande objekt genom en kedja;
+Komponenter;WQD;Kopplingsanordning;mekanisk energiledande objekt genom en kopplingsanordning;
+Komponenter;WQE;Hjul;mekanisk energiledande objekt genom ett hjul;kedjedrev, kuggkjul
+Komponenter;WQF;Kuggstång;mekanisk energiledande objekt genom en kuggstång;
+Komponenter;WQG;Hydraulslang;mekanisk energiledande objekt genom en fluidlänk;hydraulrör, tryckluftslang, tryckluftsrör
+Komponenter;WR;Rälsobjekt;ledande objekt för spårbundna objekt;
+Komponenter;WRA;Räl;rälsobjekt som ger en styrd färdväg;farräl, gaturäl, gejder, mellanräl, moträl, spetsräl, stödräl, vingräl, övergångsräl
+Komponenter;WRB;Spårkors;rälsobjekt för korsning;
+Komponenter;WV;Termisk energiledande objekt;ledande objekt för termisk energi;
+Komponenter;WVA;Termisk massa;termisk energiledande objekt genom en solid massa;
+Komponenter;WVB;Termisk vätska;termisk energiledande objekt genom en statisk vätska;
+Komponenter;WZ;Ledande objekt för multipla flödestyper;ledande objekt för multipla flödestyper;
+Komponenter;WZA;Hybridkabel;ledande objekt för multipla flödestyper för elektrisk energi, elektriska signaler, optiska signaler, mekanisk energi och/eller vätska;
+Komponenter;X;Gränssnittsobjekt;objekt för gränssnitt till objekt;
+Komponenter;XB;Anslutande objekt för högspänning;gränssnittsobjekt för högspänning;
+Komponenter;XBA;Elkraftplint för högspänning;anslutande objekt för högspänning för en anslutning;
+Komponenter;XBB;Elkraftanslutning för högspänning;anslutande objekt för högspänning för flera stickproppar;kopplingsklämma
+Komponenter;XBC;Eluttagslåda för högspänning;anslutande objekt för högspänning för flera fasta anslutningar;
+Komponenter;XD;Anslutande objekt för lågspänning;gränssnittsobjekt för lågspänning;
+Komponenter;XDA;Elkraftplint för lågspänning;anslutande objekt för lågspänning för en anslutning;kopplingsplint, stolpinsats
+Komponenter;XDB;Elkraftanslutning för lågspänning;anslutande objekt för lågspänning för flera stickproppar;pinnlödningsanslutning, reservkraftintag
+Komponenter;XDC;Eluttagslåda för lågspänning;anslutande objekt för lågspänning för flera fasta anslutningar;uttagscentral
+Komponenter;XDD;Elkraftuttag för lågspänning;anslutande objekt för lågspänning för  fast anslutning av en flexibel kabel för elektrisk apparatur;bilvärmaruttag, eluttag, golvuttag, lamputtag, motorvärmaruttag, vägguttag
+Komponenter;XDE;Elkraftterminal för lågspänning;anslutande objekt för lågspänning för  flera stickproppsanslutna elektriska apparater;elskena, golvbox, kontaktskena, uttagsbox, uttagspanel, uttagsstav
+Komponenter;XE;Potentialanslutande objekt;gränssnittsobjektför jord eller referenspotential;
+Komponenter;XEA;Skyddsjordskena;potentialanslutande objekt till skyddsjord;jordkontakt, kulbult, skyddsjordterminal, skyddsjordkontakt
+Komponenter;XEB;Skyddspotentialutjämningsskena;potentialanslutande objekt till potentialutjämning;ekp-dubb
+Komponenter;XEC;Funktionsjordskena;potentialanslutande objekt till funktionell jord;
+Komponenter;XED;Funktionspotentialutjämningsskena;potentialanslutande objekt till funktionell koppling;
+Komponenter;XEE;Jordelektrod;potentialanslutande objekt som ger elektrisk kontakt med jord;jordspett, jordplatta
+Komponenter;XEF;Åskledare;potentialanslutande objekt som kopplar blixt till elektrisk krets;
+Komponenter;XG;Elsignalanslutande objekt;gränssnittsobjekt för elektriska signaler;
+Komponenter;XGA;Signalkoppling;elsignalanslutande objekt med en kopplingspunkt;datauttag, signaluttag, tele/datauttag, teleuttag, uttag
+Komponenter;XGB;Signalkontakt;elsignalanslutande objekt med en pluggningspunkt;dörrkontakt, kontakt
+Komponenter;XGC;Signalfördelare;elsignalanslutande objekt med flera pluggningspunkter;10-parsplint, hub, kopplingsbox, kopplingslåda, kopplingsplint, nätnav, spridningsplint
+Komponenter;XGD;Patchpanel;elsignalanslutande objekt för flera linjer;uttagspanel, uttagsplint
+Komponenter;XH;Ljusanslutande objekt;gränssnittsobjekt för optiska fibrer;
+Komponenter;XHA;Fiberuttag;ljusanslutande objekt med en eller flera pluggningspunkt(er);fiberbox
+Komponenter;XK;Insamlande objekt till flöde;gränssnittsobjekt i början av ett styrt flöde;
+Komponenter;XKA;Utslagsback;insamlande objekt för avloppsvatten;bidé, diskbänk, handfat, spolanordning, spolfunktion, spolpost, diskho, disklåda, handfat, mattvättho, spolback, tvättbalja, tvättbänk, tvättlåda, tvättränna, tvättställ
+Komponenter;XKB;Toalettstol;insamlande objekt för avföring och  urin;klosett, vattenklosett, vattentoalett, wc, wc-stol
+Komponenter;XKC;Urinoar;insamlande objekt för enbart urin;urinal
+Komponenter;XKD;Droppkopp;insamlande objekt för överskottsvätska från tekniskt system;kakfat, vattkupa, vattenkupa
+Komponenter;XKE;Inloppsbrunn;insamlande objekt för överskott;dagvattenbrunn, gallerbrunn, golvbrunn, kupolbrunn, rännstensbrunn, spygatt, takbrunn, ytavlopp
+Komponenter;XM;Anslutningsobjekt för slutet flöde;gränssnittsobjekt för slutet flöde av materia;
+Komponenter;XMA;Avtagbar rörkoppling;avtagbart slutet flödesanslutande objekt;banjokoppling, brandpost, brunn, hylskoppling, klämringskoppling, korskoppling, l-koppling, muffkoppling,  rak koppling, rörmuff, slangkoppling, snabbkoppling, stos, t-koppling, y-koppling
+Komponenter;XMB;Fast rörkoppling;fast slutet flödesanslutande objekt;flänskoppling, lödkoppling
+Komponenter;XMC;VA-brunn;omslutande slutet flödesanslutande objekt;brunn, nedstigningsbrunn, rb-brunn, rensbrunn, spolbrunn, storbrunn, tillsynsbrunn
+Komponenter;XN;Fast mekanisk koppling;gränssnittsobjekt för fast överföring av mekaniska krafter;
+Komponenter;XNA;Flänskoppling;fast mekanisk koppling av axlar med ett par flänsar;
+Komponenter;XNB;Muffkoppling;fast mekanisk koppling av axlar med delad muff;
+Komponenter;XNC;Splineskoppling;fast mekanisk koppling mellan axlar med samverkande tänder och skåror;hirthkoppling
+Komponenter;XND;Flexkoppling;fast mekanisk koppling mellan icke parallella axlar;kardanknut
+Komponenter;XNE;Koppel;fast mekanisk koppling som fångar upp och kopplar ihop två rörliga objekt ;järnvägskoppel, skrivkoppel, centralkoppel
+Komponenter;XNF;Länk-pinnkoppling;fast mekanisk koppling för fixering mellan två rörliga objekt ;
+Komponenter;XP;Urkopplingsbar mekanisk koppling;gränssnittsobjekt för icke kontinuerlig överföring av mekaniska krafter;
+Komponenter;XPA;Friktionskoppling;objekt för in- och urkoppling av mekanisk kraft genom friktion;centrifugalkoppling, hydraulisk koppling
+Komponenter;XPB;Vätskekoppling;objekt för in- och urkoppling av mekanisk kraft genom hydrodynamisk effekt;
+Komponenter;XPC;Frihjul;objekt för in- och urkoppling av mekanisk kraft genom ömsidig låsning;spärrkoppling
+Komponenter;XPD;Magnethållare;objekt för in- och urkoppling av mekanisk kraft genom magnetisk kraft;dörrhållare, dörrhållarmagnet, dörrmagnet, magnetlås
+Komponenter;XS;Nivåförbindande objekt;gränssnittsobjekt mellan nivåer;
+Komponenter;XSA;Vilplan;nivåförbindande objekt i form av ett horisontellt plan kopplat till ett trapplopp;avsats, arbetsbrygga, gångbrygga, inspektionsbrygga, skorstensbrygga, takbrygga
+Komponenter;XSB;Trapplopp;nivåförbindande objekt i form av en serie steg;lejdare, rak trappa, spiraltrappa, trappstege, vindeltrappa
+Komponenter;XSC;Stege;nivåförbindande objekt av en serie stegpinnar;skorstensstege, takpinnstege, taksteg, takstege, taktrappstege
+Komponenter;XSD;Ramp;nivåförbindande objekt i form av ett lutande plan;
+Komponenter;XSE;Brandstång;nivåförbindande objekt i form av en vertial påle;glidstång
+Komponenter;XT;Utrymmesförbindande objekt;gränssnittsobjekt mellan utrymmen;
+Komponenter;XTA;Öppning;utrymmesförbindande objekt i form av genomträngning;bergschakt för tunnel, brevinkast, erhållen tunnelkontur, hål, trappöppning, tunnel, öppning
+Komponenter;XTB;Hålrum;utrymmesförbindande objekt i form av hålrum;grop, bergrum, bergschakt för bergrum, bergschakt för dike,  bergschakt för ledning, bergschakt för magasin, borrhål, erhållen bergrumskontur, hålighet, jordschakt för dike, jordschakt för ledning, jordschakt för magasin, nisch, urgröpning, ursparing
+Komponenter;XZ;Anslutande objekt för multipla flödestyper;gränssnittsobjekt för multipla flödestyper;
+Komponenter;XZA;Hybridkontakt;anslutande objekt för multipla flödestyper för elektrisk energi, elektriska signaler, optiska signaler och/eller vätska;
+Komponenter;Y;Utrustning och inredning;objekt som behövs för en viss tillämpning eller verksamhet;
+Komponenter;YA;Utrustning;utrustning som behövs för en viss tillämpning eller verksamhet och som används aktivt;anläggningskomplettering
+Komponenter;YAA;Fast utrustning;utrustning som är permanent fästad vid, hopbyggd med eller inbyggd i annan byggdel;idrottsutrustning, lekutrustning, parkutrustning, trädgårdsutrustning
+Komponenter;YAB;Lös utrustning;utrustning som kan tas bort eller flyttas utan särskilda hjälpmedel;idrottsutrustning, lekutrustning, parkutrustning, trädgårdsutrustning
+Komponenter;YB;Inredning;inredning som är placerad i ett utrymme för att möjliggöra viss typ av verksamhet i utrymmet, men som inte används aktivt i verksamheten;anläggningskomplettering
+Komponenter;YBA;Fast inredning;inredning som är permanent fästad vid, hopbyggd med eller inbyggd i annan byggdel;byggnadsanknuten inredning, byggnadspåverkande inredning, fast inredningsenhet, möbel, parkmöbel
+Komponenter;YBB;Lös inredning;inredning som kan tas bort eller flyttas utan särskilda hjälpmedel;lös inredningsenhet, möbel, parkmöbel
+Komponenter;Z;Objekt för utformning, referensobjekt och inmätt objekt;objekt som stödjer utformning, eller referensobjekt för inmätning, eller inmätt objekt;
+Komponenter;ZA;Objekt för byggnadsutformning;objekt för utformning av byggnad;
+Komponenter;ZAA;Stomlinje;objekt för byggnadsutformning som utgör stomlinje;
+Komponenter;ZAB;Baslinje;objekt för byggnadsutformning som utgör baslinje;
+Komponenter;ZAC;Centrumlinje;objekt för byggnadsutformning som utgör centrumlinje;
+Komponenter;ZAD;Modulnät;objekt för byggnadsutformning som utgör linje i modulnät;
+Komponenter;ZB;Objekt för anläggningsutformning;objekt för utformning av anläggning;
+Komponenter;ZBA;Väggeometri;objekt för anläggningsutformning som utgör definitionslinje för väg;staklinje, väglinje, utsättningslinje
+Komponenter;ZBB;Spårgeometri;objekt för anläggningsutformning som utgör definitionslinje för spår;spårlinje, staklinje,  utsättningslinje
+Komponenter;ZBC;Spårväxelgeometri;objekt för anläggningsutformning som utgör definitionslinje för spårväxel;
+Komponenter;ZBD;Teoretisk tunnelkontur;objekt för anläggningsutformning som utgör teoretisk tunnelkontur;
+Komponenter;ZBE;Teoretisk invändig tunnelkontur;objekt för anläggningsutformning som utgör teoretisk invändig tunnelkontur;
+Komponenter;ZBF;Teoretisk tunnelinklädnad;objekt för anläggningsutformning som utgör teoretisk tunnelinklädnad;
+Komponenter;ZBG;Teoretisk tätzon;objekt för anläggningsutformning som utgör teoretisk tätzon;
+Komponenter;ZBH;Nivåkurva;objekt för anläggningsutformning som utgör linje som sammanbinder punkter med samma nivå;
+Komponenter;ZC;Punkt i rikets triangelnät;referensobjekt för inmätning i rikets nät;
+Komponenter;ZCA;Triangelpunkt i rikets nät;punkt i rikets triangelnät;
+Komponenter;ZD;Punkt i anslutningsnät;referensobjekt för inmätning i anslutningsnät;
+Komponenter;ZDA;Triangelpunkt i anslutningsnät;triangelpunkt i anslutningsnät;
+Komponenter;ZDB;Polygonpunkt i anslutningsnät;polygonpunkt i anslutningsnät;
+Komponenter;ZE;Punkt i primärnät;referensobjekt för inmätning i primärnät;
+Komponenter;ZEA;Triangelpunkt i primärnät;triangelpunkt i primärnät;
+Komponenter;ZEB;Polygonpunkt i primärnät;polygonpunkt i primärnät;
+Komponenter;ZEC;Polygonpunkt väggmonterad i primärnät;polygonpunkt väggmonterad i primärnät;
+Komponenter;ZED;Fri station i primärnät;fri station i primärnät;
+Komponenter;ZEF;Gränspunkt i primärnät;gränspunkt i primärnät;
+Komponenter;ZEG;Höjdfix i primärnät;höjdfix i primärnät;
+Komponenter;ZEH;Flygstödspunkt i primärnät;flygstödspunkt i primärnät;
+Komponenter;ZEJ;Fotostompunkt i primärnät;fotostompunkt i primärnät;
+Komponenter;ZF;Punkt i sekundärnät;referensobjekt för inmätning i sekundärnät;
+Komponenter;ZFA;Triangelpunkt i sekundärnät;triangelpunkt i sekundärnät;
+Komponenter;ZFB;Polygonpunkt i sekundärnät;polygonpunkt i sekundärnät;
+Komponenter;ZFC;Detaljpunkt i sekundärnät;detaljpunkt i sekundärnät;
+Komponenter;ZG;Geoteknikrelaterat undersökningsobjekt;inmätt objekt av geotekniskt förhållande;
+Komponenter;ZGA;Undersökningspunkt;geoteknisk undersökningspunkt;geoteknik, miljögeologi, geofysik, hydrogeologi
+Komponenter;ZGB;Undersökningslinje;geoteknisk undersökningslinje;
+Komponenter;ZGC;Undersökningsvolym;geoteknisk undersökningsvolym;
+Komponenter;ZH;Terrängmodell;inmätt ytobjekt;
+Komponenter;ZHA;Siluettmodell;ytmodell som i tre dimensioner beskriver den översta ytan av landskapet inkluderande dess vegetation och byggnadsverk;
+Komponenter;ZHB;Markmodell;ytmodell som i tre dimensioner beskriver höjden av den översta ytan av marken och bottenytan i sjöar och vattendrag;
+Komponenter;ZHC;Jordmodell;ytmodell som i tre dimensioner beskriver jordlagerföljder under den översta ytan av mark;
+Komponenter;ZHD;Bergmodell;ytmodell som i tre dimensioner beskriver den översta ytan av berget, synlig och under mark;
+Komponenter;ZHE;Grundvattenmodell;ytmodell som i tre dimensioner beskriver grundvattenytan;
+Komponenter;ZHF;Erhållen tunnelkontur;ytmodell som i tre dimensioner beskriver tunnelkontur efter utförd bergschakt;
+Komponenter;ZJ;Ytpunkt;inmätt punktobjekt;
+Komponenter;ZJA;Singelpunkt;mätpunkt som bestämts utan linjetillhörighet;fri punkt, allmän höjdpunkt
+Komponenter;ZJB;Sten;mätpunkt för sten ;
+Komponenter;ZJC;Block;mätpunkt för block ;
+Komponenter;ZJD;Berg;mätpunkt för berg ;
+Komponenter;ZJE;Vattennivå;mätpunkt för vattennivå ;
+Komponenter;ZJF;Bottennivå;mätpunkt för bottennivå i vattensamling ;
+Komponenter;ZJG;Källa;mätpunkt för källa ;
+Komponenter;ZK;Ytlinje;inmätt linjeobjekt som inte utgör begränsningslinje för område;
+Komponenter;ZKA;Allmän linje;mätlinje som används för att nedbringa triangelstorlekar i triangelmodell;brytlinje
+Komponenter;ZKB;Släntkrön;mätlinje för övre avslutning av slänt;
+Komponenter;ZKC;Släntfot;mätlinje för nedre avslutning av slänt;
+Komponenter;ZKD;Bergkrön;mätlinje för övre avslutning av bergslänt;
+Komponenter;ZKE;Bergfot;mätlinje för nedre avslutning av bergslänt;
+Komponenter;ZKF;Bergkrön, sprängt;mätlinje för övre avslutning av sprängd bergslänt;
+Komponenter;ZKG;Bergfot, sprängd;mätlinje för nedre avslutning av sprängd bergslänt;
+Komponenter;ZKH;Vattendragsmitt;mätlinje för mitt i mindre vattendrag;bäckmitt, dikesmitt
