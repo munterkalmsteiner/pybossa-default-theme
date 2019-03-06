@@ -13,12 +13,12 @@
 
     <!-- Le styles -->
     {% assets filters="libsass", output="css/gen/pybossa.min.css",
-              depends="sass/**/*.scss", 
-              "sass/_pybossa.scss"%}
-        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+    depends="sass/**/*.scss", 
+    "sass/_pybossa.scss"%}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
     {% endassets %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,7 +60,7 @@
     <!-- checkpoint::logged-in::{{current_user.name}} -->
     {% endif %}
     {% block content %}{% endblock %}
-    <!-- {% include "_footer.html" %} --> 
+    {% include "_footer.html" %} 
     <!-- Le javascript -->
     <script id="cookies_warning">
         window.cookieconsent_options = {"message":"Cookies help us to deliver our services. By using our services, you agree to our use of cookies.","dismiss":"Got it!","learnMore":"Learn More.","link":"{{url_for('help.cookies_policy')}}","theme":"dark-bottom"};

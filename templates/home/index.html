@@ -14,12 +14,12 @@
             <a class="btn btn-primary" href="/project/coclass/newtask">{{_('Contribute')}}</a>
             {% else %}
             <p>Please <a href="{{ url_for('account.signin') }}">sign in</a> or <a href="{{ url_for('account.register') }}">create an account</a> to contribute.<p>
-            {% endif %}
+                {% endif %}
         </div>
  </div>
 
  <div class="container">
- <h2>Project background</h2>
+     <h2>Project background</h2>
  <p>Synonym discovery is a two step process:</p>
 <ol>
     <li>Identification of synonym candididates (completed). We use data mining and machine learning techniques to discover terms that are potential synonyms of CoClass objects. We describe the approach in a paper (<a href="{{url_for('static',filename='data/paper_ecir2019.pdf')}}">download</a>), published at the European Conference on Information Retrieval.</li>
