@@ -2,7 +2,7 @@
 {% import "projects/_helpers.html" as helper %}
 {% import "account/_helpers.html" as account_helper %}
 {% block content %}
-<section class="home featured">
+<section>
  <div class="jumbotron">
         <div class="container">
             <h1>Welcome to the CoClass synonym discovery project</h1>
@@ -13,13 +13,52 @@
             {% if current_user.is_authenticated() %}
             <a class="btn btn-primary" href="/project/coclass/newtask">{{_('Contribute')}}</a>
             {% else %}
-            <p>Please <a href="{{ url_for('account.signin') }}">sign in</a> or <a href="{{ url_for('account.register') }}">create an account</a> to contribute.<p>
-                {% endif %}
+            <p>Please <a href="{{ url_for('account.signin') }}">sign in</a> or <a href="{{ url_for('account.register') }}">create an account</a> to contribute.</p>
+            {% endif %}
         </div>
  </div>
+</section>
 
- <div class="container">
+<section class="stats leaderboard">
+    <div class="container">
+    <h2>Top {{leaderboard_size}} Contributors</h2>
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>{{ _('Rank') }}</th>
+                <th>{{ _('Name') }}</th>
+                <th>{{ _('Tasks') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in top_users %}
+            {% if user.fullname == current_user.fullname %}
+            <tr class="info">
+                <td><strong>{{user.rank}}</strong></td>
+                <td><strong><span style="color:white">{{user.fullname}}</span></strong></td>
+                <td><strong>{{user.score}}</strong></td>
+            </tr> 
+            {% else %}
+            <tr>
+                <td>{{user.rank}}</td>
+                <td><strong>{{user.fullname}}</strong></td>
+                <td>{{user.score}}</td>
+            </tr> 
+            {%endif%}
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</section>
+
+
+<section>
+    <div class="container"> 
      <h2>Project background</h2>
+     <p>In our long-term vision, CoClass is a central element for realizing traceability of information throughout the life-cycle of infrastructure projects. CoClass serves as a key to link requirements, building information models, test cases and processes, and asset management. These links allow analysts to follow-up on requirements during design and implementation, making sure that the delivered solutions fit the specified needs.</p>
+
+     <p>In order to achieve this long-term vision, our aim is to improve the quality and content of CoClass, for example by identifying snynonyms for CoClass objects.</p>
+
  <p>Synonym discovery is a two step process:</p>
 <ol>
     <li>Identification of synonym candididates (completed). We use data mining and machine learning techniques to discover terms that are potential synonyms of CoClass objects. We describe the approach in a paper (<a href="{{url_for('static',filename='data/paper_ecir2019.pdf')}}">download</a>), published at the European Conference on Information Retrieval.</li>
@@ -33,6 +72,6 @@
     <li>You will also discover how well you agree with your colleagues on whether a terms is a synonym of a CoClass object or not. If there are objects were there is no agreement on synonyms, it might be a good idea to discuss that with your colleagues as it might help to solve misunderstandings.</li>
 </ul>
 <p>If you have any questions, please contact <a href="mailto:mun@bth.se">Michael Unterkalmsteiner</a> or <a href="mailto:peter.a.axelsson@trafikverket.se">Peter Axelsson</a>.</p>
- </div>
+    </div>
 </section>
 {% endblock %}
