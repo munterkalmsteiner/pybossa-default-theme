@@ -139,7 +139,7 @@ var coclass = (function($) {
             for (let i = 1; i < assessments.length; i++) {
                 let assessment = assessments[i];
                 let item = assessment.split(':');
-                processedAssessment[item[0]] = (item[1] == 'true');
+                processedAssessment[item[0]] = item[1];
             }
         }
 
@@ -155,9 +155,10 @@ var coclass = (function($) {
             for (let j = 1; j < assessments.length; j++) {
                 let assessment = assessments[j].split(':');
                 let candidate = assessment[0];
-                let isSynonym = (assessment[1] == 'true');
+                let isSynonym = (assessment[1] == 1);
+                let user_isSynonym = (user[candidate] == 1);
                 alignment[candidate] = alignment[candidate] || {'a': 0, 'd': 0};
-                if (user[candidate] == isSynonym) {
+                if (user_isSynonym == isSynonym) {
                     alignment[candidate]['a'] += 1;
                 } else {
                     alignment[candidate]['d'] += 1;
@@ -170,7 +171,7 @@ var coclass = (function($) {
 
     var _evaluateResultSynonym = function(term, synonymAssessment) {
         let isActualSynonym = _actualSynonyms.includes(term);
-        let isJudgedAsSynonym = synonymAssessment[term];
+        let isJudgedAsSynonym = (synonymAssessment[term] == 1);
 
         let result = '<i class="fas fa-';
 
@@ -200,18 +201,15 @@ var coclass = (function($) {
         }
 
         candidates.forEach(function(candidate, index) {
-            cbids.push("check" + index);
-            cds.append(_getCandidateCheckbox(candidate, cbids[index], candidate === seed));
+            cbids.push("select" + index);
+            cds.append(_getCandidateSelection(candidate, cbids[index], candidate === seed));
         });
 
         return cbids;
     };
 
-    var _getCandidateCheckbox = function(term, cbid, seeded) {
-        return '<div class="form-check candidate"><input class="form-check-input' +
-            (seeded ? ' seeded' : '') + '" type="checkbox" value="' +
-            term + '" id="' + cbid + '"><label class="form-check-label" style="margin-left:5px;" for="' +
-            cbid + '">' + term + '</label></div>';
+    var _getCandidateSelection = function(term, cbid, seeded) {
+        return '<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + term + '"><td>' + term + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + _target + '</td></tr>';
     };
 
     var _getRandomSynonym = function() {
@@ -238,9 +236,12 @@ var coclass = (function($) {
     var _getSubmitAnswer = function(cbids) {
         let answer = _target;
         cbids.forEach(function(id) {
-            let sel = $('#' + id);
-            _updateSynonymFound(sel);
-            answer += ',' + sel.attr('value') + ':' + sel.is(':checked') + (sel.hasClass('seeded') ? ':s' : '');
+            let row = $('#' + id);
+            let seeded = $(row).hasClass('seeded');
+            let term = $(row).attr("data-term");
+            let selection = $(row).find('input[name=radio_' + id + ']:checked').val();
+            _updateSynonymFound(selection);
+            answer += ',' + term + ':' + selection + (seeded ? ':s' : '');
         });
 
         if(!_synonymFound) {
@@ -251,7 +252,7 @@ var coclass = (function($) {
     };
 
     var _updateSynonymFound = function(selection) {
-        if (!_synonymFound && selection.is(':checked')) {
+        if (!_synonymFound && selection == 1) {
             _synonymFound = true;
             _streakNoSynonymsFound = 0;
         }
@@ -261,15 +262,15 @@ var coclass = (function($) {
         _streakNoSynonymsFound++;
         let seed;
         cbids.forEach(function(id) {
-            let sel = $('#' + id);
-            if (sel.hasClass('seeded')) {
-                seed = sel.attr('value');
+            let row = $('#' + id);
+            if (row.hasClass('seeded')) {
+                seed = $(row).attr("data-term");
             }
         });
 
         let answer = _target;
         if (seed !== undefined) {
-            answer += answer + ',' + seed + ':false:s';
+            answer += answer + ',' + seed + ':0:s';
         }
 
         return answer;

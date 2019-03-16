@@ -39,10 +39,21 @@
       	</p>
         
       	<div id="submit">
-  	    	  <div id="candidates"></div>
+  	    	  <table class="table table-condensed table-hover table-bordered">
+          		  <thead>
+                	  <tr class="info">
+                    	  <th>Candidate</th>
+                      	<th>unrelated to</th>
+                        <th>a synonym of</th>
+                      	<th>a generalization of</th>
+                        <th>a specialization of</th>
+                      	<th>Target</th>
+                    </tr>
+                </thead>
+                <tbody id="candidates"></tbody>
+          	</table>
         	  <button class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
         	  <button class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
-        	  <p style="margin-top:10px;">Only press skip if you are not sure. If none of the candidates is a synonym, do not check any term and submit.</p>
       	</div>
       	<div id="next">
           	<h3>Results:</h3>
