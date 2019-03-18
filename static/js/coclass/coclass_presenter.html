@@ -43,10 +43,10 @@
           		  <thead>
                 	  <tr class="info">
                     	  <th>Candidate</th>
-                      	<th>unrelated to</th>
-                        <th>a synonym of</th>
-                      	<th>a generalization of</th>
-                        <th>a specialization of</th>
+                      	<th><span style="float:left;">unrelated to</span><span style="float:right;"><a href="#" id="unlreatedhelp" data-html=true data-content="Use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term." data-title="What does unrelated mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a synonym of</span><span style="float:right;"><a href="#" id="synonymhelp" data-html=true data-content="Two terms are synonymous to each other if it is possible to use one in place of the other." data-title="What does synonym mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a generalization of</span><span style="float:right;"><a href="#" id="generalizationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>." data-title="What does generalization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a specialization of</span><span style="float:right;"><a href="#" id="specializationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>." data-title="What does specialization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
                       	<th>Target</th>
                     </tr>
                 </thead>
@@ -124,6 +124,10 @@
      });
 
      pybossa.presentTask(function(task, deferred) {
+         $('#unlreatedhelp').popover();
+         $('#synonymhelp').popover();
+         $('#generalizationhelp').popover();
+         $('#specializationhelp').popover();
          if (!$.isEmptyObject(task)) {
              $('#submit').show();
              $('#next').hide();
