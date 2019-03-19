@@ -268,7 +268,7 @@ var coclass = (function($) {
             }
         });
 
-        let answer = _target;
+        let answer = "SKIPPED," + _target;
         if (seed !== undefined) {
             answer += answer + ',' + seed + ':0:s';
         }
