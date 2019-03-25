@@ -32,17 +32,28 @@
 
 <div class="row skeleton">
     <div class="col-md-12">
-        <h2>Select the correct synonym(s)</h2>
+        <h2>Select the relationship between candidate and target term</h2>
       	<p style="margin-bottom: 0px;" id="levels"></p>
       	<p>
             CoClass definition: <i><span id="definition"></span></i>
       	</p>
         
       	<div id="submit">
-  	    	  <div id="candidates"></div>
+  	    	  <table class="table table-condensed table-hover table-bordered">
+          		  <thead>
+                	  <tr class="info">
+                    	  <th>Candidate</th>
+                      	<th><span style="float:left;">unrelated to</span><span style="float:right;"><a href="#" id="unlreatedhelp" data-html=true data-content="Use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term." data-title="What does unrelated mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a synonym of</span><span style="float:right;"><a href="#" id="synonymhelp" data-html=true data-content="Two terms are synonymous to each other if it is possible to use one in place of the other." data-title="What does synonym mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a generalization of</span><span style="float:right;"><a href="#" id="generalizationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>." data-title="What does generalization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                        <th><span style="float:left;">a specialization of</span><span style="float:right;"><a href="#" id="specializationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>." data-title="What does specialization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                      	<th>Target</th>
+                    </tr>
+                </thead>
+                <tbody id="candidates"></tbody>
+          	</table>
         	  <button class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
         	  <button class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
-        	  <p style="margin-top:10px;">Only press skip if you are not sure. If none of the candidates is a synonym, do not check any term and submit.</p>
       	</div>
       	<div id="next">
           	<h3>Results:</h3>
@@ -113,6 +124,10 @@
      });
 
      pybossa.presentTask(function(task, deferred) {
+         $('#unlreatedhelp').popover();
+         $('#synonymhelp').popover();
+         $('#generalizationhelp').popover();
+         $('#specializationhelp').popover();
          if (!$.isEmptyObject(task)) {
              $('#submit').show();
              $('#next').hide();
