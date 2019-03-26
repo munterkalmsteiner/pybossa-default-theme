@@ -14,18 +14,6 @@
         "uglify-js": "^3.5.2",
         "watchify": "^3.11.1"
     },
-    "browserify": {
-        "transform": [
-            [
-                "babelify",
-                {
-                    "presets": [
-                        "@babel/env"
-                    ]
-                }
-            ]
-        ]
-    },
     "scripts": {
         "test": "jest",
         "build": "browserify src/main.js -t babelify -o dist/bundle.js",
