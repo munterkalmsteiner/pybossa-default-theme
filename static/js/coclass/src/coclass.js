@@ -1,6 +1,4 @@
-// coclass.js library
-//
-// Copyright (C) 2018 Michael Unterkalmsteiner
+// Copyright (C) 2018+ Michael Unterkalmsteiner
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,13 +13,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-var coclass = (function($) {
-    let _actualSynonyms = [];
-    let _streakNoSynonymsFound = 0;
-    let _synonymFound = false;
-    let _target = undefined;
+export class CoClass {
+    constructor() {
+        this._actualSynonyms = [];
+        this._streakNoSynonymsFound = 0;
+        this._synonymFound = false;
+        this._target = undefined;
+    }
 
-    var _findInCoClass = function (obj, target, stack) {
+    _findInCoClass(obj, target, stack) {
         let found = false;
         for (var key in obj) {
             if (!obj.hasOwnProperty(key)) {
@@ -63,17 +63,17 @@ var coclass = (function($) {
 
                 $('#levels').html(levels);
 
-                if(_target !== target) {
+                if(this._target !== target) {
                     $('#target').effect("pulsate", {times: 1}).animate({color: '#d12e2c'}, 2000);
-                    _target = target;
+                    this._target = target;
                 }
 
 
                 let syns = obj[key]['syns'];
                 if (syns !== undefined && syns.length != 0 && syns[0].length != 0) {
-                    _actualSynonyms = syns.map(syn => syn.toLowerCase());
+                    this._actualSynonyms = syns.map(syn => syn.toLowerCase());
                 } else {
-                    _actualSynonyms = [];
+                    this._actualSynonyms = [];
                 }
                 found = true;
                 break;
@@ -84,7 +84,7 @@ var coclass = (function($) {
                     level.term = obj[key]['term'];
                 }
                 stack.push(level);
-                found = _findInCoClass(obj[key], target, stack);
+                found = this._findInCoClass(obj[key], target, stack);
                 stack.pop();
              	  if (found) {
                	   break;
@@ -93,9 +93,9 @@ var coclass = (function($) {
         }
 
         return found;
-    };
+    }
 
-    var _extractCandidatesFromTaskInfo = function(info) {
+    extractCandidatesFromTaskInfo(info) {
         let candidates = new Array();
         for (let key in info) {
             if (info.hasOwnProperty(key) && key !== 'target' && info[key] !== '') {
@@ -104,32 +104,33 @@ var coclass = (function($) {
         }
 
         return candidates;
-    };
+    }
 
-    var _updateTargetInfo = function(target) {
+    updateTargetInfo(target) {
         let found = false;
+        let self = this;
         $.ajax({
             url: '/static/data/coclass.json',
             dataType: 'json',
             async: false,
             success: function(json) {
-                found = _findInCoClass(json, target, new Array());
+                found = self._findInCoClass(json, target, new Array());
          	  }
         });
 
         return found;
-    };
+    }
 
-    var _getUserData = function() {
+    getUserData() {
         return $.ajax({
             type: "GET",
             url: "/account/profile",
             contentType: "application/json",
             dataType: "json"
         });
-    };
+    }
 
-    var _getUserResult = function(userid, results) {
+    getUserResult(userid, results) {
         let result = results.find(r => r.user_id == userid);
 
         let processedAssessment = {};
@@ -144,11 +145,11 @@ var coclass = (function($) {
         }
 
         return processedAssessment;
-    };
+    }
 
-    var _getUserAlignment = function(userid, results) {
+    getUserAlignment(userid, results) {
         let alignment = {};
-        let user = _getUserResult(userid, results);
+        let user = this.getUserResult(userid, results);
         //let others = results.filter(r => r.user_id != userid);
         for (let i = 0; i < results.length; i++) {
             let assessments = results[i].info.split(',');
@@ -167,10 +168,10 @@ var coclass = (function($) {
         }
 
         return alignment;
-    };
+    }
 
-    var _evaluateResultSynonym = function(term, synonymAssessment) {
-        let isActualSynonym = _actualSynonyms.includes(term);
+    evaluateResultSynonym(term, synonymAssessment) {
+        let isActualSynonym = this._actualSynonyms.includes(term);
         let isJudgedAsSynonym = (synonymAssessment[term] == 1);
 
         let result = '<i class="fas fa-';
@@ -184,82 +185,84 @@ var coclass = (function($) {
         }
 
         return result + 'minus"></i>';
-    };
+    }
 
-    var _populateCandidates = function(candidates) {
-        _synonymFound = false;
+    populateCandidates(candidates) {
+        this._synonymFound = false;
         let cds = $('#candidates');
         let cbids = new Array();
         let seed;
 
-        if (_needSynonymSeed() && !_candidatesIncludeActualSynonym(candidates)) {
-            seed = _getRandomSynonym();
+        if (this._needSynonymSeed() && !this._candidatesIncludeActualSynonym(candidates)) {
+            seed = this._getRandomSynonym();
             if (seed !== undefined) {
                 candidates.splice(Math.floor(Math.random() * candidates.length), 0, seed);
-                _streakNoSynonymsFound = 0;
+                this._streakNoSynonymsFound = 0;
             }
         }
 
+        let self = this;
         candidates.forEach(function(candidate, index) {
             cbids.push("select" + index);
-            cds.append(_getCandidateSelection(candidate, cbids[index], candidate === seed));
+            cds.append(self._getCandidateSelection(candidate, cbids[index], candidate === seed));
         });
 
         return cbids;
-    };
+    }
 
-    var _getCandidateSelection = function(term, cbid, seeded) {
-        return '<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + term + '"><td>' + term + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + _target + '</td></tr>';
-    };
+    _getCandidateSelection(term, cbid, seeded) {
+        return '<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + term + '"><td>' + term + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + this._target + '</td></tr>';
+    }
 
-    var _getRandomSynonym = function() {
-        let length = _actualSynonyms.length;
-        if (_actualSynonyms !== undefined && length > 0) {
-            return _actualSynonyms[Math.floor(Math.random() * length)];
+    _getRandomSynonym() {
+        let length = this._actualSynonyms.length;
+        if (this._actualSynonyms !== undefined && length > 0) {
+            return this._actualSynonyms[Math.floor(Math.random() * length)];
         }
 
         return undefined;
-    };
+    }
 
-    var _candidatesIncludeActualSynonym = function(candidates) {
-        if (_actualSynonyms !== undefined && _actualSynonyms.length > 0) {
+    _candidatesIncludeActualSynonym(candidates) {
+        if (this._actualSynonyms !== undefined && this._actualSynonyms.length > 0) {
             for (let i = 0; i < candidates.length; i++) {
-                if (_actualSynonyms.includes(candidates[i])) {
-                        return true;
+                if (this._actualSynonyms.includes(candidates[i])) {
+                    return true;
                 }
             }
         }
 
         return false;
-    };
+    }
 
-    var _getSubmitAnswer = function(cbids) {
-        let answer = _target;
+    getSubmitAnswer(cbids) {
+        let answer = this._target;
+        let self = this;
         cbids.forEach(function(id) {
             let row = $('#' + id);
             let seeded = $(row).hasClass('seeded');
             let term = $(row).attr("data-term");
             let selection = $(row).find('input[name=radio_' + id + ']:checked').val();
-            _updateSynonymFound(selection);
+            self._updateSynonymFound(selection);
             answer += ',' + term + ':' + selection + (seeded ? ':s' : '');
         });
 
-        if(!_synonymFound) {
-            _streakNoSynonymsFound++;
+        if(!this._synonymFound) {
+            this._streakNoSynonymsFound++;
         }
 
         return answer;
-    };
+    }
 
-    var _updateSynonymFound = function(selection) {
-        if (!_synonymFound && selection == 1) {
-            _synonymFound = true;
-            _streakNoSynonymsFound = 0;
+    _updateSynonymFound(selection) {
+        if (!this._synonymFound && selection == 1) {
+            this._synonymFound = true;
+            this._streakNoSynonymsFound = 0;
         }
-    };
+    }
 
-    var _getSkipAnswer = function(cbids) {
-        _streakNoSynonymsFound++;
+    getSkipAnswer(cbids) {
+        this._streakNoSynonymsFound++;
         let seed;
         cbids.forEach(function(id) {
             let row = $('#' + id);
@@ -268,32 +271,21 @@ var coclass = (function($) {
             }
         });
 
-        let answer = "SKIPPED," + _target;
+        let answer = "SKIPPED," + this._target;
         if (seed !== undefined) {
             answer += answer + ',' + seed + ':0:s';
         }
 
         return answer;
-    };
+    }
 
-    var _needSynonymSeed = function() {
-        return _streakNoSynonymsFound >= 10;
-    };
+    _needSynonymSeed() {
+        return this._streakNoSynonymsFound >= 10;
+    }
 
-    var _getTargetTerm = function() {
+    _getTargetTerm() {
         return $('#target').text();
-    };
+    }
+}
 
-    return {
-        extractCandidatesFromTaskInfo: _extractCandidatesFromTaskInfo,
-        updateTargetInfo: _updateTargetInfo,
-        getUserData: _getUserData,
-        getUserResult: _getUserResult,
-        getUserAlignment: _getUserAlignment,
-        evaluateResultSynonym: _evaluateResultSynonym,
-        populateCandidates: _populateCandidates,
-        getSubmitAnswer: _getSubmitAnswer,
-        getSkipAnswer: _getSkipAnswer
-    };
 
-})(jQuery);

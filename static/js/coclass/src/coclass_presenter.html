@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
 <script src="/static/js/vendor/jquery-ui.min.js"></script>
-<script src="/static/js/coclass/coclass.js"></script>
+<script src="/static/js/coclass/dist/bundle.js"></script>
 <div class="row">
     <!-- Success and Error Messages for the user --> 
     <div class="col-md-6 col-md-offset-2" style="height:50px">
@@ -88,92 +88,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
- (function() {
-     function loadUserProgress() {
-         pybossa.userProgress('coclass').done(function(data) {
-             var pct = Math.round((data.done*100)/data.total);
-             $("#progress").css("width", pct.toString() +"%");
-             $("#progress").attr("title", pct.toString() + "% completed!");
-             $("#progress").tooltip({'placement': 'left'}); 
-             $("#total").text(data.total);
-             $("#done").text(data.done);
-         });
-     }
-     
-     function showResults(candidates, taskid, userid) {
-         $.getJSON('/project/coclass/' + taskid + '/results.json', function(data) {
-             let results = $('#results');
-             let synonymAssessment = coclass.getUserResult(userid, data);
-             let synonymAlignment = coclass.getUserAlignment(userid, data);
-             candidates.forEach(function(candidate) {
-                 let agreement = synonymAlignment[candidate]['a'];
-                 let disagreement = synonymAlignment[candidate]['d'];
-                 let tr = '<tr class="result"><td>' + candidate + '</td><td>' +
-                          coclass.evaluateResultSynonym(candidate, synonymAssessment) +
-                          '</td><td></span><span class="badge">' + agreement +
-                          '</span><span class="badge">' + disagreement +
-                          '</span></td></tr>';
-                 results.append(tr);
-             });
-         });
-     }
-     
-     pybossa.taskLoaded(function(task, deferred) {
-         deferred.resolve(task);
-     });
-
-     pybossa.presentTask(function(task, deferred) {
-         $('#unlreatedhelp').popover();
-         $('#synonymhelp').popover();
-         $('#generalizationhelp').popover();
-         $('#specializationhelp').popover();
-         if (!$.isEmptyObject(task)) {
-             $('#submit').show();
-             $('#next').hide();
-             loadUserProgress();
-             if (!coclass.updateTargetInfo(task.info.target)) {
-                 pybossa.saveTask(task.id, 'Error: ' + task.info.target +
-         	                                 ' not found in coclass data').done(function() {
-                                               $('.candidate').remove();
-                                               deferred.resolve();
-                                           });
-             }
-             
-             $('#task-id').html(task.id);
-
-             let candidates = coclass.extractCandidatesFromTaskInfo(task.info);
-             let cbids = coclass.populateCandidates(candidates);
-             $('.btn').off('click').on('click', function(evt) {
-                 if ($(this).parent('#submit').length == 1) {
-                     if ($(this).hasClass('btn-submit')) {
-                         pybossa.saveTask(task.id, coclass.getSubmitAnswer(cbids)).done(function() {
-                             coclass.getUserData()
-                                    .then(data => data.user.id,
-             		                          error => console.log('Error', error))
-                                    .then(userid => showResults(candidates, task.id, userid));
-                             $('#submit').hide();
-                             $('#next').show();
-                         });
-                     } else { //user pressed skip
-                         pybossa.saveTask(task.id, coclass.getSkipAnswer(cbids)).done(function() {
-                             $('.candidate').remove();
-                             deferred.resolve();
-                         });
-                     }
-                 } else if ($(this).parent('#next').length == 1) {
-                     $('.candidate').remove();
-                     $('.result').remove();
-                     deferred.resolve();
-                 }
-             });
-         } else {
-             $(".skeleton").hide();
-             $("#loading").hide();
-             $("#finish").fadeIn(500);
-         }
-     });
-
-     pybossa.run('coclass');
- })();
-</script>
