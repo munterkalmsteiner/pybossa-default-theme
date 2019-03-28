@@ -1,18 +1,15 @@
-import {jQuery} from '../../../vendor/jquery';
+import fs from 'fs';
 import {CoClass} from './coclass';
 
+let coclassData;
+beforeAll(() => {
+    coclassData = fs.readFileSync('../../data/coclass.json');
+});
 
-test('adds 1 + 2 to equal 3', () => {
-    expect(3).toBe(3);
+test('load coclass json data', () => {
+    let c = new CoClass(coclassData);
+    expect(c._data).toBeDefined();
+    expect(c._data).not.toBeNull();
 });
 
 
-test('test1', () => {
-    let c = new CoClass();
-    console.log(c._streakNoSynonymsFound);
-});
-
-test('test2', () => {
-    let c = new CoClass();
-    console.log(c._streakNoSynonymsFound);
-}); 

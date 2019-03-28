@@ -19,6 +19,9 @@
         "build": "browserify src/main.js -t babelify -o dist/bundle.js",
         "watch": "watchify src/main.js -t babelify -o dist/bundle.js"
     },
+    "jest": {
+        "setupFiles": ["./src/setup-jest.js"]
+    },
     "author": "Michael Unterkalmsteiner",
     "license": "GPL-3.0"
 }

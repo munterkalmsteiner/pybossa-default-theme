@@ -14,11 +14,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export class CoClass {
-    constructor() {
+    constructor(data) {
         this._actualSynonyms = [];
         this._streakNoSynonymsFound = 0;
         this._synonymFound = false;
         this._target = undefined;
+        this._data = data;
     }
 
     _findInCoClass(obj, target, stack) {

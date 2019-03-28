@@ -13,9 +13,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {CoClass} from './coclass';
+import CoClass from './coclass';
 
-var coclass = new CoClass();
+let coclassData;
+$.ajax({
+    url: '/static/data/coclass.json',
+    dataType: 'json',
+    async: false,
+    success: function(json) {
+        coclassData = json;
+    }
+});
+
+var coclass = new CoClass(coclassData);
 
 (function() {
     function loadUserProgress() {
