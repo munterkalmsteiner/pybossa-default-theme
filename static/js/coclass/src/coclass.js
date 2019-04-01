@@ -15,15 +15,15 @@
 
 export class CoClass {
     constructor(data) {
-        this._actualSynonyms = [];
-        this._streakNoSynonymsFound = 0;
-        this._synonymFound = false;
-        this._target = undefined;
         this._data = data;
     }
 
-    _findInCoClass(obj, target, stack) {
-        let found = false;
+    findItem(target) {
+        return this._findItem(this._data, target, new Array());
+    }
+
+    _findItem(obj, target, stack) {
+        let item = undefined;
         for (var key in obj) {
             if (!obj.hasOwnProperty(key)) {
                 continue;
@@ -34,7 +34,11 @@ export class CoClass {
                 obj[key]['term'] !== undefined &&
                 obj[key]['term'].toLowerCase() === target.toLowerCase()) {
 
-                $('#definition').html(obj[key].desc);
+                item = new CoClassItem();
+                item.name = target;
+                item.definition = obj[key].desc;
+
+
                 let level = new Object();
                 level.code = key;
                 level.term = obj[key]['term'];
@@ -62,21 +66,14 @@ export class CoClass {
 
                 }
 
-                $('#levels').html(levels);
-
-                if(this._target !== target) {
-                    $('#target').effect("pulsate", {times: 1}).animate({color: '#d12e2c'}, 2000);
-                    this._target = target;
-                }
-
+                item.hierarchy = levels;
 
                 let syns = obj[key]['syns'];
                 if (syns !== undefined && syns.length != 0 && syns[0].length != 0) {
-                    this._actualSynonyms = syns.map(syn => syn.toLowerCase());
+                    item.synonyms = syns.map(syn => syn.toLowerCase());
                 } else {
-                    this._actualSynonyms = [];
+                    item.synonyms = [];
                 }
-                found = true;
                 break;
             } else if (typeof obj[key] === 'object') {
                 let level = new Object();
@@ -85,207 +82,123 @@ export class CoClass {
                     level.term = obj[key]['term'];
                 }
                 stack.push(level);
-                found = this._findInCoClass(obj[key], target, stack);
+                item = this._findItem(obj[key], target, stack);
                 stack.pop();
-             	  if (found) {
+             	  if (item !== undefined) {
                	   break;
                 }
             }
         }
 
-        return found;
+        return item;
+    }
+}
+
+export class CoClassItem {
+    constructor() {
+        this._synonyms = [];
+        this._candidates = [];
+        this._seed = undefined;
     }
 
-    extractCandidatesFromTaskInfo(info) {
-        let candidates = new Array();
-        for (let key in info) {
-            if (info.hasOwnProperty(key) && key !== 'target' && info[key] !== '') {
-                candidates.push(info[key]);
-            }
-        }
-
-        return candidates;
-    }
-
-    updateTargetInfo(target) {
-        let found = false;
-        let self = this;
-        $.ajax({
-            url: '/static/data/coclass.json',
-            dataType: 'json',
-            async: false,
-            success: function(json) {
-                found = self._findInCoClass(json, target, new Array());
-         	  }
-        });
-
-        return found;
-    }
-
-    getUserData() {
-        return $.ajax({
-            type: "GET",
-            url: "/account/profile",
-            contentType: "application/json",
-            dataType: "json"
-        });
-    }
-
-    getUserResult(userid, results) {
-        let result = results.find(r => r.user_id == userid);
-
-        let processedAssessment = {};
-        if (result !== undefined) {
-            let assessments = result.info.split(',');
-
-            for (let i = 1; i < assessments.length; i++) {
-                let assessment = assessments[i];
-                let item = assessment.split(':');
-                processedAssessment[item[0]] = item[1];
-            }
-        }
-
-        return processedAssessment;
-    }
-
-    getUserAlignment(userid, results) {
-        let alignment = {};
-        let user = this.getUserResult(userid, results);
-        //let others = results.filter(r => r.user_id != userid);
-        for (let i = 0; i < results.length; i++) {
-            let assessments = results[i].info.split(',');
-            for (let j = 1; j < assessments.length; j++) {
-                let assessment = assessments[j].split(':');
-                let candidate = assessment[0];
-                let isSynonym = (assessment[1] == 1);
-                let user_isSynonym = (user[candidate] == 1);
-                alignment[candidate] = alignment[candidate] || {'a': 0, 'd': 0};
-                if (user_isSynonym == isSynonym) {
-                    alignment[candidate]['a'] += 1;
-                } else {
-                    alignment[candidate]['d'] += 1;
-                }
-            }
-        }
-
-        return alignment;
-    }
-
-    evaluateResultSynonym(term, synonymAssessment) {
-        let isActualSynonym = this._actualSynonyms.includes(term);
-        let isJudgedAsSynonym = (synonymAssessment[term] == 1);
-
-        let result = '<i class="fas fa-';
-
-        if (isActualSynonym && isJudgedAsSynonym) {
-            return result + 'check"></i>';
-        } else if (isActualSynonym && !isJudgedAsSynonym) {
-            return result + 'times"></i>';
-        } else if (!isActualSynonym && isJudgedAsSynonym) {
-            return result + 'star"></i>';
-        }
-
-        return result + 'minus"></i>';
-    }
-
-    populateCandidates(candidates) {
-        this._synonymFound = false;
-        let cds = $('#candidates');
-        let cbids = new Array();
-        let seed;
-
-        if (this._needSynonymSeed() && !this._candidatesIncludeActualSynonym(candidates)) {
-            seed = this._getRandomSynonym();
-            if (seed !== undefined) {
-                candidates.splice(Math.floor(Math.random() * candidates.length), 0, seed);
-                this._streakNoSynonymsFound = 0;
-            }
-        }
-
-        let self = this;
-        candidates.forEach(function(candidate, index) {
-            cbids.push("select" + index);
-            cds.append(self._getCandidateSelection(candidate, cbids[index], candidate === seed));
-        });
-
-        return cbids;
-    }
-
-    _getCandidateSelection(term, cbid, seeded) {
-        return '<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + term + '"><td>' + term + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + this._target + '</td></tr>';
-    }
-
-    _getRandomSynonym() {
-        let length = this._actualSynonyms.length;
-        if (this._actualSynonyms !== undefined && length > 0) {
-            return this._actualSynonyms[Math.floor(Math.random() * length)];
-        }
-
-        return undefined;
-    }
-
-    _candidatesIncludeActualSynonym(candidates) {
-        if (this._actualSynonyms !== undefined && this._actualSynonyms.length > 0) {
-            for (let i = 0; i < candidates.length; i++) {
-                if (this._actualSynonyms.includes(candidates[i])) {
-                    return true;
-                }
-            }
+    /* Returns true if a synonym was successfully seeded into the candidate list */
+    seed() {
+        this._seed = this.getRandomSynonym();
+        if (this._seed !== undefined) {
+            this._candidates.splice(Math.floor(Math.random() * this._candidates.length), 0, this._seed);
+            return true;
         }
 
         return false;
     }
 
-    getSubmitAnswer(cbids) {
-        let answer = this._target;
-        let self = this;
-        cbids.forEach(function(id) {
-            let row = $('#' + id);
-            let seeded = $(row).hasClass('seeded');
-            let term = $(row).attr("data-term");
-            let selection = $(row).find('input[name=radio_' + id + ']:checked').val();
-            self._updateSynonymFound(selection);
-            answer += ',' + term + ':' + selection + (seeded ? ':s' : '');
+    /* Returns true if the candidates contain at least one synonym */
+    candidatesIncludeSynonym() {
+        return (this._synonyms.filter(synonym => this._candidates.includes(synonym))).length > 0; 
+    }
+
+    /* Returns a random synonym from the list, or undefined if the list is empty */
+    getRandomSynonym() {
+        let length = this._synonyms.length;
+        if (length > 0) {
+            return this._synonyms[Math.floor(Math.random() * length)];
+        }
+
+        return undefined;
+    }
+
+    setCandidateMarkup(element) {
+        this._candidates.forEach((candidate, index) => {
+            let cbid = "select" + index;
+            let seeded = (candidate === this._seed);
+            element.append('<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + candidate + '"><td>' + candidate + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + this.name + '</td></tr>'); 
         });
-
-        if(!this._synonymFound) {
-            this._streakNoSynonymsFound++;
-        }
-
-        return answer;
     }
 
-    _updateSynonymFound(selection) {
-        if (!this._synonymFound && selection == 1) {
-            this._synonymFound = true;
-            this._streakNoSynonymsFound = 0;
-        }
-    }
+    setResultMarkup(userResult, alignment, element) {
+        this._candidates.forEach((candidate) => {
+            let agreement = alignment[candidate]['a'];
+            let disagreement = alignment[candidate]['d'];
+            let isActualSynonym = this._synonyms.includes(candidate);
+            let isJudgedAsSynonym = (userResult[candidate] == 1);
+            let resultSymbol = '<i class="fas fa-';
 
-    getSkipAnswer(cbids) {
-        this._streakNoSynonymsFound++;
-        let seed;
-        cbids.forEach(function(id) {
-            let row = $('#' + id);
-            if (row.hasClass('seeded')) {
-                seed = $(row).attr("data-term");
+            if (isActualSynonym && isJudgedAsSynonym) {
+                resultSymbol += 'check"></i>';
+            } else if (isActualSynonym && !isJudgedAsSynonym) {
+                resultSymbol += 'times"></i>';
+            } else if (!isActualSynonym && isJudgedAsSynonym) {
+                resultSymbol += 'star"></i>';
+            } else {
+                resultSymbol += 'minus"></i>';
             }
+
+            element.append('<tr class="result"><td>' + candidate + '</td><td>' + resultSymbol + '</td><td></span><span class="badge">' + agreement + '</span><span class="badge">' + disagreement + '</span></td></tr>');
         });
-
-        let answer = "SKIPPED," + this._target;
-        if (seed !== undefined) {
-            answer += answer + ',' + seed + ':0:s';
-        }
-
-        return answer;
     }
 
-    _needSynonymSeed() {
-        return this._streakNoSynonymsFound >= 10;
+    get name() {
+        return this._name;
     }
 
-    _getTargetTerm() {
-        return $('#target').text();
+    set name(newName) {
+        this._name = newName;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    set description(newDescription) {
+        this._description = newDescription;
+    }
+
+    get hierarchy() {
+        return this._hierarchy;
+    }
+
+    set hierarchy(newHierarchy) {
+        this._hierarchy = newHierarchy;
+    }
+
+    get synonyms() {
+        return this._synonyms;
+    }
+
+    set synonyms(newSynonyms) {
+        this._synonyms = newSynonyms;
+    }
+
+    addCandidate(c) {
+        this._candidates.push(c);
+    }
+
+    clearCandidates() {
+        this._candidates = [];
+    }
+
+    get candidates() {
+        return this._candidates;
     }
 }
 

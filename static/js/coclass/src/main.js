@@ -13,7 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import CoClass from './coclass';
+import {CoClass} from './coclass';
+import {Session} from './session';
 
 let coclassData;
 $.ajax({
@@ -25,7 +26,7 @@ $.ajax({
     }
 });
 
-var coclass = new CoClass(coclassData);
+let session = new Session(coclassData);
 
 (function() {
     function loadUserProgress() {
@@ -39,21 +40,18 @@ var coclass = new CoClass(coclassData);
         });
     }
      
-    function showResults(candidates, taskid, userid) {
+    function showResults(taskid, userid) {
         $.getJSON('/project/coclass/' + taskid + '/results.json', function(data) {
-            let results = $('#results');
-            let synonymAssessment = coclass.getUserResult(userid, data);
-            let synonymAlignment = coclass.getUserAlignment(userid, data);
-            candidates.forEach(function(candidate) {
-                let agreement = synonymAlignment[candidate]['a'];
-                let disagreement = synonymAlignment[candidate]['d'];
-                let tr = '<tr class="result"><td>' + candidate + '</td><td>' +
-                         coclass.evaluateResultSynonym(candidate, synonymAssessment) +
-                         '</td><td></span><span class="badge">' + agreement +
-                         '</span><span class="badge">' + disagreement +
-                         '</span></td></tr>';
-                results.append(tr);
-            });
+            session.populateResults(userid, data, $('#results'));
+        });
+    }
+
+    function getUserData() {
+        return $.ajax({
+            type: "GET",
+            url: "/account/profile",
+            contentType: "application/json",
+            dataType: "json"
         });
     }
      
@@ -70,31 +68,38 @@ var coclass = new CoClass(coclassData);
             $('#submit').show();
             $('#next').hide();
             loadUserProgress();
-            if (!coclass.updateTargetInfo(task.info.target)) {
-                pybossa.saveTask(task.id, 'Error: ' + task.info.target +
-         	                                ' not found in coclass data').done(function() {
-                                              $('.candidate').remove();
-                                              deferred.resolve();
-                                          });
+            let targetTerm = task.info.target;
+            if (session.findCurrentItem(targetTerm)) {
+                $('#definition').html(session.currentItem.description);
+                $('#levels').html(session.currentItem.hierarchy);
+                if(session.isNewTargetTerm) {
+                    $('#target').effect("pulsate", {times: 1}).animate({color: '#d12e2c'}, 2000);
+                }
+            } else {
+                pybossa.saveTask(task.id, 'Error: ' + targetTerm +
+         	                       ' not found in coclass data').done(function() {
+                                     $('.candidate').remove();
+                                     deferred.resolve();
+                                 });
             }
-             
+
             $('#task-id').html(task.id);
 
-            let candidates = coclass.extractCandidatesFromTaskInfo(task.info);
-            let cbids = coclass.populateCandidates(candidates);
+
+            session.populateCandidates(task.info, $('#candidates'));
             $('.btn').off('click').on('click', function(evt) {
                 if ($(this).parent('#submit').length == 1) {
                     if ($(this).hasClass('btn-submit')) {
-                        pybossa.saveTask(task.id, coclass.getSubmitAnswer(cbids)).done(function() {
-                            coclass.getUserData()
+                        pybossa.saveTask(task.id, session.getSubmitAnswer()).done(function() {
+                            getUserData()
                                    .then(data => data.user.id,
              		                         error => console.log('Error', error))
-                                   .then(userid => showResults(candidates, task.id, userid));
+                                   .then(userid => showResults(task.id, userid));
                             $('#submit').hide();
                             $('#next').show();
                         });
                     } else { //user pressed skip
-                        pybossa.saveTask(task.id, coclass.getSkipAnswer(cbids)).done(function() {
+                        pybossa.saveTask(task.id, session.getSkipAnswer()).done(function() {
                             $('.candidate').remove();
                             deferred.resolve();
                         });
