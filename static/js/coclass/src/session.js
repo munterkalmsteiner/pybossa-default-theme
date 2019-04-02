@@ -88,7 +88,7 @@ export class Session {
     getSkipAnswer() {
         this._streakNoSynonymsFound++;
         let seed = undefined;
-        this._candidates.forEach((candidate, index) => {
+        this._currentItem.candidates.forEach((candidate, index) => {
             let id = 'select' + index;
             let row = $('#' + id);
             if (row.hasClass('seeded')) {
@@ -98,7 +98,7 @@ export class Session {
 
         let answer = "SKIPPED," + this._currentItem.name;
         if (seed !== undefined) {
-            answer += answer + ',' + seed + ':0:s';
+            answer += ',' + seed + ':0:s';
         }
 
         return answer;

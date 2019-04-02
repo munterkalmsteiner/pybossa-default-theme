@@ -131,7 +131,7 @@ export class CoClassItem {
         this._candidates.forEach((candidate, index) => {
             let cbid = "select" + index;
             let seeded = (candidate === this._seed);
-            element.append('<tr id="' + cbid + '" class="candidate' + (seeded ? ' seeded' : '') + '" data-term="' + candidate + '"><td>' + candidate + ' is</td><td><input type="radio" name="radio_' + cbid + '" value="0" checked></td><td><input type="radio" name="radio_' + cbid + '" value="1"></td><td><input type="radio" name="radio_' + cbid + '" value="2"></td><td><input type="radio" name="radio_' + cbid + '" value="3"></td><td>' + this.name + '</td></tr>'); 
+            element.append(`<tr id="${cbid}" class="candidate ${(seeded ? ' seeded' : '')}" data-term="${candidate}"><td>${candidate} is</td><td><input type="radio" name="radio_${cbid}" value="0" checked></td><td><input type="radio" name="radio_${cbid}" value="1"></td><td><input type="radio" name="radio_${cbid}" value="2"></td><td><input type="radio" name="radio_${cbid}" value="3"></td><td class="target">${this.name}</td></tr>`); 
         });
     }
 
@@ -153,7 +153,7 @@ export class CoClassItem {
                 resultSymbol += 'minus"></i>';
             }
 
-            element.append('<tr class="result"><td>' + candidate + '</td><td>' + resultSymbol + '</td><td></span><span class="badge">' + agreement + '</span><span class="badge">' + disagreement + '</span></td></tr>');
+            element.append(`<tr class="result"><td>${candidate}</td><td>${resultSymbol}</td><td></span><span class="badge agreement">${agreement}</span><span class="badge disagreement">${disagreement}</span></td></tr>`);
         });
     }
 
