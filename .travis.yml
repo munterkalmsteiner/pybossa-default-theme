@@ -1,5 +1,9 @@
 language: node_js
 
+install:
+  - cd static/js/coclass
+  - npm install
+
 script:
   - cd static/js/coclass
-  - npm run test
+  - npm test
