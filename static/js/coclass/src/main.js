@@ -26,11 +26,28 @@ $.ajax({
     }
 });
 
+let projectId = 1;
+let projectName = 'coclass';
+$.ajax({
+    url: '/api/project',
+    data: `short_name=${projectName}`,
+    dataType: 'json',
+    async: false,
+    success: function(json) {
+        if (json.length == 1) {
+            projectId = json[0].id;
+        } else {
+            console.warn('Project %s not found. Using default id: %i', projectName, projectId);
+        }
+
+    }
+});
+
 let session = new Session(coclassData);
 
 (function() {
     function loadUserProgress() {
-        pybossa.userProgress('coclass').done(function(data) {
+        pybossa.userProgress(projectName).done(function(data) {
             var pct = Math.round((data.done*100)/data.total);
             $("#progress").css("width", pct.toString() +"%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -41,7 +58,7 @@ let session = new Session(coclassData);
     }
      
     function showResults(taskid, userid) {
-        $.getJSON('/project/coclass/' + taskid + '/results.json', function(data) {
+        $.getJSON(`/project/${projectName}/${taskid}/results.json`, function(data) {
             session.populateResults(userid, data, $('#results'));
         });
     }
@@ -117,5 +134,5 @@ let session = new Session(coclassData);
         }
     });
 
-    pybossa.run('coclass');
+    pybossa.run(projectName);
 })();
