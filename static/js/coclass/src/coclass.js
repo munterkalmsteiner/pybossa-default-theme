@@ -13,90 +13,90 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+var TreeModel = require('tree-model');
+
 export class CoClass {
     constructor(data) {
-        this._data = data;
+        this._tree = new TreeModel();
+        this._root = this._tree.parse({name: 'root'});
+        this._buildTree(data, this._root);
+    }
+
+    _buildTree(obj, parent) {
+        for (let key in obj) {
+            if (!obj.hasOwnProperty(key) || key === 'term' || key === 'desc' || key === 'syns') {
+                continue; 
+            }
+
+            if (key.length > 1) { // handle special case top level tables
+                let item = new CoClassItem(undefined, key);
+                let childNode = this._tree.parse(item);
+                parent.addChild(childNode);
+                this._buildTree(obj[key], childNode);
+            } else {
+                let item = new CoClassItem(key, obj[key].term, obj[key].desc, obj[key].syns); 
+                let childNode = this._tree.parse(item);
+                parent.addChild(childNode);
+
+                if (typeof obj[key] === 'object') {
+                    this._buildTree(obj[key], childNode);
+                }
+            }
+        }
     }
 
     findItem(target) {
-        return this._findItem(this._data, target, new Array());
+        let node = this._root.first((node) => {
+            return node.model.name === target;
+        });
+
+        return node !== undefined ? node.model : undefined;
     }
 
-    _findItem(obj, target, stack) {
-        let item = undefined;
-        for (var key in obj) {
-            if (!obj.hasOwnProperty(key)) {
-                continue;
-            }
+    getPathString(target) {
+        let targetnode = this._root.first((node) => {
+            return node.model.name === target;
+        });
 
-            if (obj[key] !== undefined &&
-                obj[key].hasOwnProperty('term') &&
-                obj[key]['term'] !== undefined &&
-                obj[key]['term'].toLowerCase() === target.toLowerCase()) {
+        let pathstring = '';
+        if (targetnode !== undefined) {
+            let path = targetnode.getPath();
+            let code = '';
+            for (let i = 1; i < path.length; i++) { // start at 1 to omit root node
+                const node = path[i];
+                if (node.model !== undefined) {
+                    let codecomponent = node.model.codecomponent;
 
-                item = new CoClassItem();
-                item.name = target;
-                item.definition = obj[key].desc;
-
-
-                let level = new Object();
-                level.code = key;
-                level.term = obj[key]['term'];
-                stack.push(level);
-
-                let cummulativecode = new String();
-                let levels = new String();
-                for (let i = 0; i < stack.length; i++) {
-                    let code = stack[i].code;
-                    if (code.length == 1) {
-                        cummulativecode += code;
-                        levels += cummulativecode + ':';
-                        if (i == stack.length - 1) {
-                            levels += '<strong id="target">' + stack[i].term + '</strong>';
-                        } else {
-                            levels += stack[i].term;
-                        }
-
-                        if (i < stack.length - 1) {
-                            levels += ' >> ';
-                        }
-                    } else {
-                        levels += code + ' >> ';
+                    if (codecomponent !== undefined) {
+                        code += codecomponent;
+                        pathstring += `${code}:`;
                     }
 
-                }
-
-                item.hierarchy = levels;
-
-                let syns = obj[key]['syns'];
-                if (syns !== undefined && syns.length != 0 && syns[0].length != 0) {
-                    item.synonyms = syns.map(syn => syn.toLowerCase());
-                } else {
-                    item.synonyms = [];
-                }
-                break;
-            } else if (typeof obj[key] === 'object') {
-                let level = new Object();
-                level.code = key;
-                if (obj[key].hasOwnProperty('term')) {
-                    level.term = obj[key]['term'];
-                }
-                stack.push(level);
-                item = this._findItem(obj[key], target, stack);
-                stack.pop();
-             	  if (item !== undefined) {
-               	   break;
+                    if (i == path.length - 1) {
+                        pathstring += `<strong id=\"target\">${node.model.name}</strong>`;
+                    } else {
+                        pathstring += `${node.model.name} >> `;
+                    }
                 }
             }
         }
 
-        return item;
+        return pathstring;
     }
 }
 
+
 export class CoClassItem {
-    constructor() {
-        this._synonyms = [];
+    constructor(codecomponent, name, description, synonyms) {
+        this._codecomponent = codecomponent;
+        this._name = name;
+        this._description = description;
+        if (synonyms !== undefined && synonyms.length != 0 && synonyms[0].length != 0) {
+            this._synonyms = synonyms.map(syn => syn.toLowerCase());
+        } else {
+            this._synonyms = [];
+        }
+
         this._candidates = [];
         this._seed = undefined;
     }
@@ -157,6 +157,10 @@ export class CoClassItem {
         });
     }
 
+    get codecomponent() {
+        return this._codecomponent;
+    }
+
     get name() {
         return this._name;
     }
@@ -171,14 +175,6 @@ export class CoClassItem {
 
     set description(newDescription) {
         this._description = newDescription;
-    }
-
-    get hierarchy() {
-        return this._hierarchy;
-    }
-
-    set hierarchy(newHierarchy) {
-        this._hierarchy = newHierarchy;
     }
 
     get synonyms() {

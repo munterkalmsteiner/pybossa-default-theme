@@ -4,7 +4,10 @@
     "description": "Collaborative CoClass synonym discovery",
     "repository": "git@github.com:munterkalmsteiner/pybossa-trafikverket-theme.git",
     "main": "main.js",
-    "dependencies": {},
+    "dependencies": {
+        "tree-model": "^1.0.7",
+        "xstate": "^4.4.0"
+    },
     "devDependencies": {
         "@babel/core": "^7.3.0",
         "@babel/preset-env": "^7.3.0",
@@ -16,11 +19,13 @@
     },
     "scripts": {
         "test": "jest",
-        "build": "browserify src/main.js -t babelify -o dist/bundle.js",
-        "watch": "watchify src/main.js -t babelify -o dist/bundle.js"
+        "build": "browserify src/workflow.js -t babelify -o dist/bundle.js",
+        "watch": "watchify src/workflow.js -t babelify -o dist/bundle.js"
     },
     "jest": {
-        "setupFiles": ["./src/setup-jest.js"]
+        "setupFiles": [
+            "./src/setup-jest.js"
+        ]
     },
     "author": "Michael Unterkalmsteiner",
     "license": "GPL-3.0"

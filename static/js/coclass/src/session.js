@@ -16,6 +16,7 @@
 import {CoClass} from './coclass';
 
 const MAXIMUM_TASKS_BEFORE_SEED = 10;
+const TASKS_PER_LEVEL = 50;
 
 export class Session {
     constructor(coclassData) {

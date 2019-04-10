@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
 <script src="/static/js/vendor/jquery-ui.min.js"></script>
-<script src="/static/js/coclass/dist/bundle.js"></script>
 <div class="row">
     <!-- Success and Error Messages for the user --> 
     <div class="col-md-6 col-md-offset-2" style="height:50px">
@@ -31,14 +30,14 @@
 </div> <!-- End of Row -->
 
 <div class="row skeleton">
-    <div class="col-md-12">
+    <div class="col-md-12" id="task">
         <h2>Select the relationship between candidate and target term</h2>
       	<p style="margin-bottom: 0px;" id="levels"></p>
       	<p>
             CoClass definition: <i><span id="definition"></span></i>
       	</p>
         
-      	<div id="submit">
+      	<div id="submittask">
   	    	  <table class="table table-condensed table-hover table-bordered">
           		  <thead>
                 	  <tr class="info">
@@ -55,7 +54,7 @@
         	  <button class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
         	  <button class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
       	</div>
-      	<div id="next">
+      	<div id="taskresults">
           	<h3>Results:</h3>
           	<table class="table table-sm">
             	  <thead>
@@ -79,12 +78,22 @@
                 <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
             </p>
         </div>
+    </div>
+    <div id="question">
+        Show here pre and post questions
+        <button id="qs" class="btn btn-success btn-submit" style="margin-right:10px;">Answer!</button>
+    </div>
+    <div id="questionresults">
+        Show here pre and post question results
+    </div>
+    <div id="progress">
         <p style="margin-top:40px;">You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
         <p>You have completed: <span id="done" class="label label-info"></span> tasks from
             <!-- Progress bar for the user -->
             <span id="total" class="label label-info"></span></p>
-   	    <div class="progress progress-striped">
-    	      <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;" role="progressbar"></div>
+        <div class="progress progress-striped">
+            <div id="progress" rel="tooltip" title="#" class="progress-bar" style="width: 0%;" role="progressbar"></div>
         </div>
     </div>
 </div>
+<script src="/static/js/coclass/dist/bundle.js"></script>
