@@ -9,7 +9,7 @@ Created on Mon Nov 19 10:26:11 2018
 import csv
 import json
 
-with open('data/coclass_20190206.csv', 'r', newline='') as inputf:
+with open('data/coclass_20190418.csv', 'r', newline='') as inputf:
     with open('data/coclass.json', 'w') as outputf:
         reader = csv.reader(inputf, delimiter=';')
         next(reader) #skip header line
