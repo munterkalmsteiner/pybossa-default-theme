@@ -30,14 +30,14 @@
 </div> <!-- End of Row -->
 
 <div class="row skeleton">
-    <div class="col-md-12" id="task">
+    <div class="col-md-12 hidden" id="task">
         <h2>Select the relationship between candidate and target term</h2>
       	<p style="margin-bottom: 0px;" id="levels"></p>
       	<p>
             CoClass definition: <i><span id="definition"></span></i>
       	</p>
         
-      	<div id="submittask">
+      	<div id="submittask" class="hidden">
   	    	  <table class="table table-condensed table-hover table-bordered">
           		  <thead>
                 	  <tr class="info">
@@ -51,10 +51,10 @@
                 </thead>
                 <tbody id="candidates"></tbody>
           	</table>
-        	  <button class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
-        	  <button class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
+        	  <button id="submit-task-button" class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
+        	  <button id="skip-task-button" class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
       	</div>
-      	<div id="taskresults">
+      	<div id="taskresults" class="hidden">
           	<h3>Results:</h3>
           	<table class="table table-sm">
             	  <thead>
@@ -66,7 +66,7 @@
               	</thead>
               	<tbody id="results"></tbody>
           	</table>
-          	<button class="btn btn-success btn-next">Next</button>
+          	<button id="next-task-button" class="btn btn-success btn-next">Next</button>
           	<h4>&#10102; Synonym</h4>
           	<p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
                 <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
@@ -79,14 +79,17 @@
             </p>
         </div>
     </div>
-    <div id="question">
-        Show here pre and post questions
-        <button id="qs" class="btn btn-success btn-submit" style="margin-right:10px;">Answer!</button>
+    <div class="hidden" id="quizz">
+        <div class="quizzquestion" id="description-question"></div>
+        <div class="quizzquestion" id="path-question"></div>
+        <button id="next-question" class="btn btn-success btn-submit hidden">Next</button>
+        <button id="finished-quizz" class="btn btn-success btn-submit hidden">Done</button>
+        <span id="msgNoAnswers" class="hidden">Please answer all questions before proceeding.</span>
     </div>
-    <div id="questionresults">
+    <div class="hidden" id="questionresults">
         Show here pre and post question results
     </div>
-    <div id="progress">
+    <div class="hidden" id="progress">
         <p style="margin-top:40px;">You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
         <p>You have completed: <span id="done" class="label label-info"></span> tasks from
             <!-- Progress bar for the user -->

@@ -13,14 +13,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {CoClass} from './coclass';
-
-const MAXIMUM_TASKS_BEFORE_SEED = 10;
-const TASKS_PER_LEVEL = 50;
+import {isDefined} from './utils';
+import {MAXIMUM_TASKS_BEFORE_SEED} from './constants';
 
 export class Session {
-    constructor(coclassData) {
-        this._coclass = new CoClass(coclassData);
+    constructor(coclass, projectId) {
+        this._coclass = coclass;
+        this._projectId = projectId;
         this._isNewTargetTerm = true;
         this._streakNoSynonymsFound = 0;
         this._synonymFound = false;
@@ -29,9 +28,9 @@ export class Session {
 
     findCurrentItem(term) {
         let found = false;
-        if (this._currentItem === undefined || this._currentItem.name !== term) {
+        if (!isDefined(this._currentItem) || this._currentItem.name !== term) {
             this._currentItem = this._coclass.findItem(term);
-            if (this._currentItem !== undefined) {
+            if (isDefined(this._currentItem)) {
                 this._isNewTargetTerm = true;
                 found = true;
             }
@@ -46,7 +45,7 @@ export class Session {
     populateCandidates(info, element) {
         this._synonymFound = false;
         this._currentItem.clearCandidates();
-        for (let key in info) {
+x        for (let key in info) {
             if (info.hasOwnProperty(key) && key !== 'target' && info[key] !== '') {
                 this._currentItem.addCandidate(info[key]);
             }
@@ -98,7 +97,7 @@ export class Session {
         });
 
         let answer = "SKIPPED," + this._currentItem.name;
-        if (seed !== undefined) {
+        if (isDefined(seed)) {
             answer += ',' + seed + ':0:s';
         }
 
@@ -109,7 +108,7 @@ export class Session {
         let userResult = results.find(r => r.user_id == userid);
 
         let userAssessment = {};
-        if (userResult !== undefined) {
+        if (isDefined(userResult)) {
             let assessments = userResult.info.split(',');
 
             for (let i = 1; i < assessments.length; i++) {
@@ -151,3 +150,5 @@ export class Session {
         return this._isNewTargetTerm;
     }
 }
+
+

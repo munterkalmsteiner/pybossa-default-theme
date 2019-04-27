@@ -1,16 +1,33 @@
-import {Session} from './session';
+// Copyright (C) 2018+ Michael Unterkalmsteiner
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import {Session} from '../session';
+import {CoClass} from '../coclass';
 import {readFileSync} from 'fs';
 
 const html = readFileSync('src/coclass_presenter.html');
 
-let info = {'c0': 'a', 'c1': 'bb', 'c2': 'ccc', 'c3': 'dddd', 'c4': '', 'target': 'tunna' };
+const info = {'c0': 'a', 'c1': 'bb', 'c2': 'ccc', 'c3': 'dddd', 'c4': '', 'target': 'tunna' };
 
 
-let results = [{"info": "Tunna,a:0,bb:0,ccc:0,dddd:0", "external_uid": null, "user_id": 8, "task_id": 369326, "created": "2019-03-21T07:50:18.376039", "finish_time": "2019-03-21T07:51:55.529206", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 594, "media_url": null}, {"info": "Tunna,a:0,bb:1,ccc:0,dddd:0", "external_uid": null, "user_id": 10, "task_id": 369326, "created": "2019-03-21T09:37:27.477913", "finish_time": "2019-03-21T09:38:12.818251", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 628, "media_url": null}, {"info": "SKIPPED,Tunna", "external_uid": null, "user_id": 11, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}, {"info": "Tunna,a:0,bb:0,ccc:0,dddd:0,flaska:1:s", "external_uid": null, "user_id": 12, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}];
+const results = [{"info": "Tunna,a:0,bb:0,ccc:0,dddd:0", "external_uid": null, "user_id": 8, "task_id": 369326, "created": "2019-03-21T07:50:18.376039", "finish_time": "2019-03-21T07:51:55.529206", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 594, "media_url": null}, {"info": "Tunna,a:0,bb:1,ccc:0,dddd:0", "external_uid": null, "user_id": 10, "task_id": 369326, "created": "2019-03-21T09:37:27.477913", "finish_time": "2019-03-21T09:38:12.818251", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 628, "media_url": null}, {"info": "SKIPPED,Tunna", "external_uid": null, "user_id": 11, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}, {"info": "Tunna,a:0,bb:0,ccc:0,dddd:0,flaska:1:s", "external_uid": null, "user_id": 12, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}];
 
-let coclassData;
+let coclass;
 beforeAll(() => {
-    coclassData = require('../../../data/coclass.json');
+    const data = require('../../../../data/coclass.json');
+    coclass = new CoClass(data);
 });
 
 beforeEach(() => {
@@ -18,7 +35,7 @@ beforeEach(() => {
 });
 
 test('populate candidates and get answers with no seed', () => {
-    let session = new Session(coclassData);
+    const session = new Session(coclass);
     expect(session.findCurrentItem('Tunna')).toBe(true);
 
     session.populateCandidates(info, $('#candidates'));
@@ -34,7 +51,7 @@ test('populate candidates and get answers with no seed', () => {
 });
 
 test('populate candidates and get answers with seeded synonym', () => {
-    let session = new Session(coclassData);
+    const session = new Session(coclass);
     session.needSynonymSeed = jest.fn().mockImplementation(() => true);
 
     expect(session.findCurrentItem('Tunna')).toBe(true);
@@ -52,7 +69,7 @@ test('populate candidates and get answers with seeded synonym', () => {
 });
 
 test('populate results user without seeded synonym', () => {
-    let session = new Session(coclassData);
+    const session = new Session(coclass);
     expect(session.findCurrentItem('Tunna')).toBe(true);
 
     // Based on the results, this is the agreement

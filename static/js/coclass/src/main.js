@@ -13,37 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {CoClass} from './coclass';
-import {Session} from './session';
 
-let coclassData;
-$.ajax({
-    url: '/static/data/coclass.json',
-    dataType: 'json',
-    async: false,
-    success: function(json) {
-        coclassData = json;
-    }
-});
-
-let projectId = 1;
-let projectName = 'coclass';
-$.ajax({
-    url: '/api/project',
-    data: `short_name=${projectName}`,
-    dataType: 'json',
-    async: false,
-    success: function(json) {
-        if (json.length == 1) {
-            projectId = json[0].id;
-        } else {
-            console.warn('Project %s not found. Using default id: %i', projectName, projectId);
-        }
-
-    }
-});
-
-let session = new Session(coclassData);
 
 (function() {
     function loadUserProgress() {
@@ -77,10 +47,7 @@ let session = new Session(coclassData);
     });
 
     pybossa.presentTask(function(task, deferred) {
-        $('#unlreatedhelp').popover();
-        $('#synonymhelp').popover();
-        $('#generalizationhelp').popover();
-        $('#specializationhelp').popover();
+        
         if (!$.isEmptyObject(task)) {
             $('#submit').show();
             $('#next').hide();
