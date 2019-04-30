@@ -59,8 +59,10 @@
     {% if not current_user.is_anonymous() %}
     <!-- checkpoint::logged-in::{{current_user.name}} -->
     {% endif %}
-    {% block content %}{% endblock %}
-    {% include "_footer.html" %} 
+    <div class="maincontainer">
+      {% block content %}{% endblock %}
+      {% include "_footer.html" %} 
+    </div>
     <!-- Le javascript -->
     <script id="cookies_warning">
         window.cookieconsent_options = {"message":"Cookies help us to deliver our services. By using our services, you agree to our use of cookies.","dismiss":"Got it!","learnMore":"Learn More.","link":"{{url_for('help.cookies_policy')}}","theme":"dark-bottom"};
