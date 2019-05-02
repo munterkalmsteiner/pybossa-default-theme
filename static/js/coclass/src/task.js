@@ -19,6 +19,7 @@ export class Task {
     constructor(rawtask) {
         this._id = rawtask.id;
         this._targetTerm = rawtask.info.target;
+        this._actualSynonyms = [];
         this._candidates = [];
         this._seed = undefined;
         this._skipped = false;
@@ -46,6 +47,10 @@ export class Task {
         return this._skipped;
     }
 
+    set actualSynonyms(synonyms) {
+        this._actualSynonyms = synonyms;
+    }
+
     /* Returns true if the candidates contain at least one synonym */
     candidatesIncludeSynonym(synonyms) {
         return (synonyms.filter(synonym => this._candidates.includes(synonym))).length > 0; 
@@ -71,6 +76,32 @@ export class Task {
             let cbid = "select" + index;
             let seeded = (candidate === this._seed);
             elem.append(`<tr id="${cbid}" class="candidate ${(seeded ? ' seeded' : '')}" data-term="${candidate}"><td>${candidate} is</td><td><input type="radio" id="c-0-${index}" name="radio_${cbid}" value="0" checked></td><td><input type="radio" id="c-1-${index}" name="radio_${cbid}" value="1"></td><td><input type="radio" id="c-2-${index}" name="radio_${cbid}" value="2"></td><td><input type="radio" id="c-3-${index}" name="radio_${cbid}" value="3"></td><td class="target">${this.targetTerm}</td></tr>`); 
+        });
+
+        return elem.children().length > 0;
+    }
+
+    renderResult(userResult, alignment) {
+        $('.result').remove();
+        const elem = $('#results');
+        this._candidates.forEach((candidate) => {
+            const agreement = alignment[candidate]['a'];
+            const disagreement = alignment[candidate]['d'];
+            const isActualSynonym = this._actualSynonyms.includes(candidate);
+            const isJudgedAsSynonym = (userResult[candidate] == 1);
+            let resultSymbol = '<i class="fas fa-';
+
+            if (isActualSynonym && isJudgedAsSynonym) {
+                resultSymbol += 'check"></i>';
+            } else if (isActualSynonym && !isJudgedAsSynonym) {
+                resultSymbol += 'times"></i>';
+            } else if (!isActualSynonym && isJudgedAsSynonym) {
+                resultSymbol += 'star"></i>';
+            } else {
+                resultSymbol += 'minus"></i>';
+            }
+
+            elem.append(`<tr class="result"><td>${candidate}</td><td>${resultSymbol}</td><td></span><span class="badge agreement">${agreement}</span><span class="badge disagreement">${disagreement}</span></td></tr>`);
         });
 
         return elem.children().length > 0;
@@ -114,27 +145,5 @@ export class Task {
         }
 
         return { synonymFound: synonymFound, answerString: answer };
-    }
-
-    setResultMarkup(userResult, alignment, element) {
-        this._candidates.forEach((candidate) => {
-            let agreement = alignment[candidate]['a'];
-            let disagreement = alignment[candidate]['d'];
-            let isActualSynonym = this._synonyms.includes(candidate);
-            let isJudgedAsSynonym = (userResult[candidate] == 1);
-            let resultSymbol = '<i class="fas fa-';
-
-            if (isActualSynonym && isJudgedAsSynonym) {
-                resultSymbol += 'check"></i>';
-            } else if (isActualSynonym && !isJudgedAsSynonym) {
-                resultSymbol += 'times"></i>';
-            } else if (!isActualSynonym && isJudgedAsSynonym) {
-                resultSymbol += 'star"></i>';
-            } else {
-                resultSymbol += 'minus"></i>';
-            }
-
-            element.append(`<tr class="result"><td>${candidate}</td><td>${resultSymbol}</td><td></span><span class="badge agreement">${agreement}</span><span class="badge disagreement">${disagreement}</span></td></tr>`);
-        });
     }
 }

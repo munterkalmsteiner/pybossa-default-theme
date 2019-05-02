@@ -67,6 +67,12 @@ test('get 0 new tasks', () => {
     expect(callCounter).toBe(amount);
 });
 
+test('get 1 new task', () => {
+    const amount = 1;
+    expect(pybossa.getNewTasks('1', amount).length).toBe(amount);
+    expect(callCounter).toBe(amount);
+});
+
 test('get negative new tasks', () => {
     const amount = -10;
     expect(pybossa.getNewTasks('1', 0).length).toBe(0);

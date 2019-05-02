@@ -36,60 +36,57 @@
       	<p>
             CoClass definition: <i><span id="definition"></span></i>
       	</p>
-        
-      	<div id="submittask" class="hidden">
-  	    	  <table class="table table-condensed table-hover table-bordered">
-          		  <thead>
-                	  <tr class="info">
-                    	  <th>Candidate</th>
-                      	<th><span style="float:left;">unrelated to</span><span style="float:right;"><a href="#" id="unlreatedhelp" data-html=true data-content="Use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term." data-title="What does unrelated mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">a synonym of</span><span style="float:right;"><a href="#" id="synonymhelp" data-html=true data-content="Two terms are synonymous to each other if it is possible to use one in place of the other." data-title="What does synonym mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">a generalization of</span><span style="float:right;"><a href="#" id="generalizationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>." data-title="What does generalization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">a specialization of</span><span style="float:right;"><a href="#" id="specializationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>." data-title="What does specialization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                      	<th>Target</th>
-                    </tr>
-                </thead>
-                <tbody id="candidates"></tbody>
-          	</table>
-        	  <button id="submit-task-button" class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
-        	  <button id="skip-task-button" class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
-      	</div>
-      	<div id="taskresults" class="hidden">
-          	<h3>Results:</h3>
-          	<table class="table table-sm">
-            	  <thead>
-              		  <tr>
-                  		  <th scope="col">Candidate</th>
-                      	<th scope="col">Synonym<sup>&#10102;</sup></th>
-                      	<th scope="col">Alignment<sup>&#10103;</sup></th>
-                  	</tr>
-              	</thead>
-              	<tbody id="results"></tbody>
-          	</table>
-          	<button id="next-task-button" class="btn btn-success btn-next">Next</button>
-          	<h4>&#10102; Synonym</h4>
-          	<p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
-                <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
-          	    <br>New synonym:&nbsp;<i class="fas fa-star"></i>
-          		  <br>No synonym:&nbsp;<i class="fas fa-minus"></i></p>
-          	<h4>&#10103; Alignment</h4>
-          	<p>This column indicates how well you agree with your colleagues.
-                The numbers show how often you <span class="badge">agree</span> or
-                <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
-            </p>
-        </div>
+    </div> 
+    <div class="col-md-12 hidden" id="submittask">
+        <table class="table table-condensed table-hover table-bordered">
+            <thead>
+                <tr class="info">
+                    <th>Candidate</th>
+                    <th><span style="float:left;">unrelated to</span><span style="float:right;"><a href="#" id="unlreatedhelp" data-html=true data-content="Use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term." data-title="What does unrelated mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                    <th><span style="float:left;">a synonym of</span><span style="float:right;"><a href="#" id="synonymhelp" data-html=true data-content="Two terms are synonymous to each other if it is possible to use one in place of the other." data-title="What does synonym mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                    <th><span style="float:left;">a generalization of</span><span style="float:right;"><a href="#" id="generalizationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>." data-title="What does generalization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                    <th><span style="float:left;">a specialization of</span><span style="float:right;"><a href="#" id="specializationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>." data-title="What does specialization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
+                    <th>Target</th>
+                </tr>
+            </thead>
+            <tbody id="candidates"></tbody>
+        </table>
+        <button id="submit-task-button" class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
+        <button id="skip-task-button" class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
     </div>
-    <div class="hidden" id="quizz">
+    <div class="col-md-12 hidden" id="taskresults">
+        <h3>Results:</h3>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Candidate</th>
+                    <th scope="col">Synonym<sup>&#10102;</sup></th>
+                    <th scope="col">Alignment<sup>&#10103;</sup></th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+        <button id="next-task-button" class="btn btn-success btn-next">Next</button>
+        <h4>&#10102; Synonym</h4>
+        <p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
+        <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
+        <br>New synonym:&nbsp;<i class="fas fa-star"></i>
+        <br>No synonym:&nbsp;<i class="fas fa-minus"></i></p>
+        <h4>&#10103; Alignment</h4>
+        <p>This column indicates how well you agree with your colleagues.
+        The numbers show how often you <span class="badge">agree</span> or
+        <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
+        </p>
+    </div>
+    <div class="col-md-12 hidden" id="quizz">
         <div class="quizzquestion" id="description-question"></div>
         <div class="quizzquestion" id="path-question"></div>
         <button id="next-question" class="btn btn-success btn-submit hidden">Next</button>
         <button id="finished-quizz" class="btn btn-success btn-submit hidden">Done</button>
+        <span id="verify-answer" class="hidden"><button id="verify-answer-button" class="btn btn-success btn-submit">Verify</button>&nbsp;(if you changed your mind, you can still change your answers)</span>
         <span id="msgNoAnswers" class="hidden">Please answer all questions before proceeding.</span>
     </div>
-    <div class="hidden" id="questionresults">
-        Show here pre and post question results
-    </div>
-    <div class="hidden" id="progress">
+    <div class="col-md-12 hidden" id="progress">
         <p style="margin-top:40px;">You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
         <p>You have completed: <span id="done" class="label label-info"></span> tasks from
             <!-- Progress bar for the user -->

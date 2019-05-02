@@ -14,6 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import {MAXIMUM_TASKS_PER_REQUEST} from './constants';
+import {isDefined} from './utils';
 
 function getNewTasks(projectId, amount) {
     let tasks = [];
@@ -21,8 +22,12 @@ function getNewTasks(projectId, amount) {
     while (amount > 0) {
         const limit = Math.min(MAXIMUM_TASKS_PER_REQUEST, amount);
         const fetchedTasks = _fetchNewTasks(projectId, limit, offset);
-        if (fetchedTasks && Array.isArray(fetchedTasks)) {
-            tasks.push(...fetchedTasks);
+        if (isDefined(fetchedTasks)) {
+            if (Array.isArray(fetchedTasks)) {
+                tasks.push(...fetchedTasks);
+            } else {
+                tasks.push(fetchedTasks);
+            }
         }
         offset += limit;
         amount -= limit;
@@ -42,11 +47,23 @@ function saveTask(taskId, answer) {
 }
 
 function getResults(projectName, taskId) {
-    return $.ajax({
+    let data;
+    $.ajax({
+        type: 'GET',
         url: `/project/${projectName}/${taskId}/results.json`,
+        dataType: 'json',
+        contentType: 'application/json',
         cache: false,
-        dataType: 'json'
+        async: false,
+        success: function(json) {
+            data = json;
+        },
+        error: (err) => {
+            console.error(err);
+        }
     });
+
+    return data;
 }
 
 function getUserId() {
@@ -110,7 +127,7 @@ function _fetchTask(taskId) {
 }
 
 function _fetchNewTasks(projectId, limit, offset) {
-    let data;
+    let data = undefined;
     $.ajax({
         type: 'GET',
         url: `/api/project/${projectId}/newtask`,
@@ -131,7 +148,7 @@ function _fetchNewTasks(projectId, limit, offset) {
 }
 
 function _getUserData() {
-    let data;
+    let data = undefined;
     $.ajax({
         type: 'GET',
         url: "/account/profile",
@@ -151,7 +168,7 @@ function _getUserData() {
 }
 
 function _getProjectData(projectName) {
-    let data;
+    let data = undefined;
     $.ajax({
         type: 'GET',
         url: '/api/project',

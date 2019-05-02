@@ -14,7 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export const MAXIMUM_TASKS_BEFORE_SEED = 10;
-export const TASKS_PER_LEVEL = 50;
+export const TASKS_PER_LEVEL = 2;
 export const QUESTIONED_TERMS_PER_LEVEL = 2;
 export const MAXIMUM_TASKS_PER_REQUEST = 100; // limit set by Pybossa: https://docs.pybossa.com/api/task/newtask/
 

@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {Machine, interpret} from 'xstate';
+import {Machine, interpret, assign} from 'xstate';
 import {Level} from './level';
 import {CoClass} from './coclass';
 
@@ -39,11 +39,18 @@ const taskMachine = Machine({
         init: {
             onEntry: ['initUI'],
             on: {
-                '': 'showingPreQuestion'
+                '': 'newLevel'
             }
         },
-        showingTask: {
+        newLevel: {
+            onEntry: ['populateLevel'],
+            on: {
+                '': 'answeringPreQuestions'
+            }
+        },
+        doingTask: {
             onEntry: ['showTaskUI'],
+            onExit: ['hideTaskUI'],
             on: {
                 SUBMITTASK: 'savingTask',
                 SKIPTASK: 'savingTask'
@@ -61,44 +68,95 @@ const taskMachine = Machine({
                 }
             }
         },
+        retrievingNextTask: {
+            /* We need to implement this with a promise since getting the next task
+               changes the internal state of the context (level object). With the promise,
+               we make sure that any subsequent state gets the updated context. Normal actions
+               are fire-and-forget, and there is no guarantee that the next state will see the
+               updated context. */
+            invoke: {
+                id: 'retrieveNextTask',
+                src: (ctx, event) => ctx.level.nextTask(),
+                onDone: {
+                    target: 'taskOrQuestionsOrDone'
+                }
+            }
+        },
         showresultOrNexttask: {
             on: {
                 '': [
-                    { target: 'taskOrQuestionsOrDone', cond: 'didSkipTask' },
-                    { target: 'showingTaskResults' }
+                    {
+                        cond: 'didSkipTask',
+                        target: 'retrievingNextTask'
+                    },
+                    {
+                        target: 'showingTaskResults'
+                    }
                 ]
             }
         },
         showingTaskResults: {
+            onEntry: ['showResultsUI'],
+            onExit: ['hideResultsUI'],
             on: {
-                NEXTTASK: 'taskOrQuestionsOrDone'
+                NEXTTASK: {
+                    target: 'retrievingNextTask'
+                }
             }
         },
         taskOrQuestionsOrDone: {
             on: {
                 '': [
-                    { target: 'showingPostQuestions', cond: 'allTasksInLevelDone' },
-                    { target: 'done', cond: 'allTasksDone' }, // TODO implement correctly
-                    { target: 'showingTask', actions: ['getNextTask'] }
+                    {
+                        cond: 'finishedLevel',
+                        target: 'answeringPostQuestions'
+                    },
+                    {
+                        cond: 'allTasksDone', // TODO implement correctly
+                        target: 'done'
+                    },
+                    {
+                        target: 'doingTask'
+                    }
                 ]
            }
         },
-        showingPreQuestion: {
-            onEntry: ['showPrequestionUI'],
-            onExit: ['getPreQuestionsAnswer'],
+        answeringPreQuestions: {
+            onEntry: ['showQuestionsUI', 'showQuestionsNextorFinished'],
+            onExit: ['getQuestionsAnswer', 'getNextQuestion', 'hideQuestionsUI', 'hideQuestionsNextorFinished'],
             on: {
-                FINISHEDQUIZZ: { target: 'showingTask', actions: ['hideQuestions'] },
-                NEXTQUESTION: { target: 'showingPreQuestion', cond: 'answersSelected' }
+                FINISHEDQUIZZ: {
+                    cond: 'answersSelected',
+                    target: 'doingTask',
+                    actions: ['hideQuestionsUI', 'resetQuestions']
+                },
+                NEXTQUESTION: {
+                    cond: 'answersSelected',
+                    target: 'answeringPreQuestions'
+                }
             }
         },
-        showingPostQuestions: {
+        answeringPostQuestions: {
+            onEntry: ['showQuestionsUI', 'showQuestionsVerify'],
+            onExit: ['getQuestionsAnswer', 'hideQuestionsUI', 'hideQuestionsVerify'],
             on: {
-                ANSWER: 'showingQuestionsResults'
+                VERIFYANSWER: {
+                    cond: 'answersSelected',
+                    target: 'verifyingPostQuestions'
+                },
             }
         },
-        showingQuestionsResults: {
+        verifyingPostQuestions: {
+            onEntry: ['showQuestionsUI', 'showVerificationResult', 'showQuestionsNextorFinished'],
+            onExit: ['getNextQuestion', 'hideVerificationResult', 'hideQuestionsNextorFinished'],
             on: {
-                CONTINUE: 'showingPreQuestion'
+                FINISHEDQUIZZ: { target: 'showLevel', actions: ['hideQuestionsUI'] },
+                NEXTQUESTION: { target: 'answeringPostQuestions' }
+            }
+        },
+        showLevel: {
+            on: {
+                '': 'newLevel'
             }
         },
         done: {
@@ -114,34 +172,70 @@ const taskMachine = Machine({
             $('#generalizationhelp').popover();
             $('#specializationhelp').popover();
         },
-        showPrequestionUI: (ctx, event) => {
-            const lvl = ctx.level;
+        populateLevel: (ctx, event) => {
+            ctx.level.newLevel();
+        },
+        showQuestionsUI: (ctx, event) => {
             $('#quizz').removeClass('hidden');
-            if (lvl.hasNextQuestion()) {
+            $('.quizzquestion').empty();
+            console.assert(ctx.level.renderQuestionSet() === true, 'Questions not rendered');
+        },
+        hideQuestionsUI: (ctx, event) => {
+            $('#quizz').addClass('hidden');
+        },
+        showQuestionsNextorFinished: (ctx, event) => {
+            if (ctx.level.hasNextQuestion()) {
                 $('#next-question').removeClass('hidden');
                 $('#finished-quizz').addClass('hidden');
             } else {
                 $('#next-question').addClass('hidden');
                 $('#finished-quizz').removeClass('hidden');
             }
-
-            $('.quizzquestion').empty();
-            console.assert(lvl.renderQuestionSet() === true, 'Questions not rendered');
         },
-        getPreQuestionsAnswer: (ctx, event) => {
+        hideQuestionsNextorFinished: (ctx, event) => {
+            $('#next-question').addClass('hidden');
+            $('#finished-quizz').addClass('hidden');
+        },
+        showQuestionsVerify: (ctx, event) => {
+            $('#verify-answer').removeClass('hidden');
+        },
+        hideQuestionsVerify: (ctx, event) => {
+            $('#verify-answer').addClass('hidden');
+        },
+        showVerificationResult: (ctx, event) => {
+            $('.coclassquestion').attr('disabled', true);
+            $('.coclassquestionresult').removeClass('hidden');
+        },
+        hideVerificationResult: (ctx, event) => {
+            $('.coclassquestion').attr('disabled', false);
+            $('.coclassquestionresult').addClass('hidden');
+        },
+        getQuestionsAnswer: (ctx, event) => {
             ctx.level.getAnswersQuestionSet();
+        },
+        getNextQuestion: (ctx, event) => {
             ctx.level.nextQuestion();
         },
-        hideQuestions: (ctx, event) => {
-            $('#quizz').addClass('hidden');
+        resetQuestions: (ctx, event) => {
+            ctx.level.resetQuestions();
         },
         showTaskUI: (ctx, event) => {
             $('#task').removeClass('hidden');
             $('#submittask').removeClass('hidden');
-            ctx.level.renderTask();
+            console.assert(ctx.level.renderTask() === true, 'Tasks not rendered');
         },
-        getNextTask: (ctx, event) => {
-            ctx.level.nextTask();
+        hideTaskUI: (ctx, event) => {
+            $('#task').addClass('hidden');
+            $('#submittask').addClass('hidden');
+        },
+        showResultsUI: (ctx, event) => {
+            $('#task').removeClass('hidden');
+            $('#taskresults').removeClass('hidden');
+            console.assert(ctx.level.renderTaskResults() === true, 'Results not rendered');
+        },
+        hideResultsUI: (ctx, event) => {
+            $('#task').addClass('hidden');
+            $('#taskresults').addClass('hidden');
         }
     },
     guards: {
@@ -159,7 +253,7 @@ const taskMachine = Machine({
         didSkipTask: (ctx, event) => {
             return ctx.level.wasTaskSkipped();
         },
-        allTasksInLevelDone: (ctx, event) => {
+        finishedLevel: (ctx, event) => {
             return !ctx.level.hasTask();
         },
         allTasksDone: (ctx, event) => {
@@ -173,22 +267,26 @@ const taskMachine = Machine({
 const fsm = interpret(taskMachine).onTransition(state => console.log(state.value)).start();
 
 /* Attaching event handlers to UI elements and sending events to state machine */
-$('#next-question').click(function(event) {
+$('#next-question').click((event) => {
     fsm.send('NEXTQUESTION');
 });
 
-$('#finished-quizz').click(function(event) {
+$('#finished-quizz').click((event) => {
     fsm.send('FINISHEDQUIZZ');
 });
 
-$('#submit-task-button').click(function(event) {
+$('#verify-answer-button').click((event) => {
+    fsm.send('VERIFYANSWER');
+});
+
+$('#submit-task-button').click((event) => {
     fsm.send('SUBMITTASK');
 });
 
-$('#skip-task-button').click(function(event) {
+$('#skip-task-button').click((event) => {
     fsm.send('SKIPTASK');
 });
 
-$('#next-task-button').click(function(event) {
+$('#next-task-button').click((event) => {
     fsm.send('NEXTTASK');
 });

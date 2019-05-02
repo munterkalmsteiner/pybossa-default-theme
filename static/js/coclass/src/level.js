@@ -23,31 +23,30 @@ export class Level {
         this._coclass = coclass;
         this._projectName = projectName;
         this._questions = [];
-        this._doneQuestions = [];
+        this._questionIndex = 0;
         this._tasks = [];
-        this._doneTasks = [];
+        this._taskIndex = 0;
         this._streakNoSynonymsFound = 0;
-
+        this._userId = getUserId();
         this._projectId = getProjectId(this._projectName);
-        this.newLevel();
     }
 
     newLevel() {
-        const numTasks = this._tasks.length;
-        console.assert(numTasks === 0, `Getting new tasks while we still have ${numTasks} left.`);
+        this._tasks = [];
+        this._taskIndex = 0;
+        this._questions = [];
+        this._questionIndex = 0;
+
         const rawtasks = getNewTasks(this._projectId, TASKS_PER_LEVEL);
         for (let rt of rawtasks) {
             this._tasks.push(new Task(rt));
         }
-        this._doneTasks.length = 0;
 
         const targetTerms = new Set();
         this._tasks.forEach((task) => {
             targetTerms.add(task.targetTerm);
         });
 
-        this._questions.length = 0;
-        this._doneQuestions.length = 0;
         const quizzTerms = getRandomItems(targetTerms, QUESTIONED_TERMS_PER_LEVEL);
         for (const term of quizzTerms) {
             this._questions.push(this._coclass.getQuestionsFor(term));
@@ -59,30 +58,30 @@ export class Level {
     *************************/
 
     hasTask() {
-        return this._tasks.length >= 1;
+        return this._taskIndex < this._tasks.length;
     }
 
     get task() {
         let task = undefined;
         if (this.hasTask()) {
-            task = this._tasks[this._tasks.length - 1];
+            task = this._tasks[this._taskIndex];
         }
 
         return task;
     }
 
     get doneTasks() {
-        return this._doneTasks;
+        return this._tasks.slice(0, this._taskIndex);
     }
 
     nextTask() {
-        let movedToNextTask = false;
-        if (this.hasTask()) {
-            this._doneTasks.push(this._tasks.pop());
-            movedToNextTask = true;
-        }
+        return new Promise((resolve, reject) => {
+            if (this.hasTask()) {
+                this._taskIndex++;
+            }
 
-        return movedToNextTask;
+            resolve(this.hasTask());
+        });
     }
 
     wasTaskSkipped() {
@@ -110,6 +109,8 @@ export class Level {
             return false;
         }
 
+        task.actualSynonyms = ccItem.synonyms;
+
         if (this.needSynonymSeed() && !task.candidatesIncludeSynonym(ccItem.synonyms)) {
             const seed = ccItem.getRandomSynonym();
             if (isDefined(seed)) {
@@ -124,9 +125,41 @@ export class Level {
     }
 
     renderTaskResults() {
-        getUserId().then( (id) => {
-            getResults('', this.task.id);
-        });
+        const results = getResults(this._projectName, this.task.id);
+        const userResult = results.find(r => r.user_id == this._userId);
+
+        const userAssessment = {};
+        if (isDefined(userResult)) {
+            const assessments = userResult.info.split(',');
+
+            for (let i = 1; i < assessments.length; i++) {
+                const assessment = assessments[i];
+                const item = assessment.split(':');
+                userAssessment[item[0]] = item[1];
+            }
+        }
+
+        const alignment = {};
+        for (let i = 0; i < results.length; i++) {
+            if (results[i].info.startsWith('SKIPPED')) {
+                continue;
+            }
+            const assessments = results[i].info.split(',');
+            for (let j = 1; j < assessments.length; j++) {
+                const assessment = assessments[j].split(':');
+                const candidate = assessment[0];
+                const isSynonym = (assessment[1] === '1');
+                const user_isSynonym = (userAssessment[candidate] === '1');
+                alignment[candidate] = alignment[candidate] || {'a': 0, 'd': 0};
+                if (user_isSynonym === isSynonym) {
+                    alignment[candidate]['a'] += 1;
+                } else {
+                    alignment[candidate]['d'] += 1;
+                }
+            }
+        }
+
+        return this.task.renderResult(userResult, alignment);
     }
 
     needSynonymSeed() {
@@ -134,11 +167,12 @@ export class Level {
     }
 
     isNewTargetTerm() {
-        if (this._doneTasks.length === 0) {
+        const doneTasks = this.doneTasks;
+        if (doneTasks.length === 0) {
             return true;
         }
 
-        const previousTask = this._doneTasks[this._doneTasks.length - 1];
+        const previousTask = doneTasks[doneTasks.length - 1];
         return this.task.targetTerm !== previousTask.targetTerm;
     }
 
@@ -147,11 +181,11 @@ export class Level {
     *************************/
 
     hasQuestion() {
-        return this._questions.length >= 1;
+        return this._questionIndex < this._questions.length;
     }
 
     hasNextQuestion() {
-        return this._questions.length >= 2;
+        return this._questionIndex < this._questions.length - 1;
     }
 
     getAnswersQuestionSet() {
@@ -170,11 +204,15 @@ export class Level {
         let movedToNextQuestion = false;
 
         if (this.hasQuestion()) {
-            this._doneQuestions.push(this._questions.shift());
+            this._questionIndex++;
             movedToNextQuestion = true;
         }
 
         return movedToNextQuestion;
+    }
+
+    resetQuestions() {
+        this._questionIndex = 0;
     }
 
     areQuestionsAnswered() {
@@ -186,7 +224,7 @@ export class Level {
     get currentQuestionSet() {
         let current = [undefined, undefined];
         if (this.hasQuestion()) {
-            current = this._questions[0];
+            current = this._questions[this._questionIndex];
         }
 
         return current;
