@@ -17,16 +17,22 @@ import {insertAtRandomPosition, isDefined} from './utils';
 
 export class Task {
     constructor(rawtask) {
-        this._id = rawtask.id;
-        this._targetTerm = rawtask.info.target;
+        this._id = undefined;
+        this._targetTerm = undefined;
         this._actualSynonyms = [];
         this._candidates = [];
         this._seed = undefined;
         this._skipped = false;
+        this._answer = undefined;
 
-        for (let key in rawtask.info) {
-            if (rawtask.info.hasOwnProperty(key) && key !== 'target' && rawtask.info[key] !== '') {
-                this._candidates.push(rawtask.info[key]);
+        if(isDefined(rawtask)) {
+            this._id = rawtask.id;
+            this._targetTerm = rawtask.info.target;
+
+            for (let key in rawtask.info) {
+                if (rawtask.info.hasOwnProperty(key) && key !== 'target' && rawtask.info[key] !== '') {
+                    this._candidates.push(rawtask.info[key]);
+                }
             }
         }
     }
@@ -35,20 +41,44 @@ export class Task {
         return this._id;
     }
 
+    set id(newId) {
+        this._id = newId;
+    }
+
     get targetTerm() {
         return this._targetTerm;
+    }
+
+    set targetTerm(newTerm) {
+        this._targetTerm = newTerm;
+    }
+
+    set actualSynonyms(synonyms) {
+        this._actualSynonyms = synonyms;
     }
 
     get candidates() {
         return this._candidates;
     }
 
+    set candidates(newCandidates) {
+        this._candidates = newCandidates;
+    }
+
+    set seed(newSeed) {
+        this._seed = newSeed;
+    }
+
     get skipped() {
         return this._skipped;
     }
 
-    set actualSynonyms(synonyms) {
-        this._actualSynonyms = synonyms;
+    set skipped(skip) {
+        this._skipped = skip;
+    }
+
+    set answer(newAnswer) {
+        this._answer = newAnswer;
     }
 
     /* Returns true if the candidates contain at least one synonym */
@@ -108,6 +138,10 @@ export class Task {
     }
 
     getAnswer(eventType) {
+        if (isDefined(this._answer)) {
+            return this._answer;
+        }
+
         let answer = 'Error: wrong event';
         let synonymFound = false;
 
@@ -144,6 +178,29 @@ export class Task {
             }
         }
 
-        return { synonymFound: synonymFound, answerString: answer };
+        this._answer = { synonymFound: synonymFound, answerString: answer };
+
+        return this._answer;
     }
 }
+
+function createTasksFrom(taskData) {
+    const tasks = [];
+
+    for (const tdata of taskData) {
+        const t = new Task();
+        t.id = tdata._id;
+        t.targetTerm = tdata._targetTerm;
+        t.actualSynonyms = tdata._actualSynonyms;
+        t.candidates = tdata._candidates;
+        t.seed = tdata._seed;
+        t.skipped = tdata._skipped;
+        t.answer = tdata._answer;
+        tasks.push(t);
+    }
+
+    return tasks;
+
+}
+
+export {createTasksFrom};

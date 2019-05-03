@@ -18,6 +18,7 @@ import {QUESTION_TYPE_DESCRIPTION, QUESTION_TYPE_PATH, PRE_QUESTION, POST_QUESTI
 
 class Question {
     constructor(number, data, correct, incorrect, question, type, element) {
+        this._number = number;
         this._data = data;
         this._correct = correct;
         this._incorrect = incorrect;
@@ -25,7 +26,6 @@ class Question {
         this._type = type;
         this._elem = element;
         this._answers = [];
-        this._number = number;
 
         this._choices = insertAtRandomPosition(this._incorrect, this._correct);
     }
@@ -42,6 +42,14 @@ class Question {
 
     set answer(newAnswer) {
         this._answers.push(newAnswer);
+    }
+
+    set answers(newAnswers) {
+        this._answers = newAnswers;
+    }
+
+    set choices(newChoices) {
+        this._choices = newChoices;
     }
 
     get choices() {
@@ -79,11 +87,11 @@ class Question {
 
             c.append(`<div class="radio"><label><input type="radio" class="coclassquestion" name="${this._type}" id="${this._type}-${index}" value="${selection}" ${checked}>${selection}</label><span class="coclassquestionresult hidden" style="margin-left:5px;">${result}</span></div>`);
         }
-        this._elem.append(q);
-        this._elem.append(d);
-        this._elem.append(c);
+        $(this._elem).append(q);
+        $(this._elem).append(d);
+        $(this._elem).append(c);
 
-        return this._elem.children().length > 0;
+        return $(this._elem).children().length > 0;
     }
 
     preQuestionsAnswered() {
@@ -115,7 +123,7 @@ export class DescriptionQuestion extends Question {
         super(1, data, correct, incorrect,
               'Which is the correct description for the object?',
               QUESTION_TYPE_DESCRIPTION,
-              $('#description-question'));
+              '#description-question');
     }
 }
 
@@ -124,6 +132,34 @@ export class PathQuestion extends Question {
         super(2, data, correct, incorrect,
               'Which is the correct object in the hierarchy?',
               QUESTION_TYPE_PATH,
-              $('#path-question'));
+              '#path-question');
     }
 }
+
+function createQuestionsFrom(questionsData) {
+    const questions = [];
+    for (const qset of questionsData) {
+        const questionSet = [];
+        for (const qdata of qset) {
+            let q = undefined;
+            if (qdata._type === QUESTION_TYPE_DESCRIPTION) {
+                q = new DescriptionQuestion(qdata._data, qdata._correct, qdata._incorrect);
+            } else if (qdata._type === QUESTION_TYPE_PATH) {
+                q = new PathQuestion(qdata._data, qdata._correct, qdata._incorrect);
+            }
+
+            if (isDefined(q)) {
+                q.choices = qdata._choices;
+                q.answers = qdata._answers;
+            }
+
+            questionSet.push(q);
+        }
+
+        questions.push(questionSet);
+    }
+
+    return questions;
+}
+
+export {createQuestionsFrom};

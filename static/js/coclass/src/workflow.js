@@ -39,7 +39,36 @@ const taskMachine = Machine({
         init: {
             onEntry: ['initUI'],
             on: {
-                '': 'newLevel'
+                '': 'initiatingLevel'
+            }
+        },
+        initiatingLevel: {
+            invoke: {
+                id: 'initiateLevel',
+                src: (ctx, event) => ctx.level.restoreLevel(),
+                onDone: {
+                    target: 'jumpTo'
+                },
+                onError: {
+                    target: 'newLevel'
+                }
+            }
+        },
+        jumpTo: {
+            on: {
+                '': [
+                    {
+                        cond: 'notStarted',
+                        target: 'answeringPreQuestions'
+                    },
+                    {
+                        cond: 'finishedLevel',
+                        target: 'answeringPostQuestions'
+                    },
+                    {
+                        target: 'doingTask'
+                    }
+                    ]
             }
         },
         newLevel: {
@@ -259,6 +288,9 @@ const taskMachine = Machine({
         allTasksDone: (ctx, event) => {
             return false;
             // after level change, check if we got new tasks.
+        },
+        notStarted: (ctx, event) => {
+            return ctx.level.notStartedLevel();
         }
     }
 }

@@ -192,3 +192,15 @@ test('get as many questions sets as requested', () => {
     expect(l.nextQuestion()).toBe(false);
     expect(numQS).toBe(QUESTIONED_TERMS_PER_LEVEL);
 });
+
+test('deserialize level', () => {
+    const original = new Level(coclass, 'test');
+    original.newLevel();
+    const deserialized = new Level(coclass, 'test');
+    deserialized.newLevel();
+
+    const data = original.serialize();
+    expect(deserialized.deserialize(data)).toBe(true);
+    expect(deserialized).toEqual(original);
+});
+

@@ -15,6 +15,8 @@
 
 import {Task} from './task';
 import {getNewTasks, saveTask, getProjectId, getUserId, getResults} from './pybossa';
+import {createQuestionsFrom} from './question';
+import {createTasksFrom} from './task';
 import {getRandomItems, isDefined, toPromise} from './utils';
 import {TASKS_PER_LEVEL, QUESTIONED_TERMS_PER_LEVEL, MAXIMUM_TASKS_BEFORE_SEED} from './constants';
 
@@ -53,6 +55,73 @@ export class Level {
         }
     }
 
+    saveLevel() {
+        localStorage.setItem('level', this.serialize()); 
+    }
+
+    restoreLevel() {
+        return new Promise((resolve, reject) => {
+            let data = localStorage.getItem('level');
+
+            if(!isDefined(data)) {
+                reject();
+            }
+
+            if (!this.deserialize(data)) {
+                reject();
+            }
+
+            resolve();
+        });
+
+
+    }
+
+    serialize() {
+        return JSON.stringify({
+            _questions: this._questions,
+            _questionIndex: this._questionIndex,
+            _tasks: this._tasks,
+            _taskIndex: this._taskIndex,
+            _streakNoSynonymsFound: this._streakNoSynonymsFound
+
+        });
+    }
+
+    deserialize(data) {
+        data = JSON.parse(data);
+
+        this._questions = createQuestionsFrom(data._questions);
+        if (this._questions.length !== data._questions.length) {
+            console.error('Level deserialization: inconsistent number of questions');
+            return false;
+        }
+        this._questionIndex = data._questionIndex;
+        if(!isDefined(this._questionIndex)) {
+            console.error('Level deserialization: question index not defined');
+            return false;
+        }
+        this._tasks = createTasksFrom(data._tasks);
+        this._taskIndex = data._taskIndex;
+        if(!isDefined(this._taskIndex)) {
+            console.error('Level deserialization: task index not defined');
+            return false;
+        }
+        this._streakNoSynonymsFound = data._streakNoSynonymsFound;
+        if(!isDefined(this._streakNoSynonymsFound)) {
+            console.error('Level deserialization: streak count not defined');
+            return false;
+        }
+
+
+
+        return true;
+    }
+
+    notStartedLevel() {
+        return this._taskIndex === 0;
+    }
+
     /************************
       Task management
     *************************/
@@ -79,6 +148,8 @@ export class Level {
             if (this.hasTask()) {
                 this._taskIndex++;
             }
+
+            this.saveLevel();
 
             resolve(this.hasTask());
         });
