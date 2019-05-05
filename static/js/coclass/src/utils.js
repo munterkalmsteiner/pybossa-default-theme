@@ -52,11 +52,4 @@ function isDefined(variable) {
     return (typeof variable !== 'undefined');
 }
 
-/* converts a JQuery deferred Object to a native Promise */
-function toPromise ($promise) {
-    return new Promise((resolve, reject) => {
-        $promise.then(resolve, reject);
-    });
-}
-
-export {getRandomItems, insertAtRandomPosition, findNode, getRandomInt, isDefined, toPromise};
+export {getRandomItems, insertAtRandomPosition, findNode, getRandomInt, isDefined};

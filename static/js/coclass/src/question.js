@@ -40,7 +40,7 @@ class Question {
         return (this._answers.length > 0 && this._answers[which] === this._correct);
     }
 
-    set answer(newAnswer) {
+    addAnswer(newAnswer) {
         this._answers.push(newAnswer);
     }
 
@@ -110,7 +110,7 @@ class Question {
         let gotAnswer = false;
 
         if (this.isAnswerSelected()) {
-            this._answers.push($(`input[type="radio"][name="${this._type}"]:checked`).val());
+            this.addAnswer($(`input[type="radio"][name="${this._type}"]:checked`).val());
             gotAnswer = true;
         }
 

@@ -90,7 +90,7 @@ const taskMachine = Machine({
                 id: 'saveTask',
                 src: (ctx, event) => ctx.level.saveTask(event.type),
                 onDone: {
-                    target: 'showresultOrNexttask',
+                    target: 'showresultOrNexttask'
                 },
                 onError: {
                     //TODO What now? Show error message...
@@ -107,7 +107,8 @@ const taskMachine = Machine({
                 id: 'retrieveNextTask',
                 src: (ctx, event) => ctx.level.nextTask(),
                 onDone: {
-                    target: 'taskOrQuestionsOrDone'
+                    target: 'taskOrQuestionsOrDone',
+                    actions: ['saveLevel']
                 }
             }
         },
@@ -157,11 +158,12 @@ const taskMachine = Machine({
                 FINISHEDQUIZZ: {
                     cond: 'answersSelected',
                     target: 'doingTask',
-                    actions: ['hideQuestionsUI', 'resetQuestions']
+                    actions: ['hideQuestionsUI', 'resetQuestions', 'saveLevel']
                 },
                 NEXTQUESTION: {
                     cond: 'answersSelected',
-                    target: 'answeringPreQuestions'
+                    target: 'answeringPreQuestions',
+                    actions: ['saveLevel']
                 }
             }
         },
@@ -171,7 +173,8 @@ const taskMachine = Machine({
             on: {
                 VERIFYANSWER: {
                     cond: 'answersSelected',
-                    target: 'verifyingPostQuestions'
+                    target: 'verifyingPostQuestions',
+                    actions: ['saveLevel']
                 },
             }
         },
@@ -179,8 +182,14 @@ const taskMachine = Machine({
             onEntry: ['showQuestionsUI', 'showVerificationResult', 'showQuestionsNextorFinished'],
             onExit: ['getNextQuestion', 'hideVerificationResult', 'hideQuestionsNextorFinished'],
             on: {
-                FINISHEDQUIZZ: { target: 'showLevel', actions: ['hideQuestionsUI'] },
-                NEXTQUESTION: { target: 'answeringPostQuestions' }
+                FINISHEDQUIZZ: {
+                    target: 'showLevel',
+                    actions: ['hideQuestionsUI', 'saveLevel']
+                },
+                NEXTQUESTION: {
+                    target: 'answeringPostQuestions',
+                    actions: ['saveLevel']
+                }
             }
         },
         showLevel: {
@@ -203,6 +212,9 @@ const taskMachine = Machine({
         },
         populateLevel: (ctx, event) => {
             ctx.level.newLevel();
+        },
+        saveLevel: (ctx, event) => {
+            ctx.level.saveLevel();
         },
         showQuestionsUI: (ctx, event) => {
             $('#quizz').removeClass('hidden');

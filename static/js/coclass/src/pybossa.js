@@ -84,6 +84,13 @@ function getProjectId(projectName) {
     return projectId;
 }
 
+/* converts a JQuery deferred Object to a native Promise */
+function toPromise ($promise) {
+    return new Promise((resolve, reject) => {
+        $promise.then(resolve, reject);
+    });
+}
+
 function _createTaskRun(answer, task) {
     task = _addAnswerToTask(task, answer);
     let taskrun = {
@@ -188,6 +195,6 @@ function _getProjectData(projectName) {
     return data;
 }
 
-export {getNewTasks, saveTask, getUserId, getProjectId, getResults};
+export {getNewTasks, saveTask, getUserId, getProjectId, getResults, toPromise};
 
 

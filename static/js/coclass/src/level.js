@@ -13,11 +13,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {Task} from './task';
-import {getNewTasks, saveTask, getProjectId, getUserId, getResults} from './pybossa';
+import {Task, createTasksFrom, getAlignment} from './task';
+import {getNewTasks, saveTask, getProjectId, getUserId, getResults, toPromise} from './pybossa';
 import {createQuestionsFrom} from './question';
-import {createTasksFrom} from './task';
-import {getRandomItems, isDefined, toPromise} from './utils';
+import {getRandomItems, isDefined} from './utils';
 import {TASKS_PER_LEVEL, QUESTIONED_TERMS_PER_LEVEL, MAXIMUM_TASKS_BEFORE_SEED} from './constants';
 
 export class Level {
@@ -113,8 +112,6 @@ export class Level {
             return false;
         }
 
-
-
         return true;
     }
 
@@ -149,8 +146,6 @@ export class Level {
                 this._taskIndex++;
             }
 
-            this.saveLevel();
-
             resolve(this.hasTask());
         });
     }
@@ -162,12 +157,14 @@ export class Level {
     saveTask(eventType) {
         const answer = this.task.getAnswer(eventType);
 
-        if (eventType === 'SKIPTASK' || !answer.synonymFound) {
+        if (eventType === 'SKIPTASK' || !answer.foundSynonym()) {
             this._streakNoSynonymsFound++;
         }
 
+        // TODO increase index here
+
         // XState expects a native Promise, so we need to convert the JQuery deferred object
-        return toPromise(saveTask(this.task.id, answer.answerString));
+        return toPromise(saveTask(this.task.id, answer));
     }
 
     renderTask() {
@@ -197,40 +194,25 @@ export class Level {
 
     renderTaskResults() {
         const results = getResults(this._projectName, this.task.id);
+        if (!isDefined(results)) {
+            console.error('Could not retrieve results');
+            return false;
+        }
+
         const userResult = results.find(r => r.user_id == this._userId);
 
-        const userAssessment = {};
-        if (isDefined(userResult)) {
-            const assessments = userResult.info.split(',');
-
-            for (let i = 1; i < assessments.length; i++) {
-                const assessment = assessments[i];
-                const item = assessment.split(':');
-                userAssessment[item[0]] = item[1];
-            }
+        if (!isDefined(userResult)) {
+            console.error('Could not find user result');
+            return false;
         }
 
-        const alignment = {};
-        for (let i = 0; i < results.length; i++) {
-            if (results[i].info.startsWith('SKIPPED')) {
-                continue;
-            }
-            const assessments = results[i].info.split(',');
-            for (let j = 1; j < assessments.length; j++) {
-                const assessment = assessments[j].split(':');
-                const candidate = assessment[0];
-                const isSynonym = (assessment[1] === '1');
-                const user_isSynonym = (userAssessment[candidate] === '1');
-                alignment[candidate] = alignment[candidate] || {'a': 0, 'd': 0};
-                if (user_isSynonym === isSynonym) {
-                    alignment[candidate]['a'] += 1;
-                } else {
-                    alignment[candidate]['d'] += 1;
-                }
-            }
+        const userAnswer = userResult.info;
+        const allAnswers = [];
+        for (const result of results) {
+            allAnswers.push(result.info);
         }
 
-        return this.task.renderResult(userResult, alignment);
+        return this.task.renderResult(getAlignment(userAnswer, allAnswers));
     }
 
     needSynonymSeed() {

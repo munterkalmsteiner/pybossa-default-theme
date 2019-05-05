@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {Task} from '../task';
+import {Task, TaskAnswer, Candidate, getAlignment} from '../task';
 import {readFileSync} from 'fs';
 
 const html = readFileSync('src/coclass_presenter.html');
@@ -60,8 +60,8 @@ test('get answer no synonym selected', () => {
     const t = new Task(rawtask);
     expect(t.renderTask(true, 'bla', 'blub')).toBe(true);
     const answer = t.getAnswer('SUBMITTASK');
-    expect(answer.synonymFound).toBe(false);
-    expect(answer.answerString).toMatch(/^räl,(?:\w+:0,?){7}$/);
+    expect(answer.foundSynonym()).toBe(false);
+    expect(answer.skipped).toBe(false);
 });
 
 test('get answer one synonym selected', () => {
@@ -71,8 +71,8 @@ test('get answer one synonym selected', () => {
     $('#c-1-0').prop('checked', true).trigger('click');
 
     const answer = t.getAnswer('SUBMITTASK');
-    expect(answer.synonymFound).toBe(true);
-    expect(answer.answerString).toMatch(/^räl,.*:1.*$/);
+    expect(answer.foundSynonym()).toBe(true);
+    expect(answer.skipped).toBe(false);
 });
 
 test('get answer more synonyms selected', () => {
@@ -83,17 +83,25 @@ test('get answer more synonyms selected', () => {
     $('#c-1-2').prop('checked', true).trigger('click');
 
     const answer = t.getAnswer('SUBMITTASK');
-    expect(answer.synonymFound).toBe(true);
-    expect(answer.answerString).toMatch(/^räl,.*:1.*$/);
+    expect(answer.foundSynonym()).toBe(true);
+    expect(answer.skipped).toBe(false);
 });
 
 test('get answer with seeded synonym', () => {
     const t = new Task(rawtask);
-    t.addSeedToCandidates('seeeeed');
+    const seed = 'seeeed';
+    t.addSeedToCandidates(seed);
     expect(t.renderTask(true, 'bla', 'blub')).toBe(true);
 
     const answer = t.getAnswer('SUBMITTASK');
-    expect(answer.answerString).toMatch(/^räl,.*seeeeed:0:s.*$/);
+    expect(answer.skipped).toBe(false);
+    const c = answer.candidates.find(a => {
+        return a.term === seed;
+    });
+    expect(c).toBeDefined();
+    expect(c.term).toBe(seed);
+    expect(c.isSeeded).toBe(true);
+    expect(c.isSynonym).toBe(false);
 });
 
 test('get skip answer', () => {
@@ -101,17 +109,57 @@ test('get skip answer', () => {
     expect(t.renderTask(true, 'bla', 'blub')).toBe(true);
 
     const answer = t.getAnswer('SKIPTASK');
-    expect(answer.synonymFound).toBe(false);
-    expect(answer.answerString).toMatch(/^SKIPPED,räl$/);
+    expect(answer.foundSynonym()).toBe(false);
+    expect(answer.skipped).toBe(true);
 });
 
 test('get skip answer with seeded synonym', () => {
     const t = new Task(rawtask);
-    t.addSeedToCandidates('seeeeed');
+    const seed = 'seeeeed';
+    t.addSeedToCandidates(seed);
     expect(t.renderTask(true, 'bla', 'blub')).toBe(true);
 
     const answer = t.getAnswer('SKIPTASK');
-    expect(answer.synonymFound).toBe(false);
-    expect(answer.answerString).toMatch(/^SKIPPED,räl,seeeeed:0:s$/);
+    expect(answer.foundSynonym()).toBe(false);
+    expect(answer.skipped).toBe(true);
+    const c = answer.candidates.find(a => {
+        return a.term === seed;
+    });
+    expect(c).toBeDefined();
+    expect(c.term).toBe(seed);
+    expect(c.isSeeded).toBe(true);
+    expect(c.isSynonym).toBe(false);
 });
 
+test('find existing candidate in task answer', () => {
+    const c1 = new Candidate('a1');
+    const c2 = new Candidate('a2');
+    const c3 = new Candidate('b99');
+    const c4 = new Candidate('z55');
+    const c5 = new Candidate('B');
+
+    const ta = new TaskAnswer('target');
+    ta.addCandidate(c1);
+    ta.addCandidate(c2);
+    ta.addCandidate(c3);
+    ta.addCandidate(c4);
+    ta.addCandidate(c5);
+
+    expect(ta.findCandidate(c3.term)).toBe(c3);
+});
+
+test('find not existing candidate in task answer', () => {
+    const c1 = new Candidate('a1');
+    const c2 = new Candidate('a2');
+    const c3 = new Candidate('b99');
+    const c4 = new Candidate('z55');
+    const c5 = new Candidate('B');
+
+    const ta = new TaskAnswer('target');
+    ta.addCandidate(c1);
+    ta.addCandidate(c2);
+    ta.addCandidate(c3);
+    ta.addCandidate(c5);
+
+    expect(ta.findCandidate(c4.term)).toBeUndefined();
+});

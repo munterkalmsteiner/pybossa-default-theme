@@ -21,8 +21,6 @@ export class Task {
         this._targetTerm = undefined;
         this._actualSynonyms = [];
         this._candidates = [];
-        this._seed = undefined;
-        this._skipped = false;
         this._answer = undefined;
 
         if(isDefined(rawtask)) {
@@ -31,7 +29,7 @@ export class Task {
 
             for (let key in rawtask.info) {
                 if (rawtask.info.hasOwnProperty(key) && key !== 'target' && rawtask.info[key] !== '') {
-                    this._candidates.push(rawtask.info[key]);
+                    this._candidates.push(new Candidate(rawtask.info[key]));
                 }
             }
         }
@@ -65,31 +63,39 @@ export class Task {
         this._candidates = newCandidates;
     }
 
-    set seed(newSeed) {
-        this._seed = newSeed;
+    addCandidate(newCandidate) {
+        this._candidates.push(newCandidate);
     }
 
-    get skipped() {
-        return this._skipped;
-    }
+    get isSkipped() {
+        if (isDefined(this._answer)) {
+            return this._answer.skipped;
+        }
 
-    set skipped(skip) {
-        this._skipped = skip;
+        return false;
     }
 
     set answer(newAnswer) {
         this._answer = newAnswer;
     }
 
+    get answer() {
+        return this._answer;
+    }
+
     /* Returns true if the candidates contain at least one synonym */
     candidatesIncludeSynonym(synonyms) {
-        return (synonyms.filter(synonym => this._candidates.includes(synonym))).length > 0; 
+        //return (synonyms.filter(synonym => this._candidates.includes(synonym))).length > 0;
+        return synonyms.some(s => {
+            return this._candidates.some(c => {
+                return c.term === s;
+            });
+        });
     }
 
     /* Adds a term to the candidates at a random position and returns the total number of candidates */
     addSeedToCandidates(seed) {
-        this._candidates = insertAtRandomPosition(this._candidates, seed);
-        this._seed = seed;
+        this._candidates = insertAtRandomPosition(this._candidates, new Candidate(seed, true));
         return this._candidates.length;
     }
 
@@ -104,21 +110,20 @@ export class Task {
         const elem = $('#candidates');
         this._candidates.forEach((candidate, index) => {
             let cbid = "select" + index;
-            let seeded = (candidate === this._seed);
-            elem.append(`<tr id="${cbid}" class="candidate ${(seeded ? ' seeded' : '')}" data-term="${candidate}"><td>${candidate} is</td><td><input type="radio" id="c-0-${index}" name="radio_${cbid}" value="0" checked></td><td><input type="radio" id="c-1-${index}" name="radio_${cbid}" value="1"></td><td><input type="radio" id="c-2-${index}" name="radio_${cbid}" value="2"></td><td><input type="radio" id="c-3-${index}" name="radio_${cbid}" value="3"></td><td class="target">${this.targetTerm}</td></tr>`); 
+            elem.append(`<tr id="${cbid}" class="candidate"><td>${candidate.term}</td><td><input type="radio" id="c-0-${index}" name="radio_${cbid}" value="0" checked></td><td><input type="radio" id="c-1-${index}" name="radio_${cbid}" value="1"></td><td><input type="radio" id="c-2-${index}" name="radio_${cbid}" value="2"></td><td><input type="radio" id="c-3-${index}" name="radio_${cbid}" value="3"></td><td class="target">${this.targetTerm}</td></tr>`); 
         });
 
         return elem.children().length > 0;
     }
 
-    renderResult(userResult, alignment) {
+    renderResult(alignment) {
         $('.result').remove();
         const elem = $('#results');
         this._candidates.forEach((candidate) => {
-            const agreement = alignment[candidate]['a'];
-            const disagreement = alignment[candidate]['d'];
-            const isActualSynonym = this._actualSynonyms.includes(candidate);
-            const isJudgedAsSynonym = (userResult[candidate] == 1);
+            const agreement = alignment[candidate.term]['a'];
+            const disagreement = alignment[candidate.term]['d'];
+            const isActualSynonym = this._actualSynonyms.includes(candidate.term);
+            const isJudgedAsSynonym = this._answer.findCandidate(candidate.term).isSynonym;
             let resultSymbol = '<i class="fas fa-';
 
             if (isActualSynonym && isJudgedAsSynonym) {
@@ -131,7 +136,7 @@ export class Task {
                 resultSymbol += 'minus"></i>';
             }
 
-            elem.append(`<tr class="result"><td>${candidate}</td><td>${resultSymbol}</td><td></span><span class="badge agreement">${agreement}</span><span class="badge disagreement">${disagreement}</span></td></tr>`);
+            elem.append(`<tr class="result"><td>${candidate.term}</td><td>${resultSymbol}</td><td></span><span class="badge agreement">${agreement}</span><span class="badge disagreement">${disagreement}</span></td></tr>`);
         });
 
         return elem.children().length > 0;
@@ -142,45 +147,130 @@ export class Task {
             return this._answer;
         }
 
-        let answer = 'Error: wrong event';
-        let synonymFound = false;
-
         if (eventType === 'SUBMITTASK') {
-            answer = this._targetTerm;
+            this._answer = new TaskAnswer(this._targetTerm);
             this._candidates.forEach((candidate, index) => {
                 const id = 'select' + index;
                 const row = $('#' + id);
-                const seeded = $(row).hasClass('seeded');
-                const term = $(row).attr("data-term");
                 const selection = $(row).find('input[name=radio_' + id + ']:checked').val();
-
-                if (selection == 1) {
-                    synonymFound = true;
-                }
-
-                answer += ',' + term + ':' + selection + (seeded ? ':s' : '');
+                candidate.isSynonym = (selection === '1');
+                candidate.isGeneralization = (selection === '2');
+                candidate.isSpecialization = (selection === '3');
+                this._answer.addCandidate(candidate);
             });
         }
         else if (eventType === 'SKIPTASK') {
-            this._skipped = true;
-            let seed = undefined;
-            this._candidates.forEach((candidate, index) => {
-                const id = 'select' + index;
-                const row = $('#' + id);
-                if (row.hasClass('seeded')) {
-                    seed = $(row).attr("data-term");
-                }
-            });
+            this._answer = new TaskAnswer(this._targetTerm, true);
 
-            answer = "SKIPPED," + this._targetTerm;
-            if (isDefined(seed)) {
-                answer += ',' + seed + ':0:s';
-            }
+            this._candidates.forEach(candidate => {
+                this._answer.addCandidate(candidate);
+            });
         }
 
-        this._answer = { synonymFound: synonymFound, answerString: answer };
-
         return this._answer;
+    }
+}
+
+export class TaskAnswer {
+    constructor(targetTerm, skipped = false) {
+        this._targetTerm = targetTerm;
+        this._skipped = skipped;
+        this._candidates = [];
+        this._quizz = undefined;
+    }
+
+    set targetTerm(newTerm) {
+        this._targetTerm = newTerm;
+    }
+
+    set skipped(s) {
+        this._skipped = s;
+    }
+
+    get skipped() {
+        return this._skipped;
+    }
+
+    set candidates(newCandidates) {
+        this._candidates = newCandidates;
+    }
+
+    get candidates() {
+        return this._candidates;
+    }
+
+    set quiz(newQuizz) {
+        this._quiz = newQuizz;
+    }
+
+    get quiz() {
+        return this._quizz;
+    }
+
+    addCandidate(candidate) {
+        this._candidates.push(candidate);
+    }
+
+    findCandidate(term) {
+        return this._candidates.find(elem => {
+            return elem.term === term;
+        });
+    }
+
+    foundSynonym() {
+        return this._candidates.some(c => {
+            return c.isSynonym;
+        });
+    }
+}
+
+export class Candidate {
+    constructor(term, isSeeded = false) {
+        this._term = term;
+        this._isSynonym = false;
+        this._isGeneralization = false;
+        this._isSpecialization = false;
+        this._isSeeded = isSeeded;
+    }
+
+    set term(newTerm) {
+        this._term = newTerm;
+    }
+
+    get term() {
+        return this._term;
+    }
+
+    set isSynonym(isSyn) {
+        this._isSynonym = isSyn;
+    }
+
+    get isSynonym() {
+        return this._isSynonym;
+    }
+
+    set isGeneralization(isGen) {
+        this._isGeneralization = isGen;
+    }
+
+    get isGeneralization() {
+        return this._isGeneralization;
+    }
+
+    set isSpecialization(isSpec) {
+        this._isSpecialization = isSpec;
+    }
+
+    get isSpecialization() {
+        return this._isSpecialization;
+    }
+
+    set isSeeded(seeded) {
+        this._isSeeded = seeded;
+    }
+
+    get isSeeded() {
+        return this._isSeeded;
     }
 }
 
@@ -192,15 +282,63 @@ function createTasksFrom(taskData) {
         t.id = tdata._id;
         t.targetTerm = tdata._targetTerm;
         t.actualSynonyms = tdata._actualSynonyms;
-        t.candidates = tdata._candidates;
-        t.seed = tdata._seed;
-        t.skipped = tdata._skipped;
-        t.answer = tdata._answer;
+        t.candidates = _getCandidatesFromData(tdata._candidates);
+
+        if (isDefined(tdata._answer)) {
+            t.answer = new TaskAnswer(tdata._answer._targetTerm, tdata._answer._skipped);
+            t.answer.candidates = _getCandidatesFromData(tdata._answer._candidates);
+        }
+
         tasks.push(t);
     }
 
     return tasks;
-
 }
 
-export {createTasksFrom};
+function _getCandidatesFromData(tdata) {
+    const candidates = [];
+    for (const cdata of tdata) {
+        const candidate = new Candidate();
+        candidate.term = cdata._term;
+        candidate.isSynonym = cdata._isSynonym;
+        candidate.isGeneralization = cdata._isGeneralization;
+        candidate.isSpecialization = cdata._isSpecialization;
+        candidate.isSeeded = cdata._isSeeded;
+
+        candidates.push(candidate);
+    }
+
+    return candidates;
+}
+
+function getAlignment(userAnswer, allAnswers) {
+    const alignment = {};
+
+    if (!userAnswer._skipped) {
+        for (const answer of allAnswers) {
+            if (answer._skipped) {
+                continue;
+            }
+
+            for (const userCandidate of userAnswer._candidates) {
+                alignment[userCandidate._term] = alignment[userCandidate._term] || {'a': 0, 'd': 0};
+
+                const otherCandidate = answer._candidates.find(elem => {
+                    return elem._term === userCandidate._term;
+                });
+
+                if (isDefined(otherCandidate)) {
+                    if (userCandidate._isSynonym === otherCandidate._isSynonym) {
+                        alignment[userCandidate._term]['a'] += 1;
+                    } else {
+                        alignment[userCandidate._term]['d'] += 1;
+                    }
+                }
+            }
+        }
+    }
+
+    return alignment;
+}
+
+export {createTasksFrom, getAlignment};

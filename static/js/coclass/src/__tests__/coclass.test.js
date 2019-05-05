@@ -105,14 +105,14 @@ test('sibling description question with several siblings', () => {
 test('sibling description question with correct answer', () => {
     const targetterm = 'Pneumatisk cylinder';
     const q = c.getDescriptionQuestion(targetterm);
-    q.answer = 'flödesdrivande objekt som åstadkommer rörelse till ändpositioner beroende på gastryck';
+    q.addAnswer('flödesdrivande objekt som åstadkommer rörelse till ändpositioner beroende på gastryck');
     expect(q.isAnswerCorrect()).toBe(true);
 });
 
 test('sibling description question with incorrect answer', () => {
     const targetterm = 'Pneumatisk cylinder';
     const q = c.getDescriptionQuestion(targetterm);
-    q.answer = 'flödesdrivande objekt som åstadkommer rotation genom en strömmande vätska';
+    q.addAnswer('flödesdrivande objekt som åstadkommer rotation genom en strömmande vätska');
     expect(q.isAnswerCorrect()).toBe(false);
 });
 

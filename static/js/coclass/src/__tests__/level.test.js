@@ -15,7 +15,7 @@
 
 import {CoClass} from '../coclass';
 import {Level} from '../level';
-import {getNewTasks, getProjectId, getUserId, getResults} from '../pybossa';
+import {getNewTasks, getProjectId, getUserId, getResults, toPromise} from '../pybossa';
 import {isDefined} from '../utils';
 import {QUESTIONED_TERMS_PER_LEVEL} from '../constants';
 import {readFileSync} from 'fs';
@@ -34,6 +34,10 @@ getUserId.mockImplementation(() => {
     return 1;
 });
 
+toPromise.mockImplementation(() => {
+    return;
+});
+
 
 getResults.mockImplementation(() => {
     /* Based on the results, this is the agreement
@@ -44,7 +48,7 @@ getResults.mockImplementation(() => {
        User 11: SKIPPED
        User 12: n,n,n,n,y -> 3a0d,2a1d,3a0d,3a0d,1a -> 12a,1d
     */
-    return [{"info": "lågspänningskabel,a:0,bb:0,ccc:0,dddd:0", "external_uid": null, "user_id": 8, "task_id": 369326, "created": "2019-03-21T07:50:18.376039", "finish_time": "2019-03-21T07:51:55.529206", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 594, "media_url": null}, {"info": "lågspänningskabel,a:0,bb:1,ccc:0,dddd:0", "external_uid": null, "user_id": 10, "task_id": 369326, "created": "2019-03-21T09:37:27.477913", "finish_time": "2019-03-21T09:38:12.818251", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 628, "media_url": null}, {"info": "SKIPPED,lågspänningskabel", "external_uid": null, "user_id": 11, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}, {"info": "lågspänningskabel,a:0,bb:0,ccc:0,dddd:0,flaska:1:s", "external_uid": null, "user_id": 12, "task_id": 369326, "created": "2019-03-26T09:53:24.721937", "finish_time": "2019-03-26T09:53:41.232894", "calibration": null, "user_ip": null, "timeout": null, "project_id": 1, "id": 683, "media_url": null}];
+    return [{info: {_targetTerm: 'lågspänningskabel', _skipped: false, _candidates: [{_term: 'a', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false},{_term: 'bb', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'ccc', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'dddd', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}]}, external_uid: null, user_id: 8, task_id: 369326, created: "2019-03-21T07:50:18.376039", finish_time: "2019-03-21T07:51:55.529206", calibration: null, user_ip: null, timeout: null, project_id: 1, id: 594, media_url: null}, {info: {_targetTerm: 'lågspänningskabel', _skipped: false, _candidates: [{_term: 'a', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false},{_term: 'bb', _isSynonym: true, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'ccc', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false},{_term: 'dddd', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}]}, external_uid: null, user_id: 10, task_id: 369326, created: "2019-03-21T09:37:27.477913", finish_time: "2019-03-21T09:38:12.818251", calibration: null, user_ip: null, timeout: null, project_id: 1, id: 628, media_url: null}, {info: {_targetTerm: 'lågspänningskabel', _skipped: true, _candidates: [{_term: 'a', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false},{_term: 'bb', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'ccc', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'dddd', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}]}, external_uid: null, user_id: 11, task_id: 369326, created: "2019-03-26T09:53:24.721937", finish_time: "2019-03-26T09:53:41.232894", calibration: null, user_ip: null, timeout: null, project_id: 1, id: 683, media_url: null}, {info: {_targetTerm: 'lågspänningskabel', _skipped: false, _candidates: [{_term: 'a', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false},{_term: 'bb', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'ccc', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'dddd', _isSynonym: false, isGeneralization: false, isSpecialization: false, isSeeded: false}, {_term: 'flaska', _isSynonym: true, isGeneralization: false, isSpecialization: false, isSeeded: true}]}, external_uid: null, user_id: 12, task_id: 369326, created: "2019-03-26T09:53:24.721937", finish_time: "2019-03-26T09:53:41.232894", calibration: null, user_ip: null, timeout: null, project_id: 1, id: 683, media_url: null}];
 });
 
 beforeEach(() => {
@@ -106,6 +110,7 @@ test('render task results 1 disagreement', () => {
 
     const l = new Level(coclass, 'test');
     l.newLevel();
+    l.saveTask('SUBMITTASK');
     expect(l.renderTaskResults()).toBe(true);
     expect($('.result').size()).toBe(4);
     expect($('.agreement').get().reduce( (a,b) => {
@@ -127,6 +132,7 @@ test('render task results 1 disagreement with seed', () => {
     const l = new Level(coclass, 'test');
     l.newLevel();
     l.task.addSeedToCandidates('flaska');
+    l.saveTask('SUBMITTASK');
 
     expect(l.renderTaskResults()).toBe(true);
     expect($('.result').size()).toBe(5);
@@ -148,6 +154,7 @@ test('render task results 2 disagreements', () => {
 
     const l = new Level(coclass, 'test');
     l.newLevel();
+    l.saveTask('SUBMITTASK');
     expect(l.renderTaskResults()).toBe(true);
     expect($('.result').size()).toBe(4);
     expect($('.agreement').get().reduce( (a,b) => {
@@ -197,7 +204,6 @@ test('deserialize level', () => {
     const original = new Level(coclass, 'test');
     original.newLevel();
     const deserialized = new Level(coclass, 'test');
-    deserialized.newLevel();
 
     const data = original.serialize();
     expect(deserialized.deserialize(data)).toBe(true);
