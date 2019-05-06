@@ -40,6 +40,10 @@ class Question {
         return (this._answers.length > 0 && this._answers[which] === this._correct);
     }
 
+    isAnswered(which = PRE_QUESTION) {
+        return isDefined(this._answers[which]);
+    }
+
     addAnswer(newAnswer) {
         this._answers.push(newAnswer);
     }

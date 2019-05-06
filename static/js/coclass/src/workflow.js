@@ -58,21 +58,21 @@ const taskMachine = Machine({
             on: {
                 '': [
                     {
-                        cond: 'notStarted',
+                        cond: 'arePreQuestionsNotAnswered',
                         target: 'answeringPreQuestions'
                     },
                     {
-                        cond: 'finishedLevel',
-                        target: 'answeringPostQuestions'
+                        cond: 'isLevelNotFinished',
+                        target: 'doingTask'
                     },
                     {
-                        target: 'doingTask'
+                        target: 'answeringPostQuestions'
                     }
                     ]
             }
         },
         newLevel: {
-            onEntry: ['populateLevel'],
+            onEntry: ['populateLevel', 'saveLevel'],
             on: {
                 '': 'answeringPreQuestions'
             }
@@ -93,31 +93,17 @@ const taskMachine = Machine({
                     target: 'showresultOrNexttask'
                 },
                 onError: {
-                    //TODO What now? Show error message...
-                }
-            }
-        },
-        retrievingNextTask: {
-            /* We need to implement this with a promise since getting the next task
-               changes the internal state of the context (level object). With the promise,
-               we make sure that any subsequent state gets the updated context. Normal actions
-               are fire-and-forget, and there is no guarantee that the next state will see the
-               updated context. */
-            invoke: {
-                id: 'retrieveNextTask',
-                src: (ctx, event) => ctx.level.nextTask(),
-                onDone: {
-                    target: 'taskOrQuestionsOrDone',
-                    actions: ['saveLevel']
+                    actions: (ctx, event) => { console.error('Could not save task'); }
                 }
             }
         },
         showresultOrNexttask: {
+            onEntry: ['saveLevel'],
             on: {
                 '': [
                     {
                         cond: 'didSkipTask',
-                        target: 'retrievingNextTask'
+                        target: 'taskOrQuestionsOrDone'
                     },
                     {
                         target: 'showingTaskResults'
@@ -130,7 +116,7 @@ const taskMachine = Machine({
             onExit: ['hideResultsUI'],
             on: {
                 NEXTTASK: {
-                    target: 'retrievingNextTask'
+                    target: 'taskOrQuestionsOrDone'
                 }
             }
         },
@@ -138,7 +124,7 @@ const taskMachine = Machine({
             on: {
                 '': [
                     {
-                        cond: 'finishedLevel',
+                        cond: 'isLevelfinished',
                         target: 'answeringPostQuestions'
                     },
                     {
@@ -281,7 +267,7 @@ const taskMachine = Machine({
     },
     guards: {
         answersSelected: (ctx, event) => {
-            const selected = ctx.level.areQuestionsAnswered();
+            const selected = ctx.level.areAnswersSelected();
 
             if (selected) {
                 $('#msgNoAnswers').addClass('hidden');
@@ -294,15 +280,18 @@ const taskMachine = Machine({
         didSkipTask: (ctx, event) => {
             return ctx.level.wasTaskSkipped();
         },
-        finishedLevel: (ctx, event) => {
+        isLevelfinished: (ctx, event) => {
             return !ctx.level.hasTask();
         },
         allTasksDone: (ctx, event) => {
             return false;
             // after level change, check if we got new tasks.
         },
-        notStarted: (ctx, event) => {
-            return ctx.level.notStartedLevel();
+        arePreQuestionsNotAnswered: (ctx, event) => {
+            return !ctx.level.areQuestionsAnswered(0);
+        },
+        isLevelNotFinished: (ctx, event) => {
+            return ctx.level.hasTask();
         }
     }
 }

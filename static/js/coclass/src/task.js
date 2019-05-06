@@ -67,7 +67,7 @@ export class Task {
         this._candidates.push(newCandidate);
     }
 
-    get isSkipped() {
+    get skipped() {
         if (isDefined(this._answer)) {
             return this._answer.skipped;
         }
@@ -165,7 +165,7 @@ export class Task {
             this._candidates.forEach(candidate => {
                 this._answer.addCandidate(candidate);
             });
-        }
+        } 
 
         return this._answer;
     }

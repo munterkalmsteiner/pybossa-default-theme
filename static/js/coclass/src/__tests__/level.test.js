@@ -35,7 +35,7 @@ getUserId.mockImplementation(() => {
 });
 
 toPromise.mockImplementation(() => {
-    return;
+    return Promise.resolve();
 });
 
 
@@ -67,36 +67,16 @@ test('get next task until none are left', () => {
     l.newLevel();
     expect(l.hasTask()).toBe(true);
 
-    let numTasks = 0;
-    while (l.hasTask()) {
-        numTasks++;
+    let numTasks;
+    for (let i = 0; i < l.numTasks(); i++) {
+        numTasks = i;
         const task = l.task;
         expect(task).toBeDefined();
-        l.nextTask();
-    }
-    l.nextTask().then((r) => {
-        expect(r).toBe(false);
-    });
 
-    const doneTasks = l.doneTasks;
-    expect(doneTasks.length).toBe(numTasks);
-    expect(l.task).toBeUndefined();
-    expect(l.hasTask()).toBe(false);
-});
-
-test('is new target term', () => {
-    const l = new Level(coclass, 'test');
-    l.newLevel();
-    expect(l.isNewTargetTerm()).toBe(true);
-    const oldTargetTerm = l.task.targetTerm;
-    const blocksize = 10; // our data has 10 terms in a row
-    for (let i = 0; i < blocksize - 1; i++) {
-        l.nextTask();
-        expect(l.isNewTargetTerm()).toBe(false);
+        l.saveTask().then((taskIndex) => {
+            expect(taskIndex).toBe(i+1);
+        }).catch(err => console.log(err));
     }
-    l.nextTask();
-    expect(l.isNewTargetTerm()).toBe(true);
-    expect(l.task.targetTerm).not.toBe(oldTargetTerm);
 });
 
 
@@ -110,15 +90,16 @@ test('render task results 1 disagreement', () => {
 
     const l = new Level(coclass, 'test');
     l.newLevel();
-    l.saveTask('SUBMITTASK');
-    expect(l.renderTaskResults()).toBe(true);
-    expect($('.result').size()).toBe(4);
-    expect($('.agreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(11);
-    expect($('.disagreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(1);
+    l.saveTask('SUBMITTASK').then(() => {
+        expect(l.renderTaskResults()).toBe(true);
+        expect($('.result').size()).toBe(4);
+        expect($('.agreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(11);
+        expect($('.disagreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(1);
+    }).catch(err => console.log(err));
 });
 
 test('render task results 1 disagreement with seed', () => {
@@ -132,16 +113,16 @@ test('render task results 1 disagreement with seed', () => {
     const l = new Level(coclass, 'test');
     l.newLevel();
     l.task.addSeedToCandidates('flaska');
-    l.saveTask('SUBMITTASK');
-
-    expect(l.renderTaskResults()).toBe(true);
-    expect($('.result').size()).toBe(5);
-    expect($('.agreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(12);
-    expect($('.disagreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(1);
+    l.saveTask('SUBMITTASK').then(() => {
+        expect(l.renderTaskResults()).toBe(true);
+        expect($('.result').size()).toBe(5);
+        expect($('.agreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(12);
+        expect($('.disagreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(1);
+    }).catch(err => console.log(err));
 });
 
 test('render task results 2 disagreements', () => {
@@ -154,17 +135,17 @@ test('render task results 2 disagreements', () => {
 
     const l = new Level(coclass, 'test');
     l.newLevel();
-    l.saveTask('SUBMITTASK');
-    expect(l.renderTaskResults()).toBe(true);
-    expect($('.result').size()).toBe(4);
-    expect($('.agreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(10);
-    expect($('.disagreement').get().reduce( (a,b) => {
-        return a + parseInt($(b).text());
-    }, 0)).toBe(2);
+    l.saveTask('SUBMITTASK').then(() => {
+        expect(l.renderTaskResults()).toBe(true);
+        expect($('.result').size()).toBe(4);
+        expect($('.agreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(10);
+        expect($('.disagreement').get().reduce( (a,b) => {
+            return a + parseInt($(b).text());
+        }, 0)).toBe(2);
+    }).catch(err => console.log(err));
 });
-
 
 test('render defined questions', () => {
     const l = new Level(coclass, 'test');

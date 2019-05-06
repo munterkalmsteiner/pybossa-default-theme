@@ -83,7 +83,6 @@ export class Level {
             _tasks: this._tasks,
             _taskIndex: this._taskIndex,
             _streakNoSynonymsFound: this._streakNoSynonymsFound
-
         });
     }
 
@@ -91,32 +90,12 @@ export class Level {
         data = JSON.parse(data);
 
         this._questions = createQuestionsFrom(data._questions);
-        if (this._questions.length !== data._questions.length) {
-            console.error('Level deserialization: inconsistent number of questions');
-            return false;
-        }
         this._questionIndex = data._questionIndex;
-        if(!isDefined(this._questionIndex)) {
-            console.error('Level deserialization: question index not defined');
-            return false;
-        }
         this._tasks = createTasksFrom(data._tasks);
         this._taskIndex = data._taskIndex;
-        if(!isDefined(this._taskIndex)) {
-            console.error('Level deserialization: task index not defined');
-            return false;
-        }
         this._streakNoSynonymsFound = data._streakNoSynonymsFound;
-        if(!isDefined(this._streakNoSynonymsFound)) {
-            console.error('Level deserialization: streak count not defined');
-            return false;
-        }
 
         return true;
-    }
-
-    notStartedLevel() {
-        return this._taskIndex === 0;
     }
 
     /************************
@@ -125,6 +104,10 @@ export class Level {
 
     hasTask() {
         return this._taskIndex < this._tasks.length;
+    }
+
+    numTasks() {
+        return this._tasks.length;
     }
 
     get task() {
@@ -136,35 +119,34 @@ export class Level {
         return task;
     }
 
+    get previousTask() {
+        const previousTaskIndex = this._taskIndex - 1;
+        console.assert(previousTaskIndex >= 0, 'Previous task does not exist');
+        return this._tasks[previousTaskIndex];
+    }
+
     get doneTasks() {
         return this._tasks.slice(0, this._taskIndex);
     }
 
-    nextTask() {
-        return new Promise((resolve, reject) => {
-            if (this.hasTask()) {
-                this._taskIndex++;
-            }
-
-            resolve(this.hasTask());
-        });
-    }
-
     wasTaskSkipped() {
-        return this.task.skipped;
+        const task = this.previousTask;
+        if (!isDefined(task)) {
+            return true;
+        }
+
+        return task.skipped;
     }
 
     saveTask(eventType) {
         const answer = this.task.getAnswer(eventType);
 
-        if (eventType === 'SKIPTASK' || !answer.foundSynonym()) {
+        if (eventType === 'SKIPTASK' || (isDefined(answer) && !answer.foundSynonym())) {
             this._streakNoSynonymsFound++;
         }
 
-        // TODO increase index here
-
         // XState expects a native Promise, so we need to convert the JQuery deferred object
-        return toPromise(saveTask(this.task.id, answer));
+        return toPromise(saveTask(this.task.id, answer)).then( () => ++this._taskIndex );
     }
 
     renderTask() {
@@ -193,7 +175,12 @@ export class Level {
     }
 
     renderTaskResults() {
-        const results = getResults(this._projectName, this.task.id);
+        const task = this.previousTask;
+        if(!isDefined(task)) {
+            return false;
+        }
+
+        const results = getResults(this._projectName, task.id);
         if (!isDefined(results)) {
             console.error('Could not retrieve results');
             return false;
@@ -212,7 +199,7 @@ export class Level {
             allAnswers.push(result.info);
         }
 
-        return this.task.renderResult(getAlignment(userAnswer, allAnswers));
+        return task.renderResult(getAlignment(userAnswer, allAnswers));
     }
 
     needSynonymSeed() {
@@ -225,8 +212,7 @@ export class Level {
             return true;
         }
 
-        const previousTask = doneTasks[doneTasks.length - 1];
-        return this.task.targetTerm !== previousTask.targetTerm;
+        return this.task.targetTerm !== this.previousTask.targetTerm;
     }
 
     /************************
@@ -268,7 +254,15 @@ export class Level {
         this._questionIndex = 0;
     }
 
-    areQuestionsAnswered() {
+    areQuestionsAnswered(which) {
+        return this._questions.every((questionSet) => {
+            return questionSet.every((q) => {
+                return q.isAnswered(which);
+            });
+        });
+    }
+
+    areAnswersSelected() {
         return this.currentQuestionSet.every((q) => {
             return (isDefined(q) && q.isAnswerSelected());
         });
