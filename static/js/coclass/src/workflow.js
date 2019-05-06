@@ -16,6 +16,7 @@
 import {Machine, interpret, assign} from 'xstate';
 import {Level} from './level';
 import {CoClass} from './coclass';
+import {PRE_QUESTION, POST_QUESTION} from './constants';
 
 let coclass;
 $.ajax({
@@ -66,7 +67,11 @@ const taskMachine = Machine({
                         target: 'doingTask'
                     },
                     {
+                        cond: 'arePostQuestionsNotAnswered',
                         target: 'answeringPostQuestions'
+                    },
+                    {
+                        target: 'newLevel'
                     }
                     ]
             }
@@ -139,7 +144,7 @@ const taskMachine = Machine({
         },
         answeringPreQuestions: {
             onEntry: ['showQuestionsUI', 'showQuestionsNextorFinished'],
-            onExit: ['getQuestionsAnswer', 'getNextQuestion', 'hideQuestionsUI', 'hideQuestionsNextorFinished'],
+            onExit: ['getAnswersQuestionSet', 'hideQuestionsUI', 'hideQuestionsNextorFinished'],
             on: {
                 FINISHEDQUIZZ: {
                     cond: 'answersSelected',
@@ -155,7 +160,7 @@ const taskMachine = Machine({
         },
         answeringPostQuestions: {
             onEntry: ['showQuestionsUI', 'showQuestionsVerify'],
-            onExit: ['getQuestionsAnswer', 'hideQuestionsUI', 'hideQuestionsVerify'],
+            onExit: ['getAnswersQuestionSet', 'hideQuestionsUI', 'hideQuestionsVerify'],
             on: {
                 VERIFYANSWER: {
                     cond: 'answersSelected',
@@ -165,8 +170,8 @@ const taskMachine = Machine({
             }
         },
         verifyingPostQuestions: {
-            onEntry: ['showQuestionsUI', 'showVerificationResult', 'showQuestionsNextorFinished'],
-            onExit: ['getNextQuestion', 'hideVerificationResult', 'hideQuestionsNextorFinished'],
+            onEntry: ['showVerificationResult', 'showQuestionsNextorFinished'],
+            onExit: ['hideVerificationResult', 'hideQuestionsNextorFinished'],
             on: {
                 FINISHEDQUIZZ: {
                     target: 'showLevel',
@@ -203,9 +208,10 @@ const taskMachine = Machine({
             ctx.level.saveLevel();
         },
         showQuestionsUI: (ctx, event) => {
+            const lvl = ctx.level;
             $('#quizz').removeClass('hidden');
             $('.quizzquestion').empty();
-            console.assert(ctx.level.renderQuestionSet() === true, 'Questions not rendered');
+            console.assert(lvl.renderQuestionSet(lvl.currentQuestionSet) === true, 'Questions not rendered');
         },
         hideQuestionsUI: (ctx, event) => {
             $('#quizz').addClass('hidden');
@@ -230,18 +236,21 @@ const taskMachine = Machine({
             $('#verify-answer').addClass('hidden');
         },
         showVerificationResult: (ctx, event) => {
+            const lvl = ctx.level;
+            $('#quizz').removeClass('hidden');
+            $('.quizzquestion').empty();
+            console.assert(lvl.renderQuestionSet(lvl.previousQuestionSet) === true, 'Questions not rendered');
+
             $('.coclassquestion').attr('disabled', true);
             $('.coclassquestionresult').removeClass('hidden');
         },
         hideVerificationResult: (ctx, event) => {
+            $('#quizz').addClass('hidden');
             $('.coclassquestion').attr('disabled', false);
             $('.coclassquestionresult').addClass('hidden');
         },
-        getQuestionsAnswer: (ctx, event) => {
+        getAnswersQuestionSet: (ctx, event) => {
             ctx.level.getAnswersQuestionSet();
-        },
-        getNextQuestion: (ctx, event) => {
-            ctx.level.nextQuestion();
         },
         resetQuestions: (ctx, event) => {
             ctx.level.resetQuestions();
@@ -288,7 +297,10 @@ const taskMachine = Machine({
             // after level change, check if we got new tasks.
         },
         arePreQuestionsNotAnswered: (ctx, event) => {
-            return !ctx.level.areQuestionsAnswered(0);
+            return !ctx.level.areQuestionsAnswered(PRE_QUESTION);
+        },
+        arePostQuestionsNotAnswered: (ctx, event) => {
+            return !ctx.level.areQuestionsAnswered(POST_QUESTION);
         },
         isLevelNotFinished: (ctx, event) => {
             return ctx.level.hasTask();

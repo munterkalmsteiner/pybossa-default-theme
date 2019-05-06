@@ -17,7 +17,7 @@ import {CoClass} from '../coclass';
 import {Level} from '../level';
 import {getNewTasks, getProjectId, getUserId, getResults, toPromise} from '../pybossa';
 import {isDefined} from '../utils';
-import {QUESTIONED_TERMS_PER_LEVEL} from '../constants';
+import {QUESTIONED_TERMS_PER_LEVEL, QUESTION_TYPE_DESCRIPTION, QUESTION_TYPE_PATH} from '../constants';
 import {readFileSync} from 'fs';
 
 jest.mock('../pybossa');
@@ -150,7 +150,7 @@ test('render task results 2 disagreements', () => {
 test('render defined questions', () => {
     const l = new Level(coclass, 'test');
     l.newLevel();
-    expect(l.renderQuestionSet()).toBe(true);
+    expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(true);
 });
 
 test('render one undefined question', () => {
@@ -158,7 +158,7 @@ test('render one undefined question', () => {
     l.newLevel();
     let qs = l.currentQuestionSet;
     qs[1] = undefined;
-    expect(l.renderQuestionSet()).toBe(false);
+    expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(false);
 });
 
 test('get as many questions sets as requested', () => {
@@ -167,17 +167,19 @@ test('get as many questions sets as requested', () => {
     let numQS = 0;
     expect(l.hasQuestion()).toBe(true);
     while (l.hasQuestion()) {
+        expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(true);
+        $(`#${QUESTION_TYPE_DESCRIPTION}-0`).prop('checked', true);
+        $(`#${QUESTION_TYPE_PATH}-0`).prop('checked', true);
         numQS++;
         for (let q in l.currentQuestionSet) {
             expect(isDefined(q)).toBe(true);
         }
 
-        expect(l.nextQuestion()).toBe(true);
+        expect(l.getAnswersQuestionSet()).toBe(true);
     }
 
     expect(l.hasQuestion()).toBe(false);
     expect(l.hasNextQuestion()).toBe(false);
-    expect(l.nextQuestion()).toBe(false);
     expect(numQS).toBe(QUESTIONED_TERMS_PER_LEVEL);
 });
 

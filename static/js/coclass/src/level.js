@@ -228,26 +228,15 @@ export class Level {
     }
 
     getAnswersQuestionSet() {
-        let allRetrieved = true;
-
-        this.currentQuestionSet.forEach((q) => {
-            if (!isDefined(q) || !q.getAnswer()) {
-                allRetrieved = false;
-            }
+        const allRetrieved = this.currentQuestionSet.every((q) => {
+            return isDefined(q) && q.getAnswer();
         });
 
-        return allRetrieved;
-    }
-
-    nextQuestion() {
-        let movedToNextQuestion = false;
-
-        if (this.hasQuestion()) {
+        if (allRetrieved) {
             this._questionIndex++;
-            movedToNextQuestion = true;
         }
 
-        return movedToNextQuestion;
+        return allRetrieved;
     }
 
     resetQuestions() {
@@ -257,7 +246,7 @@ export class Level {
     areQuestionsAnswered(which) {
         return this._questions.every((questionSet) => {
             return questionSet.every((q) => {
-                return q.isAnswered(which);
+                return isDefined(q) && q.isAnswered(which);
             });
         });
     }
@@ -269,18 +258,21 @@ export class Level {
     }
 
     get currentQuestionSet() {
-        let current = [undefined, undefined];
-        if (this.hasQuestion()) {
-            current = this._questions[this._questionIndex];
-        }
-
-        return current;
+        return this.getQuestionSet(this._questionIndex) || [undefined, undefined];
     }
 
-    renderQuestionSet() {
+    get previousQuestionSet() {
+        return this.getQuestionSet(this._questionIndex - 1) || [undefined, undefined];
+    }
+
+    getQuestionSet(index) {
+        return this._questions[index];
+    }
+
+    renderQuestionSet(questionSet) {
         let allRendered = true;
 
-        this.currentQuestionSet.forEach((q) => {
+        questionSet.forEach((q) => {
             if (!isDefined(q) || !q.render()) {
                 allRendered = false;
             }
