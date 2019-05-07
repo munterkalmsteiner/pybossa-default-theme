@@ -144,7 +144,7 @@ const taskMachine = Machine({
            }
         },
         answeringPreQuestions: {
-            onEntry: ['showQuestionsUI', 'showQuestionsNextorFinished'],
+            onEntry: ['showQuestionsUI', 'showPreQuestionsNextorFinished'],
             onExit: ['getAnswersQuestionSet', 'hideQuestionsUI', 'hideQuestionsNextorFinished'],
             on: {
                 FINISHEDQUIZZ: {
@@ -171,7 +171,7 @@ const taskMachine = Machine({
             }
         },
         verifyingPostQuestions: {
-            onEntry: ['showVerificationResult', 'showQuestionsNextorFinished'],
+            onEntry: ['showVerificationResult', 'showPostQuestionsNextorFinished'],
             onExit: ['hideVerificationResult', 'hideQuestionsNextorFinished'],
             on: {
                 FINISHEDQUIZZ: {
@@ -220,8 +220,17 @@ const taskMachine = Machine({
         hideQuestionsUI: (ctx, event) => {
             $('#quizz').addClass('hidden');
         },
-        showQuestionsNextorFinished: (ctx, event) => {
+        showPreQuestionsNextorFinished: (ctx, event) => {
             if (ctx.level.hasNextQuestion()) {
+                $('#next-question').removeClass('hidden');
+                $('#finished-quizz').addClass('hidden');
+            } else {
+                $('#next-question').addClass('hidden');
+                $('#finished-quizz').removeClass('hidden');
+            }
+        },
+        showPostQuestionsNextorFinished: (ctx, event) => {
+            if (ctx.level.hasQuestion()) {
                 $('#next-question').removeClass('hidden');
                 $('#finished-quizz').addClass('hidden');
             } else {
