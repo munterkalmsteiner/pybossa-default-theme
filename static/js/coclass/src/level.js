@@ -23,8 +23,9 @@ export class Level {
     constructor(coclass, projectName) {
         this._coclass = coclass;
         this._projectName = projectName;
-        this._questions = [];
-        this._questionIndex = 0;
+        this._questionSets = [];
+        this._questionSetIndex = 0;
+        this._quizzResult = undefined;
         this._tasks = [];
         this._taskIndex = 0;
         this._streakNoSynonymsFound = 0;
@@ -35,8 +36,8 @@ export class Level {
     newLevel() {
         this._tasks = [];
         this._taskIndex = 0;
-        this._questions = [];
-        this._questionIndex = 0;
+        this._questionSets = [];
+        this._questionSetIndex = 0;
 
         const rawtasks = getNewTasks(this._projectId, TASKS_PER_LEVEL);
         for (let rt of rawtasks) {
@@ -50,7 +51,7 @@ export class Level {
 
         const quizzTerms = getRandomItems(targetTerms, QUESTIONED_TERMS_PER_LEVEL);
         for (const term of quizzTerms) {
-            this._questions.push(this._coclass.getQuestionsFor(term));
+            this._questionSets.push(this._coclass.getQuestionsFor(term));
         }
     }
 
@@ -78,8 +79,9 @@ export class Level {
 
     serialize() {
         return JSON.stringify({
-            _questions: this._questions,
-            _questionIndex: this._questionIndex,
+            _questionSets: this._questionSets,
+            _questionSetIndex: this._questionSetIndex,
+            _quizzResult: this._quizzResult,
             _tasks: this._tasks,
             _taskIndex: this._taskIndex,
             _streakNoSynonymsFound: this._streakNoSynonymsFound
@@ -89,8 +91,11 @@ export class Level {
     deserialize(data) {
         data = JSON.parse(data);
 
-        this._questions = createQuestionsFrom(data._questions);
-        this._questionIndex = data._questionIndex;
+        this._questionSets = createQuestionsFrom(data._questionSets);
+        this._questionSetIndex = data._questionSetIndex;
+        if (isDefined(data._quizzResult)) {
+            this._quizzResult = createQuestionsFrom(data._quizzResult);
+        }
         this._tasks = createTasksFrom(data._tasks);
         this._taskIndex = data._taskIndex;
         this._streakNoSynonymsFound = data._streakNoSynonymsFound;
@@ -143,6 +148,11 @@ export class Level {
 
         if (eventType === 'SKIPTASK' || (isDefined(answer) && !answer.foundSynonym())) {
             this._streakNoSynonymsFound++;
+        }
+
+        if (isDefined(this._quizzResult)) {
+            answer.quizzResult = this._quizzResult;
+            this._quizzResult = undefined;
         }
 
         // XState expects a native Promise, so we need to convert the JQuery deferred object
@@ -220,11 +230,11 @@ export class Level {
     *************************/
 
     hasQuestion() {
-        return this._questionIndex < this._questions.length;
+        return this._questionSetIndex < this._questionSets.length;
     }
 
     hasNextQuestion() {
-        return this._questionIndex < this._questions.length - 1;
+        return this._questionSetIndex < this._questionSets.length - 1;
     }
 
     getAnswersQuestionSet() {
@@ -233,22 +243,17 @@ export class Level {
         });
 
         if (allRetrieved) {
-            this._questionIndex++;
+            this._questionSetIndex++;
+            if (this.arePostQuestionSetsAnswered()) {
+                this._quizzResult = this._questionSets;
+            }
         }
 
         return allRetrieved;
     }
 
     resetQuestions() {
-        this._questionIndex = 0;
-    }
-
-    areQuestionsAnswered(which) {
-        return this._questions.every((questionSet) => {
-            return questionSet.every((q) => {
-                return isDefined(q) && q.isAnswered(which);
-            });
-        });
+        this._questionSetIndex = 0;
     }
 
     areAnswersSelected() {
@@ -257,16 +262,32 @@ export class Level {
         });
     }
 
+    arePreQuestionSetsAnswered() {
+        return this._questionSets.every(qs => {
+            return qs.every(q => {
+                return q.preQuestionsAnswered();
+            });
+        });
+    }
+
+    arePostQuestionSetsAnswered() {
+        return this._questionSets.every(qs => {
+            return qs.every(q => {
+                return q.postQuestionsAnswered();
+            });
+        });
+    }
+
     get currentQuestionSet() {
-        return this.getQuestionSet(this._questionIndex) || [undefined, undefined];
+        return this.getQuestionSet(this._questionSetIndex) || [undefined, undefined];
     }
 
     get previousQuestionSet() {
-        return this.getQuestionSet(this._questionIndex - 1) || [undefined, undefined];
+        return this.getQuestionSet(this._questionSetIndex - 1) || [undefined, undefined];
     }
 
     getQuestionSet(index) {
-        return this._questions[index];
+        return this._questionSets[index];
     }
 
     renderQuestionSet(questionSet) {

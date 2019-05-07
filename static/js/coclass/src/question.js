@@ -26,7 +26,6 @@ class Question {
         this._type = type;
         this._elem = element;
         this._answers = [];
-
         this._choices = insertAtRandomPosition(this._incorrect, this._correct);
     }
 
@@ -38,10 +37,6 @@ class Question {
 
     isAnswerCorrect(which = PRE_QUESTION) {
         return (this._answers.length > 0 && this._answers[which] === this._correct);
-    }
-
-    isAnswered(which = PRE_QUESTION) {
-        return isDefined(this._answers[which]);
     }
 
     addAnswer(newAnswer) {
@@ -72,7 +67,9 @@ class Question {
             let checked = '';
             let result = '';
 
-            if (this.preQuestionsAnswered() && selection === this._answers[PRE_QUESTION]) {
+            if (this.preQuestionsAnswered() &&
+                !this.postQuestionsAnswered() &&
+                selection === this._answers[PRE_QUESTION]) {
                 checked = 'checked';
             } else if (this.postQuestionsAnswered()) {
                 const answer = this._answers[POST_QUESTION];
@@ -99,7 +96,7 @@ class Question {
     }
 
     preQuestionsAnswered() {
-        return isDefined(this._answers[PRE_QUESTION]) && !isDefined(this._answers[POST_QUESTION]);
+        return isDefined(this._answers[PRE_QUESTION]);
     }
 
     postQuestionsAnswered() {

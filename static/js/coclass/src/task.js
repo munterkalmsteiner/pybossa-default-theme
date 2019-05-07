@@ -176,7 +176,7 @@ export class TaskAnswer {
         this._targetTerm = targetTerm;
         this._skipped = skipped;
         this._candidates = [];
-        this._quizz = undefined;
+        this._quizzResult = undefined;
     }
 
     set targetTerm(newTerm) {
@@ -199,12 +199,12 @@ export class TaskAnswer {
         return this._candidates;
     }
 
-    set quiz(newQuizz) {
-        this._quiz = newQuizz;
+    set quizzResult(newQuizzResult) {
+        this._quizzResult = {_answered: true, _questionSets: newQuizzResult};
     }
 
-    get quiz() {
-        return this._quizz;
+    get quizzResult() {
+        return this._quizzResult;
     }
 
     addCandidate(candidate) {

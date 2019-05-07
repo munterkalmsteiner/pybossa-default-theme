@@ -17,7 +17,8 @@ import {CoClass} from '../coclass';
 import {Level} from '../level';
 import {getNewTasks, getProjectId, getUserId, getResults, toPromise} from '../pybossa';
 import {isDefined} from '../utils';
-import {QUESTIONED_TERMS_PER_LEVEL, QUESTION_TYPE_DESCRIPTION, QUESTION_TYPE_PATH} from '../constants';
+import {QUESTIONED_TERMS_PER_LEVEL, QUESTION_TYPE_DESCRIPTION, QUESTION_TYPE_PATH,
+        PRE_QUESTION, POST_QUESTION} from '../constants';
 import {readFileSync} from 'fs';
 
 jest.mock('../pybossa');
@@ -181,6 +182,54 @@ test('get as many questions sets as requested', () => {
     expect(l.hasQuestion()).toBe(false);
     expect(l.hasNextQuestion()).toBe(false);
     expect(numQS).toBe(QUESTIONED_TERMS_PER_LEVEL);
+});
+
+test('are questions answered: none', () =>  {
+    const l = new Level(coclass, 'test');
+    l.newLevel();
+    expect(l.arePreQuestionSetsAnswered()).toBe(false);
+    expect(l.arePostQuestionSetsAnswered()).toBe(false);
+
+
+});
+
+test('are questions answered: pre', () => {
+    const l = new Level(coclass, 'test');
+    l.newLevel();
+
+    while(l.hasQuestion()) {
+        expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(true);
+        $(`#${QUESTION_TYPE_DESCRIPTION}-0`).prop('checked', true);
+        $(`#${QUESTION_TYPE_PATH}-0`).prop('checked', true);
+        expect(l.getAnswersQuestionSet()).toBe(true);
+    }
+
+    expect(l.arePreQuestionSetsAnswered()).toBe(true);
+    expect(l.arePostQuestionSetsAnswered()).toBe(false);
+});
+
+test('are questions answered: post', () => {
+    const l = new Level(coclass, 'test');
+    l.newLevel();
+
+    while(l.hasQuestion()) {
+        expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(true);
+        $(`#${QUESTION_TYPE_DESCRIPTION}-0`).prop('checked', true);
+        $(`#${QUESTION_TYPE_PATH}-0`).prop('checked', true);
+        expect(l.getAnswersQuestionSet()).toBe(true);
+    }
+
+    l.resetQuestions();
+
+    while(l.hasQuestion()) {
+        expect(l.renderQuestionSet(l.currentQuestionSet)).toBe(true);
+        $(`#${QUESTION_TYPE_DESCRIPTION}-0`).prop('checked', true);
+        $(`#${QUESTION_TYPE_PATH}-0`).prop('checked', true);
+        expect(l.getAnswersQuestionSet()).toBe(true);
+    }
+
+    expect(l.arePreQuestionSetsAnswered()).toBe(true);
+    expect(l.arePostQuestionSetsAnswered()).toBe(true);
 });
 
 test('deserialize level', () => {

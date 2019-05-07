@@ -80,11 +80,17 @@ test('get answers if not answered', () => {
     expect(dq.getAnswer()).toBe(false);
 });
 
-test('get answers if answered', () => {
+test('get pre and post answers if answered', () => {
     dq.render();
     $(`#${QUESTION_TYPE_DESCRIPTION}-2`).prop('checked', true);
     expect(dq.getAnswer()).toBe(true);
     expect(dq.preQuestionsAnswered()).toBe(true);
+    expect(dq._answers.length).toBe(1);
+
+    $(`#${QUESTION_TYPE_DESCRIPTION}-0`).prop('checked', true);
+    expect(dq.getAnswer()).toBe(true);
+    expect(dq.postQuestionsAnswered()).toBe(true);
+    expect(dq._answers.length).toBe(2);
 });
 
 test('render post question with correct answer', () => {

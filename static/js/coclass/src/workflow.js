@@ -297,10 +297,10 @@ const taskMachine = Machine({
             // after level change, check if we got new tasks.
         },
         arePreQuestionsNotAnswered: (ctx, event) => {
-            return !ctx.level.areQuestionsAnswered(PRE_QUESTION);
+            return !ctx.level.arePreQuestionSetsAnswered();
         },
         arePostQuestionsNotAnswered: (ctx, event) => {
-            return !ctx.level.areQuestionsAnswered(POST_QUESTION);
+            return !ctx.level.arePostQuestionSetsAnswered();
         },
         isLevelNotFinished: (ctx, event) => {
             return ctx.level.hasTask();
