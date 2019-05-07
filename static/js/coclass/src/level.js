@@ -14,8 +14,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import {Task, createTasksFrom, getAlignment} from './task';
-import {getNewTasks, saveTask, getProjectId, getUserId, getResults, toPromise} from './pybossa';
-import {createQuestionsFrom} from './question';
+import {getNewTasks, saveTask, getProjectId, getUserId, getResults, getQuizzResults, toPromise} from './pybossa';
+import {createQuestionsFrom, allAnswersCorrect} from './question';
 import {getRandomItems, isDefined} from './utils';
 import {TASKS_PER_LEVEL, QUESTIONED_TERMS_PER_LEVEL, MAXIMUM_TASKS_BEFORE_SEED} from './constants';
 
@@ -31,6 +31,7 @@ export class Level {
         this._streakNoSynonymsFound = 0;
         this._userId = getUserId();
         this._projectId = getProjectId(this._projectName);
+        this._userLevel = this.getUserLevel();
     }
 
     newLevel() {
@@ -55,8 +56,33 @@ export class Level {
         }
     }
 
+    getUserLevel() {
+        const allQuizzResults = getQuizzResults(this._projectId, this._userId);
+        if (isDefined(allQuizzResults)) {
+            return this.calculateCorrectQuizzes(allQuizzResults) + 1;
+        }
+
+        return 1;
+    }
+
+    get userLevel() {
+        return this._userLevel;
+    }
+
+    calculateCorrectQuizzes(results) {
+        let score = 0;
+        for(const r of results) {
+            const questions = createQuestionsFrom(r.info._quizzResult._questionSets);
+            if (allAnswersCorrect(questions)) {
+                score++;
+            }
+        }
+
+        return score;
+    }
+
     saveLevel() {
-        localStorage.setItem('level', this.serialize()); 
+        localStorage.setItem('level', this.serialize());
     }
 
     restoreLevel() {
@@ -84,7 +110,8 @@ export class Level {
             _quizzResult: this._quizzResult,
             _tasks: this._tasks,
             _taskIndex: this._taskIndex,
-            _streakNoSynonymsFound: this._streakNoSynonymsFound
+            _streakNoSynonymsFound: this._streakNoSynonymsFound,
+            _userLevel: this._userLevel
         });
     }
 
@@ -99,6 +126,9 @@ export class Level {
         this._tasks = createTasksFrom(data._tasks);
         this._taskIndex = data._taskIndex;
         this._streakNoSynonymsFound = data._streakNoSynonymsFound;
+        if (isDefined(data._userLevel)) {
+            this._userLevel = data._userLevel;
+        }
 
         return true;
     }
@@ -246,6 +276,9 @@ export class Level {
             this._questionSetIndex++;
             if (this.arePostQuestionSetsAnswered()) {
                 this._quizzResult = this._questionSets;
+                if (allAnswersCorrect(this._quizzResult)) {
+                    this._userLevel++;
+                }
             }
         }
 

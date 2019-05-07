@@ -138,7 +138,7 @@ export class PathQuestion extends Question {
 }
 
 function createQuestionsFrom(questionsData) {
-    const questions = [];
+    const questionSets = [];
     for (const qset of questionsData) {
         const questionSet = [];
         for (const qdata of qset) {
@@ -157,10 +157,18 @@ function createQuestionsFrom(questionsData) {
             questionSet.push(q);
         }
 
-        questions.push(questionSet);
+        questionSets.push(questionSet);
     }
 
-    return questions;
+    return questionSets;
 }
 
-export {createQuestionsFrom};
+function allAnswersCorrect(questions) {
+    return questions.every(qs => {
+        return qs.every(q => {
+            return q.isAnswerCorrect(POST_QUESTION);
+        });
+    });
+}
+
+export {createQuestionsFrom, allAnswersCorrect};

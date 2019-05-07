@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import {DescriptionQuestion, PathQuestion} from '../question';
+import {DescriptionQuestion, PathQuestion, allAnswersCorrect} from '../question';
 import {QUESTION_TYPE_DESCRIPTION, QUESTION_TYPE_PATH} from '../constants';
 
 let dq, pq;
@@ -147,4 +147,48 @@ test('render post question with incorrect answer', () => {
     expect(elem.parent().parent().find('.fa-times').length).toBe(0);
 });
 
+test('all answers are correct', () => {
+    const questions = [];
+    const dq1 = new DescriptionQuestion('target term', 'cd1', ['icd1', 'icd2', 'icd3']);
+    dq1.answers = ['cd1', 'cd1'];
+    const pq1 = new PathQuestion('target path', 'co1', ['ico1', 'ico2', 'ico3']);
+    pq1.answers = ['co1', 'co1'];
+    questions.push([dq1, pq1]);
 
+    const dq2 = new DescriptionQuestion('target term', 'cd2', ['icd1', 'icd2', 'icd3']);
+    dq2.answers = ['cd2', 'cd2'];
+    const pq2 = new PathQuestion('target path', 'co2', ['ico1', 'ico2', 'ico3']);
+    pq2.answers = ['co2', 'co2'];
+    questions.push([dq2, pq2]);
+
+    const dq3 = new DescriptionQuestion('target term', 'cd3', ['icd1', 'icd2', 'icd3']);
+    dq3.answers = ['cd3', 'cd3'];
+    const pq3 = new PathQuestion('target path', 'co3', ['ico1', 'ico2', 'ico3']);
+    pq3.answers = ['co3', 'co3'];
+    questions.push([dq3, pq3]);
+
+    expect(allAnswersCorrect(questions)).toBe(true);
+});
+
+test('some answer are incorrect', () => {
+    const questions = [];
+    const dq1 = new DescriptionQuestion('target term', 'cd1', ['icd1', 'icd2', 'icd3']);
+    dq1.answers = ['cd1', 'cd1'];
+    const pq1 = new PathQuestion('target path', 'co1', ['ico1', 'ico2', 'ico3']);
+    pq1.answers = ['co1', 'co1'];
+    questions.push([dq1, pq1]);
+
+    const dq2 = new DescriptionQuestion('target term', 'cd2', ['icd1', 'icd2', 'icd3']);
+    dq2.answers = ['cd2', 'icd2']; // incorrect
+    const pq2 = new PathQuestion('target path', 'co2', ['ico1', 'ico2', 'ico3']);
+    pq2.answers = ['co2', 'co2'];
+    questions.push([dq2, pq2]);
+
+    const dq3 = new DescriptionQuestion('target term', 'cd3', ['icd1', 'icd2', 'icd3']);
+    dq3.answers = ['cd3', 'cd3'];
+    const pq3 = new PathQuestion('target path', 'co3', ['ico1', 'ico2', 'ico3']);
+    pq3.answers = ['co3', 'co3'];
+    questions.push([dq3, pq3]);
+
+    expect(allAnswersCorrect(questions)).toBe(false);
+});

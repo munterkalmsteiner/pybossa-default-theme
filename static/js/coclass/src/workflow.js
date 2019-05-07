@@ -71,15 +71,16 @@ const taskMachine = Machine({
                         target: 'answeringPostQuestions'
                     },
                     {
-                        target: 'newLevel'
+                        target: 'showLevel'
                     }
                     ]
             }
         },
         newLevel: {
-            onEntry: ['populateLevel', 'saveLevel'],
-            on: {
-                '': 'answeringPreQuestions'
+            onEntry: ['populateLevel', 'showLevel', 'saveLevel'],
+            onExit: ['hideLevel'],
+            after: {
+                2000: 'answeringPreQuestions'
             }
         },
         doingTask: {
@@ -174,18 +175,13 @@ const taskMachine = Machine({
             onExit: ['hideVerificationResult', 'hideQuestionsNextorFinished'],
             on: {
                 FINISHEDQUIZZ: {
-                    target: 'showLevel',
+                    target: 'newLevel',
                     actions: ['hideQuestionsUI', 'saveLevel']
                 },
                 NEXTQUESTION: {
                     target: 'answeringPostQuestions',
                     actions: ['saveLevel']
                 }
-            }
-        },
-        showLevel: {
-            on: {
-                '': 'newLevel'
             }
         },
         done: {
@@ -206,6 +202,14 @@ const taskMachine = Machine({
         },
         saveLevel: (ctx, event) => {
             ctx.level.saveLevel();
+        },
+        showLevel: (ctx, event) => {
+            $('#level').text(`Level ${ctx.level.userLevel}`);
+            $('#level').hide();
+            $('#level').show('fade', 1500);
+        },
+        hideLevel: (ctx, event) => {
+            $('#level').hide();
         },
         showQuestionsUI: (ctx, event) => {
             const lvl = ctx.level;

@@ -66,6 +66,26 @@ function getResults(projectName, taskId) {
     return data;
 }
 
+function getQuizzResults(projectId, userId) {
+    let data;
+    $.ajax({
+        type: 'GET',
+        url: `/api/taskrun?project_id=${projectId}&user_id=${userId}&info={"_quizzResult": {"_answered": true}}`,
+        dataType: 'json',
+        contentType: 'application/json',
+        cache: true,
+        async: false,
+        success: function(json) {
+            data = json;
+        },
+        error: (err) => {
+            console.error(err);
+        }
+    });
+
+    return data;
+}
+
 function getUserId() {
     const data = _getUserData();
     return data.user.id;
@@ -182,7 +202,7 @@ function _getProjectData(projectName) {
         data: `short_name=${projectName}`,
         dataType: "json",
         contentType: 'application/json',
-        cache: true, // pybossa does not like the underscore parameter added to the request by jQuery in order to disable caching. Seems to be only a problem for this endpoint...
+        cache: true, // pybossa does not like the underscore parameter added to the request by jQuery in order to disable caching. Seems to be a problem for this and taskrun endpoint...
         async: false,
         success: function(json) {
             data = json;
@@ -195,6 +215,6 @@ function _getProjectData(projectName) {
     return data;
 }
 
-export {getNewTasks, saveTask, getUserId, getProjectId, getResults, toPromise};
+export {getNewTasks, saveTask, getUserId, getProjectId, getResults, getQuizzResults, toPromise};
 
 
