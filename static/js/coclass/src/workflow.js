@@ -71,7 +71,7 @@ const taskMachine = Machine({
                         target: 'answeringPostQuestions'
                     },
                     {
-                        target: 'showLevel'
+                        target: 'newLevel'
                     }
                     ]
             }
@@ -176,11 +176,10 @@ const taskMachine = Machine({
             on: {
                 FINISHEDQUIZZ: {
                     target: 'newLevel',
-                    actions: ['hideQuestionsUI', 'saveLevel']
+                    actions: ['hideQuestionsUI'] 
                 },
                 NEXTQUESTION: {
-                    target: 'answeringPostQuestions',
-                    actions: ['saveLevel']
+                    target: 'answeringPostQuestions'
                 }
             }
         },
