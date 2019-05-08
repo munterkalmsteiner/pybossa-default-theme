@@ -32,52 +32,90 @@
 <div class="row skeleton">
     <div class="col-md-12 text-center" style="font-size: 110px;" id="level"></div>
     <div class="col-md-12 hidden" id="task">
-        <h2>Select the relationship between candidate and target term</h2>
+        <h2>Select the relationship between candidate and the CoClass object</h2>
       	<p style="margin-bottom: 0px;" id="levels"></p>
       	<p>
             CoClass definition: <i><span id="definition"></span></i>
       	</p>
         <div class="col-md-12" id="submittask">
-            <table class="table table-condensed table-hover table-bordered">
-                <thead>
-                    <tr class="info">
-                        <th>Candidate</th>
-                        <th><span style="float:left;">unrelated to</span><span style="float:right;"><a href="#" id="unlreatedhelp" data-html=true data-content="Use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term." data-title="What does unrelated mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">synonym of</span><span style="float:right;"><a href="#" id="synonymhelp" data-html=true data-content="Two terms are synonymous to each other if it is possible to use one in place of the other." data-title="What does synonym mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">generalization of</span><span style="float:right;"><a href="#" id="generalizationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>." data-title="What does generalization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th><span style="float:left;">specialization of</span><span style="float:right;"><a href="#" id="specializationhelp" data-html=true data-content="Use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>." data-title="What does specialization mean?" data-placement="top"><i class="fas fa-question-circle" style="color:white;"></i></a></span></th>
-                        <th>Target</th>
-                    </tr>
-                </thead>
-                <tbody id="candidates"></tbody>
-            </table>
-            <button id="submit-task-button" class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
-            <button id="skip-task-button" class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
+            <div class="col-md-8">
+                <table class="table table-condensed table-hover table-bordered">
+                    <thead>
+                        <tr class="info">
+                            <th>Candidate</th>
+                            <th><span style="float:left;">unrelated</span></th>
+                            <th><span style="float:left;">synonym</span></th>
+                            <th><span style="float:left;">generalization</span></th>
+                            <th><span style="float:left;">specialization</span></th>
+                            <th>Object</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidates"></tbody>
+                </table>
+                <button id="submit-task-button" class="btn btn-success btn-submit" style="margin-right:10px;">Save selection</button>
+                <button id="skip-task-button" class="btn btn-default btn-skip">Skip (not my area of expertise)</button>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a role="button" data-toggle="collapse" href="#taskhelp">Help</a>
+                        </h3>
+                    </div>
+                    <div id="taskhelp" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p>On the top of the screen, you see the CoClass object for which we look try to find synonyms. We show the CoClass hierarchy with the respective codes and the definition of the object.</p>
+                            <p><strong>Unrelated:</strong>&nbsp;use this choice to indicate that the candidate is <strong>not</strong> a synonym, generalization or specialization of the target term.</p>
+                            <p><strong>Synonym:</strong>&nbsp;two terms are synonymous to each other if it is possible to use one in place of the other.</p>
+                            <p><strong>Generalization:</strong>&nbsp;use this choice to indicate that the candidate is a more general term than the target. For example, <i>bil</i> is more general than <i>lastbil</i>.</p>
+                            <p><strong>Specialization:</strong>&nbsp;use this choice to indicate that the candidate is a more specific term than the target. For example, <i>ottomotor</i> is more specific than <i>motor</i>.</p>
+                            <p>If you are unsure what the CoClass object is, press skip.</p>
+                            <p>On the bottom of the screen, you see information about your current progress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-12" id="taskresults">
-            <h3>Results:</h3>
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Candidate</th>
-                        <th scope="col">Synonym<sup>&#10102;</sup></th>
-                        <th scope="col">Alignment<sup>&#10103;</sup></th>
-                    </tr>
-                </thead>
-                <tbody id="results"></tbody>
-            </table>
-            <button id="next-task-button" class="btn btn-success btn-next">Next</button>
-            <h4>&#10102; Synonym</h4>
-            <p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
-                <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
-                <br>New synonym:&nbsp;<i class="fas fa-star"></i>
-                <br>No synonym:&nbsp;<i class="fas fa-minus"></i>
-            </p>
-            <h4>&#10103; Alignment</h4>
-            <p>This column indicates how well you agree with your colleagues.
-        The numbers show how often you <span class="badge">agree</span> or
-                <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
-            </p>
+            <div class="col-md-8">
+                <h3>Results:</h3>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Candidate</th>
+                            <th scope="col">Synonym<sup>&#10102;</sup></th>
+                            <th scope="col">Alignment<sup>&#10103;</sup></th>
+                        </tr>
+                    </thead>
+                    <tbody id="results"></tbody>
+                </table>
+                <button id="next-task-button" class="btn btn-success btn-next">Next</button>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a role="button" data-toggle="collapse" href="#resulthelp">Help</a>
+                        </h3>
+                    </div>
+                    <div id="resulthelp" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p>Here you can see the result of your choice.</p>
+                            <h5>Synonym&nbsp;&#10102;</h5>
+                            <p>Correctly identified synonym:&nbsp;<i class="fas fa-check"></i>
+                                <br>Missed actual synonym:&nbsp;<i class="fas fa-times"></i>
+                                <br>New synonym:&nbsp;<i class="fas fa-star"></i>
+                                <br>No synonym:&nbsp;<i class="fas fa-minus"></i>
+                            </p>
+                            <h5>Alignment&nbsp;&#10103;</h5>
+                            <p>This column indicates how well you agree with your colleagues.
+                                The numbers show how often you <span class="badge">agree</span> or
+                                <span class="badge">disagree</span>, in total, on the assessment of the particular synonym candidate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-12" id="taskprogress">
             <p style="margin-top:40px;">You are working now on task: <span id="task-id" class="label label-warning">#</span>
@@ -95,12 +133,29 @@
         </div>
     </div>
     <div class="col-md-12 hidden" id="quizz">
-        <div class="quizzquestion" id="description-question"></div>
-        <div class="quizzquestion" id="path-question"></div>
-        <button id="next-question" class="btn btn-success btn-submit hidden">Next</button>
-        <button id="finished-quizz" class="btn btn-success btn-submit hidden">Done</button>
-        <span id="verify-answer" class="hidden"><button id="verify-answer-button" class="btn btn-success btn-submit">Verify</button>&nbsp;(if you changed your mind, you can still change your answers)</span>
-        <span id="msgNoAnswers" class="hidden">Please answer all questions before proceeding.</span>
+        <div class="col-md-8">
+            <h2>CoClass Quizz</h2>
+            <div class="quizzquestion" id="description-question"></div>
+            <div class="quizzquestion" id="path-question"></div>
+            <button id="next-question" class="btn btn-success btn-submit hidden">Next</button>
+            <button id="finished-quizz" class="btn btn-success btn-submit hidden">Done</button>
+            <span id="verify-answer" class="hidden"><button id="verify-answer-button" class="btn btn-success btn-submit">Verify</button>&nbsp;(if you changed your mind, you can now change your answers)</span>
+            <span id="msgNoAnswers" class="hidden">Please answer all questions before proceeding.</span>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a role="button" data-toggle="collapse" href="#quizzhelp">Help</a>
+                    </h3>
+                </div>
+                <div id="quizzhelp" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Each level starts with a set of questions about CoClass. The questions are about the CoClass objects for which we are looking synonyms in this level. At the end of the level, the same questions will be stated again and you have a chance to revise your answers. In case you answer all questions correctly, you will advance to the next level!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/static/js/coclass/dist/bundle.js"></script>
