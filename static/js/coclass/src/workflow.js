@@ -99,7 +99,8 @@ const taskMachine = Machine({
                     target: 'showresultOrNexttask'
                 },
                 onError: {
-                    actions: (ctx, event) => { console.error('Could not save task'); }
+                    target: 'newLevel',
+                    actions: ['showSavingTaskError']
                 }
             }
         },
@@ -191,10 +192,7 @@ const taskMachine = Machine({
 {
     actions: {
         initUI: (ctx, event) => {
-            $('#unlreatedhelp').popover();
-            $('#synonymhelp').popover();
-            $('#generalizationhelp').popover();
-            $('#specializationhelp').popover();
+
         },
         populateLevel: (ctx, event) => {
             ctx.level.newLevel();
@@ -287,6 +285,15 @@ const taskMachine = Machine({
             $('#task').addClass('hidden');
             $('#taskresults').addClass('hidden');
         },
+        showSavingTaskError: (ctx, event) => {
+            //$('#errorAlert').removeClass('hidden');
+            $('#errorAlert').show();
+            if (event.data.status === 403) {
+                $('#errorMsg').text('Due to inactivity of more than 60 minutes, the level has been restarted.');
+            } else {
+                $('#errorMsg').text('Due to an unknown error, the level will be restarted. Please contact mun@bth.se.');
+            }
+        },
         updateTaskProgress: (ctx, event) => {
             const lvl = ctx.level;
             $('#task-id').text(lvl.task.id);
@@ -361,4 +368,14 @@ $('#skip-task-button').click((event) => {
 
 $('#next-task-button').click((event) => {
     fsm.send('NEXTTASK');
+});
+
+/* Helper functions */
+
+// Dismissable, reappearing alerts 
+// https://stackoverflow.com/a/13550556/2091625
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $("." + $(this).attr("data-hide")).hide();
+    });
 });
