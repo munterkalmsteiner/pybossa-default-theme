@@ -304,9 +304,11 @@ const taskMachine = Machine({
             const selected = ctx.level.areAnswersSelected();
 
             if (selected) {
-                $('#msgNoAnswers').addClass('hidden');
+                $('#msgAnswerQuizz').addClass('hidden');
             } else {
-                $('#msgNoAnswers').removeClass('hidden');
+                $('#msgAnswerQuizz').removeClass();
+                $('#msgAnswerQuizz').addClass('alert alert-danger');
+                $('#msgAnswerQuizz').html('Please answer all questions before proceeding');
             }
 
             return selected;
