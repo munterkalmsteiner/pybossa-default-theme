@@ -69,6 +69,14 @@ export class Level {
         return this._userLevel;
     }
 
+    get totalTasksPerLevel() {
+        return TASKS_PER_LEVEL;
+    }
+
+    get doneTasksInLevel() {
+        return this._taskIndex;
+    }
+
     calculateCorrectQuizzes(results) {
         let score = 0;
         for(const r of results) {

@@ -84,7 +84,7 @@ const taskMachine = Machine({
             }
         },
         doingTask: {
-            onEntry: ['showTaskUI'],
+            onEntry: ['showTaskUI', 'updateTaskProgress'],
             onExit: ['hideTaskUI'],
             on: {
                 SUBMITTASK: 'savingTask',
@@ -270,6 +270,7 @@ const taskMachine = Machine({
         showTaskUI: (ctx, event) => {
             $('#task').removeClass('hidden');
             $('#submittask').removeClass('hidden');
+            $('#taskresults').addClass('hidden');
             console.assert(ctx.level.renderTask() === true, 'Tasks not rendered');
         },
         hideTaskUI: (ctx, event) => {
@@ -279,11 +280,23 @@ const taskMachine = Machine({
         showResultsUI: (ctx, event) => {
             $('#task').removeClass('hidden');
             $('#taskresults').removeClass('hidden');
+            $('#submittask').addClass('hidden');
             console.assert(ctx.level.renderTaskResults() === true, 'Results not rendered');
         },
         hideResultsUI: (ctx, event) => {
             $('#task').addClass('hidden');
             $('#taskresults').addClass('hidden');
+        },
+        updateTaskProgress: (ctx, event) => {
+            const lvl = ctx.level;
+            $('#task-id').text(lvl.task.id);
+            const pct = Math.round(lvl.doneTasksInLevel * 100 / lvl.totalTasksPerLevel);
+            $('#progress').css('width', `${pct.toString()}%`);
+            $('#progress').attr('title', `${pct.toString()}% in level ${lvl.userLevel} completed!`);
+            $('#progress').tooltip({'placement': 'left'}); 
+            $('#total').text(lvl.totalTasksPerLevel);
+            $('#done').text(lvl.doneTasksInLevel);
+            $('#levelNumber').text(lvl.userLevel);
         }
     },
     guards: {
