@@ -34,7 +34,7 @@ const taskMachine = Machine({
     id: 'ccsfsm',
     initial: 'init',
     context: {
-        level: new Level(coclass, projectName)
+        level: new Level(coclass, projectName, true)
     },
     states: {
         init: {
@@ -80,7 +80,13 @@ const taskMachine = Machine({
             onEntry: ['populateLevel', 'showLevel', 'saveLevel'],
             onExit: ['hideLevel'],
             after: {
-                2000: 'answeringPreQuestions'
+                0: {
+                    cond: 'skipQuizz',
+                    target: 'doingTask'
+                },
+                2000: {
+                    target: 'answeringPreQuestions'
+                }
             }
         },
         doingTask: {
@@ -131,8 +137,12 @@ const taskMachine = Machine({
             on: {
                 '': [
                     {
-                        cond: 'isLevelfinished',
+                        cond: 'answerPostQuestions',
                         target: 'answeringPostQuestions'
+                    },
+                    {
+                        cond: 'dontAnswerPostQuestions',
+                        target: 'newLevel',
                     },
                     {
                         cond: 'allTasksDone', // TODO implement correctly
@@ -201,9 +211,11 @@ const taskMachine = Machine({
             ctx.level.saveLevel();
         },
         showLevel: (ctx, event) => {
-            $('#level').text(`Level ${ctx.level.userLevel}`);
-            $('#level').hide();
-            $('#level').show('fade', 1500);
+            if (!ctx.level.skipQuizz()) {
+                $('#level').text(`Level ${ctx.level.userLevel}`);
+                $('#level').hide();
+                $('#level').show('fade', 1500);
+            }
         },
         hideLevel: (ctx, event) => {
             $('#level').hide();
@@ -286,7 +298,6 @@ const taskMachine = Machine({
             $('#taskresults').addClass('hidden');
         },
         showSavingTaskError: (ctx, event) => {
-            //$('#errorAlert').removeClass('hidden');
             $('#errorAlert').show();
             if (event.data.status === 403) {
                 $('#errorMsg').text('Due to inactivity of more than 60 minutes, the level has been restarted.');
@@ -297,13 +308,24 @@ const taskMachine = Machine({
         updateTaskProgress: (ctx, event) => {
             const lvl = ctx.level;
             $('#task-id').text(lvl.task.id);
-            const pct = Math.round(lvl.doneTasksInLevel * 100 / lvl.totalTasksPerLevel);
-            $('#progress').css('width', `${pct.toString()}%`);
-            $('#progress').attr('title', `${pct.toString()}% in level ${lvl.userLevel} completed!`);
+
+            if (lvl.skipQuizz()) {
+                lvl.getUserProgress().done(data => {
+                    const pct = Math.round((data.done * 100) / data.total);
+                    $('#progress').css('width', `${pct.toString()}%`);
+                    $('#progress').attr('title', `${pct.toString()}% completed!`);
+                    $('#total').text(data.total);
+                    $('#done').text(data.done);
+                });
+            } else {
+                const pct = Math.round(lvl.doneTasksInLevel * 100 / lvl.totalTasksPerLevel);
+                $('#progress').css('width', `${pct.toString()}%`);
+                $('#progress').attr('title', `${pct.toString()}% in level ${lvl.userLevel} completed!`);
+                $('#total').text(`${lvl.totalTasksPerLevel}`);
+                $('#inLevel').html(`&nbsp;in level ${lvl.userLevel}`);
+                $('#done').text(lvl.doneTasksInLevel);
+            }
             $('#progress').tooltip({'placement': 'left'}); 
-            $('#total').text(lvl.totalTasksPerLevel);
-            $('#done').text(lvl.doneTasksInLevel);
-            $('#levelNumber').text(lvl.userLevel);
         }
     },
     guards: {
@@ -323,21 +345,27 @@ const taskMachine = Machine({
         didSkipTask: (ctx, event) => {
             return ctx.level.wasTaskSkipped();
         },
-        isLevelfinished: (ctx, event) => {
-            return !ctx.level.hasTask();
+        answerPostQuestions: (ctx, event) => {
+            return !ctx.level.hasTask() && !ctx.level.skipQuizz();
+        },
+        dontAnswerPostQuestions: (ctx, event) => {
+            return !ctx.level.hasTask() && ctx.level.skipQuizz();
         },
         allTasksDone: (ctx, event) => {
             return false;
             // after level change, check if we got new tasks.
         },
         arePreQuestionsNotAnswered: (ctx, event) => {
-            return !ctx.level.arePreQuestionSetsAnswered();
+            return !ctx.level.arePreQuestionSetsAnswered() && !ctx.level.skipQuizz();
         },
         arePostQuestionsNotAnswered: (ctx, event) => {
-            return !ctx.level.arePostQuestionSetsAnswered();
+            return !ctx.level.arePostQuestionSetsAnswered() && !ctx.level.skipQuizz();
         },
         isLevelNotFinished: (ctx, event) => {
             return ctx.level.hasTask();
+        },
+        skipQuizz: (ctx, event) => {
+            return ctx.level.skipQuizz();
         }
     }
 }

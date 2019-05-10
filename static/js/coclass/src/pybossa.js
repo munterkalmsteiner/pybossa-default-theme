@@ -104,6 +104,15 @@ function getProjectId(projectName) {
     return projectId;
 }
 
+function getUserProgress(projectName) {
+    return $.ajax({
+        type: 'GET',
+        url: `/api/project/${projectName}/userprogress`,
+        dataType: 'json',
+        contentType: 'application/json'
+    });
+}
+
 /* converts a JQuery deferred Object to a native Promise */
 function toPromise ($promise) {
     return new Promise((resolve, reject) => {
@@ -215,6 +224,6 @@ function _getProjectData(projectName) {
     return data;
 }
 
-export {getNewTasks, saveTask, getUserId, getProjectId, getResults, getQuizzResults, toPromise};
+export {getNewTasks, saveTask, getUserId, getProjectId, getResults, getQuizzResults, getUserProgress, toPromise};
 
 

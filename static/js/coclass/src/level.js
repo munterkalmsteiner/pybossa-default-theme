@@ -14,13 +14,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import {Task, createTasksFrom, getAlignment} from './task';
-import {getNewTasks, saveTask, getProjectId, getUserId, getResults, getQuizzResults, toPromise} from './pybossa';
+import {getNewTasks, saveTask, getProjectId, getUserId, getResults, getQuizzResults, getUserProgress, toPromise} from './pybossa';
 import {createQuestionsFrom, allAnswersCorrect} from './question';
 import {getRandomItems, isDefined} from './utils';
 import {TASKS_PER_LEVEL, QUESTIONED_TERMS_PER_LEVEL, MAXIMUM_TASKS_BEFORE_SEED} from './constants';
 
 export class Level {
-    constructor(coclass, projectName) {
+    constructor(coclass, projectName, skipQuizz) {
         this._coclass = coclass;
         this._projectName = projectName;
         this._questionSets = [];
@@ -32,6 +32,11 @@ export class Level {
         this._userId = getUserId();
         this._projectId = getProjectId(this._projectName);
         this._userLevel = this.getUserLevel();
+        if (isDefined(skipQuizz)) {
+            this._skipQuizz = skipQuizz; //this._userId % 2 === 0;
+        } else {
+            this._skipQuizz = false;
+        }
     }
 
     newLevel() {
@@ -45,14 +50,16 @@ export class Level {
             this._tasks.push(new Task(rt));
         }
 
-        const targetTerms = new Set();
-        this._tasks.forEach((task) => {
-            targetTerms.add(task.targetTerm);
-        });
+        if (!this.skipQuizz()) {
+            const targetTerms = new Set();
+            this._tasks.forEach((task) => {
+                targetTerms.add(task.targetTerm);
+            });
 
-        const quizzTerms = getRandomItems(targetTerms, QUESTIONED_TERMS_PER_LEVEL);
-        for (const term of quizzTerms) {
-            this._questionSets.push(this._coclass.getQuestionsFor(term));
+            const quizzTerms = getRandomItems(targetTerms, QUESTIONED_TERMS_PER_LEVEL);
+            for (const term of quizzTerms) {
+                this._questionSets.push(this._coclass.getQuestionsFor(term));
+            }
         }
     }
 
@@ -63,6 +70,10 @@ export class Level {
         }
 
         return 1;
+    }
+
+    getUserProgress() {
+        return getUserProgress(this._projectName);
     }
 
     get userLevel() {
@@ -87,6 +98,10 @@ export class Level {
         }
 
         return score;
+    }
+
+    skipQuizz() {
+        return this._skipQuizz;
     }
 
     saveLevel() {
