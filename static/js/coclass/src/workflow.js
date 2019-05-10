@@ -32,17 +32,11 @@ const projectName = 'coclass';
 
 const taskMachine = Machine({
     id: 'ccsfsm',
-    initial: 'init',
+    initial: 'initiatingLevel',
     context: {
-        level: new Level(coclass, projectName, true)
+        level: new Level(coclass, projectName, false)
     },
     states: {
-        init: {
-            onEntry: ['initUI'],
-            on: {
-                '': 'initiatingLevel'
-            }
-        },
         initiatingLevel: {
             invoke: {
                 id: 'initiateLevel',
@@ -63,6 +57,10 @@ const taskMachine = Machine({
                         target: 'answeringPreQuestions'
                     },
                     {
+                        cond: 'allTasksDone',
+                        target: 'done'
+                    },
+                    {
                         cond: 'isLevelNotFinished',
                         target: 'doingTask'
                     },
@@ -77,10 +75,14 @@ const taskMachine = Machine({
             }
         },
         newLevel: {
-            onEntry: ['populateLevel', 'showLevel', 'saveLevel'],
+            onEntry: ['newLevel', 'showLevel', 'saveLevel'],
             onExit: ['hideLevel'],
             after: {
-                0: {
+                10: {
+                    cond: 'allTasksDone',
+                    target: 'done'
+                },
+                50: {
                     cond: 'skipQuizz',
                     target: 'doingTask'
                 },
@@ -145,10 +147,6 @@ const taskMachine = Machine({
                         target: 'newLevel',
                     },
                     {
-                        cond: 'allTasksDone', // TODO implement correctly
-                        target: 'done'
-                    },
-                    {
                         target: 'doingTask'
                     }
                 ]
@@ -195,16 +193,14 @@ const taskMachine = Machine({
             }
         },
         done: {
+            onEntry: ['showDoneMessage'],
             type: 'final'
         }
     }
 },
 {
     actions: {
-        initUI: (ctx, event) => {
-
-        },
-        populateLevel: (ctx, event) => {
+        newLevel: (ctx, event) => {
             ctx.level.newLevel();
         },
         saveLevel: (ctx, event) => {
@@ -326,6 +322,9 @@ const taskMachine = Machine({
                 $('#done').text(lvl.doneTasksInLevel);
             }
             $('#progress').tooltip({'placement': 'left'}); 
+        },
+        showDoneMessage: (ctx, event) => {
+            $('#finishAlert').show();
         }
     },
     guards: {
@@ -352,8 +351,7 @@ const taskMachine = Machine({
             return !ctx.level.hasTask() && ctx.level.skipQuizz();
         },
         allTasksDone: (ctx, event) => {
-            return false;
-            // after level change, check if we got new tasks.
+            return ctx.level.numTasks() ===  0;
         },
         arePreQuestionsNotAnswered: (ctx, event) => {
             return !ctx.level.arePreQuestionSetsAnswered() && !ctx.level.skipQuizz();
